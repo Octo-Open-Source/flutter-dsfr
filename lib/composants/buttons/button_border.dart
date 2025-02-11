@@ -14,7 +14,7 @@ class DsfrButtonBorder extends WidgetStateProperty<Border> {
   factory DsfrButtonBorder.fromVariant(final DsfrButtonVariant variant) {
     switch (variant) {
       case DsfrButtonVariant.primary:
-      case DsfrButtonVariant.tertiaryWithouBorder:
+      case DsfrButtonVariant.tertiaryWithoutBorder:
         return DsfrButtonBorder(
           $default: const Border(),
           disabled: const Border(),

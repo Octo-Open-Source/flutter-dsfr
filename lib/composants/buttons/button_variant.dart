@@ -1,1 +1,1 @@
-enum DsfrButtonVariant { primary, secondary, tertiary, tertiaryWithouBorder }
+enum DsfrButtonVariant { primary, secondary, tertiary, tertiaryWithoutBorder }

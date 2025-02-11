@@ -44,6 +44,14 @@ class ButtonsPage extends StatelessWidget {
             size: size,
             onPressed: _handleTap,
           ),
+          DsfrButton(
+            label: "",
+            icon: DsfrIcons.buildingsAncientGateFill,
+            iconLocation: DsfrButtonIconLocation.right,
+            variant: variant,
+            size: size,
+            onPressed: _handleTap,
+          ),
         ]);
       }
     }

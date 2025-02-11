@@ -169,7 +169,7 @@ class DsfrColorDecisions {
   const DsfrColorDecisions._();
 
   static bool isLightMode(BuildContext context) {
-    return Theme.of(context).brightness == Brightness.light;
+    return MediaQuery.platformBrightnessOf(context) == Brightness.light;
   }
 
   <%DECISIONS%>

@@ -45,7 +45,6 @@ class _DsfrRawButtonState extends State<DsfrRawButton>
   @override
   void initState() {
     super.initState();
-    _backgroundColor = DsfrButtonBackgroundColor.fromVariant(widget.variant);
     _foregroundColor = widget.foregroundColor == null
         ? DsfrButtonForegroundColor.fromVariant(widget.variant)
         : DsfrButtonForegroundColor(
@@ -104,6 +103,8 @@ class _DsfrRawButtonState extends State<DsfrRawButton>
 
   @override
   Widget build(final context) {
+    final _backgroundColor = DsfrButtonBackgroundColor.fromVariant(widget.variant, context);
+
     final textColor = _foregroundColor.resolve(materialStates);
 
     return DsfrFocusWidget(
