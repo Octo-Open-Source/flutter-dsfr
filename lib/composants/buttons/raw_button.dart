@@ -37,30 +37,11 @@ class _DsfrRawButtonState extends State<DsfrRawButton>
   late final double _minHeight;
   late final EdgeInsetsGeometry _padding;
   late final TextStyle _textStyle;
-  late final DsfrButtonBackgroundColor _backgroundColor;
-  late final DsfrButtonForegroundColor _foregroundColor;
-  late final DsfrButtonBorder _border;
   Timer? _timer;
 
   @override
   void initState() {
     super.initState();
-    _foregroundColor = widget.foregroundColor == null
-        ? DsfrButtonForegroundColor.fromVariant(widget.variant)
-        : DsfrButtonForegroundColor(
-            $default: widget.foregroundColor!,
-            disabled: DsfrColors.grey625,
-          );
-    _border = widget.foregroundColor == null
-        ? DsfrButtonBorder.fromVariant(widget.variant)
-        : DsfrButtonBorder(
-            $default: Border.fromBorderSide(
-              BorderSide(color: widget.foregroundColor!),
-            ),
-            disabled: const Border.fromBorderSide(
-              BorderSide(color: DsfrColors.grey925),
-            ),
-          );
     _padding = _getPadding(widget.size);
     _textStyle = _getTextStyle(widget.size);
     _minHeight = _getMinHeight(widget.size);
@@ -104,6 +85,22 @@ class _DsfrRawButtonState extends State<DsfrRawButton>
   @override
   Widget build(final context) {
     final _backgroundColor = DsfrButtonBackgroundColor.fromVariant(widget.variant, context);
+    final _foregroundColor = widget.foregroundColor == null
+        ? DsfrButtonForegroundColor.fromVariant(widget.variant, context)
+        : DsfrButtonForegroundColor(
+      $default: widget.foregroundColor!,
+      disabled: DsfrColors.grey625,
+    );
+    final _border = widget.foregroundColor == null
+        ? DsfrButtonBorder.fromVariant(widget.variant, context)
+        : DsfrButtonBorder(
+      $default: Border.fromBorderSide(
+        BorderSide(color: widget.foregroundColor!),
+      ),
+      disabled: const Border.fromBorderSide(
+        BorderSide(color: DsfrColors.grey925),
+      ),
+    );
 
     final textColor = _foregroundColor.resolve(materialStates);
 

@@ -1,5 +1,5 @@
 import 'package:flutter_dsfr/composants/buttons/button_variant.dart';
-import 'package:flutter_dsfr/fondamentaux/colors.g.dart';
+import 'package:flutter_dsfr/fondamentaux/color_decisions.g.dart';
 import 'package:flutter/material.dart';
 
 @immutable
@@ -13,19 +13,20 @@ class DsfrButtonForegroundColor extends WidgetStateColor {
 
   factory DsfrButtonForegroundColor.fromVariant(
     final DsfrButtonVariant variant,
+    BuildContext context,
   ) {
     switch (variant) {
       case DsfrButtonVariant.primary:
         return DsfrButtonForegroundColor(
-          $default: DsfrColors.blueFrance975,
-          disabled: DsfrColors.grey625,
+          $default: DsfrColorDecisions.textInvertedBlueFrance(context),
+          disabled: DsfrColorDecisions.textDisabledGrey(context),
         );
       case DsfrButtonVariant.secondary:
       case DsfrButtonVariant.tertiary:
       case DsfrButtonVariant.tertiaryWithoutBorder:
         return DsfrButtonForegroundColor(
-          $default: DsfrColors.blueFranceSun113,
-          disabled: DsfrColors.grey625,
+          $default: DsfrColorDecisions.textActionHighBlueFrance(context),
+          disabled: DsfrColorDecisions.textDisabledGrey(context),
         );
     }
   }
