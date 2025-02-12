@@ -14,7 +14,7 @@ export 'raw_button.dart';
 class DsfrButton extends StatelessWidget {
   const DsfrButton({
     super.key,
-    required this.label,
+    this.label = "",
     this.icon,
     this.iconLocation = DsfrButtonIconLocation.left,
     this.iconColor,
@@ -48,9 +48,15 @@ class DsfrButton extends StatelessWidget {
     Widget child = Text(label);
     if (icon != null) {
       final buttonIcon = Icon(icon, size: _getIconSize(size));
-      var children = <Widget>[
+      var children =
+      label!= "" ?
+      <Widget>[
         buttonIcon,
         const SizedBox(width: DsfrSpacings.s1w),
+        Flexible(child: child),
+      ] :
+      <Widget>[
+        buttonIcon,
         Flexible(child: child),
       ];
       if (iconLocation == DsfrButtonIconLocation.right) {
