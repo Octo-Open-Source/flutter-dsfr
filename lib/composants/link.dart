@@ -4,6 +4,7 @@ import 'package:flutter_dsfr/fondamentaux/colors.g.dart';
 import 'package:flutter_dsfr/fondamentaux/fonts.dart';
 import 'package:flutter_dsfr/fondamentaux/spacing.g.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dsfr/utils/color_utils.dart';
 
 class DsfrLink extends StatefulWidget {
   const DsfrLink._({
@@ -64,7 +65,7 @@ class DsfrLink extends StatefulWidget {
 }
 
 class DsfrLinkForegroundColor extends WidgetStateColor {
-  DsfrLinkForegroundColor() : super(_default.value);
+  DsfrLinkForegroundColor() : super(colorToInt(_default));
 
   static const _default = DsfrColors.blueFranceSun113;
   static const _disabled = DsfrColors.grey625;

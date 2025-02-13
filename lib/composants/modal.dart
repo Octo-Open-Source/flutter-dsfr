@@ -24,7 +24,7 @@ class DsfrModal extends StatelessWidget {
         backgroundColor: Colors.transparent,
         elevation: 0,
         shape: const RoundedRectangleBorder(),
-        barrierColor: DsfrColors.grey50.withOpacity(0.64),
+        barrierColor: DsfrColors.grey50.withValues(alpha: 0.64),
         isScrollControlled: true,
         isDismissible: isDismissible,
         routeSettings: RouteSettings(name: name),
