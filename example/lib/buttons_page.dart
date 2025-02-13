@@ -1,6 +1,7 @@
 import 'package:flutter_dsfr/flutter_dsfr.dart';
 import 'package:example/page_item.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dsfr/fondamentaux/color_decisions.g.dart';
 
 class ButtonsPage extends StatelessWidget {
   const ButtonsPage({super.key});
@@ -57,9 +58,12 @@ class ButtonsPage extends StatelessWidget {
 
     return SingleChildScrollView(
       padding: const EdgeInsets.all(16),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: children.separator(gap).toList(),
+      child: Ink(
+        color: DsfrColorDecisions.backgroundDefaultGrey(context),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: children.separator(gap).toList(),
+        ),
       ),
     );
   }
