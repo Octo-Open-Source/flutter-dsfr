@@ -1,10 +1,7 @@
 // ignore_for_file: prefer-declaring-const-constructor
-
 import 'package:flutter_dsfr/composants/buttons/button_variant.dart';
 import 'package:flutter_dsfr/fondamentaux/color_decisions.g.dart';
 import 'package:flutter/material.dart';
-
-import '../../fondamentaux/colors.g.dart';
 
 class DsfrButtonBorder extends WidgetStateProperty<Border> {
   DsfrButtonBorder({
@@ -13,7 +10,6 @@ class DsfrButtonBorder extends WidgetStateProperty<Border> {
   })  : _default = $default,
         _disabled = disabled;
 
-  // Couleur décision bordure manquante, par exemple : border-action-blue-france
   factory DsfrButtonBorder.fromVariant(
       final DsfrButtonVariant variant,
       final BuildContext context,
@@ -26,40 +22,21 @@ class DsfrButtonBorder extends WidgetStateProperty<Border> {
           disabled: const Border(),
         );
       case DsfrButtonVariant.secondary:
-        /**
-         * Couleur décision manquante 1 : border-action-high-blue-france
-         * light : blueFranceSun113
-         * dark : blueFrance625
-         *
-         * Couleur décision manquante 2 : border-disabled-grey
-         * light : grey925
-         * dark : grey125
-         */
-        Color borderColor = DsfrColorDecisions.backgroundActionHighBlueFrance(context);
         return DsfrButtonBorder(
           $default: Border.fromBorderSide(
-            BorderSide(color: borderColor),
+            BorderSide(color: DsfrColorDecisions.borderActionHighBlueFrance(context)),
           ),
-          disabled: const Border.fromBorderSide(
-            BorderSide(color: DsfrColors.grey925),
+          disabled: Border.fromBorderSide(
+            BorderSide(color: DsfrColorDecisions.borderDisabledGrey(context)),
           ),
         );
       case DsfrButtonVariant.tertiary:
-      /**
-       * Couleur décision manquante 1 : border-default-grey
-       * light : blueFranceSun113
-       * dark : blueFrance625
-       *
-       * Couleur décision manquante 2 : border-disabled-grey
-       * light : grey925
-       * dark : grey125
-       */
         return DsfrButtonBorder(
-          $default: const Border.fromBorderSide(
-            BorderSide(color: DsfrColors.grey900),
+          $default: Border.fromBorderSide(
+            BorderSide(color: DsfrColorDecisions.borderDefaultGrey(context)),
           ),
-          disabled: const Border.fromBorderSide(
-            BorderSide(color: DsfrColors.grey925),
+          disabled: Border.fromBorderSide(
+            BorderSide(color: DsfrColorDecisions.borderDisabledGrey(context)),
           ),
         );
     }

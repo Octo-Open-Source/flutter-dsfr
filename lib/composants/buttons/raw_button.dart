@@ -2,10 +2,10 @@ import 'dart:async';
 
 import 'package:flutter_dsfr/atoms/focus_widget.dart';
 import 'package:flutter_dsfr/composants/buttons/button.dart';
-import 'package:flutter_dsfr/composants/buttons/button_background_color.dart';
 import 'package:flutter_dsfr/composants/buttons/button_border.dart';
+import 'package:flutter_dsfr/composants/buttons/button_background_color.dart';
 import 'package:flutter_dsfr/composants/buttons/button_foreground_color.dart';
-import 'package:flutter_dsfr/fondamentaux/colors.g.dart';
+import 'package:flutter_dsfr/fondamentaux/color_decisions.g.dart';
 import 'package:flutter_dsfr/fondamentaux/fonts.dart';
 import 'package:flutter_dsfr/fondamentaux/spacing.g.dart';
 import 'package:flutter/material.dart';
@@ -89,7 +89,7 @@ class _DsfrRawButtonState extends State<DsfrRawButton>
         ? DsfrButtonForegroundColor.fromVariant(widget.variant, context)
         : DsfrButtonForegroundColor(
       $default: widget.foregroundColor!,
-      disabled: DsfrColors.grey625,
+      disabled: DsfrColorDecisions.textDisabledGrey(context),
     );
     final _border = widget.foregroundColor == null
         ? DsfrButtonBorder.fromVariant(widget.variant, context)
@@ -97,8 +97,8 @@ class _DsfrRawButtonState extends State<DsfrRawButton>
       $default: Border.fromBorderSide(
         BorderSide(color: widget.foregroundColor!),
       ),
-      disabled: const Border.fromBorderSide(
-        BorderSide(color: DsfrColors.grey925),
+      disabled: Border.fromBorderSide(
+        BorderSide(color: DsfrColorDecisions.borderDisabledGrey(context)),
       ),
     );
 
