@@ -1,7 +1,7 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_dsfr/composants/buttons/button_size.dart';
 import 'package:flutter_dsfr/composants/buttons/raw_button.dart';
 import 'package:flutter_dsfr/fondamentaux/spacing.g.dart';
-import 'package:flutter/material.dart';
 
 import 'button_icon_location.dart';
 import 'button_variant.dart';
@@ -14,7 +14,7 @@ export 'raw_button.dart';
 class DsfrButton extends StatelessWidget {
   const DsfrButton({
     super.key,
-    this.label = "",
+    this.label,
     this.icon,
     this.iconLocation = DsfrButtonIconLocation.left,
     this.iconColor,
@@ -25,7 +25,7 @@ class DsfrButton extends StatelessWidget {
   });
 
   final IconData? icon;
-  final String label;
+  final String? label;
   final DsfrButtonIconLocation iconLocation;
   final Color? iconColor;
   final DsfrButtonVariant variant;
@@ -45,30 +45,42 @@ class DsfrButton extends StatelessWidget {
 
   @override
   Widget build(final context) {
-    Widget child = Text(label);
-    if (icon != null) {
-      final buttonIcon = Icon(icon, size: _getIconSize(size));
-      var children = <Widget>[
-        buttonIcon,
-        if (label != "") Flexible(child: child),
-      ];
-      if (iconLocation == DsfrButtonIconLocation.right) {
-        children = children.reversed.toList();
-      }
+    Widget? textWidget;
 
-      child = Row(mainAxisSize: MainAxisSize.min, spacing: DsfrSpacings.s1w, children: children);
+    Widget? iconWidget;
+
+    if (icon != null) {
+      iconWidget = Icon(icon, size: _getIconSize(size));
+    }
+    if (iconColor != null) {
+      iconWidget = IconTheme(
+          data: IconThemeData(color: iconColor),
+          child: Icon(icon, size: _getIconSize(size)));
     }
 
-    if (iconColor != null) {
-      child = IconTheme(data: IconThemeData(color: iconColor), child: child);
+    if (label != null) {
+      textWidget = Text(label!);
+    }
+    List<Widget> buttonWidget = <Widget>[
+      if (iconWidget != null) iconWidget,
+      if (textWidget != null) Flexible(child: textWidget),
+      // a testé avec flexible ou sans flexible
+    ];
+
+    if (iconLocation == DsfrButtonIconLocation.right) {
+      buttonWidget = buttonWidget.reversed.toList();
     }
 
     return DsfrRawButton(
-      variant: variant,
-      size: size,
-      foregroundColor: foregroundColor,
-      onPressed: onPressed,
-      child: Center(child: child),
-    );
+        variant: variant,
+        size: size,
+        foregroundColor: foregroundColor,
+        onPressed: onPressed,
+        child: Center(
+          child: Row(
+              mainAxisSize: MainAxisSize.min,
+              spacing: DsfrSpacings.s1w,
+              children: buttonWidget),
+        ));
   }
 }
