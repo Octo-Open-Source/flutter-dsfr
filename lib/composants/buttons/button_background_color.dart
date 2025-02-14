@@ -1,6 +1,6 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_dsfr/composants/buttons/button_variant.dart';
 import 'package:flutter_dsfr/fondamentaux/color_decisions.g.dart';
-import 'package:flutter/material.dart';
 
 @immutable
 class DsfrButtonBackgroundColor extends WidgetStateColor {
@@ -23,15 +23,17 @@ class DsfrButtonBackgroundColor extends WidgetStateColor {
       case DsfrButtonVariant.primary:
         return DsfrButtonBackgroundColor(
           $default: DsfrColorDecisions.backgroundActionHighBlueFrance(context),
-          active: DsfrColorDecisions.backgroundActionHighBlueFranceActive(context),
-          hover: DsfrColorDecisions.backgroundActionHighBlueFranceHover(context),
+          active:
+              DsfrColorDecisions.backgroundActionHighBlueFranceActive(context),
+          hover:
+              DsfrColorDecisions.backgroundActionHighBlueFranceHover(context),
           disabled: DsfrColorDecisions.backgroundDisabledGrey(context),
         );
       case DsfrButtonVariant.secondary:
       case DsfrButtonVariant.tertiary:
       case DsfrButtonVariant.tertiaryWithoutBorder:
         return DsfrButtonBackgroundColor(
-          $default: Colors.transparent,
+          $default: DsfrColorDecisions.backgroundTransparent(context),
           active: const Color(0x0A000000),
           hover: const Color(0x14000000),
           disabled: Colors.transparent,
