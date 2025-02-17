@@ -29,6 +29,7 @@ class DsfrInputHeadless extends StatefulWidget {
     this.textAlign = TextAlign.start,
     this.autofocus = false,
     this.inputStyle = const DsfrTextStyle.bodyMd(),
+    this.inputColor,
     this.inputBorderColor,
     this.inputBorderWidth = DsfrSpacings.s0v5,
     this.inputConstraints = const BoxConstraints(maxHeight: DsfrSpacings.s6w),
@@ -48,6 +49,7 @@ class DsfrInputHeadless extends StatefulWidget {
   final FormFieldValidator<String>? validator;
   final double? width;
   final TextStyle inputStyle;
+  final Color? inputColor;
   final TextAlign textAlign;
   final bool autofocus;
   final bool isPasswordMode;
@@ -142,7 +144,7 @@ class _DsfrInputHeadlessState extends State<DsfrInputHeadless> {
             keyboardType: widget.keyboardType,
             textCapitalization: widget.textCapitalization,
             textInputAction: widget.textInputAction,
-            style: widget.inputStyle,
+            style: widget.inputStyle.copyWith(color: widget.inputColor ?? DsfrColorDecisions.textDefaultGrey(context)),
             textAlign: widget.textAlign,
             autofocus: widget.autofocus,
             obscureText: widget.isPasswordMode && !widget.passwordVisibility,

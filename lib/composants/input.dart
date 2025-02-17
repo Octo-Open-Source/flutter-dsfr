@@ -24,6 +24,8 @@ class DsfrInput extends StatefulWidget {
     this.labelColor,
     this.hintStyle = const DsfrTextStyle.bodyXs(),
     this.hintColor,
+    this.inputStyle = const DsfrTextStyle.bodyMd(),
+    this.inputColor,
     this.textAlign = TextAlign.start,
     this.autofocus = false,
     this.isPasswordMode = false,
@@ -50,6 +52,8 @@ class DsfrInput extends StatefulWidget {
   final Color? labelColor;
   final TextStyle hintStyle;
   final Color? hintColor;
+  final TextStyle inputStyle;
+  final Color? inputColor;
   final TextAlign textAlign;
   final bool autofocus;
   final bool isPasswordMode;
@@ -89,7 +93,9 @@ class _DsfrInputState extends State<DsfrInput> {
           if (widget.isPasswordMode)
             FocusTraversalOrder(
               order: const NumericFocusOrder(2),
+              // TODO: dark mode pour password mode est dépendant du composant DsfrCheckbox
               child: DsfrCheckbox.sm(
+                // TODO: texte à vérifier
                 label: 'Afficher',
                 value: _passwordVisibility,
                 onChanged: _handlePasswordVisibility,
@@ -140,6 +146,8 @@ class _DsfrInputState extends State<DsfrInput> {
                   autocorrect: widget.autocorrect,
                   textAlign: widget.textAlign,
                   autofocus: widget.autofocus,
+                  inputStyle:widget.inputStyle,
+                  inputColor: widget.inputColor,
                   inputFormatters: widget.inputFormatters,
                   scrollPadding: widget.scrollPadding,
                   autofillHints: widget.autofillHints,
