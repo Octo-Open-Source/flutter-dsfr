@@ -23,25 +23,54 @@ class DsfrRadioRichButtonSet<T> extends StatelessWidget {
   final bool isError;
 
   @override
-  Widget build(final context) => Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+  Widget build(final context) => IntrinsicHeight(
+        child: Row(
+          children: [
+            if (isError) const ErrorDivider(),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    title,
+                    style: DsfrTextStyle.bodyMd(
+                      color: isError
+                          ? DsfrColorDecisions.textDefaultError(context)
+                          : DsfrColorDecisions.textLabelGrey(context),
+                    ),
+                  ),
+                  const SizedBox(height: DsfrSpacings.s1w),
+                  DsfrRadioRichButtonSetHeadless(
+                    values: values.map(
+                      (final key, final value) => MapEntry(key, DsfrRadioButtonItem(value)),
+                    ),
+                    onCallback: onCallback,
+                    initialValue: initialValue,
+                    isEnable: isEnable,
+                    isError: isError,
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      );
+}
+
+class ErrorDivider extends StatelessWidget {
+  const ErrorDivider({
+    super.key,
+  });
+
+  @override
+  Widget build(final context) => Row(
         children: [
-          Text(
-            title,
-            style: DsfrTextStyle.bodyMd(
-              color: isError ? DsfrColorDecisions.textDefaultError(context) : DsfrColorDecisions.textLabelGrey(context),
-            ),
+          VerticalDivider(
+            color: DsfrColorDecisions.borderPlainError(context),
+            width: 0,
+            thickness: 2,
           ),
-          const SizedBox(height: DsfrSpacings.s1w),
-          DsfrRadioRichButtonSetHeadless(
-            values: values.map(
-              (final key, final value) => MapEntry(key, DsfrRadioButtonItem(value)),
-            ),
-            onCallback: onCallback,
-            initialValue: initialValue,
-            isEnable: isEnable,
-            isError: isError,
-          ),
+          const SizedBox(width: DsfrSpacings.s2w),
         ],
       );
 }
