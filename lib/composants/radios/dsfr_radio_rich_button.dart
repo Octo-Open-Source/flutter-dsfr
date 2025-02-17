@@ -12,6 +12,7 @@ class DsfrRadioRichButton<T> extends StatefulWidget {
     required this.value,
     required this.groupValue,
     required this.onChanged,
+    this.isEnable = true,
     this.isError = false,
   });
 
@@ -19,6 +20,7 @@ class DsfrRadioRichButton<T> extends StatefulWidget {
   final T value;
   final T? groupValue;
   final ValueChanged<T?>? onChanged;
+  final bool isEnable;
   final bool isError;
 
   @override
@@ -43,9 +45,7 @@ class _DsfrRadioRichButtonState<T> extends State<DsfrRadioRichButton<T>>
               decoration: BoxDecoration(
                 border: Border.fromBorderSide(
                   BorderSide(
-                    color: widget.groupValue == widget.value
-                        ? DsfrColorDecisions.borderActiveBlueFrance(context)
-                        : DsfrColorDecisions.borderDefaultGrey(context),
+                    color: getBorderColor(context),
                   ),
                 ),
               ),
@@ -59,15 +59,13 @@ class _DsfrRadioRichButtonState<T> extends State<DsfrRadioRichButton<T>>
                       value: widget.value,
                       groupValue: widget.groupValue,
                       isError: widget.isError,
+                      isEnable: widget.isEnable,
                     ),
                     const SizedBox(width: DsfrSpacings.s1w),
                     Flexible(
                       child: Text(
                         widget.title,
-                        style: DsfrTextStyle.bodyMd(
-                            color: widget.isError == true
-                                ? DsfrColorDecisions.textDefaultError(context)
-                                : DsfrColorDecisions.textLabelGrey(context)),
+                        style: DsfrTextStyle.bodyMd(color: getTextColor(context)),
                       ),
                     ),
                   ],
@@ -77,4 +75,20 @@ class _DsfrRadioRichButtonState<T> extends State<DsfrRadioRichButton<T>>
           ),
         ),
       );
+
+  Color getBorderColor(BuildContext context) {
+    return widget.groupValue == widget.value
+        ? DsfrColorDecisions.borderActiveBlueFrance(context)
+        : DsfrColorDecisions.borderDefaultGrey(context);
+  }
+
+  Color getTextColor(BuildContext context) {
+    if (!widget.isEnable) {
+      return DsfrColorDecisions.textDisabledGrey(context);
+    } else if (widget.isError) {
+      return DsfrColorDecisions.textDefaultError(context);
+    } else {
+      return DsfrColorDecisions.textLabelGrey(context);
+    }
+  }
 }

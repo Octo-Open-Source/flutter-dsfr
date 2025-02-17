@@ -6,11 +6,13 @@ class RadioIcon<T> extends StatelessWidget {
     super.key,
     required this.value,
     required this.groupValue,
+    this.isEnable = true,
     this.isError = false,
   });
 
   final T value;
   final T? groupValue;
+  final bool isEnable;
   final bool isError;
 
   @override
@@ -22,15 +24,31 @@ class RadioIcon<T> extends StatelessWidget {
           child: CustomPaint(
             painter: _RadioIconPainter(
               isSelected: groupValue == value,
-              strokeColor: isError
-                  ? DsfrColorDecisions.borderPlainError(context)
-                  : DsfrColorDecisions.borderActiveBlueFrance(context),
-              fillColor: DsfrColorDecisions.borderActiveBlueFrance(context),
+              strokeColor: getStrokeColor(context),
+              fillColor: getFillColor(context),
             ),
             size: const Size(24, 24),
           ),
         ),
       );
+
+  Color getFillColor(BuildContext context) {
+    if (!isEnable) {
+      return DsfrColorDecisions.backgroundDisabledGrey(context);
+    } else {
+      return DsfrColorDecisions.borderActiveBlueFrance(context);
+    }
+  }
+
+  Color getStrokeColor(BuildContext context) {
+    if (!isEnable) {
+      return DsfrColorDecisions.borderDisabledGrey(context);
+    } else if (isError) {
+      return DsfrColorDecisions.borderPlainError(context);
+    } else {
+      return getFillColor(context);
+    }
+  }
 }
 
 class _RadioIconPainter extends CustomPainter {
