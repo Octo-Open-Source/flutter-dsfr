@@ -52,14 +52,14 @@ class DsfrRadioRichButtonSet<T> extends StatelessWidget {
                     isEnable: isEnable,
                     isError: isError,
                   ),
-                  if (isError) ...[
+                  if (isError && errorText != null && errorText!.isNotEmpty ) ...[
                     const SizedBox(height: DsfrSpacings.s2w),
                     Row(
                       children: [
                         Icon(DsfrIcons.systemFrErrorFill, color: DsfrColorDecisions.borderPlainError(context)),
                         const SizedBox(width: DsfrSpacings.s1v),
                         Text(
-                          errorText ?? '',
+                          errorText!,
                           style: DsfrTextStyle.bodyXs(
                             color: DsfrColorDecisions.textDefaultError(context),
                           ),
