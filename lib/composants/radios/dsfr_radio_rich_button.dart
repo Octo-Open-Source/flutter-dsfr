@@ -5,8 +5,8 @@ import 'package:flutter_dsfr/fondamentaux/fonts.dart';
 import 'package:flutter_dsfr/fondamentaux/spacing.g.dart';
 import 'package:flutter/material.dart';
 
-class DsfrRadioButton<T> extends StatefulWidget {
-  const DsfrRadioButton({
+class DsfrRadioRichButton<T> extends StatefulWidget {
+  const DsfrRadioRichButton({
     super.key,
     required this.title,
     required this.value,
@@ -22,11 +22,11 @@ class DsfrRadioButton<T> extends StatefulWidget {
   final Color? backgroundColor;
 
   @override
-  State<DsfrRadioButton<T>> createState() => _DsfrRadioButtonState<T>();
+  State<DsfrRadioRichButton<T>> createState() => _DsfrRadioRichButtonState<T>();
 }
 
-class _DsfrRadioButtonState<T> extends State<DsfrRadioButton<T>>
-    with MaterialStateMixin<DsfrRadioButton<T>> {
+class _DsfrRadioRichButtonState<T> extends State<DsfrRadioRichButton<T>>
+    with MaterialStateMixin<DsfrRadioRichButton<T>> {
   @override
   Widget build(final context) => DsfrFocusWidget(
         isFocused: isFocused,

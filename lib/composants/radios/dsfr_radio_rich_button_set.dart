@@ -1,10 +1,10 @@
-import 'package:flutter_dsfr/composants/radios/radio_set_headless.dart';
+import 'package:flutter_dsfr/composants/radios/dsfr_radio_rich_button_set_headless.dart';
 import 'package:flutter_dsfr/fondamentaux/fonts.dart';
 import 'package:flutter_dsfr/fondamentaux/spacing.g.dart';
 import 'package:flutter/material.dart';
 
-class DsfrRadioButtonSet<T> extends StatelessWidget {
-  const DsfrRadioButtonSet({
+class DsfrRadioRichButtonSet<T> extends StatelessWidget {
+  const DsfrRadioRichButtonSet({
     super.key,
     required this.title,
     required this.values,
@@ -23,7 +23,7 @@ class DsfrRadioButtonSet<T> extends StatelessWidget {
         children: [
           Text(title, style: const DsfrTextStyle.bodyMd()),
           const SizedBox(height: DsfrSpacings.s1w),
-          DsfrRadioButtonSetHeadless(
+          DsfrRadioRichButtonSetHeadless(
             values: values.map(
               (final key, final value) =>
                   MapEntry(key, DsfrRadioButtonItem(value)),

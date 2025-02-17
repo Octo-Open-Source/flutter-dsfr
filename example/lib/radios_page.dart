@@ -21,13 +21,13 @@ class _RadiosPageState extends State<RadiosPage> {
   Widget build(final context) => ListView(
         padding: const EdgeInsets.all(16),
         children: [
-          DsfrRadioButtonSet(
+          DsfrRadioRichButtonSet(
             title: 'Radios',
             values: const {1: 'Un', 2: 'Deux', 3: 'Trois'},
             onCallback: (final p0) {},
           ),
           const SizedBox(height: DsfrSpacings.s3w),
-          DsfrRadioButton<int>(
+          DsfrRadioRichButton<int>(
             title: 'Un',
             value: 0,
             groupValue: _value,
@@ -40,7 +40,7 @@ class _RadiosPageState extends State<RadiosPage> {
             },
           ),
           const SizedBox(height: DsfrSpacings.s1w),
-          DsfrRadioButton<int>(
+          DsfrRadioRichButton<int>(
             title: 'Deux',
             value: 1,
             groupValue: _value,
@@ -53,7 +53,7 @@ class _RadiosPageState extends State<RadiosPage> {
             },
           ),
           const SizedBox(height: DsfrSpacings.s1w),
-          DsfrRadioButton<int>(
+          DsfrRadioRichButton<int>(
             title: 'Trois',
             value: 2,
             groupValue: _value,

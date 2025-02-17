@@ -1,4 +1,4 @@
-import 'package:flutter_dsfr/composants/radios/radio.dart';
+import 'package:flutter_dsfr/composants/radios/dsfr_radio_rich_button.dart';
 import 'package:flutter_dsfr/fondamentaux/spacing.g.dart';
 import 'package:flutter_dsfr/helpers/iterable_extension.dart';
 import 'package:flutter/material.dart';
@@ -14,8 +14,8 @@ class DsfrRadioButtonItem {
   final Color? backgroundColor;
 }
 
-class DsfrRadioButtonSetHeadless<T> extends StatefulWidget {
-  const DsfrRadioButtonSetHeadless({
+class DsfrRadioRichButtonSetHeadless<T> extends StatefulWidget {
+  const DsfrRadioRichButtonSetHeadless({
     super.key,
     required this.values,
     required this.onCallback,
@@ -31,12 +31,12 @@ class DsfrRadioButtonSetHeadless<T> extends StatefulWidget {
   final bool isEnabled;
 
   @override
-  State<DsfrRadioButtonSetHeadless<T>> createState() =>
-      _DsfrRadioButtonSetHeadlessState<T>();
+  State<DsfrRadioRichButtonSetHeadless<T>> createState() =>
+      _DsfrRadioRichButtonSetHeadlessState<T>();
 }
 
-class _DsfrRadioButtonSetHeadlessState<T>
-    extends State<DsfrRadioButtonSetHeadless<T>> {
+class _DsfrRadioRichButtonSetHeadlessState<T>
+    extends State<DsfrRadioRichButtonSetHeadless<T>> {
   T? _value;
 
   @override
@@ -54,7 +54,7 @@ class _DsfrRadioButtonSetHeadlessState<T>
   Widget build(final context) {
     final children = widget.values.entries
         .map(
-          (final e) => DsfrRadioButton<T>(
+          (final e) => DsfrRadioRichButton<T>(
             title: e.value.value,
             value: e.key,
             groupValue: _value,
