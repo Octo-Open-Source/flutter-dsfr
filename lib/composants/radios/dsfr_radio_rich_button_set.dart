@@ -12,8 +12,8 @@ class DsfrRadioRichButtonSet<T> extends StatelessWidget {
     required this.values,
     required this.onCallback,
     this.initialValue,
-    this.isEnable = true,
-    this.isError = false,
+    this.enabled = true,
+    this.hasError = false,
     this.errorText,
   });
 
@@ -21,15 +21,15 @@ class DsfrRadioRichButtonSet<T> extends StatelessWidget {
   final Map<T, String> values;
   final T? initialValue;
   final Callback<T?> onCallback;
-  final bool isEnable;
-  final bool isError;
+  final bool enabled;
+  final bool hasError;
   final String? errorText;
 
   @override
   Widget build(final context) => IntrinsicHeight(
         child: Row(
           children: [
-            if (isError) const ErrorDivider(),
+            if (hasError) const ErrorDivider(),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -37,7 +37,7 @@ class DsfrRadioRichButtonSet<T> extends StatelessWidget {
                   Text(
                     title,
                     style: DsfrTextStyle.bodyMd(
-                      color: isError
+                      color: hasError
                           ? DsfrColorDecisions.textDefaultError(context)
                           : DsfrColorDecisions.textLabelGrey(context),
                     ),
@@ -49,10 +49,10 @@ class DsfrRadioRichButtonSet<T> extends StatelessWidget {
                     ),
                     onCallback: onCallback,
                     initialValue: initialValue,
-                    isEnable: isEnable,
-                    isError: isError,
+                    enabled: enabled,
+                    hasError: hasError,
                   ),
-                  if (isError && errorText != null && errorText!.isNotEmpty ) ...[
+                  if (hasError && errorText != null && errorText!.isNotEmpty ) ...[
                     const SizedBox(height: DsfrSpacings.s2w),
                     Row(
                       children: [

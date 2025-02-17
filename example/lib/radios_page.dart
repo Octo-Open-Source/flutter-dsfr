@@ -70,7 +70,7 @@ class _RadiosPageState extends State<RadiosPage> {
             title: 'Radios riches en erreur',
             values: const {1: 'Un', 2: 'Deux', 3: 'Trois'},
             onCallback: (final p0) {},
-            isError: true,
+            hasError: true,
             errorText: 'Texte d\'erreur obligatoire',
           ),
           const SizedBox(height: DsfrSpacings.s3w),
@@ -78,7 +78,7 @@ class _RadiosPageState extends State<RadiosPage> {
             title: 'Radios riches désactivé',
             values: const {1: 'Un', 2: 'Deux', 3: 'Trois'},
             onCallback: (final p0) {},
-            isEnable: false,
+            enabled: false,
           ),
         ],
       );

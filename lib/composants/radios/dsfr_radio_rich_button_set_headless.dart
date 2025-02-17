@@ -20,16 +20,16 @@ class DsfrRadioRichButtonSetHeadless<T> extends StatefulWidget {
     required this.onCallback,
     this.initialValue,
     this.mode = DsfrRadioButtonSetMode.row,
-    this.isEnable = true,
-    this.isError = false,
+    this.enabled = true,
+    this.hasError = false,
   });
 
   final Map<T, DsfrRadioButtonItem> values;
   final T? initialValue;
   final Callback<T?> onCallback;
   final DsfrRadioButtonSetMode mode;
-  final bool isEnable;
-  final bool isError;
+  final bool enabled;
+  final bool hasError;
 
   @override
   State<DsfrRadioRichButtonSetHeadless<T>> createState() => _DsfrRadioRichButtonSetHeadlessState<T>();
@@ -57,9 +57,9 @@ class _DsfrRadioRichButtonSetHeadlessState<T> extends State<DsfrRadioRichButtonS
             title: e.value.value,
             value: e.key,
             groupValue: _value,
-            onChanged: widget.isEnable ? _handleChange : null,
-            isEnable: widget.isEnable,
-            isError: widget.isError,
+            onChanged: widget.enabled ? _handleChange : null,
+            enabled: widget.enabled,
+            hasError: widget.hasError,
           ),
         )
         .toList();

@@ -12,16 +12,16 @@ class DsfrRadioRichButton<T> extends StatefulWidget {
     required this.value,
     required this.groupValue,
     required this.onChanged,
-    this.isEnable = true,
-    this.isError = false,
+    this.enabled = true,
+    this.hasError = false,
   });
 
   final String title;
   final T value;
   final T? groupValue;
   final ValueChanged<T?>? onChanged;
-  final bool isEnable;
-  final bool isError;
+  final bool enabled;
+  final bool hasError;
 
   @override
   State<DsfrRadioRichButton<T>> createState() => _DsfrRadioRichButtonState<T>();
@@ -58,8 +58,8 @@ class _DsfrRadioRichButtonState<T> extends State<DsfrRadioRichButton<T>>
                       key: ValueKey(widget.title),
                       value: widget.value,
                       groupValue: widget.groupValue,
-                      isError: widget.isError,
-                      isEnable: widget.isEnable,
+                      hasError: widget.hasError,
+                      enabled: widget.enabled,
                     ),
                     const SizedBox(width: DsfrSpacings.s1w),
                     Flexible(
@@ -83,9 +83,9 @@ class _DsfrRadioRichButtonState<T> extends State<DsfrRadioRichButton<T>>
   }
 
   Color getTextColor(BuildContext context) {
-    if (!widget.isEnable) {
+    if (!widget.enabled) {
       return DsfrColorDecisions.textDisabledGrey(context);
-    } else if (widget.isError) {
+    } else if (widget.hasError) {
       return DsfrColorDecisions.textDefaultError(context);
     } else {
       return DsfrColorDecisions.textLabelGrey(context);

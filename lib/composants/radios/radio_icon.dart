@@ -6,14 +6,14 @@ class RadioIcon<T> extends StatelessWidget {
     super.key,
     required this.value,
     required this.groupValue,
-    this.isEnable = true,
-    this.isError = false,
+    this.enabled = true,
+    this.hasError = false,
   });
 
   final T value;
   final T? groupValue;
-  final bool isEnable;
-  final bool isError;
+  final bool enabled;
+  final bool hasError;
 
   @override
   Widget build(final context) => Semantics(
@@ -33,7 +33,7 @@ class RadioIcon<T> extends StatelessWidget {
       );
 
   Color getFillColor(BuildContext context) {
-    if (!isEnable) {
+    if (!enabled) {
       return DsfrColorDecisions.backgroundDisabledGrey(context);
     } else {
       return DsfrColorDecisions.borderActiveBlueFrance(context);
@@ -41,9 +41,9 @@ class RadioIcon<T> extends StatelessWidget {
   }
 
   Color getStrokeColor(BuildContext context) {
-    if (!isEnable) {
+    if (!enabled) {
       return DsfrColorDecisions.borderDisabledGrey(context);
-    } else if (isError) {
+    } else if (hasError) {
       return DsfrColorDecisions.borderPlainError(context);
     } else {
       return getFillColor(context);
