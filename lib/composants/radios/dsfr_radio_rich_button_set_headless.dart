@@ -8,10 +8,9 @@ typedef Callback<T> = void Function(T value);
 enum DsfrRadioButtonSetMode { row, column }
 
 class DsfrRadioButtonItem {
-  const DsfrRadioButtonItem(this.value, {this.backgroundColor});
+  const DsfrRadioButtonItem(this.value);
 
   final String value;
-  final Color? backgroundColor;
 }
 
 class DsfrRadioRichButtonSetHeadless<T> extends StatefulWidget {
@@ -21,22 +20,22 @@ class DsfrRadioRichButtonSetHeadless<T> extends StatefulWidget {
     required this.onCallback,
     this.initialValue,
     this.mode = DsfrRadioButtonSetMode.row,
-    this.isEnabled = true,
+    this.isEnable = true,
+    this.isError = false,
   });
 
   final Map<T, DsfrRadioButtonItem> values;
   final T? initialValue;
   final Callback<T?> onCallback;
   final DsfrRadioButtonSetMode mode;
-  final bool isEnabled;
+  final bool isEnable;
+  final bool isError;
 
   @override
-  State<DsfrRadioRichButtonSetHeadless<T>> createState() =>
-      _DsfrRadioRichButtonSetHeadlessState<T>();
+  State<DsfrRadioRichButtonSetHeadless<T>> createState() => _DsfrRadioRichButtonSetHeadlessState<T>();
 }
 
-class _DsfrRadioRichButtonSetHeadlessState<T>
-    extends State<DsfrRadioRichButtonSetHeadless<T>> {
+class _DsfrRadioRichButtonSetHeadlessState<T> extends State<DsfrRadioRichButtonSetHeadless<T>> {
   T? _value;
 
   @override
@@ -58,8 +57,8 @@ class _DsfrRadioRichButtonSetHeadlessState<T>
             title: e.value.value,
             value: e.key,
             groupValue: _value,
-            onChanged: widget.isEnabled ? _handleChange : null,
-            backgroundColor: e.value.backgroundColor,
+            onChanged: widget.isEnable ? _handleChange : null,
+            isError: widget.isError,
           ),
         )
         .toList();
@@ -72,9 +71,7 @@ class _DsfrRadioRichButtonSetHeadlessState<T>
         ),
       DsfrRadioButtonSetMode.column => Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: children
-              .separator(const SizedBox(height: DsfrSpacings.s1w))
-              .toList(),
+          children: children.separator(const SizedBox(height: DsfrSpacings.s1w)).toList(),
         ),
     };
   }

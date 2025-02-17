@@ -6,10 +6,12 @@ class RadioIcon<T> extends StatelessWidget {
     super.key,
     required this.value,
     required this.groupValue,
+    this.isError = false,
   });
 
   final T value;
   final T? groupValue;
+  final bool isError;
 
   @override
   Widget build(final context) => Semantics(
@@ -18,7 +20,13 @@ class RadioIcon<T> extends StatelessWidget {
         inMutuallyExclusiveGroup: true,
         child: FittedBox(
           child: CustomPaint(
-            painter: _RadioIconPainter(isSelected: groupValue == value, color:DsfrColorDecisions.borderActiveBlueFrance(context)),
+            painter: _RadioIconPainter(
+              isSelected: groupValue == value,
+              strokeColor: isError
+                  ? DsfrColorDecisions.borderPlainError(context)
+                  : DsfrColorDecisions.borderActiveBlueFrance(context),
+              fillColor: DsfrColorDecisions.borderActiveBlueFrance(context),
+            ),
             size: const Size(24, 24),
           ),
         ),
@@ -27,29 +35,33 @@ class RadioIcon<T> extends StatelessWidget {
 
 class _RadioIconPainter extends CustomPainter {
   final bool isSelected;
-  final Color color;
+  final Color strokeColor;
+  final Color fillColor;
   static const outerRadius = 11.0;
   static const innerRadius = 6.0;
 
-  const _RadioIconPainter({required this.isSelected, required this.color});
+  const _RadioIconPainter({required this.isSelected, required this.strokeColor, required this.fillColor});
 
   @override
   void paint(final Canvas canvas, final Size size) {
     final center = size.center(Offset.zero);
-    final paint = Paint()
-      ..color = color
+    final outerPaint = Paint()
+      ..color = strokeColor
       ..style = PaintingStyle.stroke
       ..strokeWidth = 1;
 
-    canvas.drawCircle(center, outerRadius, paint);
+    canvas.drawCircle(center, outerRadius, outerPaint);
 
     if (isSelected) {
-      paint.style = PaintingStyle.fill;
-      canvas.drawCircle(center, innerRadius, paint);
+      final innerPaint = Paint()
+        ..color = fillColor
+        ..style = PaintingStyle.fill
+        ..strokeWidth = 1;
+
+      canvas.drawCircle(center, innerRadius, innerPaint);
     }
   }
 
   @override
-  bool shouldRepaint(final _RadioIconPainter oldDelegate) =>
-      isSelected != oldDelegate.isSelected;
+  bool shouldRepaint(final _RadioIconPainter oldDelegate) => isSelected != oldDelegate.isSelected;
 }

@@ -22,7 +22,7 @@ class _RadiosPageState extends State<RadiosPage> {
         padding: const EdgeInsets.all(16),
         children: [
           DsfrRadioRichButtonSet(
-            title: 'Radios',
+            title: 'Radios riches',
             values: const {1: 'Un', 2: 'Deux', 3: 'Trois'},
             onCallback: (final p0) {},
           ),
@@ -64,6 +64,20 @@ class _RadiosPageState extends State<RadiosPage> {
                 });
               }
             },
+          ),
+          const SizedBox(height: DsfrSpacings.s3w),
+          DsfrRadioRichButtonSet(
+            title: 'Radios riches en erreur',
+            values: const {1: 'Un', 2: 'Deux', 3: 'Trois'},
+            onCallback: (final p0) {},
+            isError: true,
+          ),
+          const SizedBox(height: DsfrSpacings.s3w),
+          DsfrRadioRichButtonSet(
+            title: 'Radios riches désactivé',
+            values: const {1: 'Un', 2: 'Deux', 3: 'Trois'},
+            onCallback: (final p0) {},
+            isEnable: false,
           ),
         ],
       );

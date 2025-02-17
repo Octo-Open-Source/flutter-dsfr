@@ -12,14 +12,14 @@ class DsfrRadioRichButton<T> extends StatefulWidget {
     required this.value,
     required this.groupValue,
     required this.onChanged,
-    this.backgroundColor,
+    this.isError = false,
   });
 
   final String title;
   final T value;
   final T? groupValue;
   final ValueChanged<T?>? onChanged;
-  final Color? backgroundColor;
+  final bool isError;
 
   @override
   State<DsfrRadioRichButton<T>> createState() => _DsfrRadioRichButtonState<T>();
@@ -41,7 +41,6 @@ class _DsfrRadioRichButtonState<T> extends State<DsfrRadioRichButton<T>>
             onFocusChange: updateMaterialState(WidgetState.focused),
             child: DecoratedBox(
               decoration: BoxDecoration(
-                color: widget.backgroundColor,
                 border: Border.fromBorderSide(
                   BorderSide(
                     color: widget.groupValue == widget.value
@@ -59,12 +58,16 @@ class _DsfrRadioRichButtonState<T> extends State<DsfrRadioRichButton<T>>
                       key: ValueKey(widget.title),
                       value: widget.value,
                       groupValue: widget.groupValue,
+                      isError: widget.isError,
                     ),
                     const SizedBox(width: DsfrSpacings.s1w),
                     Flexible(
                       child: Text(
                         widget.title,
-                        style: DsfrTextStyle.bodyMd(color: DsfrColorDecisions.textLabelGrey(context)),
+                        style: DsfrTextStyle.bodyMd(
+                            color: widget.isError == true
+                                ? DsfrColorDecisions.textDefaultError(context)
+                                : DsfrColorDecisions.textLabelGrey(context)),
                       ),
                     ),
                   ],
