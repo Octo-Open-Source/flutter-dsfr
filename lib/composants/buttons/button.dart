@@ -46,16 +46,14 @@ class DsfrButton extends StatelessWidget {
   @override
   Widget build(final context) {
     Widget? textWidget;
-
     Widget? iconWidget;
 
     if (icon != null) {
-      iconWidget = Icon(icon, size: _getIconSize(size));
-    }
-    if (iconColor != null) {
-      iconWidget = IconTheme(
-          data: IconThemeData(color: iconColor),
-          child: Icon(icon, size: _getIconSize(size)));
+      final baseIcon = Icon(icon, size: _getIconSize(size));
+      iconWidget = iconColor == null ? baseIcon : IconTheme(
+        data: IconThemeData(color: iconColor),
+        child: baseIcon,
+      );
     }
 
     if (label != null) {
@@ -64,7 +62,6 @@ class DsfrButton extends StatelessWidget {
     List<Widget> buttonWidget = <Widget>[
       if (iconWidget != null) iconWidget,
       if (textWidget != null) Flexible(child: textWidget),
-      // a testé avec flexible ou sans flexible
     ];
 
     if (iconLocation == DsfrButtonIconLocation.right) {
