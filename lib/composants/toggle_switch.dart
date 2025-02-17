@@ -43,7 +43,10 @@ class _DsfrToggleSwitchState extends State<DsfrToggleSwitch> with MaterialStateM
               ),
               const SizedBox(width: DsfrSpacings.s2w),
               Flexible(
-                child: Text(widget.label, style: const DsfrTextStyle.bodyMd()),
+                child: Text(
+                  widget.label,
+                  style: DsfrTextStyle.bodyMd(color: DsfrColorDecisions.textLabelGrey(context)),
+                ),
               ),
             ],
           ),
