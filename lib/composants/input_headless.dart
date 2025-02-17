@@ -4,6 +4,7 @@ import 'package:flutter_dsfr/fondamentaux/fonts.dart';
 import 'package:flutter_dsfr/fondamentaux/spacing.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import '../fondamentaux/color_decisions.g.dart';
 
 class DsfrInputHeadless extends StatefulWidget {
   const DsfrInputHeadless({
@@ -21,14 +22,14 @@ class DsfrInputHeadless extends StatefulWidget {
     this.isPasswordMode = false,
     this.passwordVisibility = false,
     this.autocorrect,
-    this.fillColor = DsfrColors.grey950,
+    this.fillColor,
     this.radius = DsfrSpacings.s1v,
     this.maxLines = 1,
     this.minLines = 1,
     this.textAlign = TextAlign.start,
     this.autofocus = false,
     this.inputStyle = const DsfrTextStyle.bodyMd(),
-    this.inputBorderColor = DsfrColors.grey200,
+    this.inputBorderColor,
     this.inputBorderWidth = DsfrSpacings.s0v5,
     this.inputConstraints = const BoxConstraints(maxHeight: DsfrSpacings.s6w),
     this.focusColor = DsfrColors.focus525,
@@ -57,10 +58,10 @@ class DsfrInputHeadless extends StatefulWidget {
   final TextInputType? keyboardType;
   final TextCapitalization textCapitalization;
   final TextInputAction? textInputAction;
-  final Color inputBorderColor;
+  final Color? inputBorderColor;
   final double inputBorderWidth;
   final BoxConstraints? inputConstraints;
-  final Color fillColor;
+  final Color? fillColor;
   final double radius;
   final Color focusColor;
   final double focusThickness;
@@ -99,7 +100,7 @@ class _DsfrInputHeadlessState extends State<DsfrInputHeadless> {
   Widget build(final context) {
     final underlineInputBorder = UnderlineInputBorder(
       borderSide: BorderSide(
-        color: widget.inputBorderColor,
+        color: widget.inputBorderColor ?? DsfrColorDecisions.borderPlainGrey(context),
         width: widget.inputBorderWidth,
         strokeAlign: BorderSide.strokeAlignOutside,
       ),
@@ -132,7 +133,7 @@ class _DsfrInputHeadlessState extends State<DsfrInputHeadless> {
               suffixText: widget.suffixText,
               suffixStyle: widget.inputStyle,
               filled: true,
-              fillColor: widget.fillColor,
+              fillColor: widget.fillColor ?? DsfrColorDecisions.backgroundContrastGrey(context),
               focusedBorder: underlineInputBorder,
               enabledBorder: underlineInputBorder,
               border: underlineInputBorder,
