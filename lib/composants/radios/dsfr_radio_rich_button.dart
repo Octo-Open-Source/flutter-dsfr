@@ -1,6 +1,6 @@
 import 'package:flutter_dsfr/atoms/focus_widget.dart';
 import 'package:flutter_dsfr/composants/radios/radio_icon.dart';
-import 'package:flutter_dsfr/fondamentaux/colors.g.dart';
+import 'package:flutter_dsfr/fondamentaux/color_decisions.g.dart';
 import 'package:flutter_dsfr/fondamentaux/fonts.dart';
 import 'package:flutter_dsfr/fondamentaux/spacing.g.dart';
 import 'package:flutter/material.dart';
@@ -31,14 +31,12 @@ class _DsfrRadioRichButtonState<T> extends State<DsfrRadioRichButton<T>>
   Widget build(final context) => DsfrFocusWidget(
         isFocused: isFocused,
         child: Material(
-          color: Colors.transparent,
+          color: DsfrColorDecisions.backgroundTransparent(context),
           child: InkWell(
-            onTap: widget.onChanged == null
-                ? null
-                : () => widget.onChanged!(widget.value),
+            onTap: widget.onChanged == null ? null : () => widget.onChanged!(widget.value),
             onHighlightChanged: updateMaterialState(WidgetState.pressed),
             onHover: updateMaterialState(WidgetState.hovered),
-            focusColor: Colors.transparent,
+            focusColor: DsfrColorDecisions.backgroundTransparent(context),
             canRequestFocus: widget.onChanged != null,
             onFocusChange: updateMaterialState(WidgetState.focused),
             child: DecoratedBox(
@@ -47,8 +45,8 @@ class _DsfrRadioRichButtonState<T> extends State<DsfrRadioRichButton<T>>
                 border: Border.fromBorderSide(
                   BorderSide(
                     color: widget.groupValue == widget.value
-                        ? DsfrColors.blueFranceSun113
-                        : DsfrColors.grey900,
+                        ? DsfrColorDecisions.borderActiveBlueFrance(context)
+                        : DsfrColorDecisions.borderDefaultGrey(context),
                   ),
                 ),
               ),
@@ -66,7 +64,7 @@ class _DsfrRadioRichButtonState<T> extends State<DsfrRadioRichButton<T>>
                     Flexible(
                       child: Text(
                         widget.title,
-                        style: const DsfrTextStyle.bodyMd(),
+                        style: DsfrTextStyle.bodyMd(color: DsfrColorDecisions.textLabelGrey(context)),
                       ),
                     ),
                   ],

@@ -1,4 +1,4 @@
-import 'package:flutter_dsfr/fondamentaux/colors.g.dart';
+import 'package:flutter_dsfr/fondamentaux/color_decisions.g.dart';
 import 'package:flutter/material.dart';
 
 class RadioIcon<T> extends StatelessWidget {
@@ -18,7 +18,7 @@ class RadioIcon<T> extends StatelessWidget {
         inMutuallyExclusiveGroup: true,
         child: FittedBox(
           child: CustomPaint(
-            painter: _RadioIconPainter(isSelected: groupValue == value),
+            painter: _RadioIconPainter(isSelected: groupValue == value, color:DsfrColorDecisions.borderActiveBlueFrance(context)),
             size: const Size(24, 24),
           ),
         ),
@@ -26,17 +26,18 @@ class RadioIcon<T> extends StatelessWidget {
 }
 
 class _RadioIconPainter extends CustomPainter {
-  const _RadioIconPainter({required this.isSelected});
-
   final bool isSelected;
+  final Color color;
   static const outerRadius = 11.0;
   static const innerRadius = 6.0;
+
+  const _RadioIconPainter({required this.isSelected, required this.color});
 
   @override
   void paint(final Canvas canvas, final Size size) {
     final center = size.center(Offset.zero);
     final paint = Paint()
-      ..color = DsfrColors.blueFranceSun113
+      ..color = color
       ..style = PaintingStyle.stroke
       ..strokeWidth = 1;
 
