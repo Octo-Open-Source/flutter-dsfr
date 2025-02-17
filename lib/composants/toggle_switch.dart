@@ -1,5 +1,5 @@
 import 'package:flutter_dsfr/atoms/focus_widget.dart';
-import 'package:flutter_dsfr/fondamentaux/colors.g.dart';
+import 'package:flutter_dsfr/fondamentaux/color_decisions.g.dart';
 import 'package:flutter_dsfr/fondamentaux/fonts.dart';
 import 'package:flutter_dsfr/fondamentaux/icons.g.dart';
 import 'package:flutter_dsfr/fondamentaux/spacing.g.dart';
@@ -21,8 +21,7 @@ class DsfrToggleSwitch extends StatefulWidget {
   State<DsfrToggleSwitch> createState() => _DsfrToggleSwitchState();
 }
 
-class _DsfrToggleSwitchState extends State<DsfrToggleSwitch>
-    with MaterialStateMixin<DsfrToggleSwitch> {
+class _DsfrToggleSwitchState extends State<DsfrToggleSwitch> with MaterialStateMixin<DsfrToggleSwitch> {
   @override
   Widget build(final context) => Semantics(
         toggled: widget.value,
@@ -30,8 +29,8 @@ class _DsfrToggleSwitchState extends State<DsfrToggleSwitch>
           onTap: () => widget.onChanged(!widget.value),
           onHighlightChanged: updateMaterialState(WidgetState.pressed),
           onHover: updateMaterialState(WidgetState.hovered),
-          focusColor: Colors.transparent,
-          highlightColor: Colors.transparent,
+          focusColor: DsfrColorDecisions.backgroundTransparent(context),
+          highlightColor: DsfrColorDecisions.backgroundTransparent(context),
           splashFactory: NoSplash.splashFactory,
           excludeFromSemantics: true,
           onFocusChange: updateMaterialState(WidgetState.focused),
@@ -62,8 +61,7 @@ class _Switch extends StatelessWidget {
     const width = 40.0;
     const height = 24.0;
     const offset = width - height;
-    const primary = DsfrColors.blueFranceSun113;
-    const border = Border.fromBorderSide(BorderSide(color: primary));
+    final border = Border.fromBorderSide(BorderSide(color: DsfrColorDecisions.borderActionHighBlueFrance(context)));
     const borderRadius = BorderRadius.all(Radius.circular(height));
 
     return SizedBox(
@@ -74,7 +72,7 @@ class _Switch extends StatelessWidget {
         children: [
           DecoratedBox(
             decoration: BoxDecoration(
-              color: value ? primary : null,
+              color: value ? DsfrColorDecisions.backgroundActiveBlueFrance(context) : null,
               border: border,
               borderRadius: borderRadius,
             ),
@@ -85,19 +83,19 @@ class _Switch extends StatelessWidget {
             right: value ? 0 : offset,
             bottom: 0,
             child: value
-                ? const DecoratedBox(
+                ? DecoratedBox(
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: DsfrColorDecisions.backgroundDefaultGrey(context),
                       border: border,
                       shape: BoxShape.circle,
                     ),
                     child: Icon(
                       DsfrIcons.systemCheckLine,
                       size: 16,
-                      color: primary,
+                      color: DsfrColorDecisions.textActiveBlueFrance(context),
                     ),
                   )
-                : const DecoratedBox(
+                : DecoratedBox(
                     decoration: BoxDecoration(
                       border: border,
                       borderRadius: borderRadius,
