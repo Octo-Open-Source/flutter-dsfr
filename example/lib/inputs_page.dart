@@ -31,6 +31,18 @@ class InputsPage extends StatelessWidget {
               ),
             ],
           ),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Expanded(
+                child: DsfrInput(
+                  label: 'Label avec Description',
+                  hintText: 'Description',
+                  onChanged: (final value) {},
+                ),
+              ),
+            ],
+          ),
           const DsfrInput(
             label: 'Password',
             onChanged: print,

@@ -2,7 +2,7 @@
 
 import 'package:flutter_dsfr/composants/checkbox.dart';
 import 'package:flutter_dsfr/composants/input_headless.dart';
-import 'package:flutter_dsfr/fondamentaux/colors.g.dart';
+import 'package:flutter_dsfr/fondamentaux/color_decisions.g.dart';
 import 'package:flutter_dsfr/fondamentaux/fonts.dart';
 import 'package:flutter_dsfr/fondamentaux/spacing.g.dart';
 import 'package:flutter/material.dart';
@@ -21,9 +21,9 @@ class DsfrInput extends StatefulWidget {
     this.validator,
     this.width,
     this.labelStyle = const DsfrTextStyle.bodyMd(),
-    this.labelColor = DsfrColors.grey50,
+    this.labelColor,
     this.hintStyle = const DsfrTextStyle.bodyXs(),
-    this.hintColor = DsfrColors.grey425,
+    this.hintColor,
     this.textAlign = TextAlign.start,
     this.autofocus = false,
     this.isPasswordMode = false,
@@ -47,9 +47,9 @@ class DsfrInput extends StatefulWidget {
 
   final double? width;
   final TextStyle labelStyle;
-  final Color labelColor;
+  final Color? labelColor;
   final TextStyle hintStyle;
-  final Color hintColor;
+  final Color? hintColor;
   final TextAlign textAlign;
   final bool autofocus;
   final bool isPasswordMode;
@@ -77,7 +77,7 @@ class _DsfrInputState extends State<DsfrInput> {
     Widget label = ExcludeSemantics(
       child: Text(
         labelText,
-        style: widget.labelStyle.copyWith(color: widget.labelColor),
+        style: widget.labelStyle.copyWith(color: widget.labelColor ?? DsfrColorDecisions.textLabelGrey(context)),
       ),
     );
 
@@ -114,7 +114,7 @@ class _DsfrInputState extends State<DsfrInput> {
               ExcludeSemantics(
                 child: Text(
                   widget.hintText!,
-                  style: widget.hintStyle.copyWith(color: widget.hintColor),
+                  style: widget.hintStyle.copyWith(color: widget.hintColor ?? DsfrColorDecisions.textMentionGrey(context)),
                 ),
               ),
             ],
