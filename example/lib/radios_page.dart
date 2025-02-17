@@ -71,6 +71,7 @@ class _RadiosPageState extends State<RadiosPage> {
             values: const {1: 'Un', 2: 'Deux', 3: 'Trois'},
             onCallback: (final p0) {},
             isError: true,
+            errorText: 'Texte d\'erreur obligatoire',
           ),
           const SizedBox(height: DsfrSpacings.s3w),
           DsfrRadioRichButtonSet(

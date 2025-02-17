@@ -1,6 +1,7 @@
 import 'package:flutter_dsfr/composants/radios/dsfr_radio_rich_button_set_headless.dart';
 import 'package:flutter_dsfr/fondamentaux/color_decisions.g.dart';
 import 'package:flutter_dsfr/fondamentaux/fonts.dart';
+import 'package:flutter_dsfr/fondamentaux/icons.g.dart';
 import 'package:flutter_dsfr/fondamentaux/spacing.g.dart';
 import 'package:flutter/material.dart';
 
@@ -13,6 +14,7 @@ class DsfrRadioRichButtonSet<T> extends StatelessWidget {
     this.initialValue,
     this.isEnable = true,
     this.isError = false,
+    this.errorText,
   });
 
   final String title;
@@ -21,6 +23,7 @@ class DsfrRadioRichButtonSet<T> extends StatelessWidget {
   final Callback<T?> onCallback;
   final bool isEnable;
   final bool isError;
+  final String? errorText;
 
   @override
   Widget build(final context) => IntrinsicHeight(
@@ -49,6 +52,21 @@ class DsfrRadioRichButtonSet<T> extends StatelessWidget {
                     isEnable: isEnable,
                     isError: isError,
                   ),
+                  if (isError) ...[
+                    const SizedBox(height: DsfrSpacings.s2w),
+                    Row(
+                      children: [
+                        Icon(DsfrIcons.systemFrErrorFill, color: DsfrColorDecisions.borderPlainError(context)),
+                        const SizedBox(width: DsfrSpacings.s1v),
+                        Text(
+                          errorText ?? '',
+                          style: DsfrTextStyle.bodyXs(
+                            color: DsfrColorDecisions.textDefaultError(context),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
                 ],
               ),
             ),
