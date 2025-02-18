@@ -1,8 +1,6 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_dsfr/fondamentaux/color_decisions.g.dart';
-import 'package:flutter_dsfr/helpers/composant_state.dart';
 
 extension ColorExtension on Color {
   int colorToInt() {

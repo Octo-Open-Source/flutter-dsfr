@@ -7,15 +7,19 @@ class DsfrCheckboxIcon extends StatelessWidget {
     super.key,
     required this.value,
     this.padding = EdgeInsets.zero,
+    this.enabled = true,
   });
 
   final bool value;
   final EdgeInsets padding;
+  final bool enabled;
 
   @override
   Widget build(final context) {
     const dimension = 16.0;
-    var backgroundColor = DsfrColorDecisions.backgroundActionHighBlueFrance(context);
+    var backgroundColor = enabled
+        ? DsfrColorDecisions.backgroundActionHighBlueFrance(context)
+        : DsfrColorDecisions.backgroundDisabledGrey(context);
 
     return DecoratedBox(
       decoration: BoxDecoration(
@@ -34,7 +38,9 @@ class DsfrCheckboxIcon extends StatelessWidget {
           child: Icon(
             DsfrIcons.systemCheckLine,
             size: dimension,
-            color: DsfrColorDecisions.backgroundAltBlueFrance(context),
+            color: enabled
+                ? DsfrColorDecisions.backgroundAltBlueFrance(context)
+                : DsfrColorDecisions.borderContrastGrey(context),
           ),
         ),
       ),
