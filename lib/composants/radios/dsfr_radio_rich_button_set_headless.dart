@@ -58,7 +58,7 @@ class _DsfrRadioRichButtonSetHeadlessState<T> extends State<DsfrRadioRichButtonS
             title: e.value.value,
             value: e.key,
             groupValue: _value,
-            onChanged: widget.enabled ? _handleChange : null,
+            onChanged: _handleChange,
             enabled: widget.enabled,
             state: widget.state,
           ),

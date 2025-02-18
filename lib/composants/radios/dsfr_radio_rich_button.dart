@@ -37,7 +37,7 @@ class _DsfrRadioRichButtonState<T> extends State<DsfrRadioRichButton<T>>
         child: Material(
           color: DsfrColorDecisions.backgroundTransparent(context),
           child: InkWell(
-            onTap: widget.onChanged == null ? null : () => widget.onChanged!(widget.value),
+            onTap: (!widget.enabled || widget.onChanged == null) ? null : () => widget.onChanged!(widget.value),
             onHighlightChanged: updateMaterialState(WidgetState.pressed),
             onHover: updateMaterialState(WidgetState.hovered),
             focusColor: DsfrColorDecisions.backgroundTransparent(context),

@@ -66,6 +66,20 @@ class _RadiosPageState extends State<RadiosPage> {
               }
             },
           ),
+          const SizedBox(height: DsfrSpacings.s1w),
+          DsfrRadioRichButton<int>(
+            title: 'Quatre',
+            value: 3,
+            groupValue: _value,
+            onChanged: (final value) {
+              if (value != null) {
+                setState(() {
+                  _value = value;
+                });
+              }
+            },
+            enabled: false,
+          ),
           const SizedBox(height: DsfrSpacings.s3w),
           DsfrRadioRichButtonSet(
             title: 'Radios riches en erreur',
