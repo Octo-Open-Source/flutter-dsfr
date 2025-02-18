@@ -1,6 +1,7 @@
 import 'package:flutter_dsfr/flutter_dsfr.dart';
 import 'package:example/page_item.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dsfr/helpers/composant_state.dart';
 
 class RadiosPage extends StatefulWidget {
   const RadiosPage({super.key});
@@ -70,8 +71,14 @@ class _RadiosPageState extends State<RadiosPage> {
             title: 'Radios riches en erreur',
             values: const {1: 'Un', 2: 'Deux', 3: 'Trois'},
             onCallback: (final p0) {},
-            hasError: true,
-            errorText: 'Texte d\'erreur obligatoire',
+            composantState: ComposantState(state: ComposantStateEnum.error, text: 'Texte d\'erreur obligatoire'),
+          ),
+          const SizedBox(height: DsfrSpacings.s3w),
+          DsfrRadioRichButtonSet(
+            title: 'Radios riches en succès',
+            values: const {1: 'Un', 2: 'Deux', 3: 'Trois'},
+            onCallback: (final p0) {},
+            composantState: ComposantState(state: ComposantStateEnum.success, text: 'Texte de succès optionnel'),
           ),
           const SizedBox(height: DsfrSpacings.s3w),
           DsfrRadioRichButtonSet(

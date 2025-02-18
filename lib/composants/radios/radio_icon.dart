@@ -1,5 +1,6 @@
 import 'package:flutter_dsfr/fondamentaux/color_decisions.g.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dsfr/helpers/composant_state.dart';
 
 class RadioIcon<T> extends StatelessWidget {
   const RadioIcon({
@@ -7,13 +8,13 @@ class RadioIcon<T> extends StatelessWidget {
     required this.value,
     required this.groupValue,
     this.enabled = true,
-    this.hasError = false,
+    this.state = ComposantStateEnum.none,
   });
 
   final T value;
   final T? groupValue;
   final bool enabled;
-  final bool hasError;
+  final ComposantStateEnum state;
 
   @override
   Widget build(final context) => Semantics(
@@ -43,8 +44,10 @@ class RadioIcon<T> extends StatelessWidget {
   Color getStrokeColor(BuildContext context) {
     if (!enabled) {
       return DsfrColorDecisions.borderDisabledGrey(context);
-    } else if (hasError) {
+    } else if (state == ComposantStateEnum.error) {
       return DsfrColorDecisions.borderPlainError(context);
+    } else if (state == ComposantStateEnum.success) {
+      return DsfrColorDecisions.borderPlainSuccess(context);
     } else {
       return getFillColor(context);
     }

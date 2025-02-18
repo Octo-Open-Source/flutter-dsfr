@@ -1,9 +1,12 @@
+import 'package:flutter_dsfr/atoms/composant_state_widget.dart';
+import 'package:flutter_dsfr/atoms/vertical_bar_widget.dart';
 import 'package:flutter_dsfr/composants/radios/dsfr_radio_rich_button_set_headless.dart';
 import 'package:flutter_dsfr/fondamentaux/color_decisions.g.dart';
 import 'package:flutter_dsfr/fondamentaux/fonts.dart';
-import 'package:flutter_dsfr/fondamentaux/icons.g.dart';
 import 'package:flutter_dsfr/fondamentaux/spacing.g.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dsfr/helpers/color_utils.dart';
+import 'package:flutter_dsfr/helpers/composant_state.dart';
 
 class DsfrRadioRichButtonSet<T> extends StatelessWidget {
   const DsfrRadioRichButtonSet({
@@ -13,8 +16,7 @@ class DsfrRadioRichButtonSet<T> extends StatelessWidget {
     required this.onCallback,
     this.initialValue,
     this.enabled = true,
-    this.hasError = false,
-    this.errorText,
+    this.composantState = const ComposantState(),
   });
 
   final String title;
@@ -22,14 +24,13 @@ class DsfrRadioRichButtonSet<T> extends StatelessWidget {
   final T? initialValue;
   final Callback<T?> onCallback;
   final bool enabled;
-  final bool hasError;
-  final String? errorText;
+  final ComposantState composantState;
 
   @override
   Widget build(final context) => IntrinsicHeight(
         child: Row(
           children: [
-            if (hasError) const ErrorDivider(),
+            VerticalBarWidget(composantState: composantState),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -37,9 +38,11 @@ class DsfrRadioRichButtonSet<T> extends StatelessWidget {
                   Text(
                     title,
                     style: DsfrTextStyle.bodyMd(
-                      color: hasError
-                          ? DsfrColorDecisions.textDefaultError(context)
-                          : DsfrColorDecisions.textLabelGrey(context),
+                      color: getTextColor(
+                        context,
+                        composantState.state,
+                        defaultColor: DsfrColorDecisions.textLabelGrey(context),
+                      ),
                     ),
                   ),
                   const SizedBox(height: DsfrSpacings.s1w),
@@ -50,45 +53,16 @@ class DsfrRadioRichButtonSet<T> extends StatelessWidget {
                     onCallback: onCallback,
                     initialValue: initialValue,
                     enabled: enabled,
-                    hasError: hasError,
+                    state: composantState.state,
                   ),
-                  if (hasError && errorText != null && errorText!.isNotEmpty ) ...[
+                  if (composantState.state != ComposantStateEnum.none) ...[
                     const SizedBox(height: DsfrSpacings.s2w),
-                    Row(
-                      children: [
-                        Icon(DsfrIcons.systemFrErrorFill, color: DsfrColorDecisions.borderPlainError(context)),
-                        const SizedBox(width: DsfrSpacings.s1v),
-                        Text(
-                          errorText!,
-                          style: DsfrTextStyle.bodyXs(
-                            color: DsfrColorDecisions.textDefaultError(context),
-                          ),
-                        ),
-                      ],
-                    ),
+                    ComposantStateWidget(composantState: composantState),
                   ],
                 ],
               ),
             ),
           ],
         ),
-      );
-}
-
-class ErrorDivider extends StatelessWidget {
-  const ErrorDivider({
-    super.key,
-  });
-
-  @override
-  Widget build(final context) => Row(
-        children: [
-          VerticalDivider(
-            color: DsfrColorDecisions.borderPlainError(context),
-            width: 0,
-            thickness: 2,
-          ),
-          const SizedBox(width: DsfrSpacings.s2w),
-        ],
       );
 }

@@ -4,6 +4,8 @@ import 'package:flutter_dsfr/fondamentaux/color_decisions.g.dart';
 import 'package:flutter_dsfr/fondamentaux/fonts.dart';
 import 'package:flutter_dsfr/fondamentaux/spacing.g.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dsfr/helpers/color_utils.dart';
+import 'package:flutter_dsfr/helpers/composant_state.dart';
 
 class DsfrRadioRichButton<T> extends StatefulWidget {
   const DsfrRadioRichButton({
@@ -13,7 +15,7 @@ class DsfrRadioRichButton<T> extends StatefulWidget {
     required this.groupValue,
     required this.onChanged,
     this.enabled = true,
-    this.hasError = false,
+    this.state = ComposantStateEnum.none,
   });
 
   final String title;
@@ -21,7 +23,7 @@ class DsfrRadioRichButton<T> extends StatefulWidget {
   final T? groupValue;
   final ValueChanged<T?>? onChanged;
   final bool enabled;
-  final bool hasError;
+  final ComposantStateEnum state;
 
   @override
   State<DsfrRadioRichButton<T>> createState() => _DsfrRadioRichButtonState<T>();
@@ -58,14 +60,14 @@ class _DsfrRadioRichButtonState<T> extends State<DsfrRadioRichButton<T>>
                       key: ValueKey(widget.title),
                       value: widget.value,
                       groupValue: widget.groupValue,
-                      hasError: widget.hasError,
                       enabled: widget.enabled,
+                      state: widget.state,
                     ),
                     const SizedBox(width: DsfrSpacings.s1w),
                     Flexible(
                       child: Text(
                         widget.title,
-                        style: DsfrTextStyle.bodyMd(color: getTextColor(context)),
+                        style: DsfrTextStyle.bodyMd(color: getLabelColor(context)),
                       ),
                     ),
                   ],
@@ -82,13 +84,11 @@ class _DsfrRadioRichButtonState<T> extends State<DsfrRadioRichButton<T>>
         : DsfrColorDecisions.borderDefaultGrey(context);
   }
 
-  Color getTextColor(BuildContext context) {
+  Color getLabelColor(BuildContext context) {
     if (!widget.enabled) {
       return DsfrColorDecisions.textDisabledGrey(context);
-    } else if (widget.hasError) {
-      return DsfrColorDecisions.textDefaultError(context);
     } else {
-      return DsfrColorDecisions.textLabelGrey(context);
+      return getTextColor(context, widget.state, defaultColor: DsfrColorDecisions.textLabelGrey(context));
     }
   }
 }

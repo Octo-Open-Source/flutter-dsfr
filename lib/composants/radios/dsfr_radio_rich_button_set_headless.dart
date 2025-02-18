@@ -1,5 +1,6 @@
 import 'package:flutter_dsfr/composants/radios/dsfr_radio_rich_button.dart';
 import 'package:flutter_dsfr/fondamentaux/spacing.g.dart';
+import 'package:flutter_dsfr/helpers/composant_state.dart';
 import 'package:flutter_dsfr/helpers/iterable_extension.dart';
 import 'package:flutter/material.dart';
 
@@ -21,7 +22,7 @@ class DsfrRadioRichButtonSetHeadless<T> extends StatefulWidget {
     this.initialValue,
     this.mode = DsfrRadioButtonSetMode.row,
     this.enabled = true,
-    this.hasError = false,
+    this.state = ComposantStateEnum.none,
   });
 
   final Map<T, DsfrRadioButtonItem> values;
@@ -29,7 +30,7 @@ class DsfrRadioRichButtonSetHeadless<T> extends StatefulWidget {
   final Callback<T?> onCallback;
   final DsfrRadioButtonSetMode mode;
   final bool enabled;
-  final bool hasError;
+  final ComposantStateEnum state;
 
   @override
   State<DsfrRadioRichButtonSetHeadless<T>> createState() => _DsfrRadioRichButtonSetHeadlessState<T>();
@@ -59,7 +60,7 @@ class _DsfrRadioRichButtonSetHeadlessState<T> extends State<DsfrRadioRichButtonS
             groupValue: _value,
             onChanged: widget.enabled ? _handleChange : null,
             enabled: widget.enabled,
-            hasError: widget.hasError,
+            state: widget.state,
           ),
         )
         .toList();
