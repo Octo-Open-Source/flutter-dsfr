@@ -22,15 +22,24 @@ class _CheckboxPageState extends State<CheckboxPage> {
         padding: const EdgeInsets.all(16),
         children: [
           DsfrCheckbox.sm(
-            label: 'Label',
+            label: 'small size',
             value: _value,
             onChanged: (final value) => setState(() {
               _value = value;
             }),
           ),
-          const DsfrCheckbox.sm(label: 'Label', value: false, onChanged: null),
+          const DsfrCheckbox.sm(
+            label: 'état désactivé',
+            value: false,
+            onChanged: null,
+          ),
           DsfrCheckbox.sm(
-            label: 'Label',
+            label: 'non décochable',
+            value: true,
+            onChanged: (final value) {},
+          ),
+          DsfrCheckbox.md(
+            label: 'medium size',
             value: true,
             onChanged: (final value) {},
           ),

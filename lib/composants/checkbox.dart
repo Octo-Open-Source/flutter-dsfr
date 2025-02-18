@@ -1,5 +1,6 @@
 import 'package:flutter_dsfr/atoms/focus_widget.dart';
 import 'package:flutter_dsfr/composants/checkbox_icon.dart';
+import 'package:flutter_dsfr/fondamentaux/color_decisions.g.dart';
 import 'package:flutter_dsfr/fondamentaux/fonts.dart';
 import 'package:flutter_dsfr/fondamentaux/spacing.g.dart';
 import 'package:flutter/material.dart';
@@ -67,13 +68,10 @@ class DsfrCheckbox extends StatelessWidget {
                 Focus(
                   focusNode: focusNode,
                   onKeyEvent: (final node, final event) {
-                    if (event is KeyDownEvent &&
-                        event.logicalKey == LogicalKeyboardKey.space) {
+                    if (event is KeyDownEvent && event.logicalKey == LogicalKeyboardKey.space) {
                       onChanged?.call(!value);
-
                       return KeyEventResult.handled;
                     }
-
                     return KeyEventResult.ignored;
                   },
                   canRequestFocus: isEnabled,
@@ -83,8 +81,7 @@ class DsfrCheckbox extends StatelessWidget {
 
                       return DsfrFocusWidget(
                         isFocused: isFocused,
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(4)),
+                        borderRadius: const BorderRadius.all(Radius.circular(4)),
                         child: DsfrCheckboxIcon(value: value, padding: padding),
                       );
                     },
@@ -92,7 +89,10 @@ class DsfrCheckbox extends StatelessWidget {
                 ),
                 const SizedBox(width: DsfrSpacings.s1w),
                 Flexible(
-                  child: Text(label, style: const DsfrTextStyle.bodyMd()),
+                  child: Text(
+                    label,
+                    style: DsfrTextStyle.bodyMd(color: DsfrColorDecisions.textLabelGrey(context)),
+                  ),
                 ),
               ],
             ),

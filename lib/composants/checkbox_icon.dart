@@ -1,4 +1,4 @@
-import 'package:flutter_dsfr/fondamentaux/colors.g.dart';
+import 'package:flutter_dsfr/fondamentaux/color_decisions.g.dart';
 import 'package:flutter_dsfr/fondamentaux/icons.g.dart';
 import 'package:flutter/material.dart';
 
@@ -15,12 +15,12 @@ class DsfrCheckboxIcon extends StatelessWidget {
   @override
   Widget build(final context) {
     const dimension = 16.0;
-    const backgroundColor = DsfrColors.blueFranceSun113;
+    var backgroundColor = DsfrColorDecisions.backgroundActionHighBlueFrance(context);
 
     return DecoratedBox(
       decoration: BoxDecoration(
         color: value ? backgroundColor : null,
-        border: const Border.fromBorderSide(
+        border: Border.fromBorderSide(
           BorderSide(color: backgroundColor),
         ),
         borderRadius: const BorderRadius.all(Radius.circular(4)),
@@ -31,10 +31,10 @@ class DsfrCheckboxIcon extends StatelessWidget {
           opacity: value ? 1 : 0,
           curve: Easing.emphasizedAccelerate,
           duration: Durations.short3,
-          child: const Icon(
+          child: Icon(
             DsfrIcons.systemCheckLine,
             size: dimension,
-            color: DsfrColors.blueFrance975,
+            color: DsfrColorDecisions.backgroundAltBlueFrance(context),
           ),
         ),
       ),
