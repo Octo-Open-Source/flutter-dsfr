@@ -82,6 +82,13 @@ class _RadiosPageState extends State<RadiosPage> {
           ),
           const SizedBox(height: DsfrSpacings.s3w),
           DsfrRadioRichButtonSet(
+            title: 'Succès sans texte',
+            values: const {1: 'Un', 2: 'Deux', 3: 'Trois'},
+            onCallback: (final p0) {},
+            composantState: ComposantState(state: ComposantStateEnum.success),
+          ),
+          const SizedBox(height: DsfrSpacings.s3w),
+          DsfrRadioRichButtonSet(
             title: 'Radios riches désactivé',
             values: const {1: 'Un', 2: 'Deux', 3: 'Trois'},
             onCallback: (final p0) {},
