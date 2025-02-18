@@ -15,7 +15,8 @@ class TogglesPage extends StatefulWidget {
 }
 
 class _TogglesPageState extends State<TogglesPage> {
-  bool _toggle = false;
+  bool _toggle1 = false;
+  bool _toggle2 = false;
 
   @override
   Widget build(final context) => SingleChildScrollView(
@@ -26,19 +27,19 @@ class _TogglesPageState extends State<TogglesPage> {
           children: [
             DsfrToggleSwitch(
               label: 'Vos favoris',
-              value: _toggle,
+              value: _toggle1,
               onChanged: (final value) {
                 setState(() {
-                  _toggle = value;
+                  _toggle1 = value;
                 });
               },
             ),
             DsfrToggleSwitch(
               label: 'Vos favoris',
-              value: !_toggle,
+              value: !_toggle2,
               onChanged: (final value) {
                 setState(() {
-                  _toggle = !value;
+                  _toggle2 = !value;
                 });
               },
             ),
@@ -46,21 +47,11 @@ class _TogglesPageState extends State<TogglesPage> {
               label: 'Vos favoris',
               enabled: false,
               value: false,
-              onChanged: (final value) {
-                setState(() {
-                  _toggle = !_toggle;
-                });
-              },
             ),
             DsfrToggleSwitch(
               label: 'Vos favoris',
               enabled: false,
               value: true,
-              onChanged: (final value) {
-                setState(() {
-                  _toggle = !_toggle;
-                });
-              },
             ),
           ],
         ),
