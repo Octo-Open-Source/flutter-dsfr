@@ -1,6 +1,4 @@
 import 'package:flutter_dsfr/flutter_dsfr.dart';
-import 'package:flutter_dsfr/fondamentaux/fonts.dart';
-import 'package:flutter_dsfr/fondamentaux/spacing.g.dart';
 import 'package:flutter/material.dart';
 
 class DsfrTag extends StatelessWidget {
