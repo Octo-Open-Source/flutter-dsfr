@@ -1,9 +1,7 @@
 export 'atoms/focus_widget.dart';
 export 'composants/accordions.dart';
 export 'composants/buttons/button.dart';
-export 'composants/buttons/button_background_color.dart';
 export 'composants/buttons/button_border.dart';
-export 'composants/buttons/button_foreground_color.dart';
 export 'composants/checkbox.dart';
 export 'composants/checkbox_icon.dart';
 export 'composants/divider.dart';

@@ -6,6 +6,7 @@ import 'package:flutter_dsfr/composants/buttons/button_border.dart';
 import 'package:flutter_dsfr/composants/buttons/button_background_color.dart';
 import 'package:flutter_dsfr/composants/buttons/button_foreground_color.dart';
 import 'package:flutter_dsfr/fondamentaux/color_decisions.g.dart';
+import 'package:flutter_dsfr/fondamentaux/colors.g.dart';
 import 'package:flutter_dsfr/fondamentaux/fonts.dart';
 import 'package:flutter_dsfr/fondamentaux/spacing.g.dart';
 import 'package:flutter/material.dart';
@@ -33,8 +34,7 @@ class DsfrRawButton extends StatefulWidget {
   State<DsfrRawButton> createState() => _DsfrRawButtonState();
 }
 
-class _DsfrRawButtonState extends State<DsfrRawButton>
-    with MaterialStateMixin<DsfrRawButton> {
+class _DsfrRawButtonState extends State<DsfrRawButton> with MaterialStateMixin<DsfrRawButton> {
   late final double _minHeight;
   late final EdgeInsetsGeometry _padding;
   late final TextStyle _textStyle;
@@ -50,18 +50,15 @@ class _DsfrRawButtonState extends State<DsfrRawButton>
   }
 
   EdgeInsetsGeometry _getPadding(final DsfrComponentSize size) => switch (size) {
-        DsfrComponentSize.lg =>
-          const EdgeInsets.symmetric(vertical: 10, horizontal: 24),
-        DsfrComponentSize.md =>
-          const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-        DsfrComponentSize.sm =>
-          const EdgeInsets.symmetric(vertical: 4, horizontal: 12),
+        DsfrComponentSize.lg => const EdgeInsets.symmetric(vertical: 10, horizontal: 24),
+        DsfrComponentSize.md => const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+        DsfrComponentSize.sm => const EdgeInsets.symmetric(vertical: 4, horizontal: 12),
       };
 
   TextStyle _getTextStyle(final DsfrComponentSize size) => switch (size) {
-        DsfrComponentSize.lg => const DsfrTextStyle.bodyLgMedium(),
-        DsfrComponentSize.md => const DsfrTextStyle.bodyMdMedium(),
-        DsfrComponentSize.sm => const DsfrTextStyle.bodySmMedium(),
+        DsfrComponentSize.lg => const DsfrTextStyle.bodyLgMedium(color: DsfrColors.grey50),
+        DsfrComponentSize.md => const DsfrTextStyle.bodyMdMedium(color: DsfrColors.grey50),
+        DsfrComponentSize.sm => const DsfrTextStyle.bodySmMedium(color: DsfrColors.grey50),
       };
 
   double _getMinHeight(final DsfrComponentSize size) => switch (size) {
@@ -89,19 +86,19 @@ class _DsfrRawButtonState extends State<DsfrRawButton>
     final foregroundColor = widget.foregroundColor == null
         ? DsfrButtonForegroundColor.fromVariant(widget.variant, context)
         : DsfrButtonForegroundColor(
-      $default: widget.foregroundColor!,
-      disabled: DsfrColorDecisions.textDisabledGrey(context),
-    );
+            $default: widget.foregroundColor!,
+            disabled: DsfrColorDecisions.textDisabledGrey(context),
+          );
     final border = widget.foregroundColor == null
         ? DsfrButtonBorder.fromVariant(widget.variant, context)
         : DsfrButtonBorder(
-      $default: Border.fromBorderSide(
-        BorderSide(color: widget.foregroundColor!),
-      ),
-      disabled: Border.fromBorderSide(
-        BorderSide(color: DsfrColorDecisions.borderDisabledGrey(context)),
-      ),
-    );
+            $default: Border.fromBorderSide(
+              BorderSide(color: widget.foregroundColor!),
+            ),
+            disabled: Border.fromBorderSide(
+              BorderSide(color: DsfrColorDecisions.borderDisabledGrey(context)),
+            ),
+          );
 
     final textColor = foregroundColor.resolve(materialStates);
 
@@ -128,8 +125,7 @@ class _DsfrRawButtonState extends State<DsfrRawButton>
                           return;
                         }
                         widget.onPressed!();
-                        _timer =
-                            Timer(const Duration(milliseconds: 500), () {});
+                        _timer = Timer(const Duration(milliseconds: 500), () {});
                       },
                 onHighlightChanged: updateMaterialState(WidgetState.pressed),
                 onHover: updateMaterialState(WidgetState.hovered),

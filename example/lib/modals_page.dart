@@ -27,16 +27,16 @@ class ModalsPage extends StatelessWidget {
                   children: [
                     const Text(
                       'Veuillez confirmer la suppression du compte',
-                      style: DsfrTextStyle.headline4(),
+                      style: DsfrTextStyle.headline4(color: DsfrColors.grey50),
                     ),
                     const SizedBox(height: DsfrSpacings.s2w),
                     const Text(
                       'Voulez-vous vraiment supprimer votre compte ainsi que les données associées ?',
-                      style: DsfrTextStyle.bodyMd(),
+                      style: DsfrTextStyle.bodyMd(color: DsfrColors.grey50),
                     ),
                     const Text(
                       'Attention : Aucune donnée ne pourra être récupérée.',
-                      style: DsfrTextStyle.bodyMdBold(),
+                      style: DsfrTextStyle.bodyMdBold(color: DsfrColors.grey50),
                     ),
                     const SizedBox(height: DsfrSpacings.s4w),
                     DsfrButton(
