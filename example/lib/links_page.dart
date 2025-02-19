@@ -14,24 +14,33 @@ class LinksPage extends StatelessWidget {
 
   @override
   Widget build(final context) {
-    const label = 'Label lien';
-    const gap = SizedBox(height: 16);
+    const label = 'Label lien taille MD';
 
     return SingleChildScrollView(
       padding: const EdgeInsets.all(16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
+        spacing: 16,
         children: [
-          const DsfrLink.md(label: label),
-          gap,
+          DsfrLink.sm(
+            label: 'lien taille SM',
+            onTap: _handleTap,
+          ),
+          DsfrLink.md(
+            label: label,
+            onTap: _handleTap,
+          ),
+          DsfrLink.lg(
+            label: 'lien taille LG',
+            onTap: _handleTap,
+          ),
+          const DsfrLink.md(label: 'lien désactivé (MD)'),
           DsfrLink.md(label: label, onTap: _handleTap),
-          gap,
           DsfrLink.md(
             label: label,
             icon: DsfrIcons.systemArrowLeftLine,
             onTap: _handleTap,
           ),
-          gap,
           DsfrLink.md(
             label: label,
             icon: DsfrIcons.systemArrowLeftLine,
