@@ -27,6 +27,7 @@ class DsfrInput extends StatefulWidget {
     this.inputStyle = const DsfrTextStyle.bodyMd(),
     this.inputColor,
     this.textAlign = TextAlign.start,
+    this.enabled = true,
     this.autofocus = false,
     this.isPasswordMode = false,
     this.autocorrect,
@@ -55,6 +56,7 @@ class DsfrInput extends StatefulWidget {
   final TextStyle inputStyle;
   final Color? inputColor;
   final TextAlign textAlign;
+  final bool enabled;
   final bool autofocus;
   final bool isPasswordMode;
   final bool? autocorrect;
@@ -81,7 +83,9 @@ class _DsfrInputState extends State<DsfrInput> {
     Widget label = ExcludeSemantics(
       child: Text(
         labelText,
-        style: widget.labelStyle.copyWith(color: widget.labelColor ?? DsfrColorDecisions.textLabelGrey(context)),
+        style: widget.enabled
+            ? (widget.labelStyle.copyWith(color: widget.labelColor ?? DsfrColorDecisions.textLabelGrey(context)))
+            : widget.labelStyle.copyWith(color: DsfrColorDecisions.textDisabledGrey(context)),
       ),
     );
 
@@ -93,9 +97,8 @@ class _DsfrInputState extends State<DsfrInput> {
           if (widget.isPasswordMode)
             FocusTraversalOrder(
               order: const NumericFocusOrder(2),
-              // TODO: dark mode pour password mode est dépendant du composant DsfrCheckbox
+              // TODO: dark mode et l'état désactivé pour password mode est dépendant du composant DsfrCheckbox
               child: DsfrCheckbox.sm(
-                // TODO: texte à vérifier
                 label: 'Afficher',
                 value: _passwordVisibility,
                 onChanged: _handlePasswordVisibility,
@@ -120,7 +123,9 @@ class _DsfrInputState extends State<DsfrInput> {
               ExcludeSemantics(
                 child: Text(
                   widget.hintText!,
-                  style: widget.hintStyle.copyWith(color: widget.hintColor ?? DsfrColorDecisions.textMentionGrey(context)),
+                  style: widget.enabled
+                      ? (widget.hintStyle.copyWith(color: widget.hintColor ?? DsfrColorDecisions.textMentionGrey(context)))
+                      : widget.hintStyle.copyWith(color: DsfrColorDecisions.textDisabledGrey(context)),
                 ),
               ),
             ],
@@ -145,6 +150,7 @@ class _DsfrInputState extends State<DsfrInput> {
                   passwordVisibility: _passwordVisibility,
                   autocorrect: widget.autocorrect,
                   textAlign: widget.textAlign,
+                  enabled: widget.enabled,
                   autofocus: widget.autofocus,
                   inputStyle:widget.inputStyle,
                   inputColor: widget.inputColor,
