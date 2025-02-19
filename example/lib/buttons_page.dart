@@ -58,12 +58,9 @@ class ButtonsPage extends StatelessWidget {
 
     return SingleChildScrollView(
       padding: const EdgeInsets.all(16),
-      child: Ink(
-        color: DsfrColorDecisions.backgroundDefaultGrey(context),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: children.separator(gap).toList(),
-        ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: children.separator(gap).toList(),
       ),
     );
   }

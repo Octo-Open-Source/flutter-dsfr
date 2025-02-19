@@ -17,43 +17,64 @@ import 'package:example/text_page.dart';
 import 'package:example/toggles_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dsfr/fondamentaux/color_decisions.g.dart';
+import 'package:flutter_dsfr/helpers/theme_mode_provider.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
   @override
-  Widget build(final context) => MaterialApp(
-        theme: ThemeData.light().copyWith(
-          scaffoldBackgroundColor: DsfrColorDecisions.backgroundDefaultGrey(context),
-        ),
-        darkTheme: ThemeData.dark().copyWith(
-          scaffoldBackgroundColor: DsfrColorDecisions.backgroundDefaultGrey(context),
-        ),
-        themeMode: ThemeMode.system,
-        home: MasterPage(
-          pageItems: [
-            SandboxPage.model,
-            TextPage.model,
-            AccordionsPage.model,
-            ButtonsPage.model,
-            CheckboxPage.model,
-            ColorsPage.model,
-            SelectPage.model,
-            FormMessagesPage.model,
-            IconsPage.model,
-            InputsPage.model,
-            LinksPage.model,
-            ModalsPage.model,
-            RadiosPage.model,
-            TagsPage.model,
-            TogglesPage.model,
-          ],
-        ),
-        builder: (final context, final child) => AccessibilityTools(child: child),
-        debugShowCheckedModeBanner: false,
-      );
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  ThemeMode themeMode = ThemeMode.light;
+
+  @override
+  Widget build(final context) {
+    return ThemeModeProvider.withBuilder(
+      isLightMode: themeMode == ThemeMode.light,
+      builder: (context) {
+        return MaterialApp(
+          theme: ThemeData.light().copyWith(
+            scaffoldBackgroundColor: DsfrColorDecisions.backgroundDefaultGrey(context),
+          ),
+          darkTheme: ThemeData.dark().copyWith(
+            scaffoldBackgroundColor: DsfrColorDecisions.backgroundDefaultGrey(context),
+          ),
+          themeMode: themeMode,
+          home: MasterPage(
+            toggleTheme: () {
+              setState(() {
+                final isDarkMode = themeMode == ThemeMode.dark;
+                themeMode = isDarkMode ? ThemeMode.light : ThemeMode.dark;
+              });
+            },
+            pageItems: [
+              SandboxPage.model,
+              TextPage.model,
+              AccordionsPage.model,
+              ButtonsPage.model,
+              CheckboxPage.model,
+              ColorsPage.model,
+              SelectPage.model,
+              FormMessagesPage.model,
+              IconsPage.model,
+              InputsPage.model,
+              LinksPage.model,
+              ModalsPage.model,
+              RadiosPage.model,
+              TagsPage.model,
+              TogglesPage.model,
+            ],
+          ),
+          builder: (final context, final child) => AccessibilityTools(child: child),
+          debugShowCheckedModeBanner: false,
+        );
+      },
+    );
+  }
 }

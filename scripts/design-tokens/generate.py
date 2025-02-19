@@ -36,12 +36,15 @@ def template_decisions_dart() -> str:
     return """
 import 'package:flutter/material.dart';
 import 'package:flutter_dsfr/fondamentaux/colors.g.dart';
+import 'package:flutter_dsfr/helpers/theme_mode_provider.dart';
 
 class DsfrColorDecisions {
   const DsfrColorDecisions._();
 
   static bool isLightMode(BuildContext context) {
-    return MediaQuery.platformBrightnessOf(context) == Brightness.light;
+    final provider = ThemeModeProvider.of(context);
+    assert(provider != null, "Make sure you have a ThemeModeProvider at the top of your widget tree.");
+    return provider?.isLightMode ?? true;
   }
 
   <%DECISIONS%>
