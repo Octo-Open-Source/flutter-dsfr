@@ -1,9 +1,4 @@
-import 'package:flutter_dsfr/atoms/focus_widget.dart';
-import 'package:flutter_dsfr/composants/divider.dart';
-import 'package:flutter_dsfr/fondamentaux/colors.g.dart';
-import 'package:flutter_dsfr/fondamentaux/icons.g.dart';
-import 'package:flutter_dsfr/fondamentaux/spacing.g.dart';
-import 'package:flutter_dsfr/helpers/iterable_extension.dart';
+import 'package:flutter_dsfr/flutter_dsfr.dart';
 import 'package:flutter/material.dart';
 
 typedef DsfrAccordionCallback = void Function(int panelIndex, bool isExpanded);
@@ -88,12 +83,14 @@ class _DsfrAccordionState extends State<_DsfrAccordion> with MaterialStateMixin<
             onTap: _handleTap,
             onHighlightChanged: updateMaterialState(WidgetState.pressed),
             onHover: updateMaterialState(WidgetState.hovered),
-            focusColor: Colors.transparent,
+            focusColor: DsfrColorDecisions.backgroundTransparent(context),
             onFocusChange: updateMaterialState(WidgetState.focused),
             child: DsfrFocusWidget(
               isFocused: isFocused,
               child: ColoredBox(
-                color: widget.isExpanded ? DsfrColors.blueFrance925 : Colors.transparent,
+                color: widget.isExpanded
+                    ? DsfrColorDecisions.backgroundActionLowBlueFrance(context)
+                    : DsfrColorDecisions.backgroundTransparent(context),
                 child: ConstrainedBox(
                   constraints: const BoxConstraints(minHeight: 48),
                   child: Padding(
@@ -101,15 +98,18 @@ class _DsfrAccordionState extends State<_DsfrAccordion> with MaterialStateMixin<
                     child: Row(
                       children: [
                         Expanded(
-                          child: widget.item.headerBuilder(widget.isExpanded),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: DsfrSpacings.s2w),
+                            child: widget.item.headerBuilder(widget.isExpanded),
+                          ),
                         ),
                         AnimatedRotation(
                           turns: widget.isExpanded ? -0.5 : 0,
                           duration: Durations.short4,
-                          child: const Icon(
+                          child: Icon(
                             DsfrIcons.systemArrowDownSLine,
                             size: DsfrSpacings.s2w,
-                            color: DsfrColors.blueFranceSun113,
+                            color: DsfrColorDecisions.textActionHighBlueFrance(context),
                           ),
                         ),
                         const SizedBox(width: DsfrSpacings.s2w),
