@@ -4,7 +4,7 @@ import 'package:flutter_dsfr/fondamentaux/fonts.dart';
 import 'package:flutter_dsfr/fondamentaux/spacing.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import '../fondamentaux/color_decisions.g.dart';
+import 'package:flutter_dsfr/fondamentaux/color_decisions.g.dart';
 
 class DsfrInputHeadless extends StatefulWidget {
   const DsfrInputHeadless({
@@ -29,7 +29,6 @@ class DsfrInputHeadless extends StatefulWidget {
     this.textAlign = TextAlign.start,
     this.enabled = true,
     this.autofocus = false,
-    this.inputStyle = const DsfrTextStyle.bodyMd(),
     this.inputColor,
     this.inputBorderColor,
     this.inputBorderWidth = DsfrSpacings.s0v5,
@@ -49,7 +48,6 @@ class DsfrInputHeadless extends StatefulWidget {
   final ValueChanged<String>? onFieldSubmitted;
   final FormFieldValidator<String>? validator;
   final double? width;
-  final TextStyle inputStyle;
   final Color? inputColor;
   final TextAlign textAlign;
   final bool enabled;
@@ -137,7 +135,9 @@ class _DsfrInputHeadlessState extends State<DsfrInputHeadless> {
             focusNode: _focusNode,
             decoration: InputDecoration(
               suffixText: widget.suffixText,
-              suffixStyle: widget.inputStyle,
+              suffixStyle: widget.enabled
+                  ? DsfrTextStyle.bodyMd(color: widget.inputColor ?? DsfrColorDecisions.textDefaultGrey(context))
+                  : DsfrTextStyle.bodyMd(color: DsfrColorDecisions.textDisabledGrey(context)),
               filled: true,
               fillColor: widget.enabled
                   ? widget.fillColor ?? DsfrColorDecisions.backgroundContrastGrey(context)
@@ -151,8 +151,8 @@ class _DsfrInputHeadlessState extends State<DsfrInputHeadless> {
             textCapitalization: widget.textCapitalization,
             textInputAction: widget.textInputAction,
             style: widget.enabled
-                ? widget.inputStyle.copyWith(color: widget.inputColor ?? DsfrColorDecisions.textDefaultGrey(context))
-                : widget.inputStyle.copyWith(color: DsfrColorDecisions.textDisabledGrey(context)),
+                ? DsfrTextStyle.bodyMd(color: widget.inputColor ?? DsfrColorDecisions.textDefaultGrey(context))
+                : DsfrTextStyle.bodyMd(color: DsfrColorDecisions.textDisabledGrey(context)),
             textAlign: widget.textAlign,
             autofocus: widget.autofocus,
             obscureText: widget.isPasswordMode && !widget.passwordVisibility,

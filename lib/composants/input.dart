@@ -20,11 +20,9 @@ class DsfrInput extends StatefulWidget {
     this.onFieldSubmitted,
     this.validator,
     this.width,
-    this.labelStyle = const DsfrTextStyle.bodyMd(),
     this.labelColor,
     this.hintStyle = const DsfrTextStyle.bodyXs(),
     this.hintColor,
-    this.inputStyle = const DsfrTextStyle.bodyMd(),
     this.inputColor,
     this.textAlign = TextAlign.start,
     this.enabled = true,
@@ -49,11 +47,9 @@ class DsfrInput extends StatefulWidget {
   final FormFieldValidator<String>? validator;
 
   final double? width;
-  final TextStyle labelStyle;
   final Color? labelColor;
   final TextStyle hintStyle;
   final Color? hintColor;
-  final TextStyle inputStyle;
   final Color? inputColor;
   final TextAlign textAlign;
   final bool enabled;
@@ -84,8 +80,8 @@ class _DsfrInputState extends State<DsfrInput> {
       child: Text(
         labelText,
         style: widget.enabled
-            ? (widget.labelStyle.copyWith(color: widget.labelColor ?? DsfrColorDecisions.textLabelGrey(context)))
-            : widget.labelStyle.copyWith(color: DsfrColorDecisions.textDisabledGrey(context)),
+            ? DsfrTextStyle.bodyMd(color: DsfrColorDecisions.textLabelGrey(context))
+            : DsfrTextStyle.bodyMd(color: DsfrColorDecisions.textDisabledGrey(context)),
       ),
     );
 
@@ -97,11 +93,11 @@ class _DsfrInputState extends State<DsfrInput> {
           if (widget.isPasswordMode)
             FocusTraversalOrder(
               order: const NumericFocusOrder(2),
-              // TODO: dark mode et l'état désactivé pour password mode est dépendant du composant DsfrCheckbox
               child: DsfrCheckbox.sm(
                 label: 'Afficher',
                 value: _passwordVisibility,
                 onChanged: _handlePasswordVisibility,
+                enabled: widget.enabled,
               ),
             ),
         ],
@@ -152,7 +148,6 @@ class _DsfrInputState extends State<DsfrInput> {
                   textAlign: widget.textAlign,
                   enabled: widget.enabled,
                   autofocus: widget.autofocus,
-                  inputStyle:widget.inputStyle,
                   inputColor: widget.inputColor,
                   inputFormatters: widget.inputFormatters,
                   scrollPadding: widget.scrollPadding,
