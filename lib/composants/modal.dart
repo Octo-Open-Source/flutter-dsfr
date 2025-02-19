@@ -3,6 +3,7 @@ import 'package:flutter_dsfr/fondamentaux/colors.g.dart';
 import 'package:flutter_dsfr/fondamentaux/icons.g.dart';
 import 'package:flutter_dsfr/fondamentaux/spacing.g.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dsfr/helpers/dsfr_component_size.dart';
 
 class DsfrModal extends StatelessWidget {
   const DsfrModal({
@@ -19,8 +20,7 @@ class DsfrModal extends StatelessWidget {
   }) async =>
       showModalBottomSheet<T>(
         context: context,
-        builder: (final context) =>
-            DsfrModal(isDismissible: isDismissible, child: builder(context)),
+        builder: (final context) => DsfrModal(isDismissible: isDismissible, child: builder(context)),
         backgroundColor: Colors.transparent,
         elevation: 0,
         shape: const RoundedRectangleBorder(),
@@ -52,7 +52,7 @@ class DsfrModal extends StatelessWidget {
                         icon: DsfrIcons.systemCloseLine,
                         iconLocation: DsfrButtonIconLocation.right,
                         variant: DsfrButtonVariant.tertiaryWithoutBorder,
-                        size: DsfrButtonSize.sm,
+                        size: DsfrComponentSize.sm,
                         onPressed: () => Navigator.of(context).pop(),
                       ),
                     ],

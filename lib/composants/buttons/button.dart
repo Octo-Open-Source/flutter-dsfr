@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_dsfr/composants/buttons/button_size.dart';
 import 'package:flutter_dsfr/composants/buttons/raw_button.dart';
 import 'package:flutter_dsfr/fondamentaux/spacing.g.dart';
+import 'package:flutter_dsfr/helpers/dsfr_component_size.dart';
 
 import 'button_icon_location.dart';
 import 'button_variant.dart';
 
 export 'button_icon_location.dart';
-export 'button_size.dart';
 export 'button_variant.dart';
 export 'raw_button.dart';
 
@@ -30,15 +29,15 @@ class DsfrButton extends StatelessWidget {
   final Color? iconColor;
   final DsfrButtonVariant variant;
   final Color? foregroundColor;
-  final DsfrButtonSize size;
+  final DsfrComponentSize size;
   final VoidCallback? onPressed;
 
-  double _getIconSize(final DsfrButtonSize size) {
+  double _getIconSize(final DsfrComponentSize size) {
     switch (size) {
-      case DsfrButtonSize.lg:
+      case DsfrComponentSize.lg:
         return DsfrSpacings.s3w;
-      case DsfrButtonSize.md:
-      case DsfrButtonSize.sm:
+      case DsfrComponentSize.md:
+      case DsfrComponentSize.sm:
         return DsfrSpacings.s2w;
     }
   }
@@ -50,10 +49,12 @@ class DsfrButton extends StatelessWidget {
 
     if (icon != null) {
       final baseIcon = Icon(icon, size: _getIconSize(size));
-      iconWidget = iconColor == null ? baseIcon : IconTheme(
-        data: IconThemeData(color: iconColor),
-        child: baseIcon,
-      );
+      iconWidget = iconColor == null
+          ? baseIcon
+          : IconTheme(
+              data: IconThemeData(color: iconColor),
+              child: baseIcon,
+            );
     }
 
     if (label != null) {
@@ -74,10 +75,7 @@ class DsfrButton extends StatelessWidget {
         foregroundColor: foregroundColor,
         onPressed: onPressed,
         child: Center(
-          child: Row(
-              mainAxisSize: MainAxisSize.min,
-              spacing: DsfrSpacings.s1w,
-              children: buttonWidget),
+          child: Row(mainAxisSize: MainAxisSize.min, spacing: DsfrSpacings.s1w, children: buttonWidget),
         ));
   }
 }

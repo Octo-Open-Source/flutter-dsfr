@@ -2,6 +2,7 @@ import 'package:flutter_dsfr/flutter_dsfr.dart';
 import 'package:example/page_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dsfr/fondamentaux/color_decisions.g.dart';
+import 'package:flutter_dsfr/helpers/dsfr_component_size.dart';
 
 class ButtonsPage extends StatelessWidget {
   const ButtonsPage({super.key});
@@ -20,7 +21,7 @@ class ButtonsPage extends StatelessWidget {
 
     final children = <Widget>[];
     for (final variant in DsfrButtonVariant.values) {
-      for (final size in DsfrButtonSize.values) {
+      for (final size in DsfrComponentSize.values) {
         children.addAll([
           Text('variant: ${variant.name}, size: ${size.name}'),
           DsfrButton(label: label, variant: variant, size: size),

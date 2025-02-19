@@ -1,6 +1,7 @@
 import 'package:flutter_dsfr/flutter_dsfr.dart';
 import 'package:example/page_item.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dsfr/helpers/dsfr_component_size.dart';
 
 class LinksPage extends StatelessWidget {
   const LinksPage({super.key});
@@ -22,26 +23,29 @@ class LinksPage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         spacing: 16,
         children: [
-          DsfrLink.sm(
+          DsfrLink(
             label: 'lien taille SM',
             onTap: _handleTap,
+            size: DsfrComponentSize.sm,
           ),
-          DsfrLink.md(
+          DsfrLink(
             label: label,
             onTap: _handleTap,
+            size: DsfrComponentSize.md,
           ),
-          DsfrLink.lg(
+          DsfrLink(
             label: 'lien taille LG',
             onTap: _handleTap,
+            size: DsfrComponentSize.lg,
           ),
-          const DsfrLink.md(label: 'lien désactivé (MD)'),
-          DsfrLink.md(label: label, onTap: _handleTap),
-          DsfrLink.md(
+          const DsfrLink(label: 'lien désactivé (MD)'),
+          DsfrLink(label: label, onTap: _handleTap),
+          DsfrLink(
             label: label,
             icon: DsfrIcons.systemArrowLeftLine,
             onTap: _handleTap,
           ),
-          DsfrLink.md(
+          DsfrLink(
             label: label,
             icon: DsfrIcons.systemArrowLeftLine,
             iconPosition: DsfrLinkIconPosition.end,

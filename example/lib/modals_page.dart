@@ -1,6 +1,7 @@
 import 'package:flutter_dsfr/flutter_dsfr.dart';
 import 'package:example/page_item.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dsfr/helpers/dsfr_component_size.dart';
 
 class ModalsPage extends StatelessWidget {
   const ModalsPage({super.key});
@@ -17,7 +18,7 @@ class ModalsPage extends StatelessWidget {
           DsfrButton(
             label: 'Ouvrir la bottom sheet',
             variant: DsfrButtonVariant.primary,
-            size: DsfrButtonSize.lg,
+            size: DsfrComponentSize.lg,
             onPressed: () async {
               await DsfrModal.showModal<void>(
                 context: context,
@@ -41,7 +42,7 @@ class ModalsPage extends StatelessWidget {
                     DsfrButton(
                       label: 'Confirmer',
                       variant: DsfrButtonVariant.primary,
-                      size: DsfrButtonSize.lg,
+                      size: DsfrComponentSize.lg,
                       onPressed: () {
                         Navigator.of(context).pop();
                       },
@@ -50,7 +51,7 @@ class ModalsPage extends StatelessWidget {
                     DsfrButton(
                       label: 'Annuler',
                       variant: DsfrButtonVariant.secondary,
-                      size: DsfrButtonSize.lg,
+                      size: DsfrComponentSize.lg,
                       onPressed: () {
                         Navigator.of(context).pop();
                       },
