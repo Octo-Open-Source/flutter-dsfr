@@ -17,10 +17,27 @@ class AccordionsPage extends StatelessWidget {
           DsfrAccordionsGroup(
             values: [
               DsfrAccordion(
-                headerBuilder: (final isExpanded) => isExpanded
-                    ? const Text('Header Expanded 1')
-                    : const Text('Header 1'),
-                body: const Text('Body 1'),
+                headerBuilder: (final isExpanded) =>
+                    isExpanded ? const Text('Header Expanded 1') : const Text('Header 1'),
+                body: Column(
+                  children: [
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: Text(
+                        'Contenu',
+                        style: DsfrTextStyle.headline1(
+                          color: DsfrColorDecisions.textActiveBlueFrance(context),
+                        ),
+                      ),
+                    ),
+                    Text(
+                      'Lorem ipsum dolor sit amet, consectetur adipiscing, link test incididunt, ut labore et dolore magna aliqua. Vitae sapien pellentesque habitant morbi tristique senectus et. Diam maecenas sed enim ut. Accumsan lacus vel facilisis volutpat est. Ut aliquam purus sit amet luctus. Lorem ipsum dolor sit amet consectetur adipiscing elit ut.Lorem ipsum dolor sit amet, consectetur adipiscing, link test incididunt, ut labore et dolore magna aliqua. Vitae sapien pellentesque habitant morbi tristique senectus et. Diam maecenas sed enim ut. Accumsan lacus vel facilisis volutpat est. Ut aliquam purus sit amet luctus. Lorem ipsum dolor sit amet consectetur adipiscing elit ut.',
+                      style: DsfrTextStyle.bodyMd(
+                        color: DsfrColorDecisions.textDefaultGrey(context),
+                      ),
+                    ),
+                  ],
+                ),
               ),
               DsfrAccordion(
                 headerBuilder: (final isExpanded) => const Text('Header 2'),

@@ -22,8 +22,8 @@ export 'composants/select.dart';
 export 'composants/tags.dart';
 export 'composants/toggle_switch.dart';
 export 'fondamentaux/colors.g.dart';
+export 'fondamentaux/color_decisions.g.dart';
 export 'fondamentaux/fonts.dart';
 export 'fondamentaux/icons.g.dart';
 export 'fondamentaux/spacing.g.dart';
 export 'helpers/iterable_extension.dart';
-
