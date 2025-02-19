@@ -1,58 +1,35 @@
+import 'package:flutter_dsfr/flutter_dsfr.dart';
 import 'package:flutter_dsfr/fondamentaux/fonts.dart';
 import 'package:flutter_dsfr/fondamentaux/spacing.g.dart';
 import 'package:flutter/material.dart';
 
 class DsfrTag extends StatelessWidget {
-  const DsfrTag._({
+  const DsfrTag({
     super.key,
     required this.label,
-    required this.textStyle,
-    required this.backgroundColor,
-    required this.foregroundColor,
-    required this.padding,
+    this.backgroundColor,
+    this.textColor,
     this.icon,
     this.onTap,
   });
 
-  const DsfrTag.sm({
-    required final InlineSpan label,
-    required final Color backgroundColor,
-    required final Color foregroundColor,
-    final IconData? icon,
-    final TextStyle? textStyle,
-    final GestureTapCallback? onTap,
-    final Key? key,
-  }) : this._(
-          key: key,
-          label: label,
-          textStyle: textStyle ?? const DsfrTextStyle.bodyXs(),
-          backgroundColor: backgroundColor,
-          foregroundColor: foregroundColor,
-          padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 8),
-          icon: icon,
-          onTap: onTap,
-        );
-
   final IconData? icon;
   final InlineSpan label;
   final GestureTapCallback? onTap;
-
-  final TextStyle textStyle;
-  final Color backgroundColor;
-  final Color foregroundColor;
-  final EdgeInsets padding;
+  final Color? backgroundColor;
+  final Color? textColor;
 
   @override
   Widget build(final context) => DecoratedBox(
         decoration: ShapeDecoration(
-          color: backgroundColor,
+          color: backgroundColor ?? DsfrColorDecisions.backgroundActionLowBlueFrance(context),
           shape: const StadiumBorder(),
         ),
         child: GestureDetector(
           onTap: onTap,
           behavior: HitTestBehavior.opaque,
           child: Padding(
-            padding: padding,
+            padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 8),
             child: Text.rich(
               TextSpan(
                 children: [
@@ -60,7 +37,8 @@ class DsfrTag extends StatelessWidget {
                     WidgetSpan(
                       alignment: PlaceholderAlignment.middle,
                       baseline: TextBaseline.alphabetic,
-                      child: Icon(icon, size: 12, color: foregroundColor),
+                      child: Icon(icon,
+                          size: 12, color: textColor ?? DsfrColorDecisions.textActionHighBlueFrance(context)),
                     ),
                     const WidgetSpan(
                       child: SizedBox(width: DsfrSpacings.s1v),
@@ -69,7 +47,7 @@ class DsfrTag extends StatelessWidget {
                   label,
                 ],
               ),
-              style: textStyle.copyWith(color: foregroundColor),
+              style: DsfrTextStyle.bodyXs(color: textColor ?? DsfrColorDecisions.textActionHighBlueFrance(context)),
             ),
           ),
         ),
