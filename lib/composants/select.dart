@@ -1,4 +1,4 @@
-import 'package:flutter_dsfr/fondamentaux/colors.g.dart';
+import 'package:flutter_dsfr/fondamentaux/color_decisions.g.dart';
 import 'package:flutter_dsfr/fondamentaux/fonts.dart';
 import 'package:flutter_dsfr/fondamentaux/icons.g.dart';
 import 'package:flutter_dsfr/fondamentaux/spacing.g.dart';
@@ -13,17 +13,6 @@ class DsfrSelect<T> extends StatelessWidget {
     required this.onSelected,
     this.controller,
     this.initialSelection,
-    this.labelStyle = const DsfrTextStyle.bodyMd(color: DsfrColors.grey50),
-    this.labelColor = DsfrColors.grey50,
-    this.labelDisableColor = DsfrColors.grey625,
-    this.hintStyle = const DsfrTextStyle.bodyXs(color: DsfrColors.grey50),
-    this.hintColor = DsfrColors.grey425,
-    this.inputStyle = const DsfrTextStyle.bodyMd(color: DsfrColors.grey50),
-    this.inputBorderColor = DsfrColors.grey200,
-    this.inputBorderWidth = 2,
-    this.inputConstraints = const BoxConstraints(maxHeight: 48),
-    this.fillColor = DsfrColors.grey950,
-    this.radius = 4,
   });
 
   final String label;
@@ -33,26 +22,14 @@ class DsfrSelect<T> extends StatelessWidget {
   final TextEditingController? controller;
   final T? initialSelection;
 
-  final TextStyle labelStyle;
-  final Color labelColor;
-  final Color labelDisableColor;
-  final TextStyle hintStyle;
-  final Color hintColor;
-  final TextStyle inputStyle;
-  final Color inputBorderColor;
-  final double inputBorderWidth;
-  final BoxConstraints inputConstraints;
-  final Color fillColor;
-  final double radius;
-
   @override
   Widget build(final context) {
     final underlineInputBorder = UnderlineInputBorder(
       borderSide: BorderSide(
-        color: inputBorderColor,
-        width: inputBorderWidth,
+        color: DsfrColorDecisions.borderPlainGrey(context),
+        width: 2,
       ),
-      borderRadius: BorderRadius.vertical(top: Radius.circular(radius)),
+      borderRadius: BorderRadius.vertical(top: Radius.circular(4)),
     );
 
     return Semantics(
@@ -61,11 +38,7 @@ class DsfrSelect<T> extends StatelessWidget {
       child: _Label(
         label: label,
         hint: hint,
-        labelStyle: labelStyle,
-        labelColor:
-            dropdownMenuEntries.isNotEmpty ? labelColor : labelDisableColor,
-        hintStyle: hintStyle,
-        hintColor: hintColor,
+        enabled: dropdownMenuEntries.isNotEmpty,
         child: DropdownMenu(
           enabled: dropdownMenuEntries.isNotEmpty,
           trailingIcon: const Icon(
@@ -78,14 +51,13 @@ class DsfrSelect<T> extends StatelessWidget {
             size: DsfrSpacings.s2w,
             semanticLabel: 'Afficher les options',
           ),
-          textStyle: inputStyle,
           inputDecorationTheme: InputDecorationTheme(
             filled: true,
-            fillColor: fillColor,
+            fillColor: DsfrColorDecisions.backgroundContrastGrey(context),
             focusedBorder: underlineInputBorder,
             enabledBorder: underlineInputBorder,
             border: underlineInputBorder,
-            constraints: inputConstraints,
+            constraints: const BoxConstraints(maxHeight: 48),
           ),
           controller: controller,
           initialSelection: initialSelection,
@@ -103,31 +75,30 @@ class _Label extends StatelessWidget {
     required this.label,
     required this.child,
     this.hint,
-    this.labelStyle = const DsfrTextStyle.bodyMd(color: DsfrColors.grey50),
-    this.labelColor = DsfrColors.grey50,
-    this.hintStyle = const DsfrTextStyle.bodyXs(color: DsfrColors.grey50),
-    this.hintColor = DsfrColors.grey425,
+    this.enabled = true,
   });
 
   final String label;
   final String? hint;
   final Widget child;
-
-  final TextStyle labelStyle;
-  final Color labelColor;
-  final TextStyle hintStyle;
-  final Color hintColor;
+  final bool enabled;
 
   @override
   Widget build(final context) => Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           ExcludeSemantics(
-            child: Text(label, style: labelStyle.copyWith(color: labelColor)),
+            child: Text(
+              label,
+              style: DsfrTextStyle.bodyMd(
+                color:
+                    enabled ? DsfrColorDecisions.textLabelGrey(context) : DsfrColorDecisions.textDisabledGrey(context),
+              ),
+            ),
           ),
           if (hint != null) ...[
             const SizedBox(height: DsfrSpacings.s1v),
-            Text(hint!, style: hintStyle.copyWith(color: hintColor)),
+            Text(hint!, style: DsfrTextStyle.bodyXs(color: DsfrColorDecisions.textMentionGrey(context))),
           ],
           const SizedBox(height: 10),
           child,
