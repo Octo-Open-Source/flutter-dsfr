@@ -24,10 +24,8 @@ class DsfrButtonBackgroundColor extends WidgetStateColor {
       case DsfrButtonVariant.primary:
         return DsfrButtonBackgroundColor(
           $default: DsfrColorDecisions.backgroundActionHighBlueFrance(context),
-          active:
-              DsfrColorDecisions.backgroundActionHighBlueFranceActive(context),
-          hover:
-              DsfrColorDecisions.backgroundActionHighBlueFranceHover(context),
+          active: DsfrColorDecisions.backgroundActionHighBlueFranceActive(context),
+          hover: DsfrColorDecisions.backgroundActionHighBlueFranceHover(context),
           disabled: DsfrColorDecisions.backgroundDisabledGrey(context),
         );
       case DsfrButtonVariant.secondary:
@@ -35,9 +33,9 @@ class DsfrButtonBackgroundColor extends WidgetStateColor {
       case DsfrButtonVariant.tertiaryWithoutBorder:
         return DsfrButtonBackgroundColor(
           $default: DsfrColorDecisions.backgroundTransparent(context),
-          active: const Color(0x0A000000),
-          hover: const Color(0x14000000),
-          disabled: Colors.transparent,
+          active: DsfrColorDecisions.backgroundTransparentActive(context),
+          hover: DsfrColorDecisions.backgroundTransparentHover(context),
+          disabled: DsfrColorDecisions.backgroundTransparent(context),
         );
     }
   }
@@ -69,9 +67,5 @@ class DsfrButtonBackgroundColor extends WidgetStateColor {
           other._disabled == _disabled);
 
   @override
-  int get hashCode =>
-      _default.hashCode ^
-      _active.hashCode ^
-      _hover.hashCode ^
-      _disabled.hashCode;
+  int get hashCode => _default.hashCode ^ _active.hashCode ^ _hover.hashCode ^ _disabled.hashCode;
 }

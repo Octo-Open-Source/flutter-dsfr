@@ -6,7 +6,6 @@ import 'package:flutter_dsfr/composants/buttons/button_border.dart';
 import 'package:flutter_dsfr/composants/buttons/button_background_color.dart';
 import 'package:flutter_dsfr/composants/buttons/button_foreground_color.dart';
 import 'package:flutter_dsfr/fondamentaux/color_decisions.g.dart';
-import 'package:flutter_dsfr/fondamentaux/colors.g.dart';
 import 'package:flutter_dsfr/fondamentaux/fonts.dart';
 import 'package:flutter_dsfr/fondamentaux/spacing.g.dart';
 import 'package:flutter/material.dart';
@@ -37,14 +36,12 @@ class DsfrRawButton extends StatefulWidget {
 class _DsfrRawButtonState extends State<DsfrRawButton> with MaterialStateMixin<DsfrRawButton> {
   late final double _minHeight;
   late final EdgeInsetsGeometry _padding;
-  late final TextStyle _textStyle;
   Timer? _timer;
 
   @override
   void initState() {
     super.initState();
     _padding = _getPadding(widget.size);
-    _textStyle = _getTextStyle(widget.size);
     _minHeight = _getMinHeight(widget.size);
     setMaterialState(WidgetState.disabled, widget.onPressed == null);
   }
@@ -55,10 +52,10 @@ class _DsfrRawButtonState extends State<DsfrRawButton> with MaterialStateMixin<D
         DsfrComponentSize.sm => const EdgeInsets.symmetric(vertical: 4, horizontal: 12),
       };
 
-  TextStyle _getTextStyle(final DsfrComponentSize size) => switch (size) {
-        DsfrComponentSize.lg => const DsfrTextStyle.bodyLgMedium(color: DsfrColors.grey50),
-        DsfrComponentSize.md => const DsfrTextStyle.bodyMdMedium(color: DsfrColors.grey50),
-        DsfrComponentSize.sm => const DsfrTextStyle.bodySmMedium(color: DsfrColors.grey50),
+  TextStyle _getTextStyle(final DsfrComponentSize size, final Color color) => switch (size) {
+        DsfrComponentSize.lg => DsfrTextStyle.bodyLgMedium(color: color),
+        DsfrComponentSize.md => DsfrTextStyle.bodyMdMedium(color: color),
+        DsfrComponentSize.sm => DsfrTextStyle.bodySmMedium(color: color),
       };
 
   double _getMinHeight(final DsfrComponentSize size) => switch (size) {
@@ -116,7 +113,7 @@ class _DsfrRawButtonState extends State<DsfrRawButton> with MaterialStateMixin<D
               borderRadius: widget.borderRadius,
             ),
             child: Material(
-              color: Colors.transparent,
+              color: DsfrColorDecisions.backgroundTransparent(context),
               child: InkWell(
                 onTap: widget.onPressed == null
                     ? null
@@ -129,7 +126,7 @@ class _DsfrRawButtonState extends State<DsfrRawButton> with MaterialStateMixin<D
                       },
                 onHighlightChanged: updateMaterialState(WidgetState.pressed),
                 onHover: updateMaterialState(WidgetState.hovered),
-                focusColor: Colors.transparent,
+                focusColor: DsfrColorDecisions.backgroundTransparent(context),
                 canRequestFocus: widget.onPressed != null,
                 onFocusChange: updateMaterialState(WidgetState.focused),
                 child: Padding(
@@ -140,7 +137,7 @@ class _DsfrRawButtonState extends State<DsfrRawButton> with MaterialStateMixin<D
                     child: IconTheme(
                       data: IconThemeData(color: textColor),
                       child: DefaultTextStyle(
-                        style: _textStyle.copyWith(color: textColor),
+                        style: _getTextStyle(widget.size, textColor),
                         child: widget.child,
                       ),
                     ),
