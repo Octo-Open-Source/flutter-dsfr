@@ -3,8 +3,8 @@ import 'package:flutter_dsfr/composants/buttons/raw_button.dart';
 import 'package:flutter_dsfr/fondamentaux/spacing.g.dart';
 import 'package:flutter_dsfr/helpers/dsfr_component_size.dart';
 
-import 'button_icon_location.dart';
-import 'button_variant.dart';
+import 'package:flutter_dsfr/composants/buttons/button_icon_location.dart';
+import 'package:flutter_dsfr/composants/buttons/button_variant.dart';
 
 export 'button_icon_location.dart';
 export 'button_variant.dart';
