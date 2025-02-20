@@ -1,8 +1,6 @@
 import 'package:flutter_dsfr/flutter_dsfr.dart';
 import 'package:flutter/material.dart';
 
-import '../fondamentaux/colors.g.dart';
-
 class DsfrTag extends StatelessWidget {
   const DsfrTag({
     super.key,

@@ -3,6 +3,7 @@
 import 'package:flutter_dsfr/composants/checkbox.dart';
 import 'package:flutter_dsfr/composants/input_headless.dart';
 import 'package:flutter_dsfr/fondamentaux/color_decisions.g.dart';
+import 'package:flutter_dsfr/fondamentaux/colors.g.dart';
 import 'package:flutter_dsfr/fondamentaux/fonts.dart';
 import 'package:flutter_dsfr/fondamentaux/spacing.g.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +22,7 @@ class DsfrInput extends StatefulWidget {
     this.validator,
     this.width,
     this.labelColor,
-    this.hintStyle = const DsfrTextStyle.bodyXs(),
+    this.hintStyle = const DsfrTextStyle.bodyXs(color: DsfrColors.grey50),
     this.hintColor,
     this.inputColor,
     this.textAlign = TextAlign.start,
@@ -70,8 +71,7 @@ class DsfrInput extends StatefulWidget {
 class _DsfrInputState extends State<DsfrInput> {
   bool _passwordVisibility = false;
 
-  void _handlePasswordVisibility(final bool value) =>
-      setState(() => _passwordVisibility = value);
+  void _handlePasswordVisibility(final bool value) => setState(() => _passwordVisibility = value);
 
   @override
   Widget build(final context) {
@@ -120,7 +120,8 @@ class _DsfrInputState extends State<DsfrInput> {
                 child: Text(
                   widget.hintText!,
                   style: widget.enabled
-                      ? (widget.hintStyle.copyWith(color: widget.hintColor ?? DsfrColorDecisions.textMentionGrey(context)))
+                      ? (widget.hintStyle
+                          .copyWith(color: widget.hintColor ?? DsfrColorDecisions.textMentionGrey(context)))
                       : widget.hintStyle.copyWith(color: DsfrColorDecisions.textDisabledGrey(context)),
                 ),
               ),
