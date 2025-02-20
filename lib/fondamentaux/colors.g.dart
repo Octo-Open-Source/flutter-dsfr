@@ -1163,7 +1163,7 @@ class DsfrColors {
 
   static const orangeTerreBattue125Active = Color(0xff7f5b51);
 
-  static const brownCafe_creme125Active = Color(0xff6b6351);
+  static const brownCafeCreme125Active = Color(0xff6b6351);
 
   static const brownCaramel125Active = Color(0xff755f51);
 

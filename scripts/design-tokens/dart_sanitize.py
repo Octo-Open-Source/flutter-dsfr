@@ -1,6 +1,6 @@
 
 def dart_function_name(dsfr_color_name: str) -> str:
-    name = dsfr_color_name.replace('$', '').replace('🔒', '')
+    name = dsfr_color_name.replace('$', '').replace('🔒', '').replace('_', '-')
     name = ''.join(
         word.capitalize()
         if i != 0 else word for i,
