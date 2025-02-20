@@ -1,6 +1,10 @@
-import 'package:flutter_dsfr/flutter_dsfr.dart';
 import 'package:example/page_item.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dsfr/composants/buttons/button.dart';
+import 'package:flutter_dsfr/composants/modal.dart';
+import 'package:flutter_dsfr/fondamentaux/color_decisions.g.dart';
+import 'package:flutter_dsfr/fondamentaux/fonts.dart';
+import 'package:flutter_dsfr/fondamentaux/spacing.g.dart';
 import 'package:flutter_dsfr/helpers/dsfr_component_size.dart';
 
 class ModalsPage extends StatelessWidget {
@@ -25,18 +29,18 @@ class ModalsPage extends StatelessWidget {
                 builder: (final context) => Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    const Text(
+                    Text(
                       'Veuillez confirmer la suppression du compte',
-                      style: DsfrTextStyle.headline4(color: DsfrColors.grey50),
+                      style: DsfrTextStyle.headline4(color: DsfrColorDecisions.textLabelGrey(context)),
                     ),
                     const SizedBox(height: DsfrSpacings.s2w),
-                    const Text(
+                    Text(
                       'Voulez-vous vraiment supprimer votre compte ainsi que les données associées ?',
-                      style: DsfrTextStyle.bodyMd(color: DsfrColors.grey50),
+                      style: DsfrTextStyle.bodyMd(color: DsfrColorDecisions.textLabelGrey(context)),
                     ),
-                    const Text(
+                    Text(
                       'Attention : Aucune donnée ne pourra être récupérée.',
-                      style: DsfrTextStyle.bodyMdBold(color: DsfrColors.grey50),
+                      style: DsfrTextStyle.bodyMdBold(color: DsfrColorDecisions.textLabelGrey(context)),
                     ),
                     const SizedBox(height: DsfrSpacings.s4w),
                     DsfrButton(

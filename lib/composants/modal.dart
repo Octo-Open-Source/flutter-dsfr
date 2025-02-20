@@ -1,8 +1,8 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_dsfr/composants/buttons/button.dart';
-import 'package:flutter_dsfr/fondamentaux/colors.g.dart';
+import 'package:flutter_dsfr/fondamentaux/color_decisions.g.dart';
 import 'package:flutter_dsfr/fondamentaux/icons.g.dart';
 import 'package:flutter_dsfr/fondamentaux/spacing.g.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_dsfr/helpers/dsfr_component_size.dart';
 
 class DsfrModal extends StatelessWidget {
@@ -21,10 +21,10 @@ class DsfrModal extends StatelessWidget {
       showModalBottomSheet<T>(
         context: context,
         builder: (final context) => DsfrModal(isDismissible: isDismissible, child: builder(context)),
-        backgroundColor: Colors.transparent,
+        backgroundColor: DsfrColorDecisions.backgroundTransparent(context),
         elevation: 0,
         shape: const RoundedRectangleBorder(),
-        barrierColor: DsfrColors.grey50.withValues(alpha: 0.64),
+        barrierColor: DsfrColorDecisions.backgroundTransparentActive(context),
         isScrollControlled: true,
         isDismissible: isDismissible,
         routeSettings: RouteSettings(name: name),
@@ -35,7 +35,7 @@ class DsfrModal extends StatelessWidget {
 
   @override
   Widget build(final context) => ColoredBox(
-        color: DsfrColors.grey1000,
+        color: DsfrColorDecisions.backgroundDefaultGrey(context),
         child: SafeArea(
           child: Padding(
             padding: const EdgeInsets.all(DsfrSpacings.s2w),
