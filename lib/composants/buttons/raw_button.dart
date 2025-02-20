@@ -85,14 +85,14 @@ class _DsfrRawButtonState extends State<DsfrRawButton>
 
   @override
   Widget build(final context) {
-    final _backgroundColor = DsfrButtonBackgroundColor.fromVariant(widget.variant, context);
-    final _foregroundColor = widget.foregroundColor == null
+    final backgroundColor = DsfrButtonBackgroundColor.fromVariant(widget.variant, context);
+    final foregroundColor = widget.foregroundColor == null
         ? DsfrButtonForegroundColor.fromVariant(widget.variant, context)
         : DsfrButtonForegroundColor(
       $default: widget.foregroundColor!,
       disabled: DsfrColorDecisions.textDisabledGrey(context),
     );
-    final _border = widget.foregroundColor == null
+    final border = widget.foregroundColor == null
         ? DsfrButtonBorder.fromVariant(widget.variant, context)
         : DsfrButtonBorder(
       $default: Border.fromBorderSide(
@@ -103,7 +103,7 @@ class _DsfrRawButtonState extends State<DsfrRawButton>
       ),
     );
 
-    final textColor = _foregroundColor.resolve(materialStates);
+    final textColor = foregroundColor.resolve(materialStates);
 
     return DsfrFocusWidget(
       isFocused: isFocused,
@@ -114,8 +114,8 @@ class _DsfrRawButtonState extends State<DsfrRawButton>
           constraints: BoxConstraints(minHeight: _minHeight),
           child: DecoratedBox(
             decoration: BoxDecoration(
-              color: _backgroundColor.resolve(materialStates),
-              border: _border.resolve(materialStates),
+              color: backgroundColor.resolve(materialStates),
+              border: border.resolve(materialStates),
               borderRadius: widget.borderRadius,
             ),
             child: Material(
