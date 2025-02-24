@@ -1,4 +1,4 @@
-import 'package:flutter_dsfr/fondamentaux/colors.g.dart';
+import 'package:flutter_dsfr/fondamentaux/color_decisions.g.dart';
 import 'package:flutter_dsfr/fondamentaux/fonts.dart';
 import 'package:flutter_dsfr/fondamentaux/icons.g.dart';
 import 'package:flutter_dsfr/fondamentaux/spacing.g.dart';
@@ -18,11 +18,11 @@ class DsfrNotice extends StatelessWidget {
 
   @override
   Widget build(final context) {
-    const color = DsfrColors.info425;
-    const textStyle = DsfrTextStyle.bodySm(color: color);
+    var color = DsfrColorDecisions.textDefaultInfo(context);
+    var textStyle = DsfrTextStyle.bodySm(color: color);
 
     return ColoredBox(
-      color: DsfrColors.info950,
+      color: DsfrColorDecisions.backgroundContrastInfo(context),
       child: Padding(
         padding: const EdgeInsets.only(
           left: DsfrSpacings.s2w,
@@ -35,10 +35,11 @@ class DsfrNotice extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.only(top: DsfrSpacings.s3v),
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Row(
                       children: [
-                        const Icon(DsfrIcons.systemFrInfoFill, color: color),
+                        Icon(DsfrIcons.systemFrInfoFill, color: color),
                         const SizedBox(width: DsfrSpacings.s1w),
                         Expanded(
                           child: Text(
@@ -59,7 +60,7 @@ class DsfrNotice extends StatelessWidget {
             IconButton(
               iconSize: DsfrSpacings.s2w,
               onPressed: onClose,
-              icon: const Icon(
+              icon: Icon(
                 DsfrIcons.systemCloseLine,
                 color: color,
                 semanticLabel: 'Masquer le message',

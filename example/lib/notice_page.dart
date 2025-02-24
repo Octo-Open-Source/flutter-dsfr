@@ -14,7 +14,7 @@ class NoticePage extends StatelessWidget {
   Widget build(final context) => ListView(
         children: [
           DsfrNotice(
-            titre: 'Titre du bandeau d\'information',
+            titre: 'Titre du bandeau',
             description: 'Texte de description lorem ipsum dolor sit amet, consectetur.',
             onClose: () {},
           )
