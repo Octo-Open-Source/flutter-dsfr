@@ -25,7 +25,7 @@ Placez ensuite le fichier dans ce dossier (en cas de doute, le path est présent
 
 Depuis la racine du projet, exécutez dans un terminal la commande :
 
-`python scripts/design-tokens/main.py`
+`python tools/design-tokens/main.py`
 
 ## Phase de corrections
 
