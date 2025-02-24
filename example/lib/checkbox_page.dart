@@ -54,6 +54,19 @@ class _CheckboxPageState extends State<CheckboxPage> {
             onChanged: (final value) {},
             enabled: false,
           ),
+          DsfrCheckbox.md(
+            label: 'medium size avec description',
+            description: 'Description',
+            value: true,
+            onChanged: (final value) {},
+          ),
+          DsfrCheckbox.md(
+            label: 'medium size avec description désactivé',
+            description: 'Description désactivé',
+            enabled: false,
+            value: true,
+            onChanged: (final value) {},
+          ),
         ],
       );
 }

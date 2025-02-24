@@ -11,6 +11,7 @@ class DsfrCheckbox extends StatelessWidget {
     super.key,
     required this.label,
     required this.value,
+    this.description,
     required this.onChanged,
     required this.padding,
     this.focusNode,
@@ -20,6 +21,7 @@ class DsfrCheckbox extends StatelessWidget {
   const DsfrCheckbox.sm({
     required final String label,
     required final bool value,
+    final String? description,
     required final ValueChanged<bool>? onChanged,
     final FocusNode? focusNode,
     final Key? key,
@@ -28,6 +30,7 @@ class DsfrCheckbox extends StatelessWidget {
           key: key,
           label: label,
           value: value,
+          description: description,
           onChanged: onChanged,
           padding: EdgeInsets.zero,
           focusNode: focusNode,
@@ -37,6 +40,7 @@ class DsfrCheckbox extends StatelessWidget {
   const DsfrCheckbox.md({
     required final String label,
     required final bool value,
+    final String? description,
     final ValueChanged<bool>? onChanged,
     final FocusNode? focusNode,
     final Key? key,
@@ -45,6 +49,7 @@ class DsfrCheckbox extends StatelessWidget {
           key: key,
           label: label,
           value: value,
+          description: description,
           onChanged: onChanged,
           padding: const EdgeInsets.all(DsfrSpacings.s1v),
           focusNode: focusNode,
@@ -53,6 +58,7 @@ class DsfrCheckbox extends StatelessWidget {
 
   final String label;
   final bool value;
+  final String? description;
   final ValueChanged<bool>? onChanged;
   final EdgeInsets padding;
   final FocusNode? focusNode;
@@ -63,12 +69,14 @@ class DsfrCheckbox extends StatelessWidget {
         enabled: enabled,
         checked: value,
         label: label,
+        hint: description,
         child: ExcludeSemantics(
           child: GestureDetector(
             onTap: (!enabled || onChanged == null) ? null : () => onChanged?.call(!value),
             behavior: HitTestBehavior.opaque,
             child: Row(
               mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Focus(
                   focusNode: focusNode,
@@ -93,16 +101,27 @@ class DsfrCheckbox extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(width: DsfrSpacings.s1w),
-                Flexible(
-                  child: Text(
-                    label,
-                    style: DsfrTextStyle.bodyMd(
-                      color: enabled
-                          ? DsfrColorDecisions.textLabelGrey(context)
-                          : DsfrColorDecisions.textDisabledGrey(context),
-                    ),
-                  ),
-                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                      Text(
+                        label,
+                        style: DsfrTextStyle.bodyMd(
+                          color: enabled
+                              ? DsfrColorDecisions.textLabelGrey(context)
+                              : DsfrColorDecisions.textDisabledGrey(context),
+                        ),
+                      ),
+                    if (description != null) ...[
+                      Text(
+                        description!,
+                        style: enabled
+                            ? DsfrTextStyle.bodyXs(color: DsfrColorDecisions.textMentionGrey(context))
+                            : DsfrTextStyle.bodyXs(color: DsfrColorDecisions.textDisabledGrey(context))
+                      ),
+                    ],
+                  ],
+                )
               ],
             ),
           ),
