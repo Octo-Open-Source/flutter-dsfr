@@ -23,10 +23,12 @@ class ComposantStateWidget extends StatelessWidget {
         children: [
           ComposantStateIcon(state: composantState.state),
           const SizedBox(width: DsfrSpacings.s1v),
-          Text(
-            composantState.text!,
-            style: DsfrTextStyle.bodyXs(
-              color: getTextColor(context, composantState.state),
+          Flexible(
+            child: Text(
+              composantState.text!,
+              style: DsfrTextStyle.bodyXs(
+                color: getTextColor(context, composantState.state),
+              ),
             ),
           ),
         ],
@@ -42,10 +44,10 @@ class ComposantStateIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Icon(getIcon(), color: getIconColor(context));
+    return Icon(_getIcon(), color: _getIconColor(context));
   }
 
-  Color getIconColor(BuildContext context) {
+  Color _getIconColor(BuildContext context) {
     switch (state) {
       case ComposantStateEnum.error:
         return DsfrColorDecisions.borderPlainError(context);
@@ -53,12 +55,14 @@ class ComposantStateIcon extends StatelessWidget {
         return DsfrColorDecisions.borderPlainSuccess(context);
       case ComposantStateEnum.info:
         return DsfrColorDecisions.borderPlainInfo(context);
+      case ComposantStateEnum.warning:
+        return DsfrColorDecisions.backgroundFlatWarning(context);
       case ComposantStateEnum.none:
         return DsfrColorDecisions.borderPlainGrey(context);
     }
   }
 
-  IconData getIcon() {
+  IconData _getIcon() {
     switch (state) {
       case ComposantStateEnum.error:
         return DsfrIcons.systemFrErrorFill;
@@ -66,6 +70,8 @@ class ComposantStateIcon extends StatelessWidget {
         return DsfrIcons.systemFrSuccessFill;
       case ComposantStateEnum.info:
         return DsfrIcons.systemFrInfoFill;
+      case ComposantStateEnum.warning:
+        return DsfrIcons.systemFrWarningFill;
       case ComposantStateEnum.none:
         return DsfrIcons.systemFrErrorFill;
     }

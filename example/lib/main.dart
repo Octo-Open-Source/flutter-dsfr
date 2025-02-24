@@ -3,7 +3,6 @@ import 'package:example/accordions_page.dart';
 import 'package:example/buttons_page.dart';
 import 'package:example/checkbox_page.dart';
 import 'package:example/colors_page.dart';
-import 'package:example/form_messages_page.dart';
 import 'package:example/icons_page.dart';
 import 'package:example/inputs_page.dart';
 import 'package:example/links_page.dart';
@@ -61,7 +60,6 @@ class _MyAppState extends State<MyApp> {
               CheckboxPage.model,
               ColorsPage.model,
               SelectPage.model,
-              FormMessagesPage.model,
               IconsPage.model,
               InputsPage.model,
               LinksPage.model,

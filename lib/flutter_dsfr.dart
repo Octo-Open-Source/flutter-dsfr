@@ -5,7 +5,6 @@ export 'composants/buttons/button_border.dart';
 export 'composants/checkbox.dart';
 export 'composants/checkbox_icon.dart';
 export 'composants/divider.dart';
-export 'composants/form_message.dart';
 export 'composants/input.dart';
 export 'composants/input_headless.dart';
 export 'composants/link.dart';

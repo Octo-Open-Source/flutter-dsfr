@@ -2,6 +2,7 @@ enum ComposantStateEnum {
   error,
   success,
   info,
+  warning,
   none,
 }
 

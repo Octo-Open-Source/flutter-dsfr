@@ -10,6 +10,8 @@ Color getTextColor(BuildContext context, ComposantStateEnum composantStateEnum, 
       return DsfrColorDecisions.textDefaultSuccess(context);
     case ComposantStateEnum.info:
       return DsfrColorDecisions.textDefaultInfo(context);
+    case ComposantStateEnum.warning:
+      return DsfrColorDecisions.textDefaultWarning(context);
     case ComposantStateEnum.none:
       return DsfrColorDecisions.textDefaultGrey(context);
   }
