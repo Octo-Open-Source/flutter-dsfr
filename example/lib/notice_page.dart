@@ -6,7 +6,7 @@ class NoticePage extends StatelessWidget {
   const NoticePage({super.key});
 
   static final model = PageItem(
-    title: 'NOTICE ?',
+    title: 'Bandeaux d\'information',
     pageBuilder: (final context) => const NoticePage(),
   );
 
