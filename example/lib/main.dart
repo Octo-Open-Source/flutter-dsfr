@@ -9,6 +9,7 @@ import 'package:example/inputs_page.dart';
 import 'package:example/links_page.dart';
 import 'package:example/master_page.dart';
 import 'package:example/modals_page.dart';
+import 'package:example/notice_page.dart';
 import 'package:example/radios_page.dart';
 import 'package:example/sandbox_page.dart';
 import 'package:example/select_page.dart';
@@ -69,6 +70,7 @@ class _MyAppState extends State<MyApp> {
               RadiosPage.model,
               TagsPage.model,
               TogglesPage.model,
+              NoticePage.model,
             ],
           ),
           builder: (final context, final child) => AccessibilityTools(child: child),
