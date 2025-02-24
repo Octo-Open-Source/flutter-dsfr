@@ -36,54 +36,60 @@ class DsfrNotice extends StatelessWidget {
     var color = _getTextColor(context);
     var textStyle = DsfrTextStyle.bodySm(color: color);
 
-    return ColoredBox(
-      color: _getBackgroundColor(context),
-      child: Padding(
-        padding: const EdgeInsets.only(
-          left: DsfrSpacings.s2w,
-          bottom: DsfrSpacings.s2w,
-        ),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.only(top: DsfrSpacings.s3v),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
+    return Column(
+      children: [
+        _isAlertType() ? Divider(thickness: 6, color: _getLineColor(context), height: 0) : const SizedBox.shrink(),
+        ColoredBox(
+          color: _getBackgroundColor(context),
+          child: Padding(
+            padding: const EdgeInsets.only(
+              left: DsfrSpacings.s2w,
+              bottom: DsfrSpacings.s2w,
+              top: 0,
+            ),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: DsfrSpacings.s3v),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Icon(_getIcon(), color: color),
-                        const SizedBox(width: DsfrSpacings.s1w),
-                        Expanded(
-                          child: Text(
-                            titre,
-                            style: textStyle.copyWith(
-                              fontWeight: FontWeight.bold,
+                        Row(
+                          children: [
+                            Icon(_getIcon(), color: color),
+                            const SizedBox(width: DsfrSpacings.s1w),
+                            Expanded(
+                              child: Text(
+                                titre,
+                                style: textStyle.copyWith(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
                             ),
-                          ),
+                          ],
                         ),
+                        Text(description, style: textStyle),
                       ],
                     ),
-                    Text(description, style: textStyle),
-                  ],
+                  ),
                 ),
-              ),
+                const SizedBox(width: DsfrSpacings.s1w),
+                IconButton(
+                  iconSize: DsfrSpacings.s2w,
+                  onPressed: onClose,
+                  icon: Icon(
+                    DsfrIcons.systemCloseLine,
+                    color: color,
+                    semanticLabel: 'Masquer le message',
+                  ),
+                ),
+              ],
             ),
-            const SizedBox(width: DsfrSpacings.s1w),
-            IconButton(
-              iconSize: DsfrSpacings.s2w,
-              onPressed: onClose,
-              icon: Icon(
-                DsfrIcons.systemCloseLine,
-                color: color,
-                semanticLabel: 'Masquer le message',
-              ),
-            ),
-          ],
+          ),
         ),
-      ),
+      ],
     );
   }
 
@@ -105,7 +111,7 @@ class DsfrNotice extends StatelessWidget {
         return DsfrIcons.systemFrAlertWarning2Fill;
       case DsfrNoticeType.alertCallForWitnesses:
       case DsfrNoticeType.alertTechnology:
-      return DsfrIcons.systemFrWarningFill;
+        return DsfrIcons.systemFrWarningFill;
     }
   }
 
@@ -147,6 +153,24 @@ class DsfrNotice extends StatelessWidget {
       case DsfrNoticeType.alertCallForWitnesses:
       case DsfrNoticeType.alertTechnology:
         return DsfrColorDecisions.textInvertedGrey(context);
+    }
+  }
+
+  bool _isAlertType() =>
+      type == DsfrNoticeType.alertAttack ||
+      type == DsfrNoticeType.alertCallForWitnesses ||
+      type == DsfrNoticeType.alertTechnology;
+
+  Color _getLineColor(context) {
+    switch (type) {
+      case DsfrNoticeType.alertAttack:
+        return DsfrColorDecisions.borderPlainGrey(context);
+      case DsfrNoticeType.alertCallForWitnesses:
+        return DsfrColorDecisions.borderPlainError(context);
+      case DsfrNoticeType.alertTechnology:
+        return DsfrColorDecisions.borderPlainInfo(context);
+      default:
+        return DsfrColorDecisions.backgroundTransparent(context);
     }
   }
 }
