@@ -54,7 +54,7 @@ class DsfrNotice extends StatelessWidget {
                   children: [
                     Row(
                       children: [
-                        Icon(DsfrIcons.systemFrInfoFill, color: color),
+                        Icon(_getIcon(), color: color),
                         const SizedBox(width: DsfrSpacings.s1w),
                         Expanded(
                           child: Text(
@@ -85,6 +85,28 @@ class DsfrNotice extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  IconData _getIcon() {
+    switch (type) {
+      case DsfrNoticeType.genericInfo:
+        return DsfrIcons.systemFrInfoFill;
+      case DsfrNoticeType.genericWarning:
+        return DsfrIcons.systemFrWarningFill;
+      case DsfrNoticeType.genericAlert:
+        return DsfrIcons.systemErrorWarningFill;
+      case DsfrNoticeType.weatherOrange:
+        return DsfrIcons.weatherHeavyShowersFill;
+      case DsfrNoticeType.weatherRed:
+        return DsfrIcons.weatherTornadoFill;
+      case DsfrNoticeType.weatherPurple:
+        return DsfrIcons.weatherTyphoonFill;
+      case DsfrNoticeType.alertAttack:
+        return DsfrIcons.systemFrAlertWarning2Fill;
+      case DsfrNoticeType.alertCallForWitnesses:
+      case DsfrNoticeType.alertTechnology:
+      return DsfrIcons.systemFrWarningFill;
+    }
   }
 
   Color _getBackgroundColor(BuildContext context) {
