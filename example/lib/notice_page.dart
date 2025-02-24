@@ -33,7 +33,7 @@ class NoticePage extends StatelessWidget {
               type: DsfrNoticeType.genericAlert,
               onClose: () {},
             ),
-            Text('Bandeau vigilance météo'),
+            Text('Bandeaux vigilance météo'),
             DsfrNotice(
               titre: 'Titre du bandeau',
               description: 'Texte de description lorem ipsum dolor sit amet, consectetur.',
@@ -52,7 +52,7 @@ class NoticePage extends StatelessWidget {
               type: DsfrNoticeType.weatherPurple,
               onClose: () {},
             ),
-            Text('Bandeau d\'alerte'),
+            Text('Bandeaux d\'alerte'),
             DsfrNotice(
               titre: 'Titre du bandeau',
               description: 'Texte de description lorem ipsum dolor sit amet, consectetur.',
