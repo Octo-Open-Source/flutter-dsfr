@@ -1,28 +1,43 @@
 import 'package:flutter_dsfr/fondamentaux/color_decisions.g.dart';
+import 'package:flutter_dsfr/fondamentaux/color_decisions_extension.dart';
 import 'package:flutter_dsfr/fondamentaux/fonts.dart';
 import 'package:flutter_dsfr/fondamentaux/icons.g.dart';
 import 'package:flutter_dsfr/fondamentaux/spacing.g.dart';
 import 'package:flutter/material.dart';
+
+enum DsfrNoticeType {
+  genericInfo,
+  genericWarning,
+  genericAlert,
+  weatherOrange,
+  weatherRed,
+  weatherPurple,
+  alertAttack,
+  alertCallForWitnesses,
+  alertTechnology,
+}
 
 class DsfrNotice extends StatelessWidget {
   const DsfrNotice({
     super.key,
     required this.titre,
     required this.description,
+    this.type = DsfrNoticeType.genericInfo,
     required this.onClose,
   });
 
   final String titre;
   final String description;
+  final DsfrNoticeType type;
   final VoidCallback? onClose;
 
   @override
   Widget build(final context) {
-    var color = DsfrColorDecisions.textDefaultInfo(context);
+    var color = _getTextColor(context);
     var textStyle = DsfrTextStyle.bodySm(color: color);
 
     return ColoredBox(
-      color: DsfrColorDecisions.backgroundContrastInfo(context),
+      color: _getBackgroundColor(context),
       child: Padding(
         padding: const EdgeInsets.only(
           left: DsfrSpacings.s2w,
@@ -70,5 +85,46 @@ class DsfrNotice extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Color _getBackgroundColor(BuildContext context) {
+    switch (type) {
+      case DsfrNoticeType.genericInfo:
+        return DsfrColorDecisions.backgroundContrastInfo(context);
+      case DsfrNoticeType.genericWarning:
+        return DsfrColorDecisions.backgroundContrastWarning(context);
+      case DsfrNoticeType.genericAlert:
+        return DsfrColorDecisions.backgroundContrastError(context);
+      case DsfrNoticeType.weatherOrange:
+        return DsfrColorDecisions.backgroundContrastWarning(context);
+      case DsfrNoticeType.weatherRed:
+        return DsfrColorDecisions.backgroundFlatError(context);
+      case DsfrNoticeType.weatherPurple:
+        return DsfrColorDecisionsExtension.backgroundGlycine(context);
+      case DsfrNoticeType.alertAttack:
+        return DsfrColorDecisions.backgroundFlatError(context);
+      case DsfrNoticeType.alertCallForWitnesses:
+      case DsfrNoticeType.alertTechnology:
+        return DsfrColorDecisions.backgroundFlatGrey(context);
+    }
+  }
+
+  Color _getTextColor(BuildContext context) {
+    switch (type) {
+      case DsfrNoticeType.genericInfo:
+        return DsfrColorDecisions.textDefaultInfo(context);
+      case DsfrNoticeType.genericWarning:
+        return DsfrColorDecisions.textDefaultWarning(context);
+      case DsfrNoticeType.genericAlert:
+        return DsfrColorDecisions.textActionHighError(context);
+      case DsfrNoticeType.weatherOrange:
+        return DsfrColorDecisions.textActionHighWarning(context);
+      case DsfrNoticeType.weatherRed:
+      case DsfrNoticeType.weatherPurple:
+      case DsfrNoticeType.alertAttack:
+      case DsfrNoticeType.alertCallForWitnesses:
+      case DsfrNoticeType.alertTechnology:
+        return DsfrColorDecisions.textInvertedGrey(context);
+    }
   }
 }

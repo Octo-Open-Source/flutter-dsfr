@@ -11,13 +11,67 @@ class NoticePage extends StatelessWidget {
   );
 
   @override
-  Widget build(final context) => ListView(
-        children: [
-          DsfrNotice(
-            titre: 'Titre du bandeau',
-            description: 'Texte de description lorem ipsum dolor sit amet, consectetur.',
-            onClose: () {},
-          )
-        ],
-      );
+  Widget build(final context) => SingleChildScrollView(
+    child: Column(
+          spacing: 12,
+          children: [
+            Text('Bandeaux génériques'),
+            DsfrNotice(
+              titre: 'Titre du bandeau',
+              description: 'Texte de description lorem ipsum dolor sit amet, consectetur.',
+              onClose: () {},
+            ),
+            DsfrNotice(
+              titre: 'Titre du bandeau',
+              description: 'Texte de description lorem ipsum dolor sit amet, consectetur.',
+              type: DsfrNoticeType.genericWarning,
+              onClose: () {},
+            ),
+            DsfrNotice(
+              titre: 'Titre du bandeau',
+              description: 'Texte de description lorem ipsum dolor sit amet, consectetur.',
+              type: DsfrNoticeType.genericAlert,
+              onClose: () {},
+            ),
+            Text('Bandeau vigilance météo'),
+            DsfrNotice(
+              titre: 'Titre du bandeau',
+              description: 'Texte de description lorem ipsum dolor sit amet, consectetur.',
+              type: DsfrNoticeType.weatherOrange,
+              onClose: () {},
+            ),
+            DsfrNotice(
+              titre: 'Titre du bandeau',
+              description: 'Texte de description lorem ipsum dolor sit amet, consectetur.',
+              type: DsfrNoticeType.weatherRed,
+              onClose: () {},
+            ),
+            DsfrNotice(
+              titre: 'Titre du bandeau',
+              description: 'Texte de description lorem ipsum dolor sit amet, consectetur.',
+              type: DsfrNoticeType.weatherPurple,
+              onClose: () {},
+            ),
+            Text('Bandeau d\'alerte'),
+            DsfrNotice(
+              titre: 'Titre du bandeau',
+              description: 'Texte de description lorem ipsum dolor sit amet, consectetur.',
+              type: DsfrNoticeType.alertAttack,
+              onClose: () {},
+            ),
+            DsfrNotice(
+              titre: 'Titre du bandeau',
+              description: 'Texte de description lorem ipsum dolor sit amet, consectetur.',
+              type: DsfrNoticeType.alertCallForWitnesses,
+              onClose: () {},
+            ),
+            DsfrNotice(
+              titre: 'Titre du bandeau',
+              description: 'Texte de description lorem ipsum dolor sit amet, consectetur.',
+              type: DsfrNoticeType.alertTechnology,
+              onClose: () {},
+            ),
+          ],
+        ),
+  );
 }
