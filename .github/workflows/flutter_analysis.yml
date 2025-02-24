@@ -17,4 +17,7 @@ jobs:
 
       - name: Analyze project source
         run: flutter analyze
+
+      - name: Run custom linters
+        run: flutter pub run custom_lint
         
