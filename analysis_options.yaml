@@ -7,3 +7,7 @@ linter:
   rules:
     always_declare_return_types: true
     always_use_package_imports: true
+
+analyzer:
+  plugins:
+    - custom_lint

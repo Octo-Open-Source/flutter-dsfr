@@ -1,18 +1,16 @@
 name: dsfr_lints
 description: "A custom linter for DSFR Flutter."
-version: 0.0.1
+version: 0.1.0
 
 environment:
   sdk: ^3.6.2
   flutter: ">=1.17.0"
 
 dependencies:
-  flutter:
-    sdk: flutter
+  analyzer: ^7.3.0
+  custom_lint_builder: ^0.7.3
 
 dev_dependencies:
-  flutter_test:
-    sdk: flutter
   flutter_lints: ^5.0.0
 
 flutter:
