@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_using_color_decision
+
 import 'dart:ui';
 
 class DsfrColors {
