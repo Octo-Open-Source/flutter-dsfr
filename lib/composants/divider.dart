@@ -6,6 +6,7 @@ class DsfrDivider extends StatelessWidget {
     super.key,
     this.width,
     this.height = 1,
+    // ignore: prefer_using_color_decision
     this.color = DsfrColors.grey900,
     this.alignment = Alignment.center,
   });

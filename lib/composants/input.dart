@@ -22,6 +22,7 @@ class DsfrInput extends StatefulWidget {
     this.validator,
     this.width,
     this.labelColor,
+    // ignore: prefer_using_color_decision
     this.hintStyle = const DsfrTextStyle.bodyXs(color: DsfrColors.grey50),
     this.hintColor,
     this.inputColor,

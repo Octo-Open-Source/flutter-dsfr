@@ -33,6 +33,7 @@ class DsfrInputHeadless extends StatefulWidget {
     this.inputBorderColor,
     this.inputBorderWidth = DsfrSpacings.s0v5,
     this.inputConstraints = const BoxConstraints(maxHeight: DsfrSpacings.s6w),
+    // ignore: prefer_using_color_decision
     this.focusColor = DsfrColors.focus525,
     this.focusThickness = DsfrSpacings.s0v5,
     this.focusPadding = const EdgeInsets.all(DsfrSpacings.s0v5),
@@ -115,6 +116,7 @@ class _DsfrInputHeadlessState extends State<DsfrInputHeadless> {
       decoration: BoxDecoration(
         border: Border.fromBorderSide(
           BorderSide(
+            // ignore: prefer_using_color_decision
             color: _isFocused ? widget.focusColor : Colors.transparent,
             width: widget.focusThickness,
             strokeAlign: BorderSide.strokeAlignOutside,
@@ -125,8 +127,7 @@ class _DsfrInputHeadlessState extends State<DsfrInputHeadless> {
         ),
       ),
       child: Padding(
-        padding: widget.focusPadding
-            .add(EdgeInsets.only(bottom: widget.inputBorderWidth)),
+        padding: widget.focusPadding.add(EdgeInsets.only(bottom: widget.inputBorderWidth)),
         child: SizedBox(
           width: widget.width,
           child: TextFormField(
@@ -161,8 +162,7 @@ class _DsfrInputHeadlessState extends State<DsfrInputHeadless> {
             maxLines: widget.maxLines,
             minLines: widget.minLines,
             onChanged: widget.onChanged,
-            onTapOutside: (final event) =>
-                FocusManager.instance.primaryFocus?.unfocus(),
+            onTapOutside: (final event) => FocusManager.instance.primaryFocus?.unfocus(),
             onFieldSubmitted: widget.onFieldSubmitted,
             validator: widget.validator,
             inputFormatters: widget.inputFormatters,
