@@ -1,5 +1,4 @@
-import 'package:flutter_dsfr/atoms/composant_state_widget.dart';
-import 'package:flutter_dsfr/atoms/vertical_bar_widget.dart';
+import 'package:flutter_dsfr/atoms/dsfr_form_state.dart';
 import 'package:flutter_dsfr/composants/radios/dsfr_radio_rich_button_set_headless.dart';
 import 'package:flutter_dsfr/fondamentaux/color_decisions.g.dart';
 import 'package:flutter_dsfr/fondamentaux/fonts.dart';
@@ -27,42 +26,34 @@ class DsfrRadioRichButtonSet<T> extends StatelessWidget {
   final ComposantState composantState;
 
   @override
-  Widget build(final context) => IntrinsicHeight(
-        child: Row(
-          children: [
-            VerticalBarWidget(composantState: composantState),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    title,
-                    style: DsfrTextStyle.bodyMd(
-                      color: getTextColor(
-                        context,
-                        composantState.state,
-                        defaultColor: DsfrColorDecisions.textLabelGrey(context),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: DsfrSpacings.s1w),
-                  DsfrRadioRichButtonSetHeadless(
-                    values: values.map(
-                      (final key, final value) => MapEntry(key, DsfrRadioButtonItem(value)),
-                    ),
-                    onCallback: onCallback,
-                    initialValue: initialValue,
-                    enabled: enabled,
-                    state: composantState.state,
-                  ),
-                  if (composantState.state != ComposantStateEnum.none) ...[
-                    const SizedBox(height: DsfrSpacings.s2w),
-                    ComposantStateWidget(composantState: composantState),
-                  ],
-                ],
+  Widget build(final context) {
+    return DsfrFormState(
+      composantState: composantState,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            title,
+            style: DsfrTextStyle.bodyMd(
+              color: getTextColor(
+                context,
+                composantState.state,
+                defaultColor: DsfrColorDecisions.textLabelGrey(context),
               ),
             ),
-          ],
-        ),
-      );
+          ),
+          const SizedBox(height: DsfrSpacings.s1w),
+          DsfrRadioRichButtonSetHeadless(
+            values: values.map(
+              (final key, final value) => MapEntry(key, DsfrRadioButtonItem(value)),
+            ),
+            onCallback: onCallback,
+            initialValue: initialValue,
+            enabled: enabled,
+            state: composantState.state,
+          ),
+        ],
+      ),
+    );
+  }
 }
