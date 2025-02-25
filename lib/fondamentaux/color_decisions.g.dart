@@ -284,6 +284,7 @@ class DsfrColorDecisions {
   }
 
   static Color textLabelGrey(BuildContext context) {
+    print('isLightMode(context) : ${isLightMode(context)}');
     return isLightMode(context) ? DsfrColors.grey50 : DsfrColors.grey1000;
   }
 
