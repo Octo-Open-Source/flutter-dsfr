@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_dsfr/fondamentaux/colors.g.dart';
+import 'package:flutter_dsfr/fondamentaux/color_decisions_extension.dart';
 import 'package:flutter_dsfr/fondamentaux/spacing.g.dart';
 
 class DsfrFocusWidget extends StatelessWidget {
@@ -18,10 +18,9 @@ class DsfrFocusWidget extends StatelessWidget {
   Widget build(final BuildContext context) => DecoratedBox(
         decoration: BoxDecoration(
           border: isFocused
-              ? const Border.fromBorderSide(
+              ? Border.fromBorderSide(
                   BorderSide(
-                    // ignore: prefer_using_color_decision
-                    color: DsfrColors.focus525,
+                    color: DsfrColorDecisionsExtension.focus525(context),
                     width: DsfrSpacings.s0v5,
                     strokeAlign: BorderSide.strokeAlignOutside,
                   ),

@@ -3,7 +3,6 @@
 import 'package:flutter_dsfr/composants/checkbox.dart';
 import 'package:flutter_dsfr/composants/input_headless.dart';
 import 'package:flutter_dsfr/fondamentaux/color_decisions.g.dart';
-import 'package:flutter_dsfr/fondamentaux/colors.g.dart';
 import 'package:flutter_dsfr/fondamentaux/fonts.dart';
 import 'package:flutter_dsfr/fondamentaux/spacing.g.dart';
 import 'package:flutter/material.dart';
@@ -22,8 +21,7 @@ class DsfrInput extends StatefulWidget {
     this.validator,
     this.width,
     this.labelColor,
-    // ignore: prefer_using_color_decision
-    this.hintStyle = const DsfrTextStyle.bodyXs(color: DsfrColors.grey50),
+    this.hintStyle,
     this.hintColor,
     this.inputColor,
     this.textAlign = TextAlign.start,
@@ -50,7 +48,7 @@ class DsfrInput extends StatefulWidget {
 
   final double? width;
   final Color? labelColor;
-  final TextStyle hintStyle;
+  final TextStyle? hintStyle;
   final Color? hintColor;
   final Color? inputColor;
   final TextAlign textAlign;
@@ -85,6 +83,8 @@ class _DsfrInputState extends State<DsfrInput> {
             : DsfrTextStyle.bodyMd(color: DsfrColorDecisions.textDisabledGrey(context)),
       ),
     );
+
+    final hintStyle = widget.hintStyle ?? DsfrTextStyle.bodyXs(color: DsfrColorDecisions.textLabelGrey(context));
 
     if (widget.isPasswordMode) {
       label = Row(
@@ -121,9 +121,8 @@ class _DsfrInputState extends State<DsfrInput> {
                 child: Text(
                   widget.hintText!,
                   style: widget.enabled
-                      ? (widget.hintStyle
-                          .copyWith(color: widget.hintColor ?? DsfrColorDecisions.textMentionGrey(context)))
-                      : widget.hintStyle.copyWith(color: DsfrColorDecisions.textDisabledGrey(context)),
+                      ? (hintStyle.copyWith(color: widget.hintColor ?? DsfrColorDecisions.textMentionGrey(context)))
+                      : hintStyle.copyWith(color: DsfrColorDecisions.textDisabledGrey(context)),
                 ),
               ),
             ],

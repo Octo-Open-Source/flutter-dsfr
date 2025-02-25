@@ -8,4 +8,8 @@ extension DsfrColorDecisionsExtension on DsfrColorDecisions {
   static Color backgroundGlycine(BuildContext context) {
     return DsfrColorDecisions.isLightMode(context) ? DsfrColors.purpleGlycineSun319 : DsfrColors.purpleGlycineMoon630;
   }
+
+  static Color focus525(BuildContext context) {
+    return DsfrColors.focus525;
+  }
 }

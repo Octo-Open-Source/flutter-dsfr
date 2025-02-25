@@ -1,5 +1,6 @@
 // ignore_for_file: prefer-correct-callback-field-name
-import 'package:flutter_dsfr/fondamentaux/colors.g.dart';
+
+import 'package:flutter_dsfr/fondamentaux/color_decisions_extension.dart';
 import 'package:flutter_dsfr/fondamentaux/fonts.dart';
 import 'package:flutter_dsfr/fondamentaux/spacing.g.dart';
 import 'package:flutter/material.dart';
@@ -33,8 +34,6 @@ class DsfrInputHeadless extends StatefulWidget {
     this.inputBorderColor,
     this.inputBorderWidth = DsfrSpacings.s0v5,
     this.inputConstraints = const BoxConstraints(maxHeight: DsfrSpacings.s6w),
-    // ignore: prefer_using_color_decision
-    this.focusColor = DsfrColors.focus525,
     this.focusThickness = DsfrSpacings.s0v5,
     this.focusPadding = const EdgeInsets.all(DsfrSpacings.s0v5),
     this.inputFormatters,
@@ -66,7 +65,6 @@ class DsfrInputHeadless extends StatefulWidget {
   final BoxConstraints? inputConstraints;
   final Color? fillColor;
   final double radius;
-  final Color focusColor;
   final double focusThickness;
   final EdgeInsetsGeometry focusPadding;
   final List<TextInputFormatter>? inputFormatters;
@@ -116,8 +114,9 @@ class _DsfrInputHeadlessState extends State<DsfrInputHeadless> {
       decoration: BoxDecoration(
         border: Border.fromBorderSide(
           BorderSide(
-            // ignore: prefer_using_color_decision
-            color: _isFocused ? widget.focusColor : Colors.transparent,
+            color: _isFocused
+                ? DsfrColorDecisionsExtension.focus525(context)
+                : DsfrColorDecisions.backgroundTransparent(context),
             width: widget.focusThickness,
             strokeAlign: BorderSide.strokeAlignOutside,
           ),

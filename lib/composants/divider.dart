@@ -1,19 +1,18 @@
-import 'package:flutter_dsfr/fondamentaux/colors.g.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dsfr/fondamentaux/color_decisions.g.dart';
 
 class DsfrDivider extends StatelessWidget {
   const DsfrDivider({
     super.key,
     this.width,
     this.height = 1,
-    // ignore: prefer_using_color_decision
-    this.color = DsfrColors.grey900,
+    this.color,
     this.alignment = Alignment.center,
   });
 
   final double? width;
   final double height;
-  final Color color;
+  final Color? color;
   final AlignmentGeometry alignment;
 
   @override
@@ -21,7 +20,11 @@ class DsfrDivider extends StatelessWidget {
         alignment: alignment,
         child: SizedBox(
           width: width,
-          child: Divider(height: height, thickness: height, color: color),
+          child: Divider(
+            height: height,
+            thickness: height,
+            color: color ?? DsfrColorDecisions.borderDefaultGrey(context),
+          ),
         ),
       );
 }
