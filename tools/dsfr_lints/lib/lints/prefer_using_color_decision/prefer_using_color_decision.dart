@@ -1,13 +1,16 @@
+import 'package:analyzer/error/error.dart' as error;
 import 'package:analyzer/error/listener.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
 
 class PreferUsingColorDecision extends DartLintRule {
-  const PreferUsingColorDecision() : super(code: _code);
-
-  static const _code = LintCode(
-    name: 'prefer_using_color_decision',
-    problemMessage: 'You should use a color decision instead of a color. See `DsfrColorDecisions` class.',
-  );
+  const PreferUsingColorDecision()
+      : super(
+          code: const LintCode(
+            name: 'prefer_using_color_decision',
+            problemMessage: 'You should use a color decision instead of a color. See `DsfrColorDecisions` class.',
+            errorSeverity: error.ErrorSeverity.WARNING,
+          ),
+        );
 
   @override
   void run(
@@ -15,14 +18,23 @@ class PreferUsingColorDecision extends DartLintRule {
     ErrorReporter reporter,
     CustomLintContext context,
   ) {
-    // Our lint will highlight all variable declarations with our custom warning.
-    context.registry.addVariableDeclaration((node) {
-      // "node" exposes metadata about the variable declaration. We could
-      // check "node" to show the lint only in some conditions.
+    context.registry.addPrefixedIdentifier((node) {
+      final prefix = node.prefix.name;
 
-      // This line tells custom_lint to render a warning at the location of "node".
-      // And the warning shown will use our `code` variable defined above as description.
-      reporter.atNode(node, code);
+      if (prefix == 'Colors' || prefix == 'DsfrColors') {
+        reporter.atNode(node, code);
+      }
+    });
+
+    context.registry.addConstructorName((node) {
+      var staticElement = node.staticElement;
+      if (staticElement != null) {
+        var className = staticElement.enclosingElement3.name;
+        var classDisplayName = staticElement.enclosingElement3.displayName;
+        if (className == 'Color' || classDisplayName == 'Color') {
+          reporter.atNode(node, code);
+        }
+      }
     });
   }
 }
