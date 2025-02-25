@@ -1,6 +1,7 @@
 import 'package:flutter_dsfr/flutter_dsfr.dart';
 import 'package:example/page_item.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dsfr/helpers/composant_state.dart';
 
 class CheckboxPage extends StatefulWidget {
   const CheckboxPage({super.key});
@@ -19,54 +20,77 @@ class _CheckboxPageState extends State<CheckboxPage> {
   bool _value2 = false;
 
   @override
-  Widget build(final context) => ListView(
+  Widget build(final context) => SingleChildScrollView(
         padding: const EdgeInsets.all(16),
-        children: [
-          DsfrCheckbox.sm(
-            label: 'small size',
-            value: _value,
-            onChanged: (final value) => setState(() {
-              _value = value;
-            }),
-          ),
-          const DsfrCheckbox.sm(
-            label: 'état désactivé non coché',
-            value: false,
-            onChanged: null,
-            enabled: false,
-          ),
-          const DsfrCheckbox.sm(
-            label: 'état désactivé coché',
-            value: true,
-            onChanged: null,
-            enabled: false,
-          ),
-          DsfrCheckbox.md(
-            label: 'medium size',
-            value: _value2,
-            onChanged: (final value) => setState(() {
-              _value2 = value;
-            }),
-          ),
-          DsfrCheckbox.md(
-            label: 'medium size désactivé',
-            value: true,
-            onChanged: (final value) {},
-            enabled: false,
-          ),
-          DsfrCheckbox.md(
-            label: 'medium size avec description',
-            description: 'Description',
-            value: true,
-            onChanged: (final value) {},
-          ),
-          DsfrCheckbox.md(
-            label: 'medium size avec description désactivé',
-            description: 'Description désactivé',
-            enabled: false,
-            value: true,
-            onChanged: (final value) {},
-          ),
-        ],
+        child: Column(
+          spacing: 16,
+          children: [
+            DsfrCheckbox.sm(
+              label: 'small size',
+              value: _value,
+              onChanged: (final value) => setState(() {
+                _value = value;
+              }),
+            ),
+            const DsfrCheckbox.sm(
+              label: 'état désactivé non coché',
+              value: false,
+              onChanged: null,
+              enabled: false,
+            ),
+            const DsfrCheckbox.sm(
+              label: 'état désactivé coché',
+              value: true,
+              onChanged: null,
+              enabled: false,
+            ),
+            DsfrCheckbox.md(
+              label: 'medium size',
+              value: _value2,
+              onChanged: (final value) => setState(() {
+                _value2 = value;
+              }),
+            ),
+            DsfrCheckbox.md(
+              label: 'medium size désactivé',
+              value: true,
+              onChanged: (final value) {},
+              enabled: false,
+            ),
+            DsfrCheckbox.md(
+              label: 'medium size avec description',
+              description: 'Description',
+              value: true,
+              onChanged: (final value) {},
+            ),
+            DsfrCheckbox.md(
+              label: 'medium size avec description désactivé',
+              description: 'Description désactivé',
+              enabled: false,
+              value: true,
+              onChanged: (final value) {},
+            ),
+            DsfrCheckbox.md(
+              label: 'medium size avec description',
+              description: 'case à cocher avec erreur',
+              value: false,
+              onChanged: (final value) {},
+              composantState: ComposantState(
+                state: ComposantStateEnum.error,
+                text: 'Texte d\'erreur obligatoire',
+              ),
+            ),
+            DsfrCheckbox.md(
+              label: 'medium size avec description',
+              description: 'case à cocher avec succès',
+              value: false,
+              onChanged: (final value) {},
+              composantState: ComposantState(
+                state: ComposantStateEnum.success,
+                text: 'Texte de validation',
+              ),
+            ),
+          ],
+        ),
       );
 }
