@@ -1,51 +1,92 @@
 import 'package:flutter_dsfr/composants/checkbox.dart';
+import 'package:flutter_dsfr/helpers/composant_state.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'scaffold_for_test.dart';
+import 'a11y_test.dart';
 
 void main() {
-  testWidgets(
-    'accessibilité du composant checkbox MD en light mode',
-    (WidgetTester tester) async {
-      // Given
-      final SemanticsHandle handle = tester.ensureSemantics();
+  group('Checkbox taille SM', () {
+    accessibilityTest(
+      componentName: 'checkbox SM',
+      isLightMode: true,
+      child: DsfrCheckbox.sm(
+        label: 'label',
+        value: true,
+        onChanged: (bool value) {},
+      ),
+    );
 
-      // When
-      await tester.pumpWidget(
-        ScaffoldForTest(
-          isLightMode: true,
-          child: DsfrCheckbox.md(label: 'label', value: true),
-        ),
-      );
+    accessibilityTest(
+      componentName: 'checkbox SM',
+      isLightMode: false,
+      child: DsfrCheckbox.sm(label: 'label', value: true, onChanged: (bool value) {}),
+    );
 
-      // Then
-      await expectLater(tester, meetsGuideline(androidTapTargetGuideline));
-      await expectLater(tester, meetsGuideline(labeledTapTargetGuideline));
-      await expectLater(tester, meetsGuideline(iOSTapTargetGuideline));
-      await expectLater(tester, meetsGuideline(textContrastGuideline));
-      handle.dispose();
-    },
-  );
+    accessibilityTest(
+      componentName: 'checkbox SM avec une description',
+      isLightMode: false,
+      child: DsfrCheckbox.sm(label: 'label', value: true, description: 'description', onChanged: (bool value) {}),
+    );
 
-  testWidgets(
-    'accessibilité du composant checkbox MD en dark mode',
-        (WidgetTester tester) async {
-      // Given
-      final SemanticsHandle handle = tester.ensureSemantics();
+    accessibilityTest(
+        componentName: 'checkbox SM Error',
+        isLightMode: false,
+        child: DsfrCheckbox.sm(
+            label: 'label',
+            value: true,
+            composantState: ComposantState(
+              state: ComposantStateEnum.error,
+              text: 'Erreur',
+            ),
+            onChanged: (bool value) {}));
 
-      // When
-      await tester.pumpWidget(
-        ScaffoldForTest(
-          isLightMode: false,
-          child: DsfrCheckbox.md(label: 'label', value: true),
-        ),
-      );
+    accessibilityTest(
+        componentName: 'checkbox SM Success',
+        isLightMode: false,
+        child: DsfrCheckbox.sm(
+            label: 'label',
+            value: true,
+            composantState: ComposantState(
+              state: ComposantStateEnum.success,
+              text: 'Succès',
+            ),
+            onChanged: (bool value) {}));
+  });
 
-      // Then
-      await expectLater(tester, meetsGuideline(androidTapTargetGuideline));
-      await expectLater(tester, meetsGuideline(labeledTapTargetGuideline));
-      await expectLater(tester, meetsGuideline(iOSTapTargetGuideline));
-      await expectLater(tester, meetsGuideline(textContrastGuideline));
-      handle.dispose();
-    },
-  );
+  group('Checkbox taille MD', () {
+    accessibilityTest(
+      componentName: 'checkbox MD',
+      isLightMode: true,
+      child: DsfrCheckbox.md(label: 'label', value: true),
+    );
+
+    accessibilityTest(
+      componentName: 'checkbox MD',
+      isLightMode: false,
+      child: DsfrCheckbox.md(label: 'label', value: true),
+    );
+
+    accessibilityTest(
+        componentName: 'checkbox MD Error',
+        isLightMode: false,
+        child: DsfrCheckbox.md(
+          label: 'label',
+          value: true,
+          composantState: ComposantState(
+            state: ComposantStateEnum.error,
+            text: 'Erreur',
+          ),
+        ));
+
+    accessibilityTest(
+        componentName: 'checkbox MD Success',
+        isLightMode: false,
+        child: DsfrCheckbox.md(
+          label: 'label',
+          value: true,
+          composantState: ComposantState(
+            state: ComposantStateEnum.success,
+            text: 'Succès',
+          ),
+        ));
+  });
 }
