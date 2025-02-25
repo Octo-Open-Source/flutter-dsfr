@@ -4,7 +4,7 @@ import 'scaffold_for_test.dart';
 
 void main() {
   testWidgets(
-    'accessibilité du composant checkbox en light mode',
+    'accessibilité du composant checkbox MD en light mode',
     (WidgetTester tester) async {
       // Given
       final SemanticsHandle handle = tester.ensureSemantics();
@@ -27,7 +27,7 @@ void main() {
   );
 
   testWidgets(
-    'accessibilité du composant checkbox en dark mode',
+    'accessibilité du composant checkbox MD en dark mode',
         (WidgetTester tester) async {
       // Given
       final SemanticsHandle handle = tester.ensureSemantics();
