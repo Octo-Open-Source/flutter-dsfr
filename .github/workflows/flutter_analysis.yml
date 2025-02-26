@@ -20,4 +20,6 @@ jobs:
 
       - name: Run custom linters
         run: flutter pub run custom_lint
-        
+
+      - name: Run tests
+        run: flutter test
