@@ -25,7 +25,7 @@ void main() {
   accessibilityTest(componentName: 'input password', isLightMode: true, child: passwordInput);
   accessibilityTest(componentName: 'input password', isLightMode: false, child: passwordInput);
 
-  // Ces tests ne passe pas car le contraste est pas assez élevé
+  //FIXME: Ces tests ne passe pas car le contraste est pas assez élevé
   accessibilityTest(componentName: 'input disable', isLightMode: true, child: disabledInput, skip: true);
   accessibilityTest(componentName: 'input disable', isLightMode: false, child: disabledInput, skip: true);
 }
