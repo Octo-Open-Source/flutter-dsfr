@@ -18,13 +18,14 @@ class DsfrFormState extends StatelessWidget {
   Widget build(BuildContext context) {
     return IntrinsicHeight(
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           VerticalBarWidget(composantState: composantState),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                child,
+                Flexible(child: child),
                 if (composantState.state != ComposantStateEnum.none) ...[
                   const SizedBox(height: DsfrSpacings.s2w),
                   ComposantStateWidget(composantState: composantState),

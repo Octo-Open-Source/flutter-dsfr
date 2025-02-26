@@ -115,8 +115,8 @@ class DsfrCheckbox extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(width: DsfrSpacings.s1w),
-                  Expanded(
-                    child: Column(
+                 Flexible(
+                   child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
@@ -133,7 +133,7 @@ class DsfrCheckbox extends StatelessWidget {
                         ],
                       ],
                     ),
-                  )
+                 )
                 ],
               ),
             ),

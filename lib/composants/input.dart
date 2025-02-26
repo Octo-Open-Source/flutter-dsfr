@@ -88,17 +88,19 @@ class _DsfrInputState extends State<DsfrInput> {
 
     if (widget.isPasswordMode) {
       label = Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Flexible(child: label),
+          Spacer(),
           if (widget.isPasswordMode)
             FocusTraversalOrder(
               order: const NumericFocusOrder(2),
-              child: DsfrCheckbox.sm(
-                label: 'Afficher',
-                value: _passwordVisibility,
-                onChanged: _handlePasswordVisibility,
-                enabled: widget.enabled,
+              child: Flexible(
+                child: DsfrCheckbox.sm(
+                  label: 'Afficher',
+                  value: _passwordVisibility,
+                  onChanged: _handlePasswordVisibility,
+                  enabled: widget.enabled,
+                ),
               ),
             ),
         ],
