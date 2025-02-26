@@ -1,11 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_dsfr/composants/accordions.dart';
-import 'package:flutter_dsfr/composants/buttons/button.dart';
-import 'package:flutter_dsfr/composants/link.dart';
-import 'package:flutter_dsfr/composants/modal.dart';
 import 'package:flutter_dsfr/composants/notice.dart';
-import 'package:flutter_dsfr/fondamentaux/icons.g.dart';
-import 'package:flutter_dsfr/helpers/dsfr_component_size.dart';
 import '../../helpers/a11y_test.dart';
 
 void main() {

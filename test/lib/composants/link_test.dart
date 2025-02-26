@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_dsfr/composants/accordions.dart';
 import 'package:flutter_dsfr/composants/link.dart';
 import 'package:flutter_dsfr/fondamentaux/icons.g.dart';
 import 'package:flutter_dsfr/helpers/dsfr_component_size.dart';
