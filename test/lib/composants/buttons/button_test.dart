@@ -4,7 +4,7 @@ import 'package:flutter_dsfr/composants/buttons/button.dart';
 import 'package:flutter_dsfr/fondamentaux/icons.g.dart';
 import 'package:flutter_dsfr/helpers/dsfr_component_size.dart';
 import 'package:flutter_test/flutter_test.dart';
-import '../../../helpers/a11y_test.dart';
+import '../../../helpers/a11y_test.skip.dart';
 
 void main() {
   group('Primary', () {

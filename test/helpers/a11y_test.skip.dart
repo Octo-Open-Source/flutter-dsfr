@@ -2,7 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:meta/meta.dart';
 
-import 'scaffold_for_test.dart';
+import 'scaffold_for_test.skip.dart';
 
 @isTest
 void accessibilityTest(

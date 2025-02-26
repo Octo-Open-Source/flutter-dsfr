@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_dsfr/composants/notice.dart';
-import '../../helpers/a11y_test.dart';
+import '../../helpers/a11y_test.skip.dart';
 
 void main() {
   Widget bandeauxGenericInfo = DsfrNotice(
