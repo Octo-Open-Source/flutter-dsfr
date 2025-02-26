@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_dsfr/composants/input.dart';
-import 'a11y_test.dart';
+import '../../helpers/a11y_test.dart';
 
 void main() {
   Widget input = DsfrInput(label: 'label', hintText: 'hint', onChanged: (final value) {});

@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_dsfr/composants/accordions.dart';
-import 'a11y_test.dart';
+import '../../helpers/a11y_test.dart';
 
 void main() {
   Widget accordionGroup = DsfrAccordionsGroup(
