@@ -24,9 +24,12 @@ class DsfrSelect<T> extends StatelessWidget {
 
   @override
   Widget build(final context) {
+    final enabled = dropdownMenuEntries.isNotEmpty;
+
     final underlineInputBorder = UnderlineInputBorder(
       borderSide: BorderSide(
-        color: DsfrColorDecisions.borderPlainGrey(context),
+        color:
+            enabled ? DsfrColorDecisions.borderPlainGrey(context) : DsfrColorDecisions.backgroundContrastGrey(context),
         width: 2,
       ),
       borderRadius: BorderRadius.vertical(top: Radius.circular(4)),
@@ -38,7 +41,7 @@ class DsfrSelect<T> extends StatelessWidget {
       child: _Label(
         label: label,
         hint: hint,
-        enabled: dropdownMenuEntries.isNotEmpty,
+        enabled: enabled,
         child: DropdownMenu(
           enabled: dropdownMenuEntries.isNotEmpty,
           trailingIcon: const Icon(

@@ -17,7 +17,7 @@ class SelectPage extends StatelessWidget {
           spacing: 16,
           children: [
             DsfrSelect(
-              label: 'Label',
+              label: 'Liste déroulante',
               dropdownMenuEntries: const [
                 DropdownMenuEntry(value: 1, label: 'Un'),
                 DropdownMenuEntry(value: 2, label: 'Deux'),
@@ -26,7 +26,7 @@ class SelectPage extends StatelessWidget {
               onSelected: (final value) {},
             ),
             DsfrSelect(
-              label: 'Label',
+              label: 'Liste déroulante désactivée',
               dropdownMenuEntries: const [],
               onSelected: (final value) {},
             ),
