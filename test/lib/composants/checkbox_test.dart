@@ -19,18 +19,16 @@ void main() {
     var dsfrCheckboxError = DsfrCheckbox.sm(
       label: 'label',
       value: true,
-      composantState: ComposantState(
-        state: ComposantStateEnum.error,
-        text: 'Erreur',
+      composantState: DsfrComposantState.error(
+        errorMessage: 'Erreur',
       ),
       onChanged: (bool value) {},
     );
     var dsfrCheckboxSuccess = DsfrCheckbox.sm(
       label: 'label',
       value: true,
-      composantState: ComposantState(
-        state: ComposantStateEnum.success,
-        text: 'Succès',
+      composantState: DsfrComposantState.success(
+        message: 'Succès',
       ),
       onChanged: (bool value) {},
     );
@@ -71,17 +69,15 @@ void main() {
     var dsfrCheckboxMdError = DsfrCheckbox.md(
       label: 'label',
       value: true,
-      composantState: ComposantState(
-        state: ComposantStateEnum.error,
-        text: 'Erreur',
+      composantState: DsfrComposantState.error(
+        errorMessage: 'Erreur',
       ),
     );
     var dsfrCheckboxMdSuccess = DsfrCheckbox.md(
       label: 'label',
       value: true,
-      composantState: ComposantState(
-        state: ComposantStateEnum.success,
-        text: 'Succès',
+      composantState: DsfrComposantState.success(
+        message: 'Succès',
       ),
     );
     var dsfrCheckboxMdDisabled = DsfrCheckbox.md(label: 'label', value: true, enabled: false);

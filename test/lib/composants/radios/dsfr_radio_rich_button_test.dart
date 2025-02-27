@@ -23,14 +23,14 @@ void main() {
     value: 0,
     groupValue: 0,
     onChanged: (final value) {},
-    state: ComposantStateEnum.success,
+    state: DsfrComposantStateEnum.success,
   );
   Widget radioError = DsfrRadioRichButton<int>(
     title: 'Un',
     value: 0,
     groupValue: 0,
     onChanged: (final value) {},
-    state: ComposantStateEnum.error,
+    state: DsfrComposantStateEnum.error,
   );
 
   accessibilityTest(componentName: 'Radio rich', isLightMode: true, child: radio);

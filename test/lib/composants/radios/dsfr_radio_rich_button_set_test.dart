@@ -15,14 +15,14 @@ void main() {
     title: 'title',
     values: const {1: 'Un', 2: 'Deux', 3: 'Trois'},
     onCallback: (final p0) {},
-    composantState: ComposantState(state: ComposantStateEnum.success),
+    composantState: DsfrComposantState.success(message: 'success'),
   );
 
   Widget radioSetError = DsfrRadioRichButtonSet(
     title: 'title',
     values: const {1: 'Un', 2: 'Deux', 3: 'Trois'},
     onCallback: (final p0) {},
-    composantState: ComposantState(state: ComposantStateEnum.error),
+    composantState: DsfrComposantState.error(errorMessage: 'error message'),
   );
 
   Widget radioSetDisabled = DsfrRadioRichButtonSet(
