@@ -18,6 +18,7 @@ class DsfrToggleSwitch extends StatefulWidget {
     this.labelLocation = DsfrToggleLabelLocation.right,
     this.enabled = true,
     this.onChanged,
+    this.description,
   });
 
   final String label;
@@ -25,17 +26,20 @@ class DsfrToggleSwitch extends StatefulWidget {
   final bool enabled;
   final DsfrToggleLabelLocation labelLocation;
   final ValueChanged<bool>? onChanged;
+  final String? description;
 
   @override
   State<DsfrToggleSwitch> createState() => _DsfrToggleSwitchState();
 }
 
-class _DsfrToggleSwitchState extends State<DsfrToggleSwitch> with MaterialStateMixin<DsfrToggleSwitch> {
+class _DsfrToggleSwitchState extends State<DsfrToggleSwitch>
+    with MaterialStateMixin<DsfrToggleSwitch> {
   @override
   Widget build(final context) {
     final textColor = widget.enabled
         ? DsfrColorDecisions.textLabelGrey(context) //
         : DsfrColorDecisions.textDisabledGrey(context);
+
     final rowChildren = [
       DsfrFocusWidget(
         isFocused: isFocused,
@@ -49,10 +53,27 @@ class _DsfrToggleSwitchState extends State<DsfrToggleSwitch> with MaterialStateM
         ),
       ),
     ];
+
+    var columnChildren = [
+      Row(
+        spacing: DsfrSpacings.s2w,
+        children: widget.labelLocation == DsfrToggleLabelLocation.left
+            ? rowChildren.reversed.toList()
+            : rowChildren,
+      ),
+      if (widget.description != null)
+        Text(
+          widget.description!,
+          style: DsfrTextStyle.bodyXs(
+              color: DsfrColorDecisions.textMentionGrey(context)),
+        ),
+    ];
     return Semantics(
       toggled: widget.value,
       child: InkWell(
-        onTap: widget.enabled && widget.onChanged != null ? () => widget.onChanged!(!widget.value) : null,
+        onTap: widget.enabled && widget.onChanged != null
+            ? () => widget.onChanged!(!widget.value)
+            : null,
         onHighlightChanged: updateMaterialState(WidgetState.pressed),
         onHover: updateMaterialState(WidgetState.hovered),
         focusColor: DsfrColorDecisions.backgroundTransparent(context),
@@ -60,9 +81,10 @@ class _DsfrToggleSwitchState extends State<DsfrToggleSwitch> with MaterialStateM
         splashFactory: NoSplash.splashFactory,
         excludeFromSemantics: true,
         onFocusChange: updateMaterialState(WidgetState.focused),
-        child: Row(
+        child: Column(
           spacing: DsfrSpacings.s2w,
-          children: widget.labelLocation == DsfrToggleLabelLocation.left ? rowChildren.reversed.toList() : rowChildren,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: columnChildren,
         ),
       ),
     );
@@ -93,7 +115,8 @@ class _Switch extends StatelessWidget {
       (false, false) => DsfrColorDecisions.backgroundDefaultGrey(context),
       (true, false) => DsfrColorDecisions.backgroundDisabledGrey(context),
     };
-    final circleBackgroundColor = DsfrColorDecisions.backgroundDefaultGrey(context);
+    final circleBackgroundColor =
+        DsfrColorDecisions.backgroundDefaultGrey(context);
     final iconColor = enabled
         ? DsfrColorDecisions.textActiveBlueFrance(context) //
         : DsfrColorDecisions.textDisabledGrey(context);
