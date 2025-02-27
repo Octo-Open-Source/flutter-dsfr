@@ -15,7 +15,7 @@ class DsfrRadioRichButtonSet<T> extends StatelessWidget {
     required this.onCallback,
     this.initialValue,
     this.enabled = true,
-    this.composantState = const ComposantState(),
+    this.composantState = const DsfrComposantState.none(),
   });
 
   final String title;
@@ -23,7 +23,7 @@ class DsfrRadioRichButtonSet<T> extends StatelessWidget {
   final T? initialValue;
   final Callback<T?> onCallback;
   final bool enabled;
-  final ComposantState composantState;
+  final DsfrComposantState composantState;
 
   @override
   Widget build(final context) {

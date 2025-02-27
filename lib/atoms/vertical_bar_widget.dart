@@ -4,7 +4,7 @@ import 'package:flutter_dsfr/fondamentaux/spacing.g.dart';
 import 'package:flutter_dsfr/helpers/composant_state.dart';
 
 class VerticalBarWidget extends StatelessWidget {
-  final ComposantState composantState;
+  final DsfrComposantState composantState;
 
   const VerticalBarWidget({
     super.key,
@@ -13,13 +13,13 @@ class VerticalBarWidget extends StatelessWidget {
 
   @override
   Widget build(final context) {
-    if (composantState.state == ComposantStateEnum.none) {
+    if (composantState.state == DsfrComposantStateEnum.none) {
       return const SizedBox.shrink();
     } else {
       return Row(
         children: [
           VerticalDivider(
-            color: composantState.state == ComposantStateEnum.error
+            color: composantState.state == DsfrComposantStateEnum.error
                 ? DsfrColorDecisions.borderPlainError(context)
                 : DsfrColorDecisions.borderPlainSuccess(context),
             width: 0,

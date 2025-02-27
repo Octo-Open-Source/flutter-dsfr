@@ -11,7 +11,7 @@ class DsfrFormState extends StatelessWidget {
     required this.child,
   });
 
-  final ComposantState composantState;
+  final DsfrComposantState composantState;
   final Widget child;
 
   @override
@@ -26,7 +26,7 @@ class DsfrFormState extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Flexible(child: child),
-                if (composantState.state != ComposantStateEnum.none) ...[
+                if (composantState.state != DsfrComposantStateEnum.none) ...[
                   const SizedBox(height: DsfrSpacings.s2w),
                   ComposantStateWidget(composantState: composantState),
                 ],

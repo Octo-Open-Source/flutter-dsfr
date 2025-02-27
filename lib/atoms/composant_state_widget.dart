@@ -12,7 +12,7 @@ class ComposantStateWidget extends StatelessWidget {
     required this.composantState,
   });
 
-  final ComposantState composantState;
+  final DsfrComposantState composantState;
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +38,7 @@ class ComposantStateWidget extends StatelessWidget {
 }
 
 class ComposantStateIcon extends StatelessWidget {
-  final ComposantStateEnum state;
+  final DsfrComposantStateEnum state;
 
   const ComposantStateIcon({super.key, required this.state});
 
@@ -49,30 +49,30 @@ class ComposantStateIcon extends StatelessWidget {
 
   Color _getIconColor(BuildContext context) {
     switch (state) {
-      case ComposantStateEnum.error:
+      case DsfrComposantStateEnum.error:
         return DsfrColorDecisions.borderPlainError(context);
-      case ComposantStateEnum.success:
+      case DsfrComposantStateEnum.success:
         return DsfrColorDecisions.borderPlainSuccess(context);
-      case ComposantStateEnum.info:
+      case DsfrComposantStateEnum.info:
         return DsfrColorDecisions.borderPlainInfo(context);
-      case ComposantStateEnum.warning:
+      case DsfrComposantStateEnum.warning:
         return DsfrColorDecisions.backgroundFlatWarning(context);
-      case ComposantStateEnum.none:
+      case DsfrComposantStateEnum.none:
         return DsfrColorDecisions.borderPlainGrey(context);
     }
   }
 
   IconData _getIcon() {
     switch (state) {
-      case ComposantStateEnum.error:
+      case DsfrComposantStateEnum.error:
         return DsfrIcons.systemFrErrorFill;
-      case ComposantStateEnum.success:
+      case DsfrComposantStateEnum.success:
         return DsfrIcons.systemFrSuccessFill;
-      case ComposantStateEnum.info:
+      case DsfrComposantStateEnum.info:
         return DsfrIcons.systemFrInfoFill;
-      case ComposantStateEnum.warning:
+      case DsfrComposantStateEnum.warning:
         return DsfrIcons.systemFrWarningFill;
-      case ComposantStateEnum.none:
+      case DsfrComposantStateEnum.none:
         return DsfrIcons.systemFrErrorFill;
     }
   }

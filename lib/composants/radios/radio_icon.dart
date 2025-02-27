@@ -8,13 +8,13 @@ class RadioIcon<T> extends StatelessWidget {
     required this.value,
     required this.groupValue,
     this.enabled = true,
-    this.state = ComposantStateEnum.none,
+    this.state = DsfrComposantStateEnum.none,
   });
 
   final T value;
   final T? groupValue;
   final bool enabled;
-  final ComposantStateEnum state;
+  final DsfrComposantStateEnum state;
 
   @override
   Widget build(final context) => Semantics(
@@ -44,9 +44,9 @@ class RadioIcon<T> extends StatelessWidget {
   Color getStrokeColor(BuildContext context) {
     if (!enabled) {
       return DsfrColorDecisions.borderDisabledGrey(context);
-    } else if (state == ComposantStateEnum.error) {
+    } else if (state == DsfrComposantStateEnum.error) {
       return DsfrColorDecisions.borderPlainError(context);
-    } else if (state == ComposantStateEnum.success) {
+    } else if (state == DsfrComposantStateEnum.success) {
       return DsfrColorDecisions.borderPlainSuccess(context);
     } else {
       return getFillColor(context);

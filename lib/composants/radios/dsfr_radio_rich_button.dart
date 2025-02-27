@@ -15,7 +15,7 @@ class DsfrRadioRichButton<T> extends StatefulWidget {
     required this.groupValue,
     required this.onChanged,
     this.enabled = true,
-    this.state = ComposantStateEnum.none,
+    this.state = DsfrComposantStateEnum.none,
   });
 
   final String title;
@@ -23,7 +23,7 @@ class DsfrRadioRichButton<T> extends StatefulWidget {
   final T? groupValue;
   final ValueChanged<T?>? onChanged;
   final bool enabled;
-  final ComposantStateEnum state;
+  final DsfrComposantStateEnum state;
 
   @override
   State<DsfrRadioRichButton<T>> createState() => _DsfrRadioRichButtonState<T>();

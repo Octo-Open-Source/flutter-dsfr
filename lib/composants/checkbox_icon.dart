@@ -9,13 +9,13 @@ class DsfrCheckboxIcon extends StatelessWidget {
     required this.value,
     this.padding = EdgeInsets.zero,
     this.enabled = true,
-    this.state = ComposantStateEnum.none,
+    this.state = DsfrComposantStateEnum.none,
   });
 
   final bool value;
   final EdgeInsets padding;
   final bool enabled;
-  final ComposantStateEnum state;
+  final DsfrComposantStateEnum state;
 
   @override
   Widget build(final context) {
@@ -54,15 +54,15 @@ class DsfrCheckboxIcon extends StatelessWidget {
 
   Color _getBorderColor(BuildContext context, Color backgroundColor) {
     switch (state) {
-      case ComposantStateEnum.error:
+      case DsfrComposantStateEnum.error:
         return DsfrColorDecisions.borderPlainError(context);
-      case ComposantStateEnum.success:
+      case DsfrComposantStateEnum.success:
         return DsfrColorDecisions.borderPlainSuccess(context);
-      case ComposantStateEnum.info:
+      case DsfrComposantStateEnum.info:
         return DsfrColorDecisions.borderPlainInfo(context);
-      case ComposantStateEnum.warning:
+      case DsfrComposantStateEnum.warning:
         return DsfrColorDecisions.borderPlainWarning(context);
-      case ComposantStateEnum.none:
+      case DsfrComposantStateEnum.none:
         return backgroundColor;
     }
   }

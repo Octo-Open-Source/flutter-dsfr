@@ -76,9 +76,8 @@ class _CheckboxPageState extends State<CheckboxPage> {
             description: 'case à cocher avec erreur',
             value: false,
             onChanged: (final value) {},
-            composantState: ComposantState(
-              state: ComposantStateEnum.error,
-              text: 'Texte d\'erreur obligatoire',
+            composantState: DsfrComposantState.error(
+              errorMessage: 'Texte d\'erreur obligatoire',
             ),
           ),
           DsfrCheckbox.md(
@@ -86,9 +85,8 @@ class _CheckboxPageState extends State<CheckboxPage> {
             description: 'case à cocher avec succès',
             value: false,
             onChanged: (final value) {},
-            composantState: ComposantState(
-              state: ComposantStateEnum.success,
-              text: 'Texte de validation',
+            composantState: DsfrComposantState.success(
+              message: 'Texte de validation',
             ),
           ),
           Row(

@@ -22,7 +22,7 @@ class DsfrRadioRichButtonSetHeadless<T> extends StatefulWidget {
     this.initialValue,
     this.mode = DsfrRadioButtonSetMode.row,
     this.enabled = true,
-    this.state = ComposantStateEnum.none,
+    this.state = DsfrComposantStateEnum.none,
   });
 
   final Map<T, DsfrRadioButtonItem> values;
@@ -30,7 +30,7 @@ class DsfrRadioRichButtonSetHeadless<T> extends StatefulWidget {
   final Callback<T?> onCallback;
   final DsfrRadioButtonSetMode mode;
   final bool enabled;
-  final ComposantStateEnum state;
+  final DsfrComposantStateEnum state;
 
   @override
   State<DsfrRadioRichButtonSetHeadless<T>> createState() => _DsfrRadioRichButtonSetHeadlessState<T>();

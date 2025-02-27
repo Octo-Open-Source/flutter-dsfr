@@ -19,7 +19,7 @@ class DsfrCheckbox extends StatelessWidget {
     required this.padding,
     this.focusNode,
     this.enabled = true,
-    this.composantState = const ComposantState(),
+    this.composantState = const DsfrComposantState.none(),
   });
 
   const DsfrCheckbox.sm({
@@ -30,7 +30,7 @@ class DsfrCheckbox extends StatelessWidget {
     final FocusNode? focusNode,
     final Key? key,
     final enabled = true,
-    final composantState = const ComposantState(),
+    final composantState = const DsfrComposantState.none(),
   }) : this._(
           key: key,
           label: label,
@@ -51,7 +51,7 @@ class DsfrCheckbox extends StatelessWidget {
     final FocusNode? focusNode,
     final Key? key,
     final enabled = true,
-    final composantState = const ComposantState(),
+    final composantState = const DsfrComposantState.none(),
   }) : this._(
           key: key,
           label: label,
@@ -71,7 +71,7 @@ class DsfrCheckbox extends StatelessWidget {
   final EdgeInsets padding;
   final FocusNode? focusNode;
   final bool enabled;
-  final ComposantState composantState;
+  final DsfrComposantState composantState;
 
   @override
   Widget build(final context) => DsfrFormState(
@@ -115,8 +115,8 @@ class DsfrCheckbox extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(width: DsfrSpacings.s1w),
-                 Flexible(
-                   child: Column(
+                  Flexible(
+                    child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
@@ -133,7 +133,7 @@ class DsfrCheckbox extends StatelessWidget {
                         ],
                       ],
                     ),
-                 )
+                  )
                 ],
               ),
             ),
