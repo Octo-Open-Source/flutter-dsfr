@@ -19,12 +19,6 @@ class DsfrInput extends StatefulWidget {
     required this.onChanged,
     this.onFieldSubmitted,
     this.validator,
-    this.width,
-    this.labelColor,
-    this.hintStyle,
-    this.hintColor,
-    this.inputColor,
-    this.textAlign = TextAlign.start,
     this.enabled = true,
     this.autofocus = false,
     this.isPasswordMode = false,
@@ -45,13 +39,6 @@ class DsfrInput extends StatefulWidget {
   final ValueChanged<String> onChanged;
   final ValueChanged<String>? onFieldSubmitted;
   final FormFieldValidator<String>? validator;
-
-  final double? width;
-  final Color? labelColor;
-  final TextStyle? hintStyle;
-  final Color? hintColor;
-  final Color? inputColor;
-  final TextAlign textAlign;
   final bool enabled;
   final bool autofocus;
   final bool isPasswordMode;
@@ -84,7 +71,7 @@ class _DsfrInputState extends State<DsfrInput> {
       ),
     );
 
-    final hintStyle = widget.hintStyle ?? DsfrTextStyle.bodyXs(color: DsfrColorDecisions.textLabelGrey(context));
+    final hintStyle = DsfrTextStyle.bodyXs(color: DsfrColorDecisions.textLabelGrey(context));
 
     if (widget.isPasswordMode) {
       label = Row(
@@ -123,7 +110,7 @@ class _DsfrInputState extends State<DsfrInput> {
                 child: Text(
                   widget.hintText!,
                   style: widget.enabled
-                      ? (hintStyle.copyWith(color: widget.hintColor ?? DsfrColorDecisions.textMentionGrey(context)))
+                      ? (hintStyle.copyWith(color: DsfrColorDecisions.textMentionGrey(context)))
                       : hintStyle.copyWith(color: DsfrColorDecisions.textDisabledGrey(context)),
                 ),
               ),
@@ -144,14 +131,12 @@ class _DsfrInputState extends State<DsfrInput> {
                   keyboardType: widget.keyboardType,
                   textCapitalization: widget.textCapitalization,
                   textInputAction: widget.textInputAction,
-                  width: widget.width,
                   isPasswordMode: widget.isPasswordMode,
                   passwordVisibility: _passwordVisibility,
                   autocorrect: widget.autocorrect,
-                  textAlign: widget.textAlign,
+                  textAlign: TextAlign.start,
                   enabled: widget.enabled,
                   autofocus: widget.autofocus,
-                  inputColor: widget.inputColor,
                   inputFormatters: widget.inputFormatters,
                   scrollPadding: widget.scrollPadding,
                   autofillHints: widget.autofillHints,
