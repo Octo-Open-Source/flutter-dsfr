@@ -27,12 +27,10 @@ class DsfrInputHeadless extends StatefulWidget {
     this.radius = DsfrSpacings.s1v,
     this.maxLines = 1,
     this.minLines = 1,
-    this.textAlign = TextAlign.start,
     this.enabled = true,
     this.autofocus = false,
     this.inputColor,
     this.inputBorderColor,
-    this.inputBorderWidth = DsfrSpacings.s0v5,
     this.inputConstraints = const BoxConstraints(maxHeight: DsfrSpacings.s6w),
     this.focusThickness = DsfrSpacings.s0v5,
     this.focusPadding = const EdgeInsets.all(DsfrSpacings.s0v5),
@@ -49,7 +47,6 @@ class DsfrInputHeadless extends StatefulWidget {
   final FormFieldValidator<String>? validator;
   final double? width;
   final Color? inputColor;
-  final TextAlign textAlign;
   final bool enabled;
   final bool autofocus;
   final bool isPasswordMode;
@@ -61,7 +58,6 @@ class DsfrInputHeadless extends StatefulWidget {
   final TextCapitalization textCapitalization;
   final TextInputAction? textInputAction;
   final Color? inputBorderColor;
-  final double inputBorderWidth;
   final BoxConstraints? inputConstraints;
   final Color? fillColor;
   final double radius;
@@ -103,7 +99,7 @@ class _DsfrInputHeadlessState extends State<DsfrInputHeadless> {
         ? UnderlineInputBorder(
             borderSide: BorderSide(
               color: widget.inputBorderColor ?? DsfrColorDecisions.borderPlainGrey(context),
-              width: widget.inputBorderWidth,
+              width: DsfrSpacings.s0v5,
               strokeAlign: BorderSide.strokeAlignOutside,
             ),
             borderRadius: BorderRadius.vertical(top: Radius.circular(widget.radius)),
@@ -126,7 +122,7 @@ class _DsfrInputHeadlessState extends State<DsfrInputHeadless> {
         ),
       ),
       child: Padding(
-        padding: widget.focusPadding.add(EdgeInsets.only(bottom: widget.inputBorderWidth)),
+        padding: widget.focusPadding.add(EdgeInsets.only(bottom: DsfrSpacings.s0v5)),
         child: SizedBox(
           width: widget.width,
           child: TextFormField(
@@ -153,7 +149,7 @@ class _DsfrInputHeadlessState extends State<DsfrInputHeadless> {
             style: widget.enabled
                 ? DsfrTextStyle.bodyMd(color: widget.inputColor ?? DsfrColorDecisions.textDefaultGrey(context))
                 : DsfrTextStyle.bodyMd(color: DsfrColorDecisions.textDisabledGrey(context)),
-            textAlign: widget.textAlign,
+            textAlign: TextAlign.start,
             autofocus: widget.autofocus,
             obscureText: widget.isPasswordMode && !widget.passwordVisibility,
             autocorrect: widget.autocorrect ?? !widget.isPasswordMode,

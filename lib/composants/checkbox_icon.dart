@@ -1,6 +1,7 @@
 import 'package:flutter_dsfr/fondamentaux/color_decisions.g.dart';
 import 'package:flutter_dsfr/fondamentaux/icons.g.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dsfr/helpers/color_utils.dart';
 import 'package:flutter_dsfr/helpers/composant_state.dart';
 
 class DsfrCheckboxIcon extends StatelessWidget {
@@ -24,7 +25,7 @@ class DsfrCheckboxIcon extends StatelessWidget {
         ? DsfrColorDecisions.backgroundActionHighBlueFrance(context)
         : DsfrColorDecisions.backgroundDisabledGrey(context);
 
-    var borderColor = _getBorderColor(context, backgroundColor);
+    var borderColor = getBorderColor(context, state, defaultColor: backgroundColor);
 
     return DecoratedBox(
       decoration: BoxDecoration(
@@ -50,20 +51,5 @@ class DsfrCheckboxIcon extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  Color _getBorderColor(BuildContext context, Color backgroundColor) {
-    switch (state) {
-      case DsfrComposantStateEnum.error:
-        return DsfrColorDecisions.borderPlainError(context);
-      case DsfrComposantStateEnum.success:
-        return DsfrColorDecisions.borderPlainSuccess(context);
-      case DsfrComposantStateEnum.info:
-        return DsfrColorDecisions.borderPlainInfo(context);
-      case DsfrComposantStateEnum.warning:
-        return DsfrColorDecisions.borderPlainWarning(context);
-      case DsfrComposantStateEnum.none:
-        return backgroundColor;
-    }
   }
 }

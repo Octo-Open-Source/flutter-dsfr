@@ -1,5 +1,6 @@
 // ignore_for_file: prefer-correct-callback-field-name
 
+import 'package:flutter_dsfr/atoms/dsfr_form_state.dart';
 import 'package:flutter_dsfr/composants/checkbox.dart';
 import 'package:flutter_dsfr/composants/input_headless.dart';
 import 'package:flutter_dsfr/fondamentaux/color_decisions.g.dart';
@@ -7,6 +8,8 @@ import 'package:flutter_dsfr/fondamentaux/fonts.dart';
 import 'package:flutter_dsfr/fondamentaux/spacing.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_dsfr/helpers/color_utils.dart';
+import 'package:flutter_dsfr/helpers/composant_state.dart';
 
 class DsfrInput extends StatefulWidget {
   const DsfrInput({
@@ -29,6 +32,7 @@ class DsfrInput extends StatefulWidget {
     this.inputFormatters,
     this.scrollPadding = const EdgeInsets.all(20),
     this.autofillHints,
+    this.composantState = const ComposantState(),
   });
 
   final String label;
@@ -49,6 +53,7 @@ class DsfrInput extends StatefulWidget {
   final List<TextInputFormatter>? inputFormatters;
   final EdgeInsets scrollPadding;
   final Iterable<String>? autofillHints;
+  final ComposantState composantState;
 
   @override
   State<DsfrInput> createState() => _DsfrInputState();
@@ -61,91 +66,144 @@ class _DsfrInputState extends State<DsfrInput> {
 
   @override
   Widget build(final context) {
-    final labelText = widget.label;
-    Widget label = ExcludeSemantics(
-      child: Text(
-        labelText,
-        style: widget.enabled
-            ? DsfrTextStyle.bodyMd(color: DsfrColorDecisions.textLabelGrey(context))
-            : DsfrTextStyle.bodyMd(color: DsfrColorDecisions.textDisabledGrey(context)),
-      ),
-    );
-
-    final hintStyle = DsfrTextStyle.bodyXs(color: DsfrColorDecisions.textLabelGrey(context));
-
-    if (widget.isPasswordMode) {
-      label = Row(
-        children: [
-          Flexible(child: label),
-          Spacer(),
-          if (widget.isPasswordMode)
-            FocusTraversalOrder(
-              order: const NumericFocusOrder(2),
-              child: Flexible(
-                child: DsfrCheckbox.sm(
-                  label: 'Afficher',
-                  value: _passwordVisibility,
-                  onChanged: _handlePasswordVisibility,
+    return DsfrFormState(
+      composantState: widget.composantState,
+      child: FocusTraversalGroup(
+        policy: OrderedTraversalPolicy(),
+        child: Semantics(
+          textField: true,
+          label: widget.label,
+          hint: widget.hintText,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              if (widget.isPasswordMode) ...[
+                _DsfrInputPasswordLabel(
+                  labelText: widget.label,
+                  composantState: widget.composantState,
+                  passwordVisibility: _passwordVisibility,
+                  handlePasswordVisibility: _handlePasswordVisibility,
                   enabled: widget.enabled,
                 ),
-              ),
-            ),
-        ],
-      );
-    }
-
-    return FocusTraversalGroup(
-      policy: OrderedTraversalPolicy(),
-      child: Semantics(
-        textField: true,
-        label: labelText,
-        hint: widget.hintText,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            label,
-            if (widget.hintText != null) ...[
-              const SizedBox(height: DsfrSpacings.s1v),
-              ExcludeSemantics(
-                child: Text(
-                  widget.hintText!,
-                  style: widget.enabled
-                      ? (hintStyle.copyWith(color: DsfrColorDecisions.textMentionGrey(context)))
-                      : hintStyle.copyWith(color: DsfrColorDecisions.textDisabledGrey(context)),
+              ] else ...[
+                _DsfrInputLabel(
+                  labelText: widget.label,
+                  composantState: widget.composantState,
+                  enabled: widget.enabled,
+                ),
+              ],
+              if (widget.hintText != null) ...[
+                const SizedBox(height: DsfrSpacings.s1v),
+                ExcludeSemantics(
+                  child: Text(
+                    widget.hintText!,
+                    style: DsfrTextStyle.bodyXs(
+                      color: widget.enabled
+                          ? DsfrColorDecisions.textMentionGrey(context)
+                          : DsfrColorDecisions.textDisabledGrey(context),
+                    ),
+                  ),
+                ),
+              ],
+              const SizedBox(height: DsfrSpacings.s1w),
+              FocusTraversalOrder(
+                order: const NumericFocusOrder(1),
+                child: Semantics(
+                  identifier: widget.label,
+                  child: DsfrInputHeadless(
+                    key: ValueKey(widget.label),
+                    initialValue: widget.initialValue,
+                    controller: widget.controller,
+                    suffixText: widget.suffixText,
+                    onChanged: widget.onChanged,
+                    onFieldSubmitted: widget.onFieldSubmitted,
+                    validator: widget.validator,
+                    keyboardType: widget.keyboardType,
+                    textCapitalization: widget.textCapitalization,
+                    textInputAction: widget.textInputAction,
+                    isPasswordMode: widget.isPasswordMode,
+                    passwordVisibility: _passwordVisibility,
+                    autocorrect: widget.autocorrect,
+                    enabled: widget.enabled,
+                    autofocus: widget.autofocus,
+                    inputFormatters: widget.inputFormatters,
+                    scrollPadding: widget.scrollPadding,
+                    autofillHints: widget.autofillHints,
+                    inputBorderColor: getBorderColor(context, widget.composantState.state),
+                  ),
                 ),
               ),
             ],
-            const SizedBox(height: DsfrSpacings.s1w),
-            FocusTraversalOrder(
-              order: const NumericFocusOrder(1),
-              child: Semantics(
-                identifier: labelText,
-                child: DsfrInputHeadless(
-                  key: ValueKey(labelText),
-                  initialValue: widget.initialValue,
-                  controller: widget.controller,
-                  suffixText: widget.suffixText,
-                  onChanged: widget.onChanged,
-                  onFieldSubmitted: widget.onFieldSubmitted,
-                  validator: widget.validator,
-                  keyboardType: widget.keyboardType,
-                  textCapitalization: widget.textCapitalization,
-                  textInputAction: widget.textInputAction,
-                  isPasswordMode: widget.isPasswordMode,
-                  passwordVisibility: _passwordVisibility,
-                  autocorrect: widget.autocorrect,
-                  textAlign: TextAlign.start,
-                  enabled: widget.enabled,
-                  autofocus: widget.autofocus,
-                  inputFormatters: widget.inputFormatters,
-                  scrollPadding: widget.scrollPadding,
-                  autofillHints: widget.autofillHints,
-                ),
-              ),
-            ),
-          ],
+          ),
         ),
       ),
+    );
+  }
+}
+
+class _DsfrInputLabel extends StatelessWidget {
+  final String labelText;
+  final ComposantState composantState;
+  final bool enabled;
+
+  const _DsfrInputLabel({
+    required this.labelText,
+    required this.composantState,
+    required this.enabled,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ExcludeSemantics(
+      child: Text(
+        labelText,
+        style: DsfrTextStyle.bodyMd(color: _getLabelColor(context)),
+      ),
+    );
+  }
+
+  Color _getLabelColor(BuildContext context) {
+    if (!enabled) {
+      return DsfrColorDecisions.textDisabledGrey(context);
+    } else {
+      return getTextColor(context, composantState.state, defaultColor: DsfrColorDecisions.textLabelGrey(context));
+    }
+  }
+}
+
+class _DsfrInputPasswordLabel extends StatelessWidget {
+  final String labelText;
+  final ComposantState composantState;
+  final bool enabled;
+  final bool passwordVisibility;
+  final ValueChanged<bool>? handlePasswordVisibility;
+
+  const _DsfrInputPasswordLabel({
+    required this.labelText,
+    required this.composantState,
+    required this.passwordVisibility,
+    required this.handlePasswordVisibility,
+    required this.enabled,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Flexible(child: _DsfrInputLabel(labelText: labelText, composantState: composantState, enabled: enabled)),
+        Spacer(),
+        FocusTraversalOrder(
+          order: const NumericFocusOrder(2),
+          child: Flexible(
+            child: DsfrCheckbox.sm(
+              label: 'Afficher',
+              value: passwordVisibility,
+              onChanged: handlePasswordVisibility,
+              enabled: enabled,
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
