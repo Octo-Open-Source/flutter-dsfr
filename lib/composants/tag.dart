@@ -9,6 +9,7 @@ class DsfrTag extends StatelessWidget {
     required this.padding,
     required this.size,
     this.backgroundColor,
+    this.highlightColor,
     this.textColor,
     this.icon,
     this.onTap,
@@ -20,6 +21,7 @@ class DsfrTag extends StatelessWidget {
     final IconData? icon,
     final GestureTapCallback? onTap,
     final Color? backgroundColor,
+    final Color? highlightColor,
     final Color? textColor,
     final Key? key,
   }) : this._(
@@ -28,6 +30,7 @@ class DsfrTag extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 8),
           size: DsfrComponentSize.sm,
           backgroundColor: backgroundColor,
+          highlightColor: highlightColor,
           textColor: textColor,
           icon: icon,
           onTap: onTap,
@@ -38,6 +41,7 @@ class DsfrTag extends StatelessWidget {
     final IconData? icon,
     final GestureTapCallback? onTap,
     final Color? backgroundColor,
+    final Color? highlightColor,
     final Color? textColor,
     final Key? key,
   }) : this._(
@@ -46,6 +50,7 @@ class DsfrTag extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 12),
           size: DsfrComponentSize.md,
           backgroundColor: backgroundColor,
+          highlightColor: highlightColor,
           textColor: textColor,
           icon: icon,
           onTap: onTap,
@@ -57,12 +62,12 @@ class DsfrTag extends StatelessWidget {
   final GestureTapCallback? onTap;
   final IconData? icon;
   final Color? backgroundColor;
+  final Color? highlightColor;
   final Color? textColor;
   final FocusNode? focusNode;
 
   DsfrTextStyle _getTextStyle(BuildContext context) {
-    var textColor =
-        this.textColor ?? DsfrColorDecisions.textActionHighBlueFrance(context);
+    var textColor = this.textColor ?? DsfrColorDecisions.textActionHighBlueFrance(context);
 
     switch (size) {
       case DsfrComponentSize.md:
@@ -98,23 +103,26 @@ class DsfrTag extends StatelessWidget {
 
   @override
   Widget build(final context) {
+    final highlightColor = (backgroundColor == null && this.highlightColor == null)
+        ? DsfrColorDecisions.backgroundActionLowBlueFranceHover(context)
+        : this.highlightColor;
+
     return Focus(
-        focusNode: focusNode,
-        canRequestFocus: true,
-        child: Builder(builder: (final context) {
+      focusNode: focusNode,
+      canRequestFocus: true,
+      child: Builder(
+        builder: (final context) {
           final isFocused = Focus.of(context).hasFocus;
           return DsfrFocusWidget(
-              isFocused: isFocused,
-              child: GestureDetector(
-                onTap: onTap,
-                behavior: HitTestBehavior.opaque,
-                child: DecoratedBox(
-                  decoration: ShapeDecoration(
-                    color: backgroundColor ??
-                        DsfrColorDecisions.backgroundActionLowBlueFrance(
-                            context),
-                    shape: const StadiumBorder(),
-                  ),
+            isFocused: isFocused,
+            child: Material(
+              color: backgroundColor ?? DsfrColorDecisions.backgroundActionLowBlueFrance(context),
+              shape: const StadiumBorder(),
+              child: ExcludeFocus(
+                child: InkWell(
+                  onTap: onTap,
+                  customBorder: StadiumBorder(),
+                  highlightColor: highlightColor,
                   child: Padding(
                     padding: _getPadding(),
                     child: Text.rich(
@@ -126,9 +134,7 @@ class DsfrTag extends StatelessWidget {
                               baseline: TextBaseline.alphabetic,
                               child: Icon(icon,
                                   size: _getIconFontSize(),
-                                  color: textColor ??
-                                      DsfrColorDecisions
-                                          .textActionHighBlueFrance(context)),
+                                  color: textColor ?? DsfrColorDecisions.textActionHighBlueFrance(context)),
                             ),
                             const WidgetSpan(
                               child: SizedBox(width: DsfrSpacings.s1v),
@@ -141,7 +147,11 @@ class DsfrTag extends StatelessWidget {
                     ),
                   ),
                 ),
-              ));
-        }));
+              ),
+            ),
+          );
+        },
+      ),
+    );
   }
 }
