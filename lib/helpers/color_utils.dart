@@ -17,17 +17,17 @@ Color getTextColor(BuildContext context, DsfrComposantStateEnum composantStateEn
   }
 }
 
-Color getBorderColor(BuildContext context, ComposantStateEnum composantStateEnum, {Color? defaultColor}) {
+Color getBorderColor(BuildContext context, DsfrComposantStateEnum composantStateEnum, {Color? defaultColor}) {
   switch (composantStateEnum) {
-    case ComposantStateEnum.error:
+    case DsfrComposantStateEnum.error:
       return DsfrColorDecisions.borderPlainError(context);
-    case ComposantStateEnum.success:
+    case DsfrComposantStateEnum.success:
       return DsfrColorDecisions.borderPlainSuccess(context);
-    case ComposantStateEnum.info:
+    case DsfrComposantStateEnum.info:
       return DsfrColorDecisions.borderPlainInfo(context);
-    case ComposantStateEnum.warning:
+    case DsfrComposantStateEnum.warning:
       return DsfrColorDecisions.borderPlainWarning(context);
-    case ComposantStateEnum.none:
+    case DsfrComposantStateEnum.none:
       return defaultColor ?? DsfrColorDecisions.borderPlainGrey(context);
   }
 }

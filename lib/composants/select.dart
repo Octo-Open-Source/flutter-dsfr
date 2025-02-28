@@ -16,7 +16,7 @@ class DsfrSelect<T> extends StatelessWidget {
     required this.onSelected,
     this.controller,
     this.initialSelection,
-    this.composantState = const ComposantState(),
+    this.composantState = const DsfrComposantState.none(),
   });
 
   final String label;
@@ -25,7 +25,7 @@ class DsfrSelect<T> extends StatelessWidget {
   final ValueChanged<T?> onSelected;
   final TextEditingController? controller;
   final T? initialSelection;
-  final ComposantState composantState;
+  final DsfrComposantState composantState;
 
   @override
   Widget build(final context) {

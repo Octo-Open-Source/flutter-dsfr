@@ -39,9 +39,8 @@ class SelectPage extends StatelessWidget {
                 DropdownMenuEntry(value: 3, label: 'Trois'),
               ],
               onSelected: (final value) {},
-              composantState: const ComposantState(
-                state: ComposantStateEnum.error,
-                text: 'Texte d\'erreur obligatoire',
+              composantState: const DsfrComposantState.error(
+                errorMessage: 'Texte d\'erreur obligatoire',
               ),
             ),
             DsfrSelect(
@@ -52,9 +51,8 @@ class SelectPage extends StatelessWidget {
                 DropdownMenuEntry(value: 3, label: 'Trois'),
               ],
               onSelected: (final value) {},
-              composantState: const ComposantState(
-                state: ComposantStateEnum.success,
-                text: 'Texte de validation optionnel',
+              composantState: const DsfrComposantState.success(
+                message: 'Texte de validation optionnel',
               ),
             ),
           ],
