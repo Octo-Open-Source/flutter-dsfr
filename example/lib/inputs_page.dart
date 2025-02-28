@@ -63,17 +63,15 @@ class InputsPage extends StatelessWidget {
           DsfrInput(
             label: 'Input - error',
             onChanged: print,
-            composantState: ComposantState(
-              state: ComposantStateEnum.error,
-              text: 'texte d\'erreur obligatoire',
+            composantState: DsfrComposantState.error(
+              errorMessage: 'texte d\'erreur obligatoire',
             ),
           ),
           DsfrInput(
             label: 'Input - success',
             onChanged: print,
-            composantState: ComposantState(
-              state: ComposantStateEnum.success,
-              text: 'texte de validation optionnel',
+            composantState: DsfrComposantState.success(
+              message: 'texte de validation optionnel',
             ),
           ),
           Text("Input sans label :"),

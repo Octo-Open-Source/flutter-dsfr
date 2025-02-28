@@ -32,7 +32,7 @@ class DsfrInput extends StatefulWidget {
     this.inputFormatters,
     this.scrollPadding = const EdgeInsets.all(20),
     this.autofillHints,
-    this.composantState = const ComposantState(),
+    this.composantState = const DsfrComposantState.none(),
   });
 
   final String label;
@@ -53,7 +53,7 @@ class DsfrInput extends StatefulWidget {
   final List<TextInputFormatter>? inputFormatters;
   final EdgeInsets scrollPadding;
   final Iterable<String>? autofillHints;
-  final ComposantState composantState;
+  final DsfrComposantState composantState;
 
   @override
   State<DsfrInput> createState() => _DsfrInputState();
@@ -143,7 +143,7 @@ class _DsfrInputState extends State<DsfrInput> {
 
 class _DsfrInputLabel extends StatelessWidget {
   final String labelText;
-  final ComposantState composantState;
+  final DsfrComposantState composantState;
   final bool enabled;
 
   const _DsfrInputLabel({
@@ -173,7 +173,7 @@ class _DsfrInputLabel extends StatelessWidget {
 
 class _DsfrInputPasswordLabel extends StatelessWidget {
   final String labelText;
-  final ComposantState composantState;
+  final DsfrComposantState composantState;
   final bool enabled;
   final bool passwordVisibility;
   final ValueChanged<bool>? handlePasswordVisibility;
