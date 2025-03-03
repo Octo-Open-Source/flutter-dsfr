@@ -40,8 +40,8 @@ class _MyAppState extends State<MyApp> {
       isLightMode: themeMode == ThemeMode.light,
       builder: (context) {
         return MaterialApp(
-          localizationsDelegates: AppLocalizations.localizationsDelegates,
-          supportedLocales: AppLocalizations.supportedLocales,
+          //localizationsDelegates: AppLocalizations.localizationsDelegates,
+          //supportedLocales: AppLocalizations.supportedLocales,
           theme: ThemeData.light().copyWith(
             scaffoldBackgroundColor: DsfrColorDecisions.backgroundDefaultGrey(context),
           ),

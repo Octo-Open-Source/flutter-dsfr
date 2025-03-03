@@ -29,6 +29,39 @@ Widget build(final context) {
 }
 ```
 
+### Gestion des langues
+
+Par défaut, le design système est en français
+Si vous devez gérer plusieurs langues ou personnaliser les wordings de certains composants, ajouter flutter_localizations dans votre fichier pubspec.yaml :
+
+```yaml
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+```
+
+Créer un fichier `lib/l10n/app_[langue].arb` dans votre projet, la lib aura besoin des paramètres suivants : 
+
+```json
+{
+  "close": "fermer",
+  "display":"afficher"
+}
+```
+
+Ajouter les lignes suivantes dans votre MaterialApp :
+
+```dart
+MaterialApp(
+  localizationsDelegates: AppLocalizations.localizationsDelegates,
+  supportedLocales: AppLocalizations.supportedLocales,
+  home: ...,
+  ...
+);
+```
+
 ## Contribution
 
 ### Flutter

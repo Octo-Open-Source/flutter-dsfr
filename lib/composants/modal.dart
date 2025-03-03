@@ -4,7 +4,6 @@ import 'package:flutter_dsfr/fondamentaux/color_decisions.g.dart';
 import 'package:flutter_dsfr/fondamentaux/icons.g.dart';
 import 'package:flutter_dsfr/fondamentaux/spacing.g.dart';
 import 'package:flutter_dsfr/helpers/dsfr_component_size.dart';
-import 'package:flutter_dsfr/l10n/l10n.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class DsfrModal extends StatelessWidget {
@@ -51,8 +50,8 @@ class DsfrModal extends StatelessWidget {
                       const Spacer(),
                       DsfrButton(
                         //label: 'Fermer',
-                        //label: AppLocalizations.of(context)!.close,
-                        label:L10n.of(context).close,
+                        label: AppLocalizations?.of(context)?.close ?? 'Fermer',
+                       // label:L10n.of(context).close,
                         icon: DsfrIcons.systemCloseLine,
                         iconLocation: DsfrButtonIconLocation.right,
                         variant: DsfrButtonVariant.tertiaryWithoutBorder,
