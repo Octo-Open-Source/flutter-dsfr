@@ -18,6 +18,7 @@ import 'package:example/toggles_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dsfr/fondamentaux/color_decisions.g.dart';
 import 'package:flutter_dsfr/helpers/theme_mode_provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void main() {
   runApp(const MyApp());
@@ -39,6 +40,8 @@ class _MyAppState extends State<MyApp> {
       isLightMode: themeMode == ThemeMode.light,
       builder: (context) {
         return MaterialApp(
+          localizationsDelegates: AppLocalizations.localizationsDelegates,
+          supportedLocales: AppLocalizations.supportedLocales,
           theme: ThemeData.light().copyWith(
             scaffoldBackgroundColor: DsfrColorDecisions.backgroundDefaultGrey(context),
           ),
