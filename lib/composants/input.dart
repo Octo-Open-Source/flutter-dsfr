@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dsfr/helpers/color_utils.dart';
 import 'package:flutter_dsfr/helpers/composant_state.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class DsfrInput extends StatefulWidget {
   const DsfrInput({
@@ -196,7 +197,7 @@ class _DsfrInputPasswordLabel extends StatelessWidget {
           order: const NumericFocusOrder(2),
           child: Flexible(
             child: DsfrCheckbox.sm(
-              label: 'Afficher',
+              label: AppLocalizations.of(context)?.display ?? 'Afficher',
               value: passwordVisibility,
               onChanged: handlePasswordVisibility,
               enabled: enabled,

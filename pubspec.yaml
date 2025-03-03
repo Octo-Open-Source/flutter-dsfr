@@ -21,6 +21,7 @@ dev_dependencies:
   meta: ^1.1.8
 
 flutter:
+  generate: true
   fonts:
     - family: Marianne
       fonts:

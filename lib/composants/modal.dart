@@ -49,9 +49,7 @@ class DsfrModal extends StatelessWidget {
                     children: [
                       const Spacer(),
                       DsfrButton(
-                        //label: 'Fermer',
-                        label: AppLocalizations?.of(context)?.close ?? 'Fermer',
-                       // label:L10n.of(context).close,
+                        label: AppLocalizations.of(context)?.close ?? 'Fermer',
                         icon: DsfrIcons.systemCloseLine,
                         iconLocation: DsfrButtonIconLocation.right,
                         variant: DsfrButtonVariant.tertiaryWithoutBorder,

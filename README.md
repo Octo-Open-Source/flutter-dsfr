@@ -46,8 +46,8 @@ Créer un fichier `lib/l10n/app_[langue].arb` dans votre projet, la lib aura bes
 
 ```json
 {
-  "close": "fermer",
-  "display":"afficher"
+  "close": "Fermer",
+  "display":"Afficher"
 }
 ```
 
