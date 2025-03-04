@@ -6,10 +6,15 @@ import 'package:flutter_dsfr/fondamentaux/spacing.g.dart';
 import 'package:flutter_dsfr/helpers/dsfr_component_size.dart';
 
 class DsfrModal extends StatelessWidget {
+  final Widget child;
+  final bool isDismissible;
+  final String closeLabel;
+
   const DsfrModal({
     super.key,
     required this.isDismissible,
     required this.child,
+    required this.closeLabel,
   });
 
   static Future<T?> showModal<T>({
@@ -17,10 +22,15 @@ class DsfrModal extends StatelessWidget {
     required final WidgetBuilder builder,
     required final String name,
     final bool isDismissible = true,
+    String closeLabel = 'Fermer',
   }) async =>
       showModalBottomSheet<T>(
         context: context,
-        builder: (final context) => DsfrModal(isDismissible: isDismissible, child: builder(context)),
+        builder: (final context) => DsfrModal(
+          isDismissible: isDismissible,
+          closeLabel: closeLabel,
+          child: builder(context),
+        ),
         backgroundColor: DsfrColorDecisions.backgroundTransparent(context),
         elevation: 0,
         shape: const RoundedRectangleBorder(),
@@ -29,9 +39,6 @@ class DsfrModal extends StatelessWidget {
         isDismissible: isDismissible,
         routeSettings: RouteSettings(name: name),
       );
-
-  final Widget child;
-  final bool isDismissible;
 
   @override
   Widget build(final context) => ColoredBox(
@@ -48,7 +55,7 @@ class DsfrModal extends StatelessWidget {
                     children: [
                       const Spacer(),
                       DsfrButton(
-                        label: 'Fermer',
+                        label: closeLabel,
                         icon: DsfrIcons.systemCloseLine,
                         iconLocation: DsfrButtonIconLocation.right,
                         variant: DsfrButtonVariant.tertiaryWithoutBorder,

@@ -50,9 +50,15 @@ class InputsPage extends StatelessWidget {
             enabled: false,
           ),
           DsfrInput(
-            label: 'Input password',
+            label: 'Mot de passe',
             onChanged: print,
             isPasswordMode: true,
+          ),
+          DsfrInput(
+            label: 'Password',
+            onChanged: print,
+            isPasswordMode: true,
+            displayPasswordLabel: 'Show',
           ),
           DsfrInput(
             label: 'Input password - désactivé',

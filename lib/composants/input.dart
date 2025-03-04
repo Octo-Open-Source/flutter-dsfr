@@ -25,6 +25,7 @@ class DsfrInput extends StatefulWidget {
     this.enabled = true,
     this.autofocus = false,
     this.isPasswordMode = false,
+    this.displayPasswordLabel = 'Afficher',
     this.autocorrect,
     this.keyboardType,
     this.textCapitalization = TextCapitalization.none,
@@ -46,6 +47,7 @@ class DsfrInput extends StatefulWidget {
   final bool enabled;
   final bool autofocus;
   final bool isPasswordMode;
+  final String displayPasswordLabel;
   final bool? autocorrect;
   final TextInputType? keyboardType;
   final TextCapitalization textCapitalization;
@@ -79,7 +81,8 @@ class _DsfrInputState extends State<DsfrInput> {
             children: [
               if (widget.isPasswordMode) ...[
                 _DsfrInputPasswordLabel(
-                  labelText: widget.label,
+                  inputLabel: widget.label,
+                  displayPasswordLabel: widget.displayPasswordLabel,
                   composantState: widget.composantState,
                   passwordVisibility: _passwordVisibility,
                   handlePasswordVisibility: _handlePasswordVisibility,
@@ -172,14 +175,16 @@ class _DsfrInputLabel extends StatelessWidget {
 }
 
 class _DsfrInputPasswordLabel extends StatelessWidget {
-  final String labelText;
+  final String inputLabel;
+  final String displayPasswordLabel;
   final DsfrComposantState composantState;
   final bool enabled;
   final bool passwordVisibility;
   final ValueChanged<bool>? handlePasswordVisibility;
 
   const _DsfrInputPasswordLabel({
-    required this.labelText,
+    required this.inputLabel,
+    required this.displayPasswordLabel,
     required this.composantState,
     required this.passwordVisibility,
     required this.handlePasswordVisibility,
@@ -189,14 +194,15 @@ class _DsfrInputPasswordLabel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Flexible(child: _DsfrInputLabel(labelText: labelText, composantState: composantState, enabled: enabled)),
+        Flexible(child: _DsfrInputLabel(labelText: inputLabel, composantState: composantState, enabled: enabled)),
         Spacer(),
         FocusTraversalOrder(
           order: const NumericFocusOrder(2),
           child: Flexible(
             child: DsfrCheckbox.sm(
-              label: 'Afficher',
+              label: displayPasswordLabel,
               value: passwordVisibility,
               onChanged: handlePasswordVisibility,
               enabled: enabled,
