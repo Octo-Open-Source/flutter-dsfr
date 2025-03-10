@@ -26,12 +26,9 @@ class _TogglesPageState extends State<TogglesPage> {
         spacing: 16,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('Etats',
-              style: DsfrTextStyle.headline3(
-                  color: DsfrColorDecisions.textTitleBlueFrance(context))),
+          Text('Etats', style: DsfrTextStyle.headline3(color: DsfrColorDecisions.textTitleBlueFrance(context))),
           Text('Label à gauche',
-              style: DsfrTextStyle.headline5(
-                  color: DsfrColorDecisions.textTitleBlueFrance(context))),
+              style: DsfrTextStyle.headline5(color: DsfrColorDecisions.textTitleBlueFrance(context))),
           DsfrToggleSwitch(
             label: 'Libellé de l\'interrupteur',
             labelLocation: DsfrToggleLabelLocation.left,
@@ -65,8 +62,7 @@ class _TogglesPageState extends State<TogglesPage> {
             value: true,
           ),
           Text('Label à droite',
-              style: DsfrTextStyle.headline5(
-                  color: DsfrColorDecisions.textTitleBlueFrance(context))),
+              style: DsfrTextStyle.headline5(color: DsfrColorDecisions.textTitleBlueFrance(context))),
           DsfrToggleSwitch(
             label: 'Libellé de l\'interrupteur',
             value: _toggleLeft,
@@ -95,15 +91,21 @@ class _TogglesPageState extends State<TogglesPage> {
             enabled: false,
             value: true,
           ),
-          Text('Avec description',
-              style: DsfrTextStyle.headline4(
-                  color: DsfrColorDecisions.textTitleBlueFrance(context))),
-          Text('Label à gauche',
-              style: DsfrTextStyle.headline5(
-                  color: DsfrColorDecisions.textTitleBlueFrance(context))),
+          Text(
+            'Avec description',
+            style: DsfrTextStyle.headline4(
+              color: DsfrColorDecisions.textTitleBlueFrance(context),
+            ),
+          ),
+          Text(
+            'Label à gauche',
+            style: DsfrTextStyle.headline5(
+              color: DsfrColorDecisions.textTitleBlueFrance(context),
+            ),
+          ),
           DsfrToggleSwitch(
             label: 'Libellé de l\'interrupteur',
-            description: 'Description de l\'interrupteur',
+            description: 'Texte de description additionnel',
             labelLocation: DsfrToggleLabelLocation.left,
             value: _toggleLeft,
             onChanged: (final value) {
@@ -114,7 +116,7 @@ class _TogglesPageState extends State<TogglesPage> {
           ),
           DsfrToggleSwitch(
             label: 'Libellé de l\'interrupteur',
-            description: 'Description de l\'interrupteur',
+            description: 'Texte de description additionnel',
             labelLocation: DsfrToggleLabelLocation.left,
             value: !_toggleRight,
             onChanged: (final value) {
@@ -125,24 +127,23 @@ class _TogglesPageState extends State<TogglesPage> {
           ),
           DsfrToggleSwitch(
             label: 'Libellé de l\'interrupteur',
-            description: 'Description de l\'interrupteur',
+            description: 'Texte de description additionnel',
             labelLocation: DsfrToggleLabelLocation.left,
             enabled: false,
             value: false,
           ),
           DsfrToggleSwitch(
             label: 'Libellé de l\'interrupteur',
-            description: 'Description de l\'interrupteur',
+            description: 'Texte de description additionnel',
             labelLocation: DsfrToggleLabelLocation.left,
             enabled: false,
             value: true,
           ),
           Text('Label à droite',
-              style: DsfrTextStyle.headline5(
-                  color: DsfrColorDecisions.textTitleBlueFrance(context))),
+              style: DsfrTextStyle.headline5(color: DsfrColorDecisions.textTitleBlueFrance(context))),
           DsfrToggleSwitch(
             label: 'Libellé de l\'interrupteur',
-            description: 'Description de l\'interrupteur',
+            description: 'Texte de description additionnel',
             value: _toggleLeft,
             onChanged: (final value) {
               setState(() {
@@ -152,7 +153,7 @@ class _TogglesPageState extends State<TogglesPage> {
           ),
           DsfrToggleSwitch(
             label: 'Libellé de l\'interrupteur',
-            description: 'Description de l\'interrupteur',
+            description: 'Texte de description additionnel',
             value: !_toggleRight,
             onChanged: (final value) {
               setState(() {
@@ -162,19 +163,19 @@ class _TogglesPageState extends State<TogglesPage> {
           ),
           DsfrToggleSwitch(
             label: 'Libellé de l\'interrupteur',
-            description: 'Description de l\'interrupteur',
+            description: 'Texte de description additionnel',
             enabled: false,
             value: false,
           ),
           DsfrToggleSwitch(
             label: 'Libellé de l\'interrupteur',
-            description: 'Description de l\'interrupteur',
+            description: 'Texte de description additionnel',
             enabled: false,
             value: true,
           ),
           DsfrToggleSwitch(
             label: 'Libellé de l\'interrupteur',
-            description: 'Description de l\'interrupteur',
+            description: 'Texte de description additionnel',
             enabled: false,
             value: true,
           ),
