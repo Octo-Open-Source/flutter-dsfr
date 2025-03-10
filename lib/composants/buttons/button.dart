@@ -17,6 +17,7 @@ class DsfrButton extends StatelessWidget {
     this.icon,
     this.iconLocation = DsfrButtonIconLocation.left,
     this.iconColor,
+    this.iconSemanticLabel,
     required this.variant,
     this.foregroundColor,
     required this.size,
@@ -27,6 +28,7 @@ class DsfrButton extends StatelessWidget {
   final String? label;
   final DsfrButtonIconLocation iconLocation;
   final Color? iconColor;
+  final String? iconSemanticLabel;
   final DsfrButtonVariant variant;
   final Color? foregroundColor;
   final DsfrComponentSize size;
@@ -44,25 +46,25 @@ class DsfrButton extends StatelessWidget {
 
   @override
   Widget build(final context) {
-    Widget? textWidget;
     Widget? iconWidget;
 
     if (icon != null) {
       final baseIcon = Icon(icon, size: _getIconSize(size));
-      iconWidget = iconColor == null
-          ? baseIcon
-          : IconTheme(
-              data: IconThemeData(color: iconColor),
-              child: baseIcon,
-            );
+      iconWidget = Semantics(
+        excludeSemantics: label != null,
+        label: iconSemanticLabel ?? '',
+        child: iconColor == null
+            ? baseIcon
+            : IconTheme(
+                data: IconThemeData(color: iconColor),
+                child: baseIcon,
+              ),
+      );
     }
 
-    if (label != null) {
-      textWidget = Text(label!);
-    }
     List<Widget> buttonWidget = <Widget>[
       if (iconWidget != null) iconWidget,
-      if (textWidget != null) Flexible(child: textWidget),
+      if (label != null) Flexible(child: Text(label!)),
     ];
 
     if (iconLocation == DsfrButtonIconLocation.right) {

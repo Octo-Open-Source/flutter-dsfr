@@ -48,6 +48,7 @@ class ButtonsPage extends StatelessWidget {
           DsfrButton(
             icon: DsfrIcons.buildingsAncientGateFill,
             iconLocation: DsfrButtonIconLocation.right,
+            iconSemanticLabel: label,
             variant: variant,
             size: size,
             onPressed: _handleTap,
