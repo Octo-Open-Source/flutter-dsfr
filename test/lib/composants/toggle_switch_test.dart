@@ -4,7 +4,7 @@ import 'package:flutter_dsfr/composants/toggle_switch.dart';
 import '../../helpers/a11y_test.skip.dart';
 
 void main() {
-  Widget toggleLeft =  DsfrToggleSwitch(
+  Widget toggleLeft = DsfrToggleSwitch(
     label: 'Vos favoris',
     labelLocation: DsfrToggleLabelLocation.left,
     value: true,
@@ -30,12 +30,50 @@ void main() {
     value: true,
   );
 
+  Widget toggleLeftWithDescription = DsfrToggleSwitch(
+    label: 'Vos favoris',
+    labelLocation: DsfrToggleLabelLocation.left,
+    value: true,
+    onChanged: (final value) {},
+    description: 'description',
+  );
+
+  Widget toggleRightWithDescription = DsfrToggleSwitch(
+    label: 'Vos favoris',
+    labelLocation: DsfrToggleLabelLocation.right,
+    value: true,
+    onChanged: (final value) {},
+    description: 'description',
+  );
 
   accessibilityTest(componentName: 'Toggle Left', isLightMode: true, child: toggleLeft);
   accessibilityTest(componentName: 'Toggle Left', isLightMode: false, child: toggleLeft);
 
   accessibilityTest(componentName: 'Toggle Right', isLightMode: true, child: toggleRight);
   accessibilityTest(componentName: 'Toggle Right', isLightMode: false, child: toggleRight);
+
+  accessibilityTest(
+    componentName: 'Toggle Left with description',
+    isLightMode: true,
+    child: toggleLeftWithDescription,
+  );
+  accessibilityTest(
+    componentName: 'Toggle Left with description',
+    isLightMode: false,
+    child: toggleLeftWithDescription,
+  );
+
+  accessibilityTest(
+    componentName: 'Toggle Right with description',
+    isLightMode: true,
+    child: toggleRightWithDescription,
+  );
+
+  accessibilityTest(
+    componentName: 'Toggle Right with description',
+    isLightMode: false,
+    child: toggleRightWithDescription,
+  );
 
   // FIXME: skip, contraste insuffisant
   accessibilityTest(componentName: 'Toggle Disabled On', isLightMode: true, child: toggleDisabledOn, skip: true);
