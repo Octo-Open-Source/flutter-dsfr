@@ -31,18 +31,23 @@ class TagsPage extends StatelessWidget {
             DsfrTag.sm(
               label: TextSpan(text: 'Tag cliquable par défaut avec icone'),
               icon: DsfrIcons.systemArrowRightLine,
-
               onTap: () => print('Tag cliquable par défaut avec icone'),
             ),
             DsfrTag.sm(
               label: TextSpan(text: 'Tag cliquable personnalisable'),
-              backgroundColor:
-                  DsfrColorDecisions.backgroundActionHighBlueFrance(context),
-              highlightColor:
-                  DsfrColorDecisions.backgroundActionHighBlueFranceHover(context),
+              backgroundColor: DsfrColorDecisions.backgroundActionHighBlueFrance(context),
+              highlightColor: DsfrColorDecisions.backgroundActionHighBlueFranceHover(context),
               textColor: DsfrColorDecisions.textInvertedBlueFrance(context),
               icon: DsfrIcons.systemArrowRightLine,
               onTap: () => print('Tag cliquable personnalisable'),
+            ),
+            DsfrTag.sm(
+              label: TextSpan(text: 'Tag selectionnable'),
+              backgroundColor: DsfrColorDecisions.backgroundActionHighBlueFrance(context),
+              highlightColor: DsfrColorDecisions.backgroundActionHighBlueFranceHover(context),
+              textColor: DsfrColorDecisions.textInvertedBlueFrance(context),
+              isSelectable: true,
+              onTap: () => print('Tag selectionnable'),
             ),
             Text(
               'Taille MD',
@@ -61,13 +66,19 @@ class TagsPage extends StatelessWidget {
             ),
             DsfrTag.md(
               label: TextSpan(text: 'Tag cliquable personnalisable'),
-              backgroundColor:
-                  DsfrColorDecisions.backgroundActionHighBlueFrance(context),
-              highlightColor:
-                  DsfrColorDecisions.backgroundActionHighBlueFranceHover(context),
+              backgroundColor: DsfrColorDecisions.backgroundActionHighBlueFrance(context),
+              highlightColor: DsfrColorDecisions.backgroundActionHighBlueFranceHover(context),
               textColor: DsfrColorDecisions.textInvertedBlueFrance(context),
               icon: DsfrIcons.systemArrowRightLine,
               onTap: () => print('Tag cliquable personnalisable'),
+            ),
+            DsfrTag.md(
+              label: TextSpan(text: 'Tag selectionnable'),
+              backgroundColor: DsfrColorDecisions.backgroundActionHighBlueFrance(context),
+              highlightColor: DsfrColorDecisions.backgroundActionHighBlueFranceHover(context),
+              textColor: DsfrColorDecisions.textInvertedBlueFrance(context),
+              isSelectable: true,
+              onTap: () => print('Tag selectionnable'),
             ),
           ],
         ),
