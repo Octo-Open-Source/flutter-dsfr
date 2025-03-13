@@ -52,8 +52,8 @@ class DsfrInputHeadless extends StatefulWidget {
   final bool isPasswordMode;
   final bool passwordVisibility;
   final bool? autocorrect;
-  final int? maxLines;
-  final int? minLines;
+  final int maxLines;
+  final int minLines;
   final TextInputType? keyboardType;
   final TextCapitalization textCapitalization;
   final TextInputAction? textInputAction;
@@ -141,7 +141,7 @@ class _DsfrInputHeadlessState extends State<DsfrInputHeadless> {
               focusedBorder: underlineInputBorder,
               enabledBorder: underlineInputBorder,
               border: underlineInputBorder,
-              constraints: widget.inputConstraints,
+              constraints: widget.maxLines > 1 ? null : widget.inputConstraints,
             ),
             keyboardType: widget.keyboardType,
             textCapitalization: widget.textCapitalization,
