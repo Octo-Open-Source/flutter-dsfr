@@ -2,6 +2,9 @@
 
 Ce repository contient une implémentation Flutter du Système de Design de l'État sous la forme d'un package, ainsi qu'une application d'exemple de type "storybook".
 
+## Les composants disponibles :
+[Liste des composants](components.md)
+
 ## Installation
 
 ### Gestion du thème
