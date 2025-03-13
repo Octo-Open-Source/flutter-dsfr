@@ -103,6 +103,33 @@ class _CheckboxPageState extends State<CheckboxPage> {
               ),
             ],
           ),
+          Text('Groupes de cases à cocher :'),
+          DsfrCheckboxSet(
+            label: 'Légende',
+            checkboxes: [
+              DsfrCheckbox.md(
+                label: 'Libellé',
+                value: _value2,
+                onChanged: (final value) => setState(() {
+                  _value2 = value;
+                }),
+              ),
+              DsfrCheckbox.md(
+                label: 'Libellé',
+                value: _value2,
+                onChanged: (final value) => setState(() {
+                  _value2 = value;
+                }),
+              ),
+              DsfrCheckbox.md(
+                label: 'Libellé',
+                value: _value2,
+                onChanged: (final value) => setState(() {
+                  _value2 = value;
+                }),
+              ),
+            ],
+          ),
         ],
       ),
     );
