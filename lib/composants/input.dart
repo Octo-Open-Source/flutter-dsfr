@@ -1,7 +1,7 @@
 // ignore_for_file: prefer-correct-callback-field-name
 
 import 'package:flutter_dsfr/atoms/dsfr_form_state.dart';
-import 'package:flutter_dsfr/composants/checkbox.dart';
+import 'package:flutter_dsfr/composants/checkboxes/checkbox.dart';
 import 'package:flutter_dsfr/composants/input_headless.dart';
 import 'package:flutter_dsfr/fondamentaux/color_decisions.g.dart';
 import 'package:flutter_dsfr/fondamentaux/fonts.dart';

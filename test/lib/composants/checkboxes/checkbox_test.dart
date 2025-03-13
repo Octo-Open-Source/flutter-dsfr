@@ -1,7 +1,7 @@
-import 'package:flutter_dsfr/composants/checkbox.dart';
+import 'package:flutter_dsfr/composants/checkboxes/checkbox.dart';
 import 'package:flutter_dsfr/helpers/composant_state.dart';
 import 'package:flutter_test/flutter_test.dart';
-import '../../helpers/a11y_test.skip.dart';
+import '../../../helpers/a11y_test.skip.dart';
 
 void main() {
   group('Checkbox taille SM', () {
