@@ -15,6 +15,8 @@ class DsfrTag extends StatelessWidget {
     this.onTap,
     this.focusNode,
     this.isSelectable = false,
+    this.isSelected = false,
+    this.onSelectionChanged,
   });
 
   const DsfrTag.sm({
@@ -26,6 +28,8 @@ class DsfrTag extends StatelessWidget {
     final Color? textColor,
     final Key? key,
     final bool isSelectable = false,
+    final bool isSelected = false,
+    final ValueChanged<bool>? onSelectionChanged,
   }) : this._(
           key: key,
           label: label,
@@ -37,6 +41,8 @@ class DsfrTag extends StatelessWidget {
           icon: icon,
           onTap: onTap,
           isSelectable: isSelectable,
+          isSelected: isSelected,
+          onSelectionChanged: onSelectionChanged,
         );
 
   const DsfrTag.md({
@@ -48,6 +54,8 @@ class DsfrTag extends StatelessWidget {
     final Color? textColor,
     final Key? key,
     final bool isSelectable = false,
+    final bool isSelected = false,
+    final ValueChanged<bool>? onSelectionChanged,
   }) : this._(
           key: key,
           label: label,
@@ -59,6 +67,8 @@ class DsfrTag extends StatelessWidget {
           icon: icon,
           onTap: onTap,
           isSelectable: isSelectable,
+          isSelected: isSelected,
+          onSelectionChanged: onSelectionChanged,
         );
 
   final InlineSpan label;
@@ -71,6 +81,8 @@ class DsfrTag extends StatelessWidget {
   final Color? textColor;
   final FocusNode? focusNode;
   final bool isSelectable;
+  final bool isSelected;
+  final ValueChanged<bool>? onSelectionChanged;
 
   DsfrTextStyle _getTextStyle(BuildContext context) {
     var textColor = this.textColor ?? DsfrColorDecisions.textActionHighBlueFrance(context);
@@ -99,13 +111,13 @@ class DsfrTag extends StatelessWidget {
   EdgeInsets _getPadding() {
     switch (size) {
       case DsfrComponentSize.md:
-        if (isSelectable) {
-          return const EdgeInsets.fromLTRB(12, 4, 18, 4);
+        if (isSelected) {
+          return const EdgeInsets.fromLTRB(12, 4, 20, 4);
         } else {
           return const EdgeInsets.symmetric(vertical: 4, horizontal: 12);
         }
       case DsfrComponentSize.sm:
-        if (isSelectable) {
+        if (isSelected) {
           return const EdgeInsets.fromLTRB(8, 2, 14, 2);
         } else {
           return const EdgeInsets.symmetric(vertical: 2, horizontal: 8);
@@ -133,47 +145,64 @@ class DsfrTag extends StatelessWidget {
           final isFocused = Focus.of(context).hasFocus;
           return DsfrFocusWidget(
             isFocused: isFocused,
-            child: isSelectable
-                ? Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      CustomPaint(
-                        painter: CustomShapePainter(
-                            size, DsfrColorDecisions.backgroundActionHighBlueFrance(context), highlightColor),
-                        child: Padding(
-                          padding: _getPadding(),
-                          child: Text.rich(
-                            TextSpan(
-                              children: [
-                                if (icon != null) ...[
-                                  WidgetSpan(
-                                    alignment: PlaceholderAlignment.middle,
-                                    baseline: TextBaseline.alphabetic,
-                                    child: Icon(
-                                      icon,
-                                      size: _getIconFontSize(),
-                                      color: textColor,
-                                    ),
+            child: isSelected
+                ? Column(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+                    CustomPaint(
+                      painter: CustomShapePainter(size, backgroundColor, highlightColor),
+                      child: ClipPath(
+                        clipper: CustomShapeClipper(size),
+                        child: Material(
+                          color: backgroundColor,
+                          child: InkWell(
+                            highlightColor: highlightColor,
+                            onTap: () {
+                              if (isSelectable) {
+                                onSelectionChanged?.call(!isSelected);
+                              } else {
+                                onTap;
+                              }
+                            },
+                            child: Padding(
+                                padding: _getPadding(),
+                                child: Text.rich(
+                                  TextSpan(
+                                    children: [
+                                      if (icon != null) ...[
+                                        WidgetSpan(
+                                          alignment: PlaceholderAlignment.middle,
+                                          baseline: TextBaseline.alphabetic,
+                                          child: Icon(
+                                            icon,
+                                            size: _getIconFontSize(),
+                                            color: textColor,
+                                          ),
+                                        ),
+                                        const WidgetSpan(
+                                          child: SizedBox(width: DsfrSpacings.s1v),
+                                        ),
+                                      ],
+                                      label,
+                                    ],
                                   ),
-                                  const WidgetSpan(
-                                    child: SizedBox(width: DsfrSpacings.s1v),
-                                  ),
-                                ],
-                                label,
-                              ],
-                            ),
-                            style: _getTextStyle(context),
+                                  style: _getTextStyle(context),
+                                )),
                           ),
                         ),
                       ),
-                    ],
-                  )
+                    ),
+                  ])
                 : Material(
                     color: backgroundColor,
                     shape: const StadiumBorder(),
                     child: ExcludeFocus(
                       child: InkWell(
-                        onTap: onTap,
+                        onTap: () {
+                          if (isSelectable) {
+                            onSelectionChanged?.call(!isSelected);
+                          } else {
+                            onTap;
+                          }
+                        },
                         customBorder: StadiumBorder(),
                         highlightColor: highlightColor,
                         child: Padding(
@@ -211,6 +240,45 @@ class DsfrTag extends StatelessWidget {
   }
 }
 
+const double tagCornerRadius = 40;
+const double tagRadiusSizeS = 4.5;
+const double tagRadiusSizeM = 6;
+const double tagStrokeWidthSizeS = 1.2;
+const double tagStrokeWidthSizeM = 1.5;
+const double spaceBetweenButtonAndTag = 1;
+
+class CustomShapeClipper extends CustomClipper<Path> {
+  const CustomShapeClipper(
+    this.componentSize,
+  );
+
+  final DsfrComponentSize componentSize;
+
+  @override
+  Path getClip(Size size) {
+    final Path path = Path();
+    final double tagRadius = (componentSize == DsfrComponentSize.md) ? tagRadiusSizeM : tagRadiusSizeS;
+    final double tagStrokeWidth = (componentSize == DsfrComponentSize.md) ? tagStrokeWidthSizeM : tagStrokeWidthSizeS;
+
+    final cutoutRadius = tagRadius + tagStrokeWidth + spaceBetweenButtonAndTag;
+    final Offset cutoutCenter = Offset(size.width - cutoutRadius, cutoutRadius / 2);
+
+    path.addRRect(
+      RRect.fromRectAndRadius(
+        Rect.fromLTWH(0, 0, size.width - cutoutRadius, size.height),
+        Radius.circular(tagCornerRadius),
+      ),
+    );
+    final Path cutoutPath = Path()..addOval(Rect.fromCircle(center: cutoutCenter, radius: cutoutRadius));
+    return Path.combine(PathOperation.difference, path, cutoutPath);
+  }
+
+  @override
+  bool shouldReclip(covariant CustomClipper<Path> oldClipper) {
+    return false;
+  }
+}
+
 class CustomShapePainter extends CustomPainter {
   const CustomShapePainter(
     this.componentSize,
@@ -225,10 +293,8 @@ class CustomShapePainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final Path path = Path();
-    final double buttonCornerRadius = 40;
-    final double tagRadius = (componentSize == DsfrComponentSize.md) ? 6 : 4.5;
-    final double tagStrokeWidth = (componentSize == DsfrComponentSize.md) ? 1.5 : 1.2;
-    final double spaceBetweenButtonAndTag = 1;
+    final double tagRadius = (componentSize == DsfrComponentSize.md) ? tagRadiusSizeM : tagRadiusSizeS;
+    final double tagStrokeWidth = (componentSize == DsfrComponentSize.md) ? tagStrokeWidthSizeM : tagStrokeWidthSizeS;
     final Paint tagPaint = Paint()
       ..color = backgroundColor
       ..style = PaintingStyle.fill;
@@ -243,7 +309,7 @@ class CustomShapePainter extends CustomPainter {
     path.addRRect(
       RRect.fromRectAndRadius(
         Rect.fromLTWH(0, 0, size.width - cutoutRadius, size.height),
-        Radius.circular(buttonCornerRadius),
+        Radius.circular(tagCornerRadius),
       ),
     );
 

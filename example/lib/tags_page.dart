@@ -3,13 +3,20 @@ import 'package:example/page_item.dart';
 import 'package:flutter/material.dart';
 
 // ignore_for_file: avoid_print
-class TagsPage extends StatelessWidget {
+class TagsPage extends StatefulWidget {
   const TagsPage({super.key});
 
   static final model = PageItem(
     title: 'Tags',
     pageBuilder: (final context) => const TagsPage(),
   );
+
+  @override
+  State<TagsPage> createState() => _TagsPageState();
+}
+
+class _TagsPageState extends State<TagsPage> {
+  bool _isTagSelected = false;
 
   @override
   Widget build(final context) => SingleChildScrollView(
@@ -47,7 +54,8 @@ class TagsPage extends StatelessWidget {
               highlightColor: DsfrColorDecisions.backgroundActionHighBlueFranceHover(context),
               textColor: DsfrColorDecisions.textInvertedBlueFrance(context),
               isSelectable: true,
-              onTap: () => print('Tag selectionnable'),
+              isSelected: _isTagSelected,
+              onSelectionChanged: (final isSelected) => setState(() => _isTagSelected = isSelected),
             ),
             Text(
               'Taille MD',
@@ -78,7 +86,8 @@ class TagsPage extends StatelessWidget {
               highlightColor: DsfrColorDecisions.backgroundActionHighBlueFranceHover(context),
               textColor: DsfrColorDecisions.textInvertedBlueFrance(context),
               isSelectable: true,
-              onTap: () => print('Tag selectionnable'),
+              isSelected: _isTagSelected,
+              onSelectionChanged: (final isSelected) => setState(() => _isTagSelected = isSelected),
             ),
           ],
         ),
