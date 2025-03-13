@@ -103,9 +103,121 @@ class _CheckboxPageState extends State<CheckboxPage> {
               ),
             ],
           ),
-          Text('Groupes de cases à cocher :'),
+          Align(
+            alignment: Alignment.topLeft,
+            child: Text(
+              'Groupes de cases à cocher :',
+              style: DsfrTextStyle.headline3(color: DsfrColorDecisions.textActiveBlueFrance(context)),
+            ),
+          ),
           DsfrCheckboxSet(
             label: 'Légende',
+            checkboxes: [
+              DsfrCheckbox.md(
+                label: 'Libellé',
+                value: _value2,
+                onChanged: (final value) => setState(() {
+                  _value2 = value;
+                }),
+              ),
+              DsfrCheckbox.md(
+                label: 'Libellé',
+                value: _value2,
+                onChanged: (final value) => setState(() {
+                  _value2 = value;
+                }),
+              ),
+              DsfrCheckbox.md(
+                label: 'Libellé',
+                value: _value2,
+                onChanged: (final value) => setState(() {
+                  _value2 = value;
+                }),
+              ),
+            ],
+          ),
+          Divider(),
+          DsfrCheckboxSet(
+            label: 'Légende',
+            checkboxes: [
+              DsfrCheckbox.md(
+                label: 'Libellé',
+                value: _value2,
+                description: 'ceci est une description',
+                onChanged: (final value) => setState(() {
+                  _value2 = value;
+                }),
+              ),
+              DsfrCheckbox.md(
+                label: 'Libellé',
+                description: 'ceci est une description',
+                value: _value2,
+                onChanged: (final value) => setState(() {
+                  _value2 = value;
+                }),
+              ),
+            ],
+          ),
+          Divider(),
+          DsfrCheckboxSet(
+            label: 'Groupe avec description de groupe',
+            description: 'Texte de description additionnel',
+            checkboxes: [
+              DsfrCheckbox.md(
+                label: 'Libellé',
+                value: _value2,
+                onChanged: (final value) => setState(() {
+                  _value2 = value;
+                }),
+              ),
+              DsfrCheckbox.md(
+                label: 'Libellé',
+                value: _value2,
+                onChanged: (final value) => setState(() {
+                  _value2 = value;
+                }),
+              ),
+              DsfrCheckbox.md(
+                label: 'Libellé',
+                value: _value2,
+                onChanged: (final value) => setState(() {
+                  _value2 = value;
+                }),
+              ),
+            ],
+          ),
+          Divider(),
+          DsfrCheckboxSet(
+            label: 'Groupe en erreur',
+            composantState: DsfrComposantState.error(errorMessage: 'Texte d\'erreur obligatoire'),
+            checkboxes: [
+              DsfrCheckbox.md(
+                label: 'Libellé',
+                value: _value2,
+                onChanged: (final value) => setState(() {
+                  _value2 = value;
+                }),
+              ),
+              DsfrCheckbox.md(
+                label: 'Libellé',
+                value: _value2,
+                onChanged: (final value) => setState(() {
+                  _value2 = value;
+                }),
+              ),
+              DsfrCheckbox.md(
+                label: 'Libellé',
+                value: _value2,
+                onChanged: (final value) => setState(() {
+                  _value2 = value;
+                }),
+              ),
+            ],
+          ),
+          Divider(),
+          DsfrCheckboxSet(
+            label: 'Groupe en succès',
+            composantState: DsfrComposantState.success(message: 'Texte de validation optionnel'),
             checkboxes: [
               DsfrCheckbox.md(
                 label: 'Libellé',
