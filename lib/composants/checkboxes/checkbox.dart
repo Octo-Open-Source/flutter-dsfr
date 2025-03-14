@@ -82,29 +82,19 @@ class DsfrCheckbox extends StatelessWidget {
       return true;
     });
 
-    return isInGroup
-        ? DsfrCheckboxChild(
-            label: label,
-            value: value,
-            onChanged: onChanged,
-            enabled: enabled,
-            description: description,
-            state: groupState.state,
-            padding: padding,
-            focusNode: focusNode,
-          )
-        : DsfrFormState(
-            composantState: composantState,
-            child: DsfrCheckboxChild(
-              label: label,
-              value: value,
-              onChanged: onChanged,
-              enabled: enabled,
-              description: description,
-              state: composantState.state,
-              padding: padding,
-              focusNode: focusNode,
-            ),
-          );
+    return DsfrFormState(
+      composantState: composantState,
+      isInGroup: isInGroup,
+      child: DsfrCheckboxChild(
+        label: label,
+        value: value,
+        onChanged: onChanged,
+        enabled: enabled,
+        description: description,
+        state: isInGroup ? groupState.state : composantState.state,
+        padding: padding,
+        focusNode: focusNode,
+      ),
+    );
   }
 }
