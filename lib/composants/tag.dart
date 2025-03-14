@@ -11,6 +11,9 @@ class DsfrTag extends StatelessWidget {
     this.backgroundColor,
     this.highlightColor,
     this.textColor,
+    this.selectedBackgroundColor,
+    this.selectedHighlightColor,
+    this.selectedTextColor,
     this.icon,
     this.onTap,
     this.focusNode,
@@ -26,6 +29,9 @@ class DsfrTag extends StatelessWidget {
     final Color? backgroundColor,
     final Color? highlightColor,
     final Color? textColor,
+    final Color? selectedBackgroundColor,
+    final Color? selectedHighlightColor,
+    final Color? selectedTextColor,
     final Key? key,
     final bool isSelectable = false,
     final bool isSelected = false,
@@ -38,6 +44,9 @@ class DsfrTag extends StatelessWidget {
           backgroundColor: backgroundColor,
           highlightColor: highlightColor,
           textColor: textColor,
+          selectedBackgroundColor: selectedBackgroundColor,
+          selectedHighlightColor: selectedHighlightColor,
+          selectedTextColor: selectedTextColor,
           icon: icon,
           onTap: onTap,
           isSelectable: isSelectable,
@@ -52,6 +61,9 @@ class DsfrTag extends StatelessWidget {
     final Color? backgroundColor,
     final Color? highlightColor,
     final Color? textColor,
+    final Color? selectedBackgroundColor,
+    final Color? selectedHighlightColor,
+    final Color? selectedTextColor,
     final Key? key,
     final bool isSelectable = false,
     final bool isSelected = false,
@@ -64,6 +76,9 @@ class DsfrTag extends StatelessWidget {
           backgroundColor: backgroundColor,
           highlightColor: highlightColor,
           textColor: textColor,
+          selectedBackgroundColor: selectedBackgroundColor,
+          selectedHighlightColor: selectedHighlightColor,
+          selectedTextColor: selectedTextColor,
           icon: icon,
           onTap: onTap,
           isSelectable: isSelectable,
@@ -79,13 +94,17 @@ class DsfrTag extends StatelessWidget {
   final Color? backgroundColor;
   final Color? highlightColor;
   final Color? textColor;
+  final Color? selectedBackgroundColor;
+  final Color? selectedHighlightColor;
+  final Color? selectedTextColor;
   final FocusNode? focusNode;
   final bool isSelectable;
   final bool isSelected;
   final ValueChanged<bool>? onSelectionChanged;
 
   DsfrTextStyle _getTextStyle(BuildContext context) {
-    var textColor = this.textColor ?? DsfrColorDecisions.textActionHighBlueFrance(context);
+    var textColor = (isSelected ? (selectedTextColor ?? this.textColor) : this.textColor) ??
+        DsfrColorDecisions.textActionHighBlueFrance(context);
 
     switch (size) {
       case DsfrComponentSize.md:
@@ -129,13 +148,20 @@ class DsfrTag extends StatelessWidget {
 
   @override
   Widget build(final context) {
-    final highlightColor = (this.backgroundColor == null && this.highlightColor == null)
+    final highlightColor = ((!isSelected && this.backgroundColor == null && this.highlightColor == null) ||
+            (isSelected &&
+                this.backgroundColor == null &&
+                this.highlightColor == null &&
+                selectedBackgroundColor == null &&
+                selectedHighlightColor == null))
         ? DsfrColorDecisions.backgroundActionLowBlueFranceHover(context)
-        : this.highlightColor;
+        : isSelected
+            ? (selectedHighlightColor ?? this.highlightColor)
+            : this.highlightColor;
 
-    final backgroundColor = this.backgroundColor ?? DsfrColorDecisions.backgroundActionLowBlueFrance(context);
+    final backgroundColor = (isSelected ? selectedBackgroundColor : this.backgroundColor) ?? DsfrColorDecisions.backgroundActionLowBlueFrance(context);
 
-    final textColor = this.textColor ?? DsfrColorDecisions.textActionHighBlueFrance(context);
+    final textColor = (isSelected ? selectedTextColor : this.textColor) ?? DsfrColorDecisions.textActionHighBlueFrance(context);
 
     return Focus(
       focusNode: focusNode,
@@ -146,95 +172,121 @@ class DsfrTag extends StatelessWidget {
           return DsfrFocusWidget(
             isFocused: isFocused,
             child: isSelected
-                ? Column(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
-                    CustomPaint(
-                      painter: CustomShapePainter(size, backgroundColor, highlightColor),
-                      child: ClipPath(
-                        clipper: CustomShapeClipper(size),
-                        child: Material(
-                          color: backgroundColor,
-                          child: InkWell(
-                            highlightColor: highlightColor,
-                            onTap: () {
-                              if (isSelectable) {
-                                onSelectionChanged?.call(!isSelected);
-                              } else {
-                                onTap;
-                              }
-                            },
-                            child: Padding(
-                                padding: _getPadding(),
-                                child: Text.rich(
-                                  TextSpan(
-                                    children: [
-                                      if (icon != null) ...[
-                                        WidgetSpan(
-                                          alignment: PlaceholderAlignment.middle,
-                                          baseline: TextBaseline.alphabetic,
-                                          child: Icon(
-                                            icon,
-                                            size: _getIconFontSize(),
-                                            color: textColor,
-                                          ),
-                                        ),
-                                        const WidgetSpan(
-                                          child: SizedBox(width: DsfrSpacings.s1v),
-                                        ),
-                                      ],
-                                      label,
-                                    ],
-                                  ),
-                                  style: _getTextStyle(context),
-                                )),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ])
-                : Material(
-                    color: backgroundColor,
-                    shape: const StadiumBorder(),
-                    child: ExcludeFocus(
-                      child: InkWell(
-                        onTap: () {
-                          if (isSelectable) {
-                            onSelectionChanged?.call(!isSelected);
-                          } else {
-                            onTap;
-                          }
-                        },
-                        customBorder: StadiumBorder(),
+                ? CustomPaint(
+                    painter: _CustomShapePainter(size, backgroundColor),
+                    child: ClipPath(
+                      clipper: _CustomShapeClipper(size),
+                      child: _TagButton(
+                        label: label,
+                        padding: _getPadding(),
+                        size: size,
+                        backgroundColor: backgroundColor,
                         highlightColor: highlightColor,
-                        child: Padding(
-                          padding: _getPadding(),
-                          child: Text.rich(
-                            TextSpan(
-                              children: [
-                                if (icon != null) ...[
-                                  WidgetSpan(
-                                    alignment: PlaceholderAlignment.middle,
-                                    baseline: TextBaseline.alphabetic,
-                                    child: Icon(
-                                      icon,
-                                      size: _getIconFontSize(),
-                                      color: textColor,
-                                    ),
-                                  ),
-                                  const WidgetSpan(
-                                    child: SizedBox(width: DsfrSpacings.s1v),
-                                  ),
-                                ],
-                                label,
-                              ],
-                            ),
-                            style: _getTextStyle(context),
-                          ),
-                        ),
+                        textColor: textColor,
+                        textStyle: _getTextStyle(context),
+                        icon: icon,
+                        iconFontSize: _getIconFontSize(),
+                        onTap: onTap,
+                        isSelectable: isSelectable,
+                        isSelected: isSelected,
+                        onSelectionChanged: onSelectionChanged,
                       ),
                     ),
+                  )
+                : _TagButton(
+                    label: label,
+                    padding: _getPadding(),
+                    size: size,
+                    backgroundColor: backgroundColor,
+                    highlightColor: highlightColor,
+                    textColor: textColor,
+                    textStyle: _getTextStyle(context),
+                    icon: icon,
+                    iconFontSize: _getIconFontSize(),
+                    onTap: onTap,
+                    isSelectable: isSelectable,
+                    isSelected: isSelected,
+                    onSelectionChanged: onSelectionChanged,
                   ),
           );
         },
+      ),
+    );
+  }
+}
+
+class _TagButton extends StatelessWidget {
+  const _TagButton({
+    required this.label,
+    required this.padding,
+    required this.size,
+    this.backgroundColor,
+    this.highlightColor,
+    this.textColor,
+    required this.textStyle,
+    this.icon,
+    this.iconFontSize,
+    this.onTap,
+    this.isSelectable = false,
+    this.isSelected = false,
+    this.onSelectionChanged,
+  });
+
+  final InlineSpan label;
+  final EdgeInsets padding;
+  final DsfrComponentSize size;
+  final GestureTapCallback? onTap;
+  final IconData? icon;
+  final double? iconFontSize;
+  final Color? backgroundColor;
+  final Color? highlightColor;
+  final Color? textColor;
+  final DsfrTextStyle textStyle;
+  final bool isSelectable;
+  final bool isSelected;
+  final ValueChanged<bool>? onSelectionChanged;
+
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      color: backgroundColor,
+      shape: isSelected ? null : const StadiumBorder(),
+      child: ExcludeFocus(
+        child: InkWell(
+          customBorder: isSelected ? null : const StadiumBorder(),
+          highlightColor: highlightColor,
+          onTap: () {
+            if (isSelectable) {
+              onSelectionChanged?.call(!isSelected);
+            } else {
+              onTap;
+            }
+          },
+          child: Padding(
+              padding: padding,
+              child: Text.rich(
+                TextSpan(
+                  children: [
+                    if (icon != null) ...[
+                      WidgetSpan(
+                        alignment: PlaceholderAlignment.middle,
+                        baseline: TextBaseline.alphabetic,
+                        child: Icon(
+                          icon,
+                          size: iconFontSize,
+                          color: textColor,
+                        ),
+                      ),
+                      const WidgetSpan(
+                        child: SizedBox(width: DsfrSpacings.s1v),
+                      ),
+                    ],
+                    label,
+                  ],
+                ),
+                style: textStyle,
+              )),
+        ),
       ),
     );
   }
@@ -247,8 +299,8 @@ const double tagStrokeWidthSizeS = 1.2;
 const double tagStrokeWidthSizeM = 1.5;
 const double spaceBetweenButtonAndTag = 1;
 
-class CustomShapeClipper extends CustomClipper<Path> {
-  const CustomShapeClipper(
+class _CustomShapeClipper extends CustomClipper<Path> {
+  const _CustomShapeClipper(
     this.componentSize,
   );
 
@@ -279,16 +331,14 @@ class CustomShapeClipper extends CustomClipper<Path> {
   }
 }
 
-class CustomShapePainter extends CustomPainter {
-  const CustomShapePainter(
+class _CustomShapePainter extends CustomPainter {
+  const _CustomShapePainter(
     this.componentSize,
     this.backgroundColor,
-    this.highlightColor,
   );
 
   final DsfrComponentSize componentSize;
   final Color backgroundColor;
-  final Color? highlightColor;
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -344,6 +394,6 @@ class CustomShapePainter extends CustomPainter {
 
   @override
   bool shouldRepaint(covariant CustomPainter oldDelegate) {
-    return oldDelegate is! CustomShapePainter;
+    return oldDelegate is! _CustomShapePainter;
   }
 }

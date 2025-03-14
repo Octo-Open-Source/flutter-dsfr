@@ -16,7 +16,10 @@ class TagsPage extends StatefulWidget {
 }
 
 class _TagsPageState extends State<TagsPage> {
-  bool _isTagSelected = false;
+  bool _isTag1Selected = false;
+  bool _isTag2Selected = false;
+  bool _isTag3Selected = false;
+  bool _isTag4Selected = false;
 
   @override
   Widget build(final context) => SingleChildScrollView(
@@ -50,12 +53,24 @@ class _TagsPageState extends State<TagsPage> {
             ),
             DsfrTag.sm(
               label: TextSpan(text: 'Tag selectionnable'),
+              selectedBackgroundColor: DsfrColorDecisions.backgroundActionHighBlueFrance(context),
+              selectedHighlightColor: DsfrColorDecisions.backgroundActionHighBlueFranceHover(context),
+              selectedTextColor: DsfrColorDecisions.textInvertedBlueFrance(context),
+              isSelectable: true,
+              isSelected: _isTag1Selected,
+              onSelectionChanged: (final isSelected) => setState(() => _isTag1Selected = isSelected),
+            ),
+            DsfrTag.sm(
+              label: TextSpan(text: 'Tag selectionnable personnalisable'),
               backgroundColor: DsfrColorDecisions.backgroundActionHighBlueFrance(context),
               highlightColor: DsfrColorDecisions.backgroundActionHighBlueFranceHover(context),
               textColor: DsfrColorDecisions.textInvertedBlueFrance(context),
+              selectedBackgroundColor: DsfrColorDecisions.backgroundActionLowBlueFrance(context),
+              selectedHighlightColor: DsfrColorDecisions.backgroundActionLowBlueFranceHover(context),
+              selectedTextColor: DsfrColorDecisions.textActionHighBlueFrance(context),
               isSelectable: true,
-              isSelected: _isTagSelected,
-              onSelectionChanged: (final isSelected) => setState(() => _isTagSelected = isSelected),
+              isSelected: _isTag2Selected,
+              onSelectionChanged: (final isSelected) => setState(() => _isTag2Selected = isSelected),
             ),
             Text(
               'Taille MD',
@@ -82,12 +97,24 @@ class _TagsPageState extends State<TagsPage> {
             ),
             DsfrTag.md(
               label: TextSpan(text: 'Tag selectionnable'),
+              selectedBackgroundColor: DsfrColorDecisions.backgroundActionHighBlueFrance(context),
+              selectedHighlightColor: DsfrColorDecisions.backgroundActionHighBlueFranceHover(context),
+              selectedTextColor: DsfrColorDecisions.textInvertedBlueFrance(context),
+              isSelectable: true,
+              isSelected: _isTag3Selected,
+              onSelectionChanged: (final isSelected) => setState(() => _isTag3Selected = isSelected),
+            ),
+            DsfrTag.md(
+              label: TextSpan(text: 'Tag selectionnable personnalisable'),
               backgroundColor: DsfrColorDecisions.backgroundActionHighBlueFrance(context),
               highlightColor: DsfrColorDecisions.backgroundActionHighBlueFranceHover(context),
               textColor: DsfrColorDecisions.textInvertedBlueFrance(context),
+              selectedBackgroundColor: DsfrColorDecisions.backgroundActionLowBlueFrance(context),
+              selectedHighlightColor: DsfrColorDecisions.backgroundActionLowBlueFranceHover(context),
+              selectedTextColor: DsfrColorDecisions.textActionHighBlueFrance(context),
               isSelectable: true,
-              isSelected: _isTagSelected,
-              onSelectionChanged: (final isSelected) => setState(() => _isTagSelected = isSelected),
+              isSelected: _isTag4Selected,
+              onSelectionChanged: (final isSelected) => setState(() => _isTag4Selected = isSelected),
             ),
           ],
         ),
