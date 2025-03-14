@@ -1,8 +1,8 @@
 # État d'avancement des composants dans le DSFR Flutter
 
-✅ : Composant disponible
-✔️ : Composant en cours de développement (il se peut que certains status ne soient pas gérés)
-❌ : Composant indisponible
+✅ : Composant disponible  
+✔️ : Composant en cours de développement (il se peut que certains status ne soient pas gérés)  
+❌ : Composant indisponible  
 
 
 | Composant                                                          | DSFR Flutter | Commentaires                                                       |
