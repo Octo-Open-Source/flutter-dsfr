@@ -1,7 +1,5 @@
 import 'package:flutter_dsfr/composants/checkboxes/checkbox.dart';
 import 'package:flutter_dsfr/composants/checkboxes/dsfr_checkbox_set.dart';
-import 'package:flutter_dsfr/helpers/composant_state.dart';
-import 'package:flutter_test/flutter_test.dart';
 import '../../../helpers/a11y_test.skip.dart';
 
 void main() {
