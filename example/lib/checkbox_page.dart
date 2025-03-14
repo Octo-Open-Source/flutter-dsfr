@@ -113,9 +113,9 @@ class _CheckboxPageState extends State<CheckboxPage> {
               style: DsfrTextStyle.headline3(color: DsfrColorDecisions.textActiveBlueFrance(context)),
             ),
           ),
-          DsfrCheckboxSet(
+          DsfrGroup(
             label: 'Légende',
-            checkboxes: [
+            widgets: [
               DsfrCheckbox.md(
                 label: 'Libellé',
                 value: _valueGroup1,
@@ -140,9 +140,9 @@ class _CheckboxPageState extends State<CheckboxPage> {
             ],
           ),
           Divider(),
-          DsfrCheckboxSet(
+          DsfrGroup(
             label: 'Légende',
-            checkboxes: [
+            widgets: [
               DsfrCheckbox.md(
                 label: 'Libellé',
                 value: _value2,
@@ -162,10 +162,10 @@ class _CheckboxPageState extends State<CheckboxPage> {
             ],
           ),
           Divider(),
-          DsfrCheckboxSet(
+          DsfrGroup(
             label: 'Groupe avec description de groupe',
             description: 'Texte de description additionnel',
-            checkboxes: [
+            widgets: [
               DsfrCheckbox.md(
                 label: 'Libellé',
                 value: _value2,
@@ -190,10 +190,10 @@ class _CheckboxPageState extends State<CheckboxPage> {
             ],
           ),
           Divider(),
-          DsfrCheckboxSet(
+          DsfrGroup(
             label: 'Groupe en erreur',
             composantState: DsfrComposantState.error(errorMessage: 'Texte d\'erreur obligatoire'),
-            checkboxes: [
+            widgets: [
               DsfrCheckbox.md(
                 label: 'Libellé',
                 value: _value2,
@@ -218,10 +218,10 @@ class _CheckboxPageState extends State<CheckboxPage> {
             ],
           ),
           Divider(),
-          DsfrCheckboxSet(
+          DsfrGroup(
             label: 'Groupe en succès',
             composantState: DsfrComposantState.success(message: 'Texte de validation optionnel'),
-            checkboxes: [
+            widgets: [
               DsfrCheckbox.md(
                 label: 'Libellé',
                 value: _value2,

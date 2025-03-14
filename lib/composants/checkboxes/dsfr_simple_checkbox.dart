@@ -8,7 +8,7 @@ import 'package:flutter_dsfr/fondamentaux/spacing.g.dart';
 import 'package:flutter_dsfr/helpers/color_utils.dart';
 import 'package:flutter_dsfr/helpers/composant_state.dart';
 
-class DsfrSimpleCheckbox extends StatelessWidget {
+class DsfrCheckboxChild extends StatelessWidget {
   final String label;
   final String? description;
   final bool value;
@@ -18,7 +18,7 @@ class DsfrSimpleCheckbox extends StatelessWidget {
   final EdgeInsets padding;
   final FocusNode? focusNode;
 
-  const DsfrSimpleCheckbox({
+  const DsfrCheckboxChild({
     super.key,
     required this.label,
     required this.value,

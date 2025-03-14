@@ -1,4 +1,5 @@
 import 'package:flutter_dsfr/atoms/dsfr_form_state.dart';
+import 'package:flutter_dsfr/atoms/dsfr_group.dart';
 import 'package:flutter_dsfr/composants/checkboxes/dsfr_simple_checkbox.dart';
 import 'package:flutter_dsfr/fondamentaux/spacing.g.dart';
 import 'package:flutter/material.dart';
@@ -69,17 +70,41 @@ class DsfrCheckbox extends StatelessWidget {
   final DsfrComposantState composantState;
 
   @override
-  Widget build(final context) => DsfrFormState(
-        composantState: composantState,
-        child: DsfrSimpleCheckbox(
-          label: label,
-          value: value,
-          onChanged: onChanged,
-          enabled: enabled,
-          description: description,
-          state: composantState.state,
-          padding: padding,
-          focusNode: focusNode,
-        ),
-      );
+  Widget build(final context) {
+    bool isInGroup = false;
+    DsfrComposantState groupState = composantState;
+    context.visitAncestorElements((element) {
+      if (element.widget is DsfrGroup) {
+        isInGroup = true;
+        groupState = (element.widget as DsfrGroup).composantState;
+        return false;
+      }
+      return true;
+    });
+
+    return isInGroup
+        ? DsfrCheckboxChild(
+            label: label,
+            value: value,
+            onChanged: onChanged,
+            enabled: enabled,
+            description: description,
+            state: groupState.state,
+            padding: padding,
+            focusNode: focusNode,
+          )
+        : DsfrFormState(
+            composantState: composantState,
+            child: DsfrCheckboxChild(
+              label: label,
+              value: value,
+              onChanged: onChanged,
+              enabled: enabled,
+              description: description,
+              state: composantState.state,
+              padding: padding,
+              focusNode: focusNode,
+            ),
+          );
+  }
 }

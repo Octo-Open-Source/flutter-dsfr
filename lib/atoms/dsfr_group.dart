@@ -1,19 +1,18 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_dsfr/atoms/dsfr_form_state.dart';
-import 'package:flutter_dsfr/composants/checkboxes/dsfr_simple_checkbox.dart';
 import 'package:flutter_dsfr/flutter_dsfr.dart';
 import 'package:flutter_dsfr/helpers/color_utils.dart';
 import 'package:flutter_dsfr/helpers/composant_state.dart';
 
-class DsfrCheckboxSet extends StatelessWidget {
-  final List<DsfrCheckbox> checkboxes;
+class DsfrGroup<T> extends StatelessWidget {
+  final List<T> widgets;
   final String label;
   final String? description;
   final DsfrComposantState composantState;
 
-  const DsfrCheckboxSet({
+  const DsfrGroup({
     super.key,
-    required this.checkboxes,
+    required this.widgets,
     required this.label,
     this.description,
     this.composantState = const DsfrComposantState.none(),
@@ -44,17 +43,8 @@ class DsfrCheckboxSet extends StatelessWidget {
               : const SizedBox.shrink(),
           Column(
             spacing: DsfrSpacings.s2w,
-            children: checkboxes.map((final checkbox) {
-              return DsfrSimpleCheckbox(
-                label: checkbox.label,
-                value: checkbox.value,
-                onChanged: checkbox.onChanged,
-                enabled: checkbox.enabled,
-                description: checkbox.description,
-                state: composantState.state,
-                padding: checkbox.padding,
-                focusNode: checkbox.focusNode,
-              );
+            children: widgets.map((final widget) {
+              return widget as Widget;
             }).toList(),
           ),
         ],
