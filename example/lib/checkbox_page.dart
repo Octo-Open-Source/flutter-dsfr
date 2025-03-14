@@ -18,6 +18,9 @@ class CheckboxPage extends StatefulWidget {
 class _CheckboxPageState extends State<CheckboxPage> {
   bool _value = false;
   bool _value2 = false;
+  bool _valueGroup1 = false;
+  bool _valueGroup2 = false;
+  bool _valueGroup3 = false;
 
   @override
   Widget build(final context) {
@@ -115,23 +118,23 @@ class _CheckboxPageState extends State<CheckboxPage> {
             checkboxes: [
               DsfrCheckbox.md(
                 label: 'Libellé',
-                value: _value2,
+                value: _valueGroup1,
                 onChanged: (final value) => setState(() {
-                  _value2 = value;
+                  _valueGroup1 = value;
                 }),
               ),
               DsfrCheckbox.md(
                 label: 'Libellé',
-                value: _value2,
+                value: _valueGroup2,
                 onChanged: (final value) => setState(() {
-                  _value2 = value;
+                  _valueGroup2 = value;
                 }),
               ),
               DsfrCheckbox.md(
                 label: 'Libellé',
-                value: _value2,
+                value: _valueGroup3,
                 onChanged: (final value) => setState(() {
-                  _value2 = value;
+                  _valueGroup3 = value;
                 }),
               ),
             ],
