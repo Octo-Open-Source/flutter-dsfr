@@ -1,6 +1,5 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_dsfr/atoms/composant_state_widget.dart';
-import 'package:flutter_dsfr/atoms/dsfr_group.dart';
 import 'package:flutter_dsfr/atoms/vertical_bar_widget.dart';
 import 'package:flutter_dsfr/fondamentaux/spacing.g.dart';
 import 'package:flutter_dsfr/helpers/composant_state.dart';
