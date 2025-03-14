@@ -148,20 +148,23 @@ class DsfrTag extends StatelessWidget {
 
   @override
   Widget build(final context) {
-    final highlightColor = ((!isSelected && this.backgroundColor == null && this.highlightColor == null) ||
-            (isSelected &&
-                this.backgroundColor == null &&
-                this.highlightColor == null &&
-                selectedBackgroundColor == null &&
-                selectedHighlightColor == null))
+    final hasNoCustomBackgroundColors = (this.backgroundColor == null) && (this.highlightColor == null);
+    final hasNoCustomSelectedBackgroundColors =
+        (selectedBackgroundColor == null) && (this.selectedHighlightColor == null);
+    final shouldUseDefaultHighlightColor = (!isSelected && hasNoCustomBackgroundColors) ||
+        (isSelected && hasNoCustomBackgroundColors && hasNoCustomSelectedBackgroundColors);
+
+    final selectedHighlightColor = (this.selectedHighlightColor ?? this.highlightColor);
+
+    final highlightColor = shouldUseDefaultHighlightColor
         ? DsfrColorDecisions.backgroundActionLowBlueFranceHover(context)
-        : isSelected
-            ? (selectedHighlightColor ?? this.highlightColor)
-            : this.highlightColor;
+        : (isSelected ? selectedHighlightColor : this.highlightColor);
 
-    final backgroundColor = (isSelected ? selectedBackgroundColor : this.backgroundColor) ?? DsfrColorDecisions.backgroundActionLowBlueFrance(context);
+    final backgroundColor = (isSelected ? selectedBackgroundColor : this.backgroundColor) ??
+        DsfrColorDecisions.backgroundActionLowBlueFrance(context);
 
-    final textColor = (isSelected ? selectedTextColor : this.textColor) ?? DsfrColorDecisions.textActionHighBlueFrance(context);
+    final textColor =
+        (isSelected ? selectedTextColor : this.textColor) ?? DsfrColorDecisions.textActionHighBlueFrance(context);
 
     return Focus(
       focusNode: focusNode,
@@ -292,12 +295,12 @@ class _TagButton extends StatelessWidget {
   }
 }
 
-const double tagCornerRadius = 40;
-const double tagRadiusSizeS = 4.5;
-const double tagRadiusSizeM = 6;
-const double tagStrokeWidthSizeS = 1.2;
-const double tagStrokeWidthSizeM = 1.5;
-const double spaceBetweenButtonAndTag = 1;
+const double _tagCornerRadius = 40;
+const double _tagRadiusSizeS = 4.5;
+const double _tagRadiusSizeM = 6;
+const double _tagStrokeWidthSizeS = 1.2;
+const double _tagStrokeWidthSizeM = 1.5;
+const double _spaceBetweenButtonAndTag = 1;
 
 class _CustomShapeClipper extends CustomClipper<Path> {
   const _CustomShapeClipper(
@@ -309,16 +312,16 @@ class _CustomShapeClipper extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
     final Path path = Path();
-    final double tagRadius = (componentSize == DsfrComponentSize.md) ? tagRadiusSizeM : tagRadiusSizeS;
-    final double tagStrokeWidth = (componentSize == DsfrComponentSize.md) ? tagStrokeWidthSizeM : tagStrokeWidthSizeS;
+    final double tagRadius = (componentSize == DsfrComponentSize.md) ? _tagRadiusSizeM : _tagRadiusSizeS;
+    final double tagStrokeWidth = (componentSize == DsfrComponentSize.md) ? _tagStrokeWidthSizeM : _tagStrokeWidthSizeS;
 
-    final cutoutRadius = tagRadius + tagStrokeWidth + spaceBetweenButtonAndTag;
+    final cutoutRadius = tagRadius + tagStrokeWidth + _spaceBetweenButtonAndTag;
     final Offset cutoutCenter = Offset(size.width - cutoutRadius, cutoutRadius / 2);
 
     path.addRRect(
       RRect.fromRectAndRadius(
         Rect.fromLTWH(0, 0, size.width - cutoutRadius, size.height),
-        Radius.circular(tagCornerRadius),
+        Radius.circular(_tagCornerRadius),
       ),
     );
     final Path cutoutPath = Path()..addOval(Rect.fromCircle(center: cutoutCenter, radius: cutoutRadius));
@@ -343,8 +346,8 @@ class _CustomShapePainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final Path path = Path();
-    final double tagRadius = (componentSize == DsfrComponentSize.md) ? tagRadiusSizeM : tagRadiusSizeS;
-    final double tagStrokeWidth = (componentSize == DsfrComponentSize.md) ? tagStrokeWidthSizeM : tagStrokeWidthSizeS;
+    final double tagRadius = (componentSize == DsfrComponentSize.md) ? _tagRadiusSizeM : _tagRadiusSizeS;
+    final double tagStrokeWidth = (componentSize == DsfrComponentSize.md) ? _tagStrokeWidthSizeM : _tagStrokeWidthSizeS;
     final Paint tagPaint = Paint()
       ..color = backgroundColor
       ..style = PaintingStyle.fill;
@@ -353,13 +356,13 @@ class _CustomShapePainter extends CustomPainter {
       ..strokeWidth = tagStrokeWidth
       ..style = PaintingStyle.stroke;
 
-    final cutoutRadius = tagRadius + tagStrokeWidth + spaceBetweenButtonAndTag;
+    final cutoutRadius = tagRadius + tagStrokeWidth + _spaceBetweenButtonAndTag;
     final Offset cutoutCenter = Offset(size.width - cutoutRadius, cutoutRadius / 3);
 
     path.addRRect(
       RRect.fromRectAndRadius(
         Rect.fromLTWH(0, 0, size.width - cutoutRadius, size.height),
-        Radius.circular(tagCornerRadius),
+        Radius.circular(_tagCornerRadius),
       ),
     );
 

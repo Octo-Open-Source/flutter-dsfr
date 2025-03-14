@@ -16,10 +16,10 @@ class TagsPage extends StatefulWidget {
 }
 
 class _TagsPageState extends State<TagsPage> {
-  bool _isTag1Selected = false;
-  bool _isTag2Selected = false;
-  bool _isTag3Selected = false;
-  bool _isTag4Selected = false;
+  bool _isTag1Selected = true;
+  bool _isTag2Selected = true;
+  bool _isTag3Selected = true;
+  bool _isTag4Selected = true;
 
   @override
   Widget build(final context) => SingleChildScrollView(
