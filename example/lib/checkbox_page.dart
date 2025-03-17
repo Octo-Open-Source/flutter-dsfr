@@ -145,18 +145,16 @@ class _CheckboxPageState extends State<CheckboxPage> {
             widgets: [
               DsfrCheckbox.md(
                 label: 'Libellé',
-                value: _value2,
-                description: 'ceci est une description',
+                value: _valueGroup1,
                 onChanged: (final value) => setState(() {
-                  _value2 = value;
+                  _valueGroup1 = value;
                 }),
               ),
               DsfrCheckbox.md(
                 label: 'Libellé',
-                description: 'ceci est une description',
-                value: _value2,
+                value: _valueGroup2,
                 onChanged: (final value) => setState(() {
-                  _value2 = value;
+                  _valueGroup2 = value;
                 }),
               ),
             ],
@@ -168,23 +166,23 @@ class _CheckboxPageState extends State<CheckboxPage> {
             widgets: [
               DsfrCheckbox.md(
                 label: 'Libellé',
-                value: _value2,
+                value: _valueGroup1,
                 onChanged: (final value) => setState(() {
-                  _value2 = value;
+                  _valueGroup1 = value;
                 }),
               ),
               DsfrCheckbox.md(
                 label: 'Libellé',
-                value: _value2,
+                value: _valueGroup2,
                 onChanged: (final value) => setState(() {
-                  _value2 = value;
+                  _valueGroup2 = value;
                 }),
               ),
               DsfrCheckbox.md(
                 label: 'Libellé',
-                value: _value2,
+                value: _valueGroup3,
                 onChanged: (final value) => setState(() {
-                  _value2 = value;
+                  _valueGroup3 = value;
                 }),
               ),
             ],
@@ -196,23 +194,23 @@ class _CheckboxPageState extends State<CheckboxPage> {
             widgets: [
               DsfrCheckbox.md(
                 label: 'Libellé',
-                value: _value2,
+                value: _valueGroup1,
                 onChanged: (final value) => setState(() {
-                  _value2 = value;
+                  _valueGroup1 = value;
                 }),
               ),
               DsfrCheckbox.md(
                 label: 'Libellé',
-                value: _value2,
+                value: _valueGroup2,
                 onChanged: (final value) => setState(() {
-                  _value2 = value;
+                  _valueGroup2 = value;
                 }),
               ),
               DsfrCheckbox.md(
                 label: 'Libellé',
-                value: _value2,
+                value: _valueGroup3,
                 onChanged: (final value) => setState(() {
-                  _value2 = value;
+                  _valueGroup3 = value;
                 }),
               ),
             ],
@@ -224,23 +222,23 @@ class _CheckboxPageState extends State<CheckboxPage> {
             widgets: [
               DsfrCheckbox.md(
                 label: 'Libellé',
-                value: _value2,
+                value: _valueGroup1,
                 onChanged: (final value) => setState(() {
-                  _value2 = value;
+                  _valueGroup1 = value;
                 }),
               ),
               DsfrCheckbox.md(
                 label: 'Libellé',
-                value: _value2,
+                value: _valueGroup2,
                 onChanged: (final value) => setState(() {
-                  _value2 = value;
+                  _valueGroup2 = value;
                 }),
               ),
               DsfrCheckbox.md(
                 label: 'Libellé',
-                value: _value2,
+                value: _valueGroup3,
                 onChanged: (final value) => setState(() {
-                  _value2 = value;
+                  _valueGroup3 = value;
                 }),
               ),
             ],
