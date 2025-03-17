@@ -3,6 +3,7 @@ import 'package:example/accordions_page.dart';
 import 'package:example/buttons_page.dart';
 import 'package:example/checkbox_page.dart';
 import 'package:example/colors_page.dart';
+import 'package:example/france_connect_button_page.dart';
 import 'package:example/icons_page.dart';
 import 'package:example/inputs_page.dart';
 import 'package:example/links_page.dart';
@@ -71,6 +72,7 @@ class _MyAppState extends State<MyApp> {
               TogglesPage.model,
               NoticePage.model,
               SliderPage.model,
+              FranceConnectButtonPage.model,
             ],
           ),
           builder: (final context, final child) => AccessibilityTools(child: child),

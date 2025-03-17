@@ -10,6 +10,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_svg: ^2.0.17
 
 dev_dependencies:
   custom_lint:
@@ -21,6 +22,8 @@ dev_dependencies:
   meta: ^1.1.8
 
 flutter:
+  assets:
+    - assets/icons/
   fonts:
     - family: Marianne
       fonts:
