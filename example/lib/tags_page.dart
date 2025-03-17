@@ -1,6 +1,7 @@
 import 'package:flutter_dsfr/flutter_dsfr.dart';
 import 'package:example/page_item.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dsfr/fondamentaux/color_decisions_extension.dart';
 
 // ignore_for_file: avoid_print
 class TagsPage extends StatefulWidget {
@@ -53,21 +54,18 @@ class _TagsPageState extends State<TagsPage> {
             ),
             DsfrTag.sm(
               label: TextSpan(text: 'Tag selectionnable'),
-              selectedBackgroundColor: DsfrColorDecisions.backgroundActionHighBlueFrance(context),
-              selectedHighlightColor: DsfrColorDecisions.backgroundActionHighBlueFranceHover(context),
-              selectedTextColor: DsfrColorDecisions.textInvertedBlueFrance(context),
               isSelectable: true,
               isSelected: _isTag1Selected,
               onSelectionChanged: (final isSelected) => setState(() => _isTag1Selected = isSelected),
             ),
             DsfrTag.sm(
               label: TextSpan(text: 'Tag selectionnable personnalisable'),
-              backgroundColor: DsfrColorDecisions.backgroundActionHighBlueFrance(context),
-              highlightColor: DsfrColorDecisions.backgroundActionHighBlueFranceHover(context),
-              textColor: DsfrColorDecisions.textInvertedBlueFrance(context),
-              selectedBackgroundColor: DsfrColorDecisions.backgroundActionLowBlueFrance(context),
-              selectedHighlightColor: DsfrColorDecisions.backgroundActionLowBlueFranceHover(context),
-              selectedTextColor: DsfrColorDecisions.textActionHighBlueFrance(context),
+              backgroundColor: DsfrColorDecisionsExtension.backgroundPurpleGlycineHigh(context),
+              highlightColor: DsfrColorDecisionsExtension.backgroundPurpleGlycineHighHover(context),
+              textColor: DsfrColorDecisionsExtension.backgroundPurpleGlycineLow(context),
+              selectedBackgroundColor: DsfrColorDecisionsExtension.backgroundPurpleGlycineLow(context),
+              selectedHighlightColor: DsfrColorDecisionsExtension.backgroundPurpleGlycineLowHover(context),
+              selectedTextColor: DsfrColorDecisions.textInvertedBlueFrance(context),
               isSelectable: true,
               isSelected: _isTag2Selected,
               onSelectionChanged: (final isSelected) => setState(() => _isTag2Selected = isSelected),
@@ -97,21 +95,18 @@ class _TagsPageState extends State<TagsPage> {
             ),
             DsfrTag.md(
               label: TextSpan(text: 'Tag selectionnable'),
-              selectedBackgroundColor: DsfrColorDecisions.backgroundActionHighBlueFrance(context),
-              selectedHighlightColor: DsfrColorDecisions.backgroundActionHighBlueFranceHover(context),
-              selectedTextColor: DsfrColorDecisions.textInvertedBlueFrance(context),
               isSelectable: true,
               isSelected: _isTag3Selected,
               onSelectionChanged: (final isSelected) => setState(() => _isTag3Selected = isSelected),
             ),
             DsfrTag.md(
               label: TextSpan(text: 'Tag selectionnable personnalisable'),
-              backgroundColor: DsfrColorDecisions.backgroundActionHighBlueFrance(context),
-              highlightColor: DsfrColorDecisions.backgroundActionHighBlueFranceHover(context),
-              textColor: DsfrColorDecisions.textInvertedBlueFrance(context),
-              selectedBackgroundColor: DsfrColorDecisions.backgroundActionLowBlueFrance(context),
-              selectedHighlightColor: DsfrColorDecisions.backgroundActionLowBlueFranceHover(context),
-              selectedTextColor: DsfrColorDecisions.textActionHighBlueFrance(context),
+              backgroundColor: DsfrColorDecisionsExtension.backgroundPurpleGlycineHigh(context),
+              highlightColor: DsfrColorDecisionsExtension.backgroundPurpleGlycineHighHover(context),
+              textColor: DsfrColorDecisionsExtension.backgroundPurpleGlycineLow(context),
+              selectedBackgroundColor: DsfrColorDecisionsExtension.backgroundPurpleGlycineLow(context),
+              selectedHighlightColor: DsfrColorDecisionsExtension.backgroundPurpleGlycineLowHover(context),
+              selectedTextColor: DsfrColorDecisions.textInvertedBlueFrance(context),
               isSelectable: true,
               isSelected: _isTag4Selected,
               onSelectionChanged: (final isSelected) => setState(() => _isTag4Selected = isSelected),

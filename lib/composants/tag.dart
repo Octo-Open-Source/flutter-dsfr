@@ -102,10 +102,16 @@ class DsfrTag extends StatelessWidget {
   final bool isSelected;
   final ValueChanged<bool>? onSelectionChanged;
 
-  DsfrTextStyle _getTextStyle(BuildContext context) {
-    var textColor = (isSelected ? (selectedTextColor ?? this.textColor) : this.textColor) ??
-        DsfrColorDecisions.textActionHighBlueFrance(context);
+  Color _getTextColor(BuildContext context) {
+    if (isSelected) {
+      return selectedTextColor ?? DsfrColorDecisions.textInvertedBlueFrance(context);
+    } else {
+      return textColor ?? DsfrColorDecisions.textActionHighBlueFrance(context);
+    }
+  }
 
+  DsfrTextStyle _getTextStyle(BuildContext context) {
+    var textColor = _getTextColor(context);
     switch (size) {
       case DsfrComponentSize.md:
         return DsfrTextStyle.bodyMd(color: textColor);
@@ -146,26 +152,30 @@ class DsfrTag extends StatelessWidget {
     }
   }
 
-  @override
-  Widget build(final context) {
-    final hasNoCustomBackgroundColors = (this.backgroundColor == null) && (this.highlightColor == null);
+  Color _getBackgroundColor(BuildContext context) {
+    if (isSelected) {
+      return selectedBackgroundColor ?? DsfrColorDecisions.backgroundActionHighBlueFrance(context);
+    } else {
+      return backgroundColor ?? DsfrColorDecisions.backgroundActionLowBlueFrance(context);
+    }
+  }
+
+  Color? _getHighlightColor(BuildContext context) {
+    final hasNoCustomBackgroundColors = (backgroundColor == null) && (highlightColor == null);
     final hasNoCustomSelectedBackgroundColors =
-        (selectedBackgroundColor == null) && (this.selectedHighlightColor == null);
+        (selectedBackgroundColor == null) && (selectedHighlightColor == null);
     final shouldUseDefaultHighlightColor = (!isSelected && hasNoCustomBackgroundColors) ||
         (isSelected && hasNoCustomBackgroundColors && hasNoCustomSelectedBackgroundColors);
+    
+    if (shouldUseDefaultHighlightColor) {
+      return isSelected ? DsfrColorDecisions.backgroundActionHighBlueFranceHover(context) : DsfrColorDecisions.backgroundActionLowBlueFranceHover(context);
+    } else {
+      return isSelected ? selectedHighlightColor : highlightColor;
+    }
+  }
 
-    final selectedHighlightColor = (this.selectedHighlightColor ?? this.highlightColor);
-
-    final highlightColor = shouldUseDefaultHighlightColor
-        ? DsfrColorDecisions.backgroundActionLowBlueFranceHover(context)
-        : (isSelected ? selectedHighlightColor : this.highlightColor);
-
-    final backgroundColor = (isSelected ? selectedBackgroundColor : this.backgroundColor) ??
-        DsfrColorDecisions.backgroundActionLowBlueFrance(context);
-
-    final textColor =
-        (isSelected ? selectedTextColor : this.textColor) ?? DsfrColorDecisions.textActionHighBlueFrance(context);
-
+  @override
+  Widget build(final context) {
     return Focus(
       focusNode: focusNode,
       canRequestFocus: true,
@@ -176,16 +186,15 @@ class DsfrTag extends StatelessWidget {
             isFocused: isFocused,
             child: isSelected
                 ? CustomPaint(
-                    painter: _CustomShapePainter(size, backgroundColor),
+                    painter: _CustomShapePainter(size, _getBackgroundColor(context)),
                     child: ClipPath(
                       clipper: _CustomShapeClipper(size),
                       child: _TagButton(
                         label: label,
                         padding: _getPadding(),
                         size: size,
-                        backgroundColor: backgroundColor,
-                        highlightColor: highlightColor,
-                        textColor: textColor,
+                        backgroundColor: _getBackgroundColor(context),
+                        highlightColor: _getHighlightColor(context),
                         textStyle: _getTextStyle(context),
                         icon: icon,
                         iconFontSize: _getIconFontSize(),
@@ -200,9 +209,8 @@ class DsfrTag extends StatelessWidget {
                     label: label,
                     padding: _getPadding(),
                     size: size,
-                    backgroundColor: backgroundColor,
-                    highlightColor: highlightColor,
-                    textColor: textColor,
+                    backgroundColor: _getBackgroundColor(context),
+                    highlightColor: _getHighlightColor(context),
                     textStyle: _getTextStyle(context),
                     icon: icon,
                     iconFontSize: _getIconFontSize(),
@@ -225,7 +233,6 @@ class _TagButton extends StatelessWidget {
     required this.size,
     this.backgroundColor,
     this.highlightColor,
-    this.textColor,
     required this.textStyle,
     this.icon,
     this.iconFontSize,
@@ -243,7 +250,6 @@ class _TagButton extends StatelessWidget {
   final double? iconFontSize;
   final Color? backgroundColor;
   final Color? highlightColor;
-  final Color? textColor;
   final DsfrTextStyle textStyle;
   final bool isSelectable;
   final bool isSelected;
@@ -277,7 +283,7 @@ class _TagButton extends StatelessWidget {
                         child: Icon(
                           icon,
                           size: iconFontSize,
-                          color: textColor,
+                          color: textStyle.color,
                         ),
                       ),
                       const WidgetSpan(

@@ -128,7 +128,7 @@ class DsfrNotice extends StatelessWidget {
       case DsfrNoticeType.weatherRed:
         return DsfrColorDecisions.backgroundFlatError(context);
       case DsfrNoticeType.weatherPurple:
-        return DsfrColorDecisionsExtension.backgroundGlycine(context);
+        return DsfrColorDecisionsExtension.backgroundPurpleGlycineLow(context);
       case DsfrNoticeType.alertAttack:
         return DsfrColorDecisions.backgroundFlatError(context);
       case DsfrNoticeType.alertCallForWitnesses:
