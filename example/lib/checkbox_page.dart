@@ -25,7 +25,7 @@ class _CheckboxPageState extends State<CheckboxPage> {
   @override
   Widget build(final context) {
     return SingleChildScrollView(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.fromLTRB(16, 16, 16, 98),
       child: Column(
         spacing: 16,
         children: [

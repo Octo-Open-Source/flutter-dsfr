@@ -33,14 +33,12 @@ class DsfrGroup<T> extends StatelessWidget {
             ),
             SizedBox(height: description != null ? DsfrSpacings.s1w : DsfrSpacings.s2w),
             description != null
-                ? Column(
-                    children: [
-                      Text(
-                        description!,
-                        style: DsfrTextStyle.bodyXs(color: DsfrColorDecisions.textMentionGrey(context)),
-                      ),
-                      const SizedBox(height: DsfrSpacings.s2w),
-                    ],
+                ? Padding(
+                    padding: const EdgeInsets.only(bottom: DsfrSpacings.s2w),
+                    child: Text(
+                      description!,
+                      style: DsfrTextStyle.bodyXs(color: DsfrColorDecisions.textMentionGrey(context)),
+                    ),
                   )
                 : const SizedBox.shrink(),
             Column(

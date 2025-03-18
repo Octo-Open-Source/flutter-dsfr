@@ -10,12 +10,10 @@ class DsfrFormState extends StatelessWidget {
     super.key,
     required this.composantState,
     required this.child,
-    this.isInGroup = false,
   });
 
   final DsfrComposantState composantState;
   final Widget child;
-  final bool isInGroup;
 
   @override
   Widget build(BuildContext context) {
