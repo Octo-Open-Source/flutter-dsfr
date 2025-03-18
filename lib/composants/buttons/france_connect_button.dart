@@ -93,7 +93,6 @@ class _FranceConnectButton extends StatefulWidget {
   final String buttonBoldLabel;
 
   const _FranceConnectButton({
-    super.key,
     required this.isFranceConnectPlus,
     this.onTap,
     required this.enabled,
