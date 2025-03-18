@@ -14,6 +14,7 @@ class DsfrLink extends StatefulWidget {
     this.icon,
     this.onTap,
     this.size = DsfrComponentSize.md,
+    this.enabled = true,
   });
 
   final String label;
@@ -21,6 +22,7 @@ class DsfrLink extends StatefulWidget {
   final DsfrLinkIconPosition iconPosition;
   final VoidCallback? onTap;
   final DsfrComponentSize size;
+  final bool enabled;
 
   @override
   State<DsfrLink> createState() => _DsfrLinkState();
@@ -47,8 +49,8 @@ class _DsfrLinkState extends State<DsfrLink> with MaterialStateMixin<DsfrLink> {
           alignment: PlaceholderAlignment.middle,
           child: Icon(
             widget.icon,
-            size: getIconSize(),
-            color: getColor(context),
+            size: _getIconSize(),
+            color: _getColor(context),
           ),
         ),
         const WidgetSpan(child: SizedBox(width: DsfrSpacings.s1w)),
@@ -62,7 +64,7 @@ class _DsfrLinkState extends State<DsfrLink> with MaterialStateMixin<DsfrLink> {
       child: Material(
         color: DsfrColorDecisions.backgroundTransparent(context),
         child: InkWell(
-          onTap: widget.onTap,
+          onTap: widget.enabled ? widget.onTap : null,
           onHighlightChanged: updateMaterialState(WidgetState.pressed),
           onHover: updateMaterialState(WidgetState.hovered),
           focusColor: DsfrColorDecisions.backgroundTransparentHover(context),
@@ -74,8 +76,8 @@ class _DsfrLinkState extends State<DsfrLink> with MaterialStateMixin<DsfrLink> {
               border: !isFocused && !isDisabled
                   ? Border(
                       bottom: BorderSide(
-                        color: getColor(context),
-                        width: isPressed || isHovered ? getClickedUnderlineThickness() : 1,
+                        color: _getColor(context),
+                        width: isPressed || isHovered ? _getClickedUnderlineThickness() : 1,
                       ),
                     )
                   : null,
@@ -86,7 +88,7 @@ class _DsfrLinkState extends State<DsfrLink> with MaterialStateMixin<DsfrLink> {
                 TextSpan(
                   children: widget.iconPosition == DsfrLinkIconPosition.start ? list : list.reversed.toList(),
                 ),
-                style: getTextStyle(context),
+                style: _getTextStyle(context),
               ),
             ),
           ),
@@ -95,8 +97,8 @@ class _DsfrLinkState extends State<DsfrLink> with MaterialStateMixin<DsfrLink> {
     );
   }
 
-  DsfrTextStyle getTextStyle(BuildContext context) {
-    var textColor = getColor(context);
+  DsfrTextStyle _getTextStyle(BuildContext context) {
+    var textColor = _getColor(context);
 
     switch (widget.size) {
       case DsfrComponentSize.lg:
@@ -108,13 +110,13 @@ class _DsfrLinkState extends State<DsfrLink> with MaterialStateMixin<DsfrLink> {
     }
   }
 
-  Color getColor(BuildContext context) {
-    return widget.onTap == null
+  Color _getColor(BuildContext context) {
+    return widget.onTap == null || !widget.enabled
         ? DsfrColorDecisions.textDisabledGrey(context)
         : DsfrColorDecisions.textActionHighBlueFrance(context);
   }
 
-  double getIconSize() {
+  double _getIconSize() {
     switch (widget.size) {
       case DsfrComponentSize.lg:
         return 24;
@@ -125,7 +127,7 @@ class _DsfrLinkState extends State<DsfrLink> with MaterialStateMixin<DsfrLink> {
     }
   }
 
-  double getClickedUnderlineThickness() {
+  double _getClickedUnderlineThickness() {
     switch (widget.size) {
       case DsfrComponentSize.lg:
         return 2.25;

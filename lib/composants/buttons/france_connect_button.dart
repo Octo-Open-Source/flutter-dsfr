@@ -6,8 +6,59 @@ class FranceConnectButton extends StatelessWidget {
   final bool isFranceConnectPlus;
   final VoidCallback? onTapButton;
   final VoidCallback? onTapLink;
+  final bool enabled;
+  final String linkLabel;
+  final String buttonPrefixLabel;
+  final String buttonBoldLabel;
 
-  const FranceConnectButton({super.key, this.isFranceConnectPlus = false, this.onTapButton, this.onTapLink});
+  const FranceConnectButton._({
+    super.key,
+    required this.isFranceConnectPlus,
+    this.onTapButton,
+    this.onTapLink,
+    this.enabled = true,
+    required this.linkLabel,
+    required this.buttonPrefixLabel,
+    required this.buttonBoldLabel,
+  });
+
+  const FranceConnectButton.franceConnect({
+    final Key? key,
+    final VoidCallback? onTapButton,
+    final VoidCallback? onTapLink,
+    final bool enabled = true,
+    final String buttonPrefixLabel = 'S\'identifier avec',
+    final String buttonBoldLabel = 'FranceConnect',
+    final String linkLabel = 'Qu\'est-ce que France Connect ?',
+  }) : this._(
+          key: key,
+          isFranceConnectPlus: false,
+          onTapButton: onTapButton,
+          onTapLink: onTapLink,
+          enabled: enabled,
+          linkLabel: linkLabel,
+          buttonPrefixLabel: buttonPrefixLabel,
+          buttonBoldLabel: buttonBoldLabel,
+        );
+
+  const FranceConnectButton.franceConnectPlus({
+    final Key? key,
+    final VoidCallback? onTapButton,
+    final VoidCallback? onTapLink,
+    final bool enabled = true,
+    final String buttonPrefixLabel = 'S\'identifier avec',
+    final String buttonBoldLabel = 'FranceConnect',
+    final String linkLabel = 'Qu\'est-ce que France Connect ?',
+  }) : this._(
+          key: key,
+          isFranceConnectPlus: true,
+          onTapButton: onTapButton,
+          onTapLink: onTapLink,
+          enabled: enabled,
+          linkLabel: linkLabel,
+          buttonPrefixLabel: buttonPrefixLabel,
+          buttonBoldLabel: buttonBoldLabel,
+        );
 
   @override
   Widget build(BuildContext context) {
@@ -18,12 +69,16 @@ class FranceConnectButton extends StatelessWidget {
         _FranceConnectButton(
           isFranceConnectPlus: isFranceConnectPlus,
           onTap: onTapButton,
+          enabled: enabled,
+          buttonPrefixLabel: buttonPrefixLabel,
+          buttonBoldLabel: buttonBoldLabel,
         ),
         DsfrLink(
-          label: 'Qu\'est-ce que France Connect${isFranceConnectPlus ? '+' : ''} ?',
+          label: linkLabel,
           onTap: onTapLink,
           icon: DsfrIcons.systemExternalLinkLine,
           iconPosition: DsfrLinkIconPosition.end,
+          enabled: enabled,
         ),
       ],
     );
@@ -31,14 +86,20 @@ class FranceConnectButton extends StatelessWidget {
 }
 
 class _FranceConnectButton extends StatefulWidget {
+  final bool isFranceConnectPlus;
+  final VoidCallback? onTap;
+  final bool enabled;
+  final String buttonPrefixLabel;
+  final String buttonBoldLabel;
+
   const _FranceConnectButton({
     super.key,
     required this.isFranceConnectPlus,
     this.onTap,
+    required this.enabled,
+    required this.buttonPrefixLabel,
+    required this.buttonBoldLabel,
   });
-
-  final bool isFranceConnectPlus;
-  final VoidCallback? onTap;
 
   @override
   State<_FranceConnectButton> createState() => _FranceConnectButtonState();
@@ -47,6 +108,7 @@ class _FranceConnectButton extends StatefulWidget {
 class _FranceConnectButtonState extends State<_FranceConnectButton> with MaterialStateMixin<_FranceConnectButton> {
   @override
   Widget build(BuildContext context) {
+    final enabled = widget.enabled && widget.onTap != null;
     return Builder(builder: (context) {
       return DsfrFocusWidget(
         isFocused: isFocused,
@@ -54,15 +116,18 @@ class _FranceConnectButtonState extends State<_FranceConnectButton> with Materia
           button: true,
           child: IntrinsicWidth(
             child: DecoratedBox(
-              decoration: BoxDecoration(color: DsfrColorDecisions.backgroundActionHighBlueFrance(context)),
+              decoration: BoxDecoration(
+                  color: enabled
+                      ? DsfrColorDecisions.backgroundActionHighBlueFrance(context)
+                      : DsfrColorDecisions.backgroundDisabledGrey(context)),
               child: Material(
                 color: DsfrColorDecisions.backgroundTransparent(context),
                 child: InkWell(
-                  onTap: widget.onTap,
+                  onTap: enabled ? widget.onTap : null,
                   onHighlightChanged: updateMaterialState(WidgetState.pressed),
                   onHover: updateMaterialState(WidgetState.hovered),
                   focusColor: DsfrColorDecisions.backgroundTransparent(context),
-                  canRequestFocus: widget.onTap != null,
+                  canRequestFocus: enabled,
                   onFocusChange: updateMaterialState(WidgetState.focused),
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
@@ -77,13 +142,12 @@ class _FranceConnectButtonState extends State<_FranceConnectButton> with Materia
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'S\'identifier avec',
-                              style: DsfrTextStyle.bodyMd(color: DsfrColorDecisions.textInvertedBlueFrance(context)),
+                              widget.buttonPrefixLabel,
+                              style: DsfrTextStyle.bodyMd(color: _getTextColor(enabled)),
                             ),
                             Text(
-                              'FranceConnect',
-                              style:
-                                  DsfrTextStyle.bodyMdBold(color: DsfrColorDecisions.textInvertedBlueFrance(context)),
+                              widget.buttonBoldLabel,
+                              style: DsfrTextStyle.bodyMdBold(color: _getTextColor(enabled)),
                             ),
                           ],
                         ),
@@ -103,5 +167,9 @@ class _FranceConnectButtonState extends State<_FranceConnectButton> with Materia
         ),
       );
     });
+  }
+
+  Color _getTextColor(bool enabled) {
+    return enabled ? DsfrColorDecisions.textInvertedBlueFrance(context) : DsfrColorDecisions.textDisabledGrey(context);
   }
 }
