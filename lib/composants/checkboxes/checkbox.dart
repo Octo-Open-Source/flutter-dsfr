@@ -71,27 +71,15 @@ class DsfrCheckbox extends StatelessWidget {
 
   @override
   Widget build(final context) {
-    bool isInGroup = false;
-    DsfrComposantState groupState = composantState;
-    context.visitAncestorElements((element) {
-      if (element.widget is DsfrGroup) {
-        isInGroup = true;
-        groupState = (element.widget as DsfrGroup).composantState;
-        return false;
-      }
-      return true;
-    });
-
     return DsfrFormState(
       composantState: composantState,
-      isInGroup: isInGroup,
       child: DsfrCheckboxChild(
         label: label,
         value: value,
         onChanged: onChanged,
         enabled: enabled,
         description: description,
-        state: isInGroup ? groupState.state : composantState.state,
+        state: GroupProvider.of(context)?.composantState.state ?? composantState.state,
         padding: padding,
         focusNode: focusNode,
       ),

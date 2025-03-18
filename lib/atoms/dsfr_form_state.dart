@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_dsfr/atoms/composant_state_widget.dart';
+import 'package:flutter_dsfr/atoms/dsfr_group.dart';
 import 'package:flutter_dsfr/atoms/vertical_bar_widget.dart';
 import 'package:flutter_dsfr/fondamentaux/spacing.g.dart';
 import 'package:flutter_dsfr/helpers/composant_state.dart';
@@ -18,9 +19,12 @@ class DsfrFormState extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (isInGroup) {
+    final group = GroupProvider.of(context);
+
+    if (group != null) {
       return child;
     }
+
     return IntrinsicHeight(
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,

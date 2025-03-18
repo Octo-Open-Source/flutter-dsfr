@@ -22,33 +22,55 @@ class DsfrGroup<T> extends StatelessWidget {
   Widget build(BuildContext context) {
     return DsfrFormState(
       composantState: composantState,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            label,
-            style: DsfrTextStyle.bodyMd(color: getTextColor(context, composantState.state)),
-          ),
-          SizedBox(height: description != null ? DsfrSpacings.s1w : DsfrSpacings.s2w),
-          description != null
-              ? Column(
-                  children: [
-                    Text(
-                      description!,
-                      style: DsfrTextStyle.bodyXs(color: DsfrColorDecisions.textMentionGrey(context)),
-                    ),
-                    const SizedBox(height: DsfrSpacings.s2w),
-                  ],
-                )
-              : const SizedBox.shrink(),
-          Column(
-            spacing: DsfrSpacings.s2w,
-            children: widgets.map((final widget) {
-              return widget as Widget;
-            }).toList(),
-          ),
-        ],
+      child: GroupProvider(
+        composantState: composantState,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              label,
+              style: DsfrTextStyle.bodyMd(color: getTextColor(context, composantState.state)),
+            ),
+            SizedBox(height: description != null ? DsfrSpacings.s1w : DsfrSpacings.s2w),
+            description != null
+                ? Column(
+                    children: [
+                      Text(
+                        description!,
+                        style: DsfrTextStyle.bodyXs(color: DsfrColorDecisions.textMentionGrey(context)),
+                      ),
+                      const SizedBox(height: DsfrSpacings.s2w),
+                    ],
+                  )
+                : const SizedBox.shrink(),
+            Column(
+              spacing: DsfrSpacings.s2w,
+              children: widgets.map((final widget) {
+                return widget as Widget;
+              }).toList(),
+            ),
+          ],
+        ),
       ),
     );
+  }
+}
+
+class GroupProvider extends InheritedWidget {
+  final DsfrComposantState composantState;
+
+  const GroupProvider({
+    super.key,
+    required this.composantState,
+    required super.child,
+  });
+
+  static GroupProvider? of(BuildContext context) {
+    return context.dependOnInheritedWidgetOfExactType<GroupProvider>();
+  }
+
+  @override
+  bool updateShouldNotify(GroupProvider oldWidget) {
+    return oldWidget.composantState != composantState;
   }
 }
