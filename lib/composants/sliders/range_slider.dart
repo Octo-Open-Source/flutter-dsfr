@@ -22,7 +22,7 @@ class DsfrRangeSlider extends StatelessWidget {
   final bool enabled;
   final bool showMinMaxLabels;
   final int? divisions;
-  final DsfrComposantState? composantState;
+  final DsfrComposantState composantState;
   final String Function(double)? valueLabelBuilder;
 
   const DsfrRangeSlider._({
@@ -39,7 +39,7 @@ class DsfrRangeSlider extends StatelessWidget {
     this.onChangedStart,
     this.onChangedEnd,
     this.valueLabelBuilder,
-    this.composantState,
+    this.composantState = const DsfrComposantState.none(),
     this.showMinMaxLabels = false,
   });
 
@@ -57,7 +57,7 @@ class DsfrRangeSlider extends StatelessWidget {
     final String Function(double)? valueLabelBuilder,
     final bool enabled = true,
     final bool showMinMaxLabels = false,
-    final DsfrComposantState? composantState,
+    final DsfrComposantState composantState = const DsfrComposantState.none(),
   }) : this._(
           key: key,
           label: label,
@@ -90,7 +90,7 @@ class DsfrRangeSlider extends StatelessWidget {
     final String Function(double)? valueLabelBuilder,
     final bool enabled = true,
     final bool showMinMaxLabels = false,
-    final DsfrComposantState? composantState,
+    final DsfrComposantState composantState = const DsfrComposantState.none(),
   }) : this._(
           key: key,
           label: label,

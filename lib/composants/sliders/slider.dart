@@ -22,7 +22,7 @@ class DsfrSlider extends StatelessWidget {
   final bool enabled;
   final bool showMinMaxLabels;
   final int? divisions;
-  final DsfrComposantState? composantState;
+  final DsfrComposantState composantState;
   final String Function(double)? valueLabelBuilder;
 
   const DsfrSlider._({
@@ -39,7 +39,7 @@ class DsfrSlider extends StatelessWidget {
     this.onChangedStart,
     this.onChangedEnd,
     this.valueLabelBuilder,
-    this.composantState,
+    this.composantState = const DsfrComposantState.none(),
     this.showMinMaxLabels = false,
   });
 
@@ -57,7 +57,7 @@ class DsfrSlider extends StatelessWidget {
     final String Function(double)? valueLabelBuilder,
     final bool enabled = true,
     final bool showMinMaxLabels = false,
-    final DsfrComposantState? composantState,
+    final DsfrComposantState composantState = const DsfrComposantState.none(),
   }) : this._(
           key: key,
           label: label,
@@ -90,7 +90,7 @@ class DsfrSlider extends StatelessWidget {
     final String Function(double)? valueLabelBuilder,
     final bool enabled = true,
     final bool showMinMaxLabels = false,
-    final DsfrComposantState? composantState,
+    final DsfrComposantState composantState = const DsfrComposantState.none(),
   }) : this._(
           key: key,
           label: label,
@@ -110,12 +110,11 @@ class DsfrSlider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final labelColor = enabled
-        ? getTextColor(context, composantState?.state ?? DsfrComposantStateEnum.none,
-            defaultColor: DsfrColorDecisions.textLabelGrey(context))
+        ? getTextColor(context, composantState.state, defaultColor: DsfrColorDecisions.textLabelGrey(context))
         : DsfrColorDecisions.textDisabledGrey(context);
 
     return DsfrFormState(
-      composantState: composantState ?? DsfrComposantState.none(),
+      composantState: composantState,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         spacing: 4,

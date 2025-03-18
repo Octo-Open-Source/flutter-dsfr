@@ -17,7 +17,7 @@ class DsfrRadioButton<T> extends StatelessWidget {
     this.groupValue,
     this.onChanged,
     this.enabled = true,
-    this.composantState,
+    this.composantState = const DsfrComposantState.none(),
     required this.size,
   }) : assert(size != DsfrComponentSize.lg);
 
@@ -27,7 +27,7 @@ class DsfrRadioButton<T> extends StatelessWidget {
   final T? groupValue;
   final ValueChanged<T?>? onChanged;
   final bool enabled;
-  final DsfrComposantState? composantState;
+  final DsfrComposantState composantState;
   final DsfrComponentSize size;
 
   @override
@@ -35,7 +35,7 @@ class DsfrRadioButton<T> extends StatelessWidget {
     return Semantics(
       enabled: enabled,
       child: DsfrFormState(
-        composantState: composantState ?? DsfrComposantState.none(),
+        composantState: composantState,
         child: Material(
           color: DsfrColorDecisions.backgroundTransparent(context),
           child: InkWell(
@@ -54,14 +54,14 @@ class DsfrRadioButton<T> extends StatelessWidget {
                       value: value,
                       groupValue: groupValue,
                       enabled: enabled,
-                      state: composantState?.state ?? DsfrComposantStateEnum.none,
+                      state: composantState.state,
                       size: _getIconSize(),
                     ),
                     Text(
                       label,
                       style: DsfrTextStyle.bodyMd(
                         color: enabled
-                            ? getTextColor(context, composantState?.state ?? DsfrComposantStateEnum.none,
+                            ? getTextColor(context, composantState.state,
                                 defaultColor: DsfrColorDecisions.textLabelGrey(context))
                             : DsfrColorDecisions.textDisabledGrey(context),
                       ),

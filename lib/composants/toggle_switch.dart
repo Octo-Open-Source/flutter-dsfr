@@ -23,14 +23,14 @@ class DsfrToggleSwitch extends StatefulWidget {
     this.onChanged,
     this.description,
     this.status,
-    this.composantState,
+    this.composantState = const DsfrComposantState.none(),
   });
 
   final String label;
   final bool value;
   final bool enabled;
   final DsfrToggleLabelLocation labelLocation;
-  final DsfrComposantState? composantState;
+  final DsfrComposantState composantState;
   final ValueChanged<bool>? onChanged;
   final String? description;
   final String? status;
@@ -43,9 +43,9 @@ class _DsfrToggleSwitchState extends State<DsfrToggleSwitch> with MaterialStateM
   @override
   Widget build(final context) {
     final textColor = widget.enabled
-        ? getTextColor(context, widget.composantState?.state ?? DsfrComposantStateEnum.none)
+        ? getTextColor(context, widget.composantState.state)
         : DsfrColorDecisions.textDisabledGrey(context);
-    final statusTextColor = switch ((widget.enabled, widget.composantState?.state)) {
+    final statusTextColor = switch ((widget.enabled, widget.composantState.state)) {
       (false, _) => DsfrColorDecisions.textDisabledGrey(context),
       (true, DsfrComposantStateEnum.error) => DsfrColorDecisions.textDefaultError(context),
       (true, DsfrComposantStateEnum.success) => DsfrColorDecisions.textDefaultSuccess(context),
@@ -59,7 +59,7 @@ class _DsfrToggleSwitchState extends State<DsfrToggleSwitch> with MaterialStateM
         child: _Switch(
           value: widget.value,
           enabled: widget.enabled,
-          composantState: widget.composantState?.state ?? DsfrComposantStateEnum.none,
+          composantState: widget.composantState.state,
         ),
       ),
       Expanded(
@@ -107,7 +107,7 @@ class _DsfrToggleSwitchState extends State<DsfrToggleSwitch> with MaterialStateM
         excludeFromSemantics: true,
         onFocusChange: updateMaterialState(WidgetState.focused),
         child: DsfrFormState(
-          composantState: widget.composantState ?? DsfrComposantState.none(),
+          composantState: widget.composantState,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: columnChildren,
