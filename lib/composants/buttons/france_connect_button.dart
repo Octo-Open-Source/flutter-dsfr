@@ -1,12 +1,13 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dsfr/flutter_dsfr.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class FranceConnectButton extends StatelessWidget {
   final bool isFranceConnectPlus;
+  final VoidCallback? onTapButton;
+  final VoidCallback? onTapLink;
 
-  const FranceConnectButton({super.key, this.isFranceConnectPlus = false});
+  const FranceConnectButton({super.key, this.isFranceConnectPlus = false, this.onTapButton, this.onTapLink});
 
   @override
   Widget build(BuildContext context) {
@@ -14,13 +15,13 @@ class FranceConnectButton extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       spacing: 12,
       children: [
-        _FranceConnectButton(isFranceConnectPlus: isFranceConnectPlus),
+        _FranceConnectButton(
+          isFranceConnectPlus: isFranceConnectPlus,
+          onTap: onTapButton,
+        ),
         DsfrLink(
           label: 'Qu\'est-ce que France Connect${isFranceConnectPlus ? '+' : ''} ?',
-          onTap: () {
-            //https://franceconnect.gouv.fr/
-            // https://franceconnect.gouv.fr/france-connect-plus.
-          },
+          onTap: onTapLink,
           icon: DsfrIcons.systemExternalLinkLine,
           iconPosition: DsfrLinkIconPosition.end,
         ),
@@ -33,33 +34,36 @@ class _FranceConnectButton extends StatefulWidget {
   const _FranceConnectButton({
     super.key,
     required this.isFranceConnectPlus,
+    this.onTap,
   });
 
   final bool isFranceConnectPlus;
+  final VoidCallback? onTap;
 
   @override
   State<_FranceConnectButton> createState() => _FranceConnectButtonState();
 }
 
-class _FranceConnectButtonState extends State<_FranceConnectButton> {
+class _FranceConnectButtonState extends State<_FranceConnectButton> with MaterialStateMixin<_FranceConnectButton> {
   @override
   Widget build(BuildContext context) {
-    return Focus(
-      canRequestFocus: true,
-      child: Builder(builder: (context) {
-        final isFocused = Focus.of(context).hasFocus;
-        return DsfrFocusWidget(
-          isFocused: isFocused,
-          child: Semantics(
-            button: true,
-            child: IntrinsicWidth(
-              child: InkWell(
-                focusColor: DsfrColorDecisions.backgroundTransparent(context),
-                onTap: () {
-                  print("onTap");
-                },
-                child: DecoratedBox(
-                  decoration: BoxDecoration(color: DsfrColorDecisions.backgroundActionHighBlueFrance(context)),
+    return Builder(builder: (context) {
+      return DsfrFocusWidget(
+        isFocused: isFocused,
+        child: Semantics(
+          button: true,
+          child: IntrinsicWidth(
+            child: DecoratedBox(
+              decoration: BoxDecoration(color: DsfrColorDecisions.backgroundActionHighBlueFrance(context)),
+              child: Material(
+                color: DsfrColorDecisions.backgroundTransparent(context),
+                child: InkWell(
+                  onTap: widget.onTap,
+                  onHighlightChanged: updateMaterialState(WidgetState.pressed),
+                  onHover: updateMaterialState(WidgetState.hovered),
+                  focusColor: DsfrColorDecisions.backgroundTransparent(context),
+                  canRequestFocus: widget.onTap != null,
+                  onFocusChange: updateMaterialState(WidgetState.focused),
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
                     child: Row(
@@ -96,8 +100,8 @@ class _FranceConnectButtonState extends State<_FranceConnectButton> {
               ),
             ),
           ),
-        );
-      }),
-    );
+        ),
+      );
+    });
   }
 }

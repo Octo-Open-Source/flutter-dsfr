@@ -1,6 +1,7 @@
 import 'package:flutter_dsfr/flutter_dsfr.dart';
 import 'package:example/page_item.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class FranceConnectButtonPage extends StatelessWidget {
   const FranceConnectButtonPage({super.key});
@@ -10,7 +11,18 @@ class FranceConnectButtonPage extends StatelessWidget {
     pageBuilder: (final context) => const FranceConnectButtonPage(),
   );
 
-  void _handleTap() {}
+  Future<void> _launchUrlOnBrowser(String url) async {
+    final uri = Uri.parse(url);
+    await canLaunchUrl(uri) ? launchUrl(uri) : throw 'Could not launch $url';
+  }
+  
+  void _openFCLink() {
+    _launchUrlOnBrowser('https://franceconnect.gouv.fr/');
+  }
+
+  void _openFCPlusLink() {
+    _launchUrlOnBrowser('https://franceconnect.gouv.fr/france-connect-plus');
+  }
 
   @override
   Widget build(final context) {
@@ -19,8 +31,17 @@ class FranceConnectButtonPage extends StatelessWidget {
       child: Column(
         spacing: 16,
         children: [
-          FranceConnectButton(),
-          FranceConnectButton(isFranceConnectPlus: true),
+          FranceConnectButton(
+            onTapButton: () {},
+            onTapLink: () {
+              _launchUrlOnBrowser('https://franceconnect.gouv.fr/');
+            },
+          ),
+          FranceConnectButton(
+            isFranceConnectPlus: true,
+            onTapButton: () {},
+            onTapLink: _openFCPlusLink,
+          ),
         ],
       ),
     );
