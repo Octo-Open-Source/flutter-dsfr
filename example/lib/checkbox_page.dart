@@ -140,7 +140,7 @@ class _CheckboxPageState extends State<CheckboxPage> {
             ],
           ),
           Divider(),
-          DsfrGroup(
+          DsfrGroup<DsfrCheckbox>(
             label: 'Légende',
             widgets: [
               DsfrCheckbox.md(
@@ -160,7 +160,7 @@ class _CheckboxPageState extends State<CheckboxPage> {
             ],
           ),
           Divider(),
-          DsfrGroup(
+          DsfrGroup<DsfrCheckbox>(
             label: 'Groupe avec description de groupe',
             description: 'Texte de description additionnel',
             widgets: [
@@ -188,7 +188,7 @@ class _CheckboxPageState extends State<CheckboxPage> {
             ],
           ),
           Divider(),
-          DsfrGroup(
+          DsfrGroup<DsfrCheckbox>(
             label: 'Groupe en erreur',
             composantState: DsfrComposantState.error(errorMessage: 'Texte d\'erreur obligatoire'),
             widgets: [
@@ -216,7 +216,7 @@ class _CheckboxPageState extends State<CheckboxPage> {
             ],
           ),
           Divider(),
-          DsfrGroup(
+          DsfrGroup<DsfrCheckbox>(
             label: 'Groupe en succès',
             composantState: DsfrComposantState.success(message: 'Texte de validation optionnel'),
             widgets: [

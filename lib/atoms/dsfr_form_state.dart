@@ -19,31 +19,29 @@ class DsfrFormState extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final group = GroupProvider.of(context);
-
-    if (group != null) {
+    if (GroupProvider.of(context) != null) {
       return child;
-    }
-
-    return IntrinsicHeight(
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          VerticalBarWidget(composantState: composantState),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Flexible(child: child),
-                if (composantState.state != DsfrComposantStateEnum.none) ...[
-                  const SizedBox(height: DsfrSpacings.s2w),
-                  ComposantStateWidget(composantState: composantState),
+    } else {
+      return IntrinsicHeight(
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            VerticalBarWidget(composantState: composantState),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Flexible(child: child),
+                  if (composantState.state != DsfrComposantStateEnum.none) ...[
+                    const SizedBox(height: DsfrSpacings.s2w),
+                    ComposantStateWidget(composantState: composantState),
+                  ],
                 ],
-              ],
+              ),
             ),
-          ),
-        ],
-      ),
-    );
+          ],
+        ),
+      );
+    }
   }
 }
