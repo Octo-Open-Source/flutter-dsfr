@@ -20,6 +20,7 @@ class DsfrTag extends StatelessWidget {
     this.isSelectable = false,
     this.isSelected = false,
     this.onSelectionChanged,
+    this.enabled = true,
   });
 
   const DsfrTag.sm({
@@ -36,6 +37,7 @@ class DsfrTag extends StatelessWidget {
     final bool isSelectable = false,
     final bool isSelected = false,
     final ValueChanged<bool>? onSelectionChanged,
+    final bool enabled = true,
   }) : this._(
           key: key,
           label: label,
@@ -52,6 +54,7 @@ class DsfrTag extends StatelessWidget {
           isSelectable: isSelectable,
           isSelected: isSelected,
           onSelectionChanged: onSelectionChanged,
+          enabled: enabled,
         );
 
   const DsfrTag.md({
@@ -68,6 +71,7 @@ class DsfrTag extends StatelessWidget {
     final bool isSelectable = false,
     final bool isSelected = false,
     final ValueChanged<bool>? onSelectionChanged,
+    final bool enabled = true,
   }) : this._(
           key: key,
           label: label,
@@ -84,6 +88,7 @@ class DsfrTag extends StatelessWidget {
           isSelectable: isSelectable,
           isSelected: isSelected,
           onSelectionChanged: onSelectionChanged,
+          enabled: enabled,
         );
 
   final InlineSpan label;
@@ -101,12 +106,17 @@ class DsfrTag extends StatelessWidget {
   final bool isSelectable;
   final bool isSelected;
   final ValueChanged<bool>? onSelectionChanged;
+  final bool enabled;
 
   Color _getTextColor(BuildContext context) {
-    if (isSelected) {
-      return selectedTextColor ?? DsfrColorDecisions.textInvertedBlueFrance(context);
+    if (enabled) {
+      if (isSelected) {
+        return selectedTextColor ?? DsfrColorDecisions.textInvertedBlueFrance(context);
+      } else {
+        return textColor ?? DsfrColorDecisions.textActionHighBlueFrance(context);
+      }
     } else {
-      return textColor ?? DsfrColorDecisions.textActionHighBlueFrance(context);
+      return DsfrColorDecisions.textDisabledGrey(context);
     }
   }
 
@@ -153,24 +163,32 @@ class DsfrTag extends StatelessWidget {
   }
 
   Color _getBackgroundColor(BuildContext context) {
-    if (isSelected) {
-      return selectedBackgroundColor ?? DsfrColorDecisions.backgroundActionHighBlueFrance(context);
+    if (enabled) {
+      if (isSelected) {
+        return selectedBackgroundColor ?? DsfrColorDecisions.backgroundActionHighBlueFrance(context);
+      } else {
+        return backgroundColor ?? DsfrColorDecisions.backgroundActionLowBlueFrance(context);
+      }
     } else {
-      return backgroundColor ?? DsfrColorDecisions.backgroundActionLowBlueFrance(context);
+      return DsfrColorDecisions.backgroundDisabledGrey(context);
     }
   }
 
   Color? _getHighlightColor(BuildContext context) {
-    final hasNoCustomBackgroundColors = (backgroundColor == null) && (highlightColor == null);
-    final hasNoCustomSelectedBackgroundColors =
-        (selectedBackgroundColor == null) && (selectedHighlightColor == null);
-    final shouldUseDefaultHighlightColor = (!isSelected && hasNoCustomBackgroundColors) ||
-        (isSelected && hasNoCustomBackgroundColors && hasNoCustomSelectedBackgroundColors);
-    
-    if (shouldUseDefaultHighlightColor) {
-      return isSelected ? DsfrColorDecisions.backgroundActionHighBlueFranceHover(context) : DsfrColorDecisions.backgroundActionLowBlueFranceHover(context);
+    if (enabled) {
+      final hasNoCustomBackgroundColors = (backgroundColor == null) && (highlightColor == null);
+      final hasNoCustomSelectedBackgroundColors =
+          (selectedBackgroundColor == null) && (selectedHighlightColor == null);
+      final shouldUseDefaultHighlightColor = (!isSelected && hasNoCustomBackgroundColors) ||
+          (isSelected && hasNoCustomBackgroundColors && hasNoCustomSelectedBackgroundColors);
+
+      if (shouldUseDefaultHighlightColor) {
+        return isSelected ? DsfrColorDecisions.backgroundActionHighBlueFranceHover(context) : DsfrColorDecisions.backgroundActionLowBlueFranceHover(context);
+      } else {
+        return isSelected ? selectedHighlightColor : highlightColor;
+      }
     } else {
-      return isSelected ? selectedHighlightColor : highlightColor;
+      return DsfrColorDecisions.backgroundDisabledGrey(context);
     }
   }
 
@@ -178,7 +196,7 @@ class DsfrTag extends StatelessWidget {
   Widget build(final context) {
     return Focus(
       focusNode: focusNode,
-      canRequestFocus: true,
+      canRequestFocus: enabled,
       child: Builder(
         builder: (final context) {
           final isFocused = Focus.of(context).hasFocus;
@@ -202,6 +220,7 @@ class DsfrTag extends StatelessWidget {
                         isSelectable: isSelectable,
                         isSelected: isSelected,
                         onSelectionChanged: onSelectionChanged,
+                        enabled: enabled,
                       ),
                     ),
                   )
@@ -218,6 +237,7 @@ class DsfrTag extends StatelessWidget {
                     isSelectable: isSelectable,
                     isSelected: isSelected,
                     onSelectionChanged: onSelectionChanged,
+                    enabled: enabled,
                   ),
           );
         },
@@ -240,6 +260,7 @@ class _TagButton extends StatelessWidget {
     this.isSelectable = false,
     this.isSelected = false,
     this.onSelectionChanged,
+    this.enabled = true,
   });
 
   final InlineSpan label;
@@ -254,6 +275,7 @@ class _TagButton extends StatelessWidget {
   final bool isSelectable;
   final bool isSelected;
   final ValueChanged<bool>? onSelectionChanged;
+  final bool enabled;
 
   @override
   Widget build(BuildContext context) {
@@ -264,7 +286,11 @@ class _TagButton extends StatelessWidget {
         child: InkWell(
           customBorder: isSelected ? null : const StadiumBorder(),
           highlightColor: highlightColor,
+          splashFactory: enabled ? null : NoSplash.splashFactory,
           onTap: () {
+            if (!enabled) {
+              return;
+            }
             if (isSelectable) {
               onSelectionChanged?.call(!isSelected);
             } else {

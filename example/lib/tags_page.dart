@@ -45,6 +45,11 @@ class _TagsPageState extends State<TagsPage> {
               onTap: () => print('Tag cliquable par défaut avec icone'),
             ),
             DsfrTag.sm(
+              label: TextSpan(text: 'Tag désactivé'),
+              icon: DsfrIcons.systemArrowRightLine,
+              enabled: false,
+            ),
+            DsfrTag.sm(
               label: TextSpan(text: 'Tag cliquable personnalisable'),
               backgroundColor: DsfrColorDecisions.backgroundActionHighBlueFrance(context),
               highlightColor: DsfrColorDecisions.backgroundActionHighBlueFranceHover(context),
@@ -92,6 +97,11 @@ class _TagsPageState extends State<TagsPage> {
               textColor: DsfrColorDecisions.textInvertedBlueFrance(context),
               icon: DsfrIcons.systemArrowRightLine,
               onTap: () => print('Tag cliquable personnalisable'),
+            ),
+            DsfrTag.md(
+              label: TextSpan(text: 'Tag désactivé'),
+              icon: DsfrIcons.systemArrowRightLine,
+              enabled: false,
             ),
             DsfrTag.md(
               label: TextSpan(text: 'Tag selectionnable'),
