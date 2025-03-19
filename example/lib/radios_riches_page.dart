@@ -22,10 +22,47 @@ class _RadiosRichesPageState extends State<RadiosRichesPage> {
   Widget build(final context) => ListView(
         padding: const EdgeInsets.only(left: 16, right: 16, top: 16, bottom: 98),
         children: [
-          DsfrRadioRichButtonSet(
-            title: 'Radios riches',
-            values: const {1: 'Un', 2: 'Deux', 3: 'Trois'},
-            onCallback: (final p0) {},
+          DsfrGroup(
+            label: 'Radios riches',
+            direction: Direction.horizontal,
+            children: [
+              DsfrRadioRichButton<int>(
+                title: 'Un',
+                value: 1,
+                groupValue: _value,
+                onChanged: (final value) {
+                  if (value != null) {
+                    setState(() {
+                      _value = value;
+                    });
+                  }
+                },
+              ),
+              DsfrRadioRichButton<int>(
+                title: 'Deux',
+                value: 2,
+                groupValue: _value,
+                onChanged: (final value) {
+                  if (value != null) {
+                    setState(() {
+                      _value = value;
+                    });
+                  }
+                },
+              ),
+              DsfrRadioRichButton<int>(
+                title: 'Trois',
+                value: 3,
+                groupValue: _value,
+                onChanged: (final value) {
+                  if (value != null) {
+                    setState(() {
+                      _value = value;
+                    });
+                  }
+                },
+              ),
+            ],
           ),
           const SizedBox(height: DsfrSpacings.s3w),
           DsfrRadioRichButton<int>(
@@ -124,32 +161,182 @@ class _RadiosRichesPageState extends State<RadiosRichesPage> {
             },
           ),
           const SizedBox(height: DsfrSpacings.s3w),
-          DsfrRadioRichButtonSet(
-            title: 'Radios riches en erreur',
-            values: const {1: 'Un', 2: 'Deux', 3: 'Trois'},
-            onCallback: (final p0) {},
+          DsfrGroup(
+            label: 'Radios riches en erreur',
             composantState: DsfrComposantState.error(errorMessage: 'Texte d\'erreur obligatoire'),
+            direction: Direction.horizontal,
+            children: [
+              DsfrRadioRichButton<int>(
+                title: 'Un',
+                value: 1,
+                groupValue: _value,
+                onChanged: (final value) {
+                  if (value != null) {
+                    setState(() {
+                      _value = value;
+                    });
+                  }
+                },
+              ),
+              DsfrRadioRichButton<int>(
+                title: 'Deux',
+                value: 2,
+                groupValue: _value,
+                onChanged: (final value) {
+                  if (value != null) {
+                    setState(() {
+                      _value = value;
+                    });
+                  }
+                },
+              ),
+              DsfrRadioRichButton<int>(
+                title: 'Trois',
+                value: 3,
+                groupValue: _value,
+                onChanged: (final value) {
+                  if (value != null) {
+                    setState(() {
+                      _value = value;
+                    });
+                  }
+                },
+              ),
+            ],
           ),
           const SizedBox(height: DsfrSpacings.s3w),
-          DsfrRadioRichButtonSet(
-            title: 'Radios riches en succès',
-            values: const {1: 'Un', 2: 'Deux', 3: 'Trois'},
-            onCallback: (final p0) {},
+          DsfrGroup(
+            label: 'Radios riches en succès',
             composantState: DsfrComposantState.success(message: 'Texte de succès optionnel'),
+            direction: Direction.horizontal,
+            children: [
+              DsfrRadioRichButton<int>(
+                title: 'Un',
+                value: 1,
+                groupValue: _value,
+                onChanged: (final value) {
+                  if (value != null) {
+                    setState(() {
+                      _value = value;
+                    });
+                  }
+                },
+              ),
+              DsfrRadioRichButton<int>(
+                title: 'Deux',
+                value: 2,
+                groupValue: _value,
+                onChanged: (final value) {
+                  if (value != null) {
+                    setState(() {
+                      _value = value;
+                    });
+                  }
+                },
+              ),
+              DsfrRadioRichButton<int>(
+                title: 'Trois',
+                value: 3,
+                groupValue: _value,
+                onChanged: (final value) {
+                  if (value != null) {
+                    setState(() {
+                      _value = value;
+                    });
+                  }
+                },
+              ),
+            ],
           ),
           const SizedBox(height: DsfrSpacings.s3w),
-          DsfrRadioRichButtonSet(
-            title: 'Succès sans texte',
-            values: const {1: 'Un', 2: 'Deux', 3: 'Trois'},
-            onCallback: (final p0) {},
+          DsfrGroup(
+            label: 'Radios riches en succès sans texte',
             composantState: DsfrComposantState.success(),
+            direction: Direction.horizontal,
+            children: [
+              DsfrRadioRichButton<int>(
+                title: 'Un',
+                value: 1,
+                groupValue: _value,
+                onChanged: (final value) {
+                  if (value != null) {
+                    setState(() {
+                      _value = value;
+                    });
+                  }
+                },
+              ),
+              DsfrRadioRichButton<int>(
+                title: 'Deux',
+                value: 2,
+                groupValue: _value,
+                onChanged: (final value) {
+                  if (value != null) {
+                    setState(() {
+                      _value = value;
+                    });
+                  }
+                },
+              ),
+              DsfrRadioRichButton<int>(
+                title: 'Trois',
+                value: 3,
+                groupValue: _value,
+                onChanged: (final value) {
+                  if (value != null) {
+                    setState(() {
+                      _value = value;
+                    });
+                  }
+                },
+              ),
+            ],
           ),
           const SizedBox(height: DsfrSpacings.s3w),
-          DsfrRadioRichButtonSet(
-            title: 'Radios riches désactivé',
-            values: const {1: 'Un', 2: 'Deux', 3: 'Trois'},
-            onCallback: (final p0) {},
-            enabled: false,
+          DsfrGroup(
+            label: 'Radios riches desactivé',
+            direction: Direction.horizontal,
+            children: [
+              DsfrRadioRichButton<int>(
+                title: 'Un',
+                value: 1,
+                groupValue: _value,
+                onChanged: (final value) {
+                  if (value != null) {
+                    setState(() {
+                      _value = value;
+                    });
+                  }
+                },
+                enabled: false,
+              ),
+              DsfrRadioRichButton<int>(
+                title: 'Deux',
+                value: 2,
+                groupValue: _value,
+                onChanged: (final value) {
+                  if (value != null) {
+                    setState(() {
+                      _value = value;
+                    });
+                  }
+                },
+                enabled: false,
+              ),
+              DsfrRadioRichButton<int>(
+                title: 'Trois',
+                value: 3,
+                groupValue: _value,
+                onChanged: (final value) {
+                  if (value != null) {
+                    setState(() {
+                      _value = value;
+                    });
+                  }
+                },
+                enabled: false,
+              ),
+            ],
           ),
         ],
       );

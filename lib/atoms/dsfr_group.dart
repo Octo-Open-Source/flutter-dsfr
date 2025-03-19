@@ -4,18 +4,25 @@ import 'package:flutter_dsfr/flutter_dsfr.dart';
 import 'package:flutter_dsfr/helpers/color_utils.dart';
 import 'package:flutter_dsfr/helpers/composant_state.dart';
 
+enum Direction {
+  vertical,
+  horizontal,
+}
+
 class DsfrGroup<T> extends StatelessWidget {
-  final List<T> widgets;
   final String label;
   final String? description;
   final DsfrComposantState composantState;
+  final Direction direction;
+  final List<T> children;
 
   const DsfrGroup({
     super.key,
-    required this.widgets,
     required this.label,
     this.description,
     this.composantState = const DsfrComposantState.none(),
+    this.direction = Direction.vertical,
+    required this.children,
   });
 
   @override
@@ -41,12 +48,20 @@ class DsfrGroup<T> extends StatelessWidget {
                     ),
                   )
                 : const SizedBox.shrink(),
-            Column(
-              spacing: DsfrSpacings.s2w,
-              children: widgets.map((final widget) {
-                return widget as Widget;
-              }).toList(),
-            ),
+            direction == Direction.vertical
+                ? Column(
+                    spacing: DsfrSpacings.s2w,
+                    children: children.map((final widget) {
+                      return widget as Widget;
+                    }).toList(),
+                  )
+                : Wrap(
+                    spacing: DsfrSpacings.s1w,
+                    runSpacing: DsfrSpacings.s1w,
+                    children: children.map((final widget) {
+                      return widget as Widget;
+                    }).toList(),
+                  ),
           ],
         ),
       ),

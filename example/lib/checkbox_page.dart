@@ -115,7 +115,7 @@ class _CheckboxPageState extends State<CheckboxPage> {
           ),
           DsfrGroup(
             label: 'Légende',
-            widgets: [
+            children: [
               DsfrCheckbox.md(
                 label: 'Libellé',
                 value: _valueGroup1,
@@ -142,7 +142,7 @@ class _CheckboxPageState extends State<CheckboxPage> {
           Divider(),
           DsfrGroup<DsfrCheckbox>(
             label: 'Légende',
-            widgets: [
+            children: [
               DsfrCheckbox.md(
                 label: 'Libellé',
                 value: _valueGroup1,
@@ -163,7 +163,7 @@ class _CheckboxPageState extends State<CheckboxPage> {
           DsfrGroup<DsfrCheckbox>(
             label: 'Groupe avec description de groupe',
             description: 'Texte de description additionnel',
-            widgets: [
+            children: [
               DsfrCheckbox.md(
                 label: 'Libellé',
                 value: _valueGroup1,
@@ -191,7 +191,7 @@ class _CheckboxPageState extends State<CheckboxPage> {
           DsfrGroup<DsfrCheckbox>(
             label: 'Groupe en erreur',
             composantState: DsfrComposantState.error(errorMessage: 'Texte d\'erreur obligatoire'),
-            widgets: [
+            children: [
               DsfrCheckbox.md(
                 label: 'Libellé',
                 value: _valueGroup1,
@@ -219,7 +219,7 @@ class _CheckboxPageState extends State<CheckboxPage> {
           DsfrGroup<DsfrCheckbox>(
             label: 'Groupe en succès',
             composantState: DsfrComposantState.success(message: 'Texte de validation optionnel'),
-            widgets: [
+            children: [
               DsfrCheckbox.md(
                 label: 'Libellé',
                 value: _valueGroup1,
