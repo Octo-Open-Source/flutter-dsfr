@@ -6,6 +6,7 @@ import 'package:example/colors_page.dart';
 import 'package:example/france_connect_button_page.dart';
 import 'package:example/icons_page.dart';
 import 'package:example/inputs_page.dart';
+import 'package:example/label_page.dart';
 import 'package:example/links_page.dart';
 import 'package:example/master_page.dart';
 import 'package:example/modals_page.dart';
@@ -21,6 +22,7 @@ import 'package:example/toggles_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dsfr/fondamentaux/color_decisions.g.dart';
 import 'package:flutter_dsfr/helpers/theme_mode_provider.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -75,6 +77,7 @@ class _MyAppState extends State<MyApp> {
               NoticePage.model,
               SliderPage.model,
               FranceConnectButtonPage.model,
+              LabelPage.model,
             ],
           ),
           builder: (final context, final child) => AccessibilityTools(child: child),

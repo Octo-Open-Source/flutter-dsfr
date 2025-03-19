@@ -10,7 +10,9 @@ extension DsfrColorDecisionsExtension on DsfrColorDecisions {
   }
 
   static Color backgroundPurpleGlycineLowHover(BuildContext context) {
-    return DsfrColorDecisions.isLightMode(context) ? DsfrColors.purpleGlycineSun319Hover : DsfrColors.purpleGlycineMoon630Hover;
+    return DsfrColorDecisions.isLightMode(context)
+        ? DsfrColors.purpleGlycineSun319Hover
+        : DsfrColors.purpleGlycineMoon630Hover;
   }
 
   static Color backgroundPurpleGlycineHigh(BuildContext context) {
@@ -18,10 +20,22 @@ extension DsfrColorDecisionsExtension on DsfrColorDecisions {
   }
 
   static Color backgroundPurpleGlycineHighHover(BuildContext context) {
-    return DsfrColorDecisions.isLightMode(context) ? DsfrColors.purpleGlycine925Hover : DsfrColors.purpleGlycine125Hover;
+    return DsfrColorDecisions.isLightMode(context)
+        ? DsfrColors.purpleGlycine925Hover
+        : DsfrColors.purpleGlycine125Hover;
   }
 
   static Color focus525(BuildContext context) {
     return DsfrColors.focus525;
+  }
+
+  static Color backgroundContrastNew(BuildContext context) {
+    return DsfrColorDecisions.isLightMode(context) ? DsfrColors.yellowTournesol950 : DsfrColors.yellowTournesol100;
+  }
+
+  static Color textDefaultNew(BuildContext context) {
+    return DsfrColorDecisions.isLightMode(context)
+        ? DsfrColors.yellowTournesolSun407
+        : DsfrColors.yellowTournesolMoon922;
   }
 }

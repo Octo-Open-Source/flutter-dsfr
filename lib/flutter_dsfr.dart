@@ -6,6 +6,7 @@ export 'composants/buttons/button_border.dart';
 export 'composants/buttons/france_connect_button.dart';
 export 'composants/checkboxes/checkbox.dart';
 export 'composants/divider.dart';
+export 'composants/dsfr_label.dart';
 export 'composants/input.dart';
 export 'composants/input_headless.dart';
 export 'composants/link.dart';
