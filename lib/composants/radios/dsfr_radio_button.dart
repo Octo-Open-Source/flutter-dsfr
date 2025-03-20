@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dsfr/atoms/dsfr_form_state.dart';
+import 'package:flutter_dsfr/atoms/dsfr_group.dart';
 import 'package:flutter_dsfr/composants/radios/radio_icon.dart';
 import 'package:flutter_dsfr/fondamentaux/color_decisions.g.dart';
 import 'package:flutter_dsfr/fondamentaux/fonts.dart';
@@ -32,6 +33,8 @@ class DsfrRadioButton<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final state =
+        GroupProvider.of(context)?.composantState.state ?? this.composantState?.state ?? DsfrComposantStateEnum.none;
     return Semantics(
       enabled: enabled,
       child: DsfrFormState(
@@ -54,15 +57,14 @@ class DsfrRadioButton<T> extends StatelessWidget {
                       value: value,
                       groupValue: groupValue,
                       enabled: enabled,
-                      state: composantState.state,
+                      state: state,
                       size: _getIconSize(),
                     ),
                     Text(
                       label,
                       style: DsfrTextStyle.bodyMd(
                         color: enabled
-                            ? getTextColor(context, composantState.state,
-                                defaultColor: DsfrColorDecisions.textLabelGrey(context))
+                            ? getTextColor(context, state, defaultColor: DsfrColorDecisions.textLabelGrey(context))
                             : DsfrColorDecisions.textDisabledGrey(context),
                       ),
                     )

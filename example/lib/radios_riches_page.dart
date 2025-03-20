@@ -22,7 +22,7 @@ class _RadiosRichePageState extends State<RadiosRichesPage> {
   Widget build(final context) => ListView(
         padding: const EdgeInsets.only(left: 16, right: 16, top: 16, bottom: 98),
         children: [
-          DsfrRadioRichButtonGroup(
+          DsfrRadioRichButtonGroup.rich(
             title: 'Radios riches',
             values: const {1: 'Un', 2: 'Deux', 3: 'Trois'},
             onCallback: (final p0) {},
@@ -124,28 +124,28 @@ class _RadiosRichePageState extends State<RadiosRichesPage> {
             },
           ),
           const SizedBox(height: DsfrSpacings.s3w),
-          DsfrRadioRichButtonGroup(
+          DsfrRadioRichButtonGroup.rich(
             title: 'Radios riches en erreur',
             values: const {1: 'Un', 2: 'Deux', 3: 'Trois'},
             onCallback: (final p0) {},
             composantState: DsfrComposantState.error(errorMessage: 'Texte d\'erreur obligatoire'),
           ),
           const SizedBox(height: DsfrSpacings.s3w),
-          DsfrRadioRichButtonGroup(
+          DsfrRadioRichButtonGroup.rich(
             title: 'Radios riches en succès',
             values: const {1: 'Un', 2: 'Deux', 3: 'Trois'},
             onCallback: (final p0) {},
             composantState: DsfrComposantState.success(message: 'Texte de succès optionnel'),
           ),
           const SizedBox(height: DsfrSpacings.s3w),
-          DsfrRadioRichButtonGroup(
+          DsfrRadioRichButtonGroup.rich(
             title: 'Succès sans texte',
             values: const {1: 'Un', 2: 'Deux', 3: 'Trois'},
             onCallback: (final p0) {},
             composantState: DsfrComposantState.success(),
           ),
           const SizedBox(height: DsfrSpacings.s3w),
-          DsfrRadioRichButtonGroup(
+          DsfrRadioRichButtonGroup.rich(
             title: 'Radios riches désactivé',
             values: const {1: 'Un', 2: 'Deux', 3: 'Trois'},
             onCallback: (final p0) {},

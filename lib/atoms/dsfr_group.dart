@@ -50,6 +50,7 @@ class DsfrGroup<T> extends StatelessWidget {
                 : const SizedBox.shrink(),
             direction == Direction.vertical
                 ? Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     spacing: DsfrSpacings.s2w,
                     children: children.map((final widget) {
                       return widget as Widget;

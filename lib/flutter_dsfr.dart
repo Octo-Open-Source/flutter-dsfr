@@ -15,7 +15,7 @@ export 'composants/modal.dart';
 export 'composants/notice.dart';
 export 'composants/radios/dsfr_radio_rich_button.dart';
 export 'composants/radios/radio_icon.dart';
-export 'composants/radios/dsfr_radio_rich_button_set.dart';
+export 'composants/radios/dsfr_radio_rich_button_group.dart';
 export 'composants/select.dart';
 export 'composants/sliders/slider.dart';
 export 'composants/sliders/range_slider.dart';

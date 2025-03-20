@@ -3,6 +3,7 @@ import 'package:example/mise_en_page/page_sub_section.dart';
 import 'package:flutter_dsfr/composants/radios/dsfr_radio_button.dart';
 import 'package:example/page_item.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dsfr/composants/radios/dsfr_radio_rich_button_group.dart';
 import 'package:flutter_dsfr/helpers/composant_state.dart';
 import 'package:flutter_dsfr/helpers/dsfr_component_size.dart';
 
@@ -184,6 +185,54 @@ class _RadiosPageState extends State<RadiosPage> {
                       ),
                     ],
                   )
+                ],
+              ),
+              PageSection(
+                title: "Gestion des groupes",
+                children: [
+                  PageSubSection(title: "Groupe simple", children: [
+                    DsfrRadioRichButtonGroup.simple(
+                      title: 'Légende',
+                      values: const {1: 'Un', 2: 'Deux', 3: 'Trois'},
+                      onCallback: (final value) {},
+                      size: DsfrComponentSize.sm,
+                    ),
+                    Divider(height: 1),
+                    DsfrRadioRichButtonGroup.simple(
+                      title: 'Légende',
+                      description: 'Description optionnelle',
+                      values: const {1: 'Un', 2: 'Deux', 3: 'Trois'},
+                      onCallback: (final value) {},
+                      size: DsfrComponentSize.sm,
+                    ),
+                  ]),
+                  PageSubSection(title: 'Succès', children: [
+                    DsfrRadioRichButtonGroup.simple(
+                      title: 'Légende',
+                      values: const {1: 'Un', 2: 'Deux', 3: 'Trois'},
+                      onCallback: (final value) {},
+                      size: DsfrComponentSize.sm,
+                      composantState: DsfrComposantState.success(message: 'Texte de validation optionnel'),
+                    ),
+                  ]),
+                  PageSubSection(title: 'Erreur', children: [
+                    DsfrRadioRichButtonGroup.simple(
+                      title: 'Légende',
+                      values: const {1: 'Un', 2: 'Deux', 3: 'Trois'},
+                      onCallback: (final value) {},
+                      size: DsfrComponentSize.sm,
+                      composantState: DsfrComposantState.error(errorMessage: 'Texte obligatoire'),
+                    ),
+                  ]),
+                  PageSubSection(title: 'Désactivé', children: [
+                    DsfrRadioRichButtonGroup.simple(
+                      title: 'Légende',
+                      values: const {1: 'Un', 2: 'Deux', 3: 'Trois'},
+                      onCallback: (final value) {},
+                      size: DsfrComponentSize.sm,
+                      enabled: false,
+                    ),
+                  ]),
                 ],
               )
             ],
