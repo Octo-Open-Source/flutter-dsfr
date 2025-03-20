@@ -16,13 +16,13 @@ import 'package:example/radios_riches_page.dart';
 import 'package:example/sandbox_page.dart';
 import 'package:example/select_page.dart';
 import 'package:example/slider_page.dart';
+import 'package:example/stepper_page.dart';
 import 'package:example/tags_page.dart';
 import 'package:example/text_page.dart';
 import 'package:example/toggles_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dsfr/fondamentaux/color_decisions.g.dart';
 import 'package:flutter_dsfr/helpers/theme_mode_provider.dart';
-
 
 void main() {
   runApp(const MyApp());
@@ -78,6 +78,7 @@ class _MyAppState extends State<MyApp> {
               SliderPage.model,
               FranceConnectButtonPage.model,
               BadgesPage.model,
+              StepperPage.model,
             ],
           ),
           builder: (final context, final child) => AccessibilityTools(child: child),

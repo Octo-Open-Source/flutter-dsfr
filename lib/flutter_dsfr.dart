@@ -20,6 +20,7 @@ export 'composants/radios/dsfr_radio_rich_button_set_headless.dart';
 export 'composants/select.dart';
 export 'composants/sliders/slider.dart';
 export 'composants/sliders/range_slider.dart';
+export 'composants/stepper.dart';
 export 'composants/tag.dart';
 export 'composants/toggle_switch.dart';
 export 'fondamentaux/colors.g.dart';
