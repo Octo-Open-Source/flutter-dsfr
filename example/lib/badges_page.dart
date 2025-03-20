@@ -67,7 +67,7 @@ class BadgesPage extends StatelessWidget {
                 PageSubSection(
                   title: 'Taille MD',
                   children: [
-                    DsfrBadge.sm(label: 'badge info', type: DsfrBadgeType.information, withIcon: true),
+                    DsfrBadge.md(label: 'badge info', type: DsfrBadgeType.information, withIcon: true),
                     DsfrBadge.md(label: 'badge succès', type: DsfrBadgeType.success, withIcon: true),
                     DsfrBadge.md(label: 'badge erreur', type: DsfrBadgeType.error, withIcon: true),
                     DsfrBadge.md(label: 'badge avertissement', type: DsfrBadgeType.warning, withIcon: true),

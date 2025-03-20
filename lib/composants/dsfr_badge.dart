@@ -28,7 +28,7 @@ class DsfrBadge extends StatelessWidget {
     this.withIcon = false,
     this.backgroundCustomColor,
     this.textCustomColor,
-  })  : iconSize = 12,
+  })  : iconSize = 16,
         size = DsfrComponentSize.sm;
 
   const DsfrBadge.md({
@@ -38,7 +38,7 @@ class DsfrBadge extends StatelessWidget {
     this.withIcon = false,
     this.backgroundCustomColor,
     this.textCustomColor,
-  })  : iconSize = 16,
+  })  : iconSize = 18,
         size = DsfrComponentSize.md;
 
   @override
@@ -49,13 +49,14 @@ class DsfrBadge extends StatelessWidget {
         borderRadius: BorderRadius.circular(4),
       ),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 6),
+        padding: _getPadding(),
         child: Row(
           mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             if (withIcon)
               Padding(
-                padding: const EdgeInsets.only(right: 4),
+                padding: const EdgeInsets.only(right: 6),
                 child: Icon(_getIcon(), size: iconSize, color: _getTextColor(context)),
               ),
             Text(
@@ -86,6 +87,18 @@ class DsfrBadge extends StatelessWidget {
         return backgroundCustomColor == null
             ? throw UnimplementedError('backgroundCustomColor is mandatory')
             : backgroundCustomColor!;
+    }
+  }
+
+  EdgeInsetsGeometry _getPadding() {
+    if (withIcon) {
+      return size == DsfrComponentSize.sm
+          ? const EdgeInsets.symmetric(horizontal: 4, vertical: 4)
+          : const EdgeInsets.symmetric(horizontal: 6, vertical: 6);
+    } else {
+      return size == DsfrComponentSize.sm
+          ? const EdgeInsets.symmetric(horizontal: 6, vertical: 4)
+          : const EdgeInsets.symmetric(horizontal: 8, vertical: 6);
     }
   }
 
