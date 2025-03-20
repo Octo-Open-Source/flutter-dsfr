@@ -113,51 +113,47 @@ class _FranceConnectButtonState extends State<_FranceConnectButton> with Materia
         isFocused: isFocused,
         child: Semantics(
           button: true,
-          child: DecoratedBox(
-            decoration: BoxDecoration(
-                color: enabled
-                    ? DsfrColorDecisions.backgroundActionHighBlueFrance(context)
-                    : DsfrColorDecisions.backgroundDisabledGrey(context)),
-            child: Material(
-              color: DsfrColorDecisions.backgroundTransparent(context),
-              child: InkWell(
-                onTap: enabled ? widget.onTap : null,
-                onHighlightChanged: updateMaterialState(WidgetState.pressed),
-                onHover: updateMaterialState(WidgetState.hovered),
-                focusColor: DsfrColorDecisions.backgroundTransparent(context),
-                canRequestFocus: enabled,
-                onFocusChange: updateMaterialState(WidgetState.focused),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    spacing: 12,
-                    children: [
-                      SvgPicture.asset(
-                        'packages/flutter_dsfr/assets/icons/france_connect.svg',
-                        excludeFromSemantics: true,
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            widget.buttonPrefixLabel,
-                            style: DsfrTextStyle.bodyMd(color: _getTextColor(enabled)),
-                          ),
-                          Text(
-                            widget.buttonBoldLabel,
-                            style: DsfrTextStyle.bodyMdBold(color: _getTextColor(enabled)),
-                          ),
-                        ],
-                      ),
-                      if (widget.isFranceConnectPlus)
-                           SvgPicture.asset(
-                              'packages/flutter_dsfr/assets/icons/france_connect_plus.svg',
-                              excludeFromSemantics: true,
-                            )
-                          ,
-                    ],
-                  ),
+          child: Material(
+            color: enabled
+                ? DsfrColorDecisions.backgroundActionHighBlueFrance(context)
+                : DsfrColorDecisions.backgroundDisabledGrey(context),
+            child: InkWell(
+              onTap: enabled ? widget.onTap : null,
+              onHighlightChanged: updateMaterialState(WidgetState.pressed),
+              onHover: updateMaterialState(WidgetState.hovered),
+              focusColor: DsfrColorDecisions.backgroundTransparent(context),
+              canRequestFocus: enabled,
+              onFocusChange: updateMaterialState(WidgetState.focused),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  spacing: 12,
+                  children: [
+                    SvgPicture.asset(
+                      'packages/flutter_dsfr/assets/icons/france_connect.svg',
+                      excludeFromSemantics: true,
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          widget.buttonPrefixLabel,
+                          style: DsfrTextStyle.bodyMd(color: _getTextColor(enabled)),
+                        ),
+                        Text(
+                          widget.buttonBoldLabel,
+                          style: DsfrTextStyle.bodyMdBold(color: _getTextColor(enabled)),
+                        ),
+                      ],
+                    ),
+                    if (widget.isFranceConnectPlus)
+                         SvgPicture.asset(
+                            'packages/flutter_dsfr/assets/icons/france_connect_plus.svg',
+                            excludeFromSemantics: true,
+                          )
+                        ,
+                  ],
                 ),
               ),
             ),
