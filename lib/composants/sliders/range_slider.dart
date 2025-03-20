@@ -110,12 +110,12 @@ class DsfrRangeSlider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final labelColor = enabled
-        ? getTextColor(context, composantState?.state ?? DsfrComposantStateEnum.none,
+        ? getTextColor(context, composantState.state,
             defaultColor: DsfrColorDecisions.textLabelGrey(context))
         : DsfrColorDecisions.textDisabledGrey(context);
 
     return DsfrFormState(
-      composantState: composantState ?? DsfrComposantState.none(),
+      composantState: composantState,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         spacing: 4,
