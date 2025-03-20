@@ -1,5 +1,3 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter_dsfr/composants/accordions.dart';
 import 'package:flutter_dsfr/composants/dsfr_label.dart';
 import '../../helpers/a11y_test.skip.dart';
 

@@ -21,17 +21,6 @@ class DsfrLabel extends StatelessWidget {
   final double iconSize;
   final DsfrComponentSize size;
 
-  const DsfrLabel._({
-    super.key,
-    required this.label,
-    required this.type,
-    this.withIcon = false,
-    this.backgroundCustomColor,
-    this.textCustomColor,
-    required this.iconSize,
-    required this.size,
-  });
-
   const DsfrLabel.sm({
     super.key,
     required this.label,
