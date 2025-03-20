@@ -150,12 +150,11 @@ class _FranceConnectButtonState extends State<_FranceConnectButton> with Materia
                             ),
                           ],
                         ),
-                        widget.isFranceConnectPlus
-                            ? SvgPicture.asset(
-                                'packages/flutter_dsfr/assets/icons/france_connect_plus.svg',
-                                excludeFromSemantics: true,
-                              )
-                            : SizedBox.shrink(),
+                        if (widget.isFranceConnectPlus)
+                        SvgPicture.asset(
+                          'packages/flutter_dsfr/assets/icons/france_connect_plus.svg',
+                          excludeFromSemantics: true,
+                        ),
                       ],
                     ),
                   ),
