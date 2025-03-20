@@ -1,14 +1,10 @@
-import 'package:flutter_dsfr/atoms/dsfr_form_state.dart';
-import 'package:flutter_dsfr/composants/radios/dsfr_radio_rich_button_set_headless.dart';
-import 'package:flutter_dsfr/fondamentaux/color_decisions.g.dart';
-import 'package:flutter_dsfr/fondamentaux/fonts.dart';
-import 'package:flutter_dsfr/fondamentaux/spacing.g.dart';
+import 'package:flutter_dsfr/atoms/dsfr_group.dart';
+import 'package:flutter_dsfr/composants/radios/dsfr_radio_rich_button.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_dsfr/helpers/color_utils.dart';
 import 'package:flutter_dsfr/helpers/composant_state.dart';
 
-class DsfrRadioRichButtonSet<T> extends StatelessWidget {
-  const DsfrRadioRichButtonSet({
+class DsfrRadioRichButtonGroup<T> extends StatefulWidget {
+  const DsfrRadioRichButtonGroup({
     super.key,
     required this.title,
     required this.values,
@@ -21,39 +17,44 @@ class DsfrRadioRichButtonSet<T> extends StatelessWidget {
   final String title;
   final Map<T, String> values;
   final T? initialValue;
-  final Callback<T?> onCallback;
+  final Function(T? value) onCallback;
   final bool enabled;
   final DsfrComposantState composantState;
 
   @override
+  State<DsfrRadioRichButtonGroup<T>> createState() => _DsfrRadioRichButtonGroupState<T>();
+}
+
+class _DsfrRadioRichButtonGroupState<T> extends State<DsfrRadioRichButtonGroup<T>> {
+  T? _value;
+
+  @override
+  void initState() {
+    super.initState();
+    _value = widget.initialValue;
+  }
+
+  void _handleChange(final T? value) => setState(() {
+        _value = value;
+        widget.onCallback(_value);
+      });
+
+  @override
   Widget build(final context) {
-    return DsfrFormState(
-      composantState: composantState,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            title,
-            style: DsfrTextStyle.bodyMd(
-              color: getTextColor(
-                context,
-                composantState.state,
-                defaultColor: DsfrColorDecisions.textLabelGrey(context),
-              ),
-            ),
-          ),
-          const SizedBox(height: DsfrSpacings.s1w),
-          DsfrRadioRichButtonSetHeadless(
-            values: values.map(
-              (final key, final value) => MapEntry(key, DsfrRadioButtonItem(value)),
-            ),
-            onCallback: onCallback,
-            initialValue: initialValue,
-            enabled: enabled,
-            state: composantState.state,
-          ),
-        ],
-      ),
+    return DsfrGroup(
+      label: widget.title,
+      composantState: widget.composantState,
+      direction: Direction.horizontal,
+      children: widget.values.entries
+          .map((final entry) => DsfrRadioRichButton<T>(
+                title: entry.value,
+                value: entry.key,
+                groupValue: _value,
+                onChanged: _handleChange,
+                enabled: widget.enabled,
+                state: widget.composantState.state,
+              ))
+          .toList(),
     );
   }
 }

@@ -5,27 +5,27 @@ import 'package:flutter_dsfr/helpers/composant_state.dart';
 import '../../../helpers/a11y_test.skip.dart';
 
 void main() {
-  Widget radioSet = DsfrRadioRichButtonSet(
+  Widget radioSet = DsfrRadioRichButtonGroup(
     title: 'title',
     values: const {1: 'Un', 2: 'Deux', 3: 'Trois'},
     onCallback: (final p0) {},
   );
 
-  Widget radioSetSuccess = DsfrRadioRichButtonSet(
+  Widget radioSetSuccess = DsfrRadioRichButtonGroup(
     title: 'title',
     values: const {1: 'Un', 2: 'Deux', 3: 'Trois'},
     onCallback: (final p0) {},
     composantState: DsfrComposantState.success(message: 'success'),
   );
 
-  Widget radioSetError = DsfrRadioRichButtonSet(
+  Widget radioSetError = DsfrRadioRichButtonGroup(
     title: 'title',
     values: const {1: 'Un', 2: 'Deux', 3: 'Trois'},
     onCallback: (final p0) {},
     composantState: DsfrComposantState.error(errorMessage: 'error message'),
   );
 
-  Widget radioSetDisabled = DsfrRadioRichButtonSet(
+  Widget radioSetDisabled = DsfrRadioRichButtonGroup(
     title: 'title',
     values: const {1: 'Un', 2: 'Deux', 3: 'Trois'},
     onCallback: (final p0) {},
