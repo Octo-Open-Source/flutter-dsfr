@@ -3,25 +3,25 @@ import 'package:flutter_dsfr/flutter_dsfr.dart';
 import 'package:flutter_dsfr/fondamentaux/color_decisions_extension.dart';
 import 'package:flutter_dsfr/helpers/dsfr_component_size.dart';
 
-enum DsfrLabelType {
+enum DsfrBadgeType {
   information,
   warning,
   success,
   error,
-  novelties,
+  news,
   custom,
 }
 
-class DsfrLabel extends StatelessWidget {
+class DsfrBadge extends StatelessWidget {
   final String label;
-  final DsfrLabelType type;
+  final DsfrBadgeType type;
   final bool withIcon;
   final Color? backgroundCustomColor;
   final Color? textCustomColor;
   final double iconSize;
   final DsfrComponentSize size;
 
-  const DsfrLabel.sm({
+  const DsfrBadge.sm({
     super.key,
     required this.label,
     required this.type,
@@ -31,7 +31,7 @@ class DsfrLabel extends StatelessWidget {
   })  : iconSize = 12,
         size = DsfrComponentSize.sm;
 
-  const DsfrLabel.md({
+  const DsfrBadge.md({
     super.key,
     required this.label,
     required this.type,
@@ -72,17 +72,17 @@ class DsfrLabel extends StatelessWidget {
 
   Color _getBackgroundColor(context) {
     switch (type) {
-      case DsfrLabelType.information:
+      case DsfrBadgeType.information:
         return DsfrColorDecisions.backgroundContrastInfo(context);
-      case DsfrLabelType.warning:
+      case DsfrBadgeType.warning:
         return DsfrColorDecisions.backgroundContrastWarning(context);
-      case DsfrLabelType.success:
+      case DsfrBadgeType.success:
         return DsfrColorDecisions.backgroundContrastSuccess(context);
-      case DsfrLabelType.error:
+      case DsfrBadgeType.error:
         return DsfrColorDecisions.backgroundContrastError(context);
-      case DsfrLabelType.novelties:
+      case DsfrBadgeType.news:
         return DsfrColorDecisionsExtension.backgroundContrastNew(context);
-      case DsfrLabelType.custom:
+      case DsfrBadgeType.custom:
         return backgroundCustomColor == null
             ? throw UnimplementedError('backgroundCustomColor is mandatory')
             : backgroundCustomColor!;
@@ -91,34 +91,34 @@ class DsfrLabel extends StatelessWidget {
 
   Color _getTextColor(context) {
     switch (type) {
-      case DsfrLabelType.information:
+      case DsfrBadgeType.information:
         return DsfrColorDecisions.textDefaultInfo(context);
-      case DsfrLabelType.warning:
+      case DsfrBadgeType.warning:
         return DsfrColorDecisions.textDefaultWarning(context);
-      case DsfrLabelType.success:
+      case DsfrBadgeType.success:
         return DsfrColorDecisions.textDefaultSuccess(context);
-      case DsfrLabelType.error:
+      case DsfrBadgeType.error:
         return DsfrColorDecisions.textDefaultError(context);
-      case DsfrLabelType.novelties:
+      case DsfrBadgeType.news:
         return DsfrColorDecisionsExtension.textDefaultNew(context);
-      case DsfrLabelType.custom:
+      case DsfrBadgeType.custom:
         return textCustomColor == null ? throw UnimplementedError('textCustomColor is mandatory') : textCustomColor!;
     }
   }
 
   IconData _getIcon() {
     switch (type) {
-      case DsfrLabelType.information:
+      case DsfrBadgeType.information:
         return DsfrIcons.systemFrInfoFill;
-      case DsfrLabelType.warning:
+      case DsfrBadgeType.warning:
         return DsfrIcons.systemFrWarningFill;
-      case DsfrLabelType.success:
+      case DsfrBadgeType.success:
         return DsfrIcons.systemCheckboxCircleFill;
-      case DsfrLabelType.error:
+      case DsfrBadgeType.error:
         return DsfrIcons.systemFrErrorFill;
-      case DsfrLabelType.novelties:
+      case DsfrBadgeType.news:
         return DsfrIcons.weatherFlashlightFill;
-      case DsfrLabelType.custom:
+      case DsfrBadgeType.custom:
         throw UnimplementedError('custom with icon is not implemented');
     }
   }
