@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_dsfr/flutter_dsfr.dart';
 import 'package:flutter_dsfr/fondamentaux/color_decisions_extension.dart';
+import 'package:flutter_dsfr/helpers/dsfr_component_size.dart';
 
 enum DsfrLabelType {
   information,
@@ -18,6 +19,7 @@ class DsfrLabel extends StatelessWidget {
   final Color? backgroundCustomColor;
   final Color? textCustomColor;
   final double iconSize;
+  final DsfrComponentSize size;
 
   const DsfrLabel._({
     super.key,
@@ -27,6 +29,7 @@ class DsfrLabel extends StatelessWidget {
     this.backgroundCustomColor,
     this.textCustomColor,
     required this.iconSize,
+    required this.size,
   });
 
   const DsfrLabel.sm({
@@ -36,7 +39,8 @@ class DsfrLabel extends StatelessWidget {
     this.withIcon = false,
     this.backgroundCustomColor,
     this.textCustomColor,
-  }) : iconSize = 12;
+  })  : iconSize = 12,
+        size = DsfrComponentSize.sm;
 
   const DsfrLabel.md({
     super.key,
@@ -45,7 +49,8 @@ class DsfrLabel extends StatelessWidget {
     this.withIcon = false,
     this.backgroundCustomColor,
     this.textCustomColor,
-  }) : iconSize = 16;
+  })  : iconSize = 16,
+        size = DsfrComponentSize.md;
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +71,7 @@ class DsfrLabel extends StatelessWidget {
               ),
             Text(
               label.toUpperCase(),
-              style: iconSize == 12 //TODO : change this condition
+              style: size == DsfrComponentSize.sm
                   ? DsfrTextStyle.bodySmBold(color: _getTextColor(context))
                   : DsfrTextStyle.bodyMdBold(color: _getTextColor(context)),
             ),

@@ -17,7 +17,7 @@ class LabelPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Padding(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.fromLTRB(16, 16, 16, 98),
         child: Column(
           spacing: 16,
           children: [
@@ -50,17 +50,31 @@ class LabelPage extends StatelessWidget {
                     textCustomColor: DsfrColors.greenArchipelMoon716,
                   ),
                 ])
-
               ],
             ),
             PageSection(
               title: 'Badge avec icônes',
               children: [
-                DsfrLabel.sm(label: 'badge info', type: DsfrLabelType.information, withIcon: true),
-                DsfrLabel.sm(label: 'badge succès', type: DsfrLabelType.success, withIcon: true),
-                DsfrLabel.sm(label: 'badge erreur', type: DsfrLabelType.error, withIcon: true),
-                DsfrLabel.sm(label: 'badge avertissement', type: DsfrLabelType.warning, withIcon: true),
-                DsfrLabel.sm(label: 'badge nouveau', type: DsfrLabelType.novelties, withIcon: true),
+                PageSubSection(
+                  title: 'Taille SM',
+                  children: [
+                    DsfrLabel.sm(label: 'badge info', type: DsfrLabelType.information, withIcon: true),
+                    DsfrLabel.sm(label: 'badge succès', type: DsfrLabelType.success, withIcon: true),
+                    DsfrLabel.sm(label: 'badge erreur', type: DsfrLabelType.error, withIcon: true),
+                    DsfrLabel.sm(label: 'badge avertissement', type: DsfrLabelType.warning, withIcon: true),
+                    DsfrLabel.sm(label: 'badge nouveau', type: DsfrLabelType.novelties, withIcon: true),
+                  ],
+                ),
+                PageSubSection(
+                  title: 'Taille MD',
+                  children: [
+                    DsfrLabel.sm(label: 'badge info', type: DsfrLabelType.information, withIcon: true),
+                    DsfrLabel.md(label: 'badge succès', type: DsfrLabelType.success, withIcon: true),
+                    DsfrLabel.md(label: 'badge erreur', type: DsfrLabelType.error, withIcon: true),
+                    DsfrLabel.md(label: 'badge avertissement', type: DsfrLabelType.warning, withIcon: true),
+                    DsfrLabel.md(label: 'badge nouveau', type: DsfrLabelType.novelties, withIcon: true),
+                  ],
+                ),
               ],
             ),
           ],
