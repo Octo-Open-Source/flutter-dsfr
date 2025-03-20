@@ -1,6 +1,5 @@
 import 'package:example/mise_en_page/page_section.dart';
 import 'package:example/mise_en_page/page_sub_section.dart';
-import 'package:flutter_dsfr/composants/dsfr_badge.dart';
 import 'package:flutter_dsfr/flutter_dsfr.dart';
 import 'package:example/page_item.dart';
 import 'package:flutter/material.dart';
