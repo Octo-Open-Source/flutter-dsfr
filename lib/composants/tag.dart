@@ -108,6 +108,59 @@ class DsfrTag extends StatelessWidget {
   final ValueChanged<bool>? onSelectionChanged;
   final bool enabled;
 
+  @override
+  Widget build(final context) {
+    return Builder(
+      builder: (final context) {
+        return Semantics(
+          enabled: enabled,
+          selected: isSelected,
+          child: Focus(
+            focusNode: focusNode,
+            canRequestFocus: enabled,
+            child: isSelected
+                ? CustomPaint(
+              painter: _CustomShapePainter(size, _getBackgroundColor(context)),
+              child: ClipPath(
+                clipper: _CustomShapeClipper(size),
+                child: _TagButton(
+                  label: label,
+                  padding: _getPadding(),
+                  size: size,
+                  backgroundColor: _getBackgroundColor(context),
+                  highlightColor: _getHighlightColor(context),
+                  textStyle: _getTextStyle(context),
+                  icon: icon,
+                  iconFontSize: _getIconFontSize(),
+                  onTap: onTap,
+                  isSelectable: isSelectable,
+                  isSelected: isSelected,
+                  onSelectionChanged: onSelectionChanged,
+                  enabled: enabled,
+                ),
+              ),
+            )
+                : _TagButton(
+              label: label,
+              padding: _getPadding(),
+              size: size,
+              backgroundColor: _getBackgroundColor(context),
+              highlightColor: _getHighlightColor(context),
+              textStyle: _getTextStyle(context),
+              icon: icon,
+              iconFontSize: _getIconFontSize(),
+              onTap: onTap,
+              isSelectable: isSelectable,
+              isSelected: isSelected,
+              onSelectionChanged: onSelectionChanged,
+              enabled: enabled,
+            ),
+          ),
+        );
+      },
+    );
+  }
+
   Color _getTextColor(BuildContext context) {
     if (enabled) {
       if (isSelected) {
@@ -177,13 +230,14 @@ class DsfrTag extends StatelessWidget {
   Color? _getHighlightColor(BuildContext context) {
     if (enabled) {
       final hasNoCustomBackgroundColors = (backgroundColor == null) && (highlightColor == null);
-      final hasNoCustomSelectedBackgroundColors =
-          (selectedBackgroundColor == null) && (selectedHighlightColor == null);
+      final hasNoCustomSelectedBackgroundColors = (selectedBackgroundColor == null) && (selectedHighlightColor == null);
       final shouldUseDefaultHighlightColor = (!isSelected && hasNoCustomBackgroundColors) ||
           (isSelected && hasNoCustomBackgroundColors && hasNoCustomSelectedBackgroundColors);
 
       if (shouldUseDefaultHighlightColor) {
-        return isSelected ? DsfrColorDecisions.backgroundActionHighBlueFranceHover(context) : DsfrColorDecisions.backgroundActionLowBlueFranceHover(context);
+        return isSelected
+            ? DsfrColorDecisions.backgroundActionHighBlueFranceHover(context)
+            : DsfrColorDecisions.backgroundActionLowBlueFranceHover(context);
       } else {
         return isSelected ? selectedHighlightColor : highlightColor;
       }
@@ -191,63 +245,11 @@ class DsfrTag extends StatelessWidget {
       return DsfrColorDecisions.backgroundDisabledGrey(context);
     }
   }
-
-  @override
-  Widget build(final context) {
-    return Focus(
-      focusNode: focusNode,
-      canRequestFocus: enabled,
-      child: Builder(
-        builder: (final context) {
-          final isFocused = Focus.of(context).hasFocus;
-          return DsfrFocusWidget(
-            isFocused: isFocused,
-            child: isSelected
-                ? CustomPaint(
-                    painter: _CustomShapePainter(size, _getBackgroundColor(context)),
-                    child: ClipPath(
-                      clipper: _CustomShapeClipper(size),
-                      child: _TagButton(
-                        label: label,
-                        padding: _getPadding(),
-                        size: size,
-                        backgroundColor: _getBackgroundColor(context),
-                        highlightColor: _getHighlightColor(context),
-                        textStyle: _getTextStyle(context),
-                        icon: icon,
-                        iconFontSize: _getIconFontSize(),
-                        onTap: onTap,
-                        isSelectable: isSelectable,
-                        isSelected: isSelected,
-                        onSelectionChanged: onSelectionChanged,
-                        enabled: enabled,
-                      ),
-                    ),
-                  )
-                : _TagButton(
-                    label: label,
-                    padding: _getPadding(),
-                    size: size,
-                    backgroundColor: _getBackgroundColor(context),
-                    highlightColor: _getHighlightColor(context),
-                    textStyle: _getTextStyle(context),
-                    icon: icon,
-                    iconFontSize: _getIconFontSize(),
-                    onTap: onTap,
-                    isSelectable: isSelectable,
-                    isSelected: isSelected,
-                    onSelectionChanged: onSelectionChanged,
-                    enabled: enabled,
-                  ),
-          );
-        },
-      ),
-    );
-  }
 }
 
 class _TagButton extends StatelessWidget {
   const _TagButton({
+    super.key,
     required this.label,
     required this.padding,
     required this.size,
@@ -282,45 +284,43 @@ class _TagButton extends StatelessWidget {
     return Material(
       color: backgroundColor,
       shape: isSelected ? null : const StadiumBorder(),
-      child: ExcludeFocus(
-        child: InkWell(
-          customBorder: isSelected ? null : const StadiumBorder(),
-          highlightColor: highlightColor,
-          splashFactory: enabled ? null : NoSplash.splashFactory,
-          onTap: () {
-            if (!enabled) {
-              return;
-            }
-            if (isSelectable) {
-              onSelectionChanged?.call(!isSelected);
-            } else {
-              onTap;
-            }
-          },
-          child: Padding(
-              padding: padding,
-              child: Text.rich(
-                TextSpan(
-                  children: [
-                    if (icon != null) ...[
-                      WidgetSpan(
-                        alignment: PlaceholderAlignment.middle,
-                        baseline: TextBaseline.alphabetic,
-                        child: Icon(
-                          icon,
-                          size: iconFontSize,
-                          color: textStyle.color,
-                        ),
-                      ),
-                      const WidgetSpan(
-                        child: SizedBox(width: DsfrSpacings.s1v),
-                      ),
-                    ],
-                    label,
-                  ],
-                ),
-                style: textStyle,
-              )),
+      child: InkWell(
+        customBorder: isSelected ? null : const StadiumBorder(),
+        highlightColor: highlightColor,
+        splashFactory: enabled ? null : NoSplash.splashFactory,
+        onTap: enabled
+            ? () {
+                if (isSelectable) {
+                  onSelectionChanged?.call(!isSelected);
+                } else {
+                  onTap;
+                }
+              }
+            : null,
+        child: Padding(
+          padding: padding,
+          child: Text.rich(
+            TextSpan(
+              children: [
+                if (icon != null) ...[
+                  WidgetSpan(
+                    alignment: PlaceholderAlignment.middle,
+                    baseline: TextBaseline.alphabetic,
+                    child: Icon(
+                      icon,
+                      size: iconFontSize,
+                      color: textStyle.color,
+                    ),
+                  ),
+                  const WidgetSpan(
+                    child: SizedBox(width: DsfrSpacings.s1v),
+                  ),
+                ],
+                label,
+              ],
+            ),
+            style: textStyle,
+          ),
         ),
       ),
     );
