@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dsfr/helpers/composant_state.dart';
 import 'package:flutter_dsfr/helpers/dsfr_component_size.dart';
 
-class DsfrRadioRichButtonGroup<T> extends StatefulWidget {
+class DsfrRadioButtonGroup<T> extends StatefulWidget {
   final String title;
   final String? description;
   final Map<T, String> values;
@@ -17,7 +17,7 @@ class DsfrRadioRichButtonGroup<T> extends StatefulWidget {
   final bool isRichRadio;
   final DsfrComponentSize? size;
 
-  const DsfrRadioRichButtonGroup._({
+  const DsfrRadioButtonGroup._({
     super.key,
     required this.title,
     this.description,
@@ -31,7 +31,7 @@ class DsfrRadioRichButtonGroup<T> extends StatefulWidget {
     this.size,
   });
 
-  const DsfrRadioRichButtonGroup.rich({
+  const DsfrRadioButtonGroup.rich({
     final Key? key,
     required String title,
     String? description,
@@ -53,7 +53,7 @@ class DsfrRadioRichButtonGroup<T> extends StatefulWidget {
           isRichRadio: true,
         );
 
-  const DsfrRadioRichButtonGroup.simple({
+  const DsfrRadioButtonGroup.simple({
     final Key? key,
     required String title,
     String? description,
@@ -78,10 +78,10 @@ class DsfrRadioRichButtonGroup<T> extends StatefulWidget {
         );
 
   @override
-  State<DsfrRadioRichButtonGroup<T>> createState() => _DsfrRadioRichButtonGroupState<T>();
+  State<DsfrRadioButtonGroup<T>> createState() => _DsfrRadioButtonGroupState<T>();
 }
 
-class _DsfrRadioRichButtonGroupState<T> extends State<DsfrRadioRichButtonGroup<T>> {
+class _DsfrRadioButtonGroupState<T> extends State<DsfrRadioButtonGroup<T>> {
   T? _value;
 
   @override

@@ -3,7 +3,7 @@ import 'package:example/mise_en_page/page_sub_section.dart';
 import 'package:flutter_dsfr/composants/radios/dsfr_radio_button.dart';
 import 'package:example/page_item.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_dsfr/composants/radios/dsfr_radio_rich_button_group.dart';
+import 'package:flutter_dsfr/composants/radios/dsfr_radio_button_group.dart';
 import 'package:flutter_dsfr/helpers/composant_state.dart';
 import 'package:flutter_dsfr/helpers/dsfr_component_size.dart';
 
@@ -191,14 +191,14 @@ class _RadiosPageState extends State<RadiosPage> {
                 title: "Gestion des groupes",
                 children: [
                   PageSubSection(title: "Groupe simple", children: [
-                    DsfrRadioRichButtonGroup.simple(
+                    DsfrRadioButtonGroup.simple(
                       title: 'Légende',
                       values: const {1: 'Un', 2: 'Deux', 3: 'Trois'},
                       onCallback: (final value) {},
                       size: DsfrComponentSize.sm,
                     ),
                     Divider(height: 1),
-                    DsfrRadioRichButtonGroup.simple(
+                    DsfrRadioButtonGroup.simple(
                       title: 'Légende',
                       description: 'Description optionnelle',
                       values: const {1: 'Un', 2: 'Deux', 3: 'Trois'},
@@ -207,7 +207,7 @@ class _RadiosPageState extends State<RadiosPage> {
                     ),
                   ]),
                   PageSubSection(title: 'Succès', children: [
-                    DsfrRadioRichButtonGroup.simple(
+                    DsfrRadioButtonGroup.simple(
                       title: 'Légende',
                       values: const {1: 'Un', 2: 'Deux', 3: 'Trois'},
                       onCallback: (final value) {},
@@ -216,7 +216,7 @@ class _RadiosPageState extends State<RadiosPage> {
                     ),
                   ]),
                   PageSubSection(title: 'Erreur', children: [
-                    DsfrRadioRichButtonGroup.simple(
+                    DsfrRadioButtonGroup.simple(
                       title: 'Légende',
                       values: const {1: 'Un', 2: 'Deux', 3: 'Trois'},
                       onCallback: (final value) {},
@@ -225,7 +225,7 @@ class _RadiosPageState extends State<RadiosPage> {
                     ),
                   ]),
                   PageSubSection(title: 'Désactivé', children: [
-                    DsfrRadioRichButtonGroup.simple(
+                    DsfrRadioButtonGroup.simple(
                       title: 'Légende',
                       values: const {1: 'Un', 2: 'Deux', 3: 'Trois'},
                       onCallback: (final value) {},
