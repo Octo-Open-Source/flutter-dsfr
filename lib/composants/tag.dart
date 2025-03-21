@@ -2,7 +2,7 @@ import 'package:flutter_dsfr/flutter_dsfr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dsfr/helpers/dsfr_component_size.dart';
 
-class DsfrTag extends StatelessWidget {
+class DsfrTag extends StatefulWidget {
   const DsfrTag._({
     super.key,
     required this.label,
@@ -105,55 +105,60 @@ class DsfrTag extends StatelessWidget {
   final bool enabled;
 
   @override
+  State<DsfrTag> createState() => _DsfrTagState();
+}
+
+class _DsfrTagState extends State<DsfrTag> {
+  bool hasFocus = false;
+
+  @override
   Widget build(final context) {
-    return Builder(
-      builder: (final context) {
-        return Semantics(
-          enabled: enabled,
-          selected: isSelected,
-          child: Focus(
-            focusNode: focusNode,
-            canRequestFocus: enabled,
-            child: Builder(
-              builder: (final context) {
-                final isFocused = Focus.of(context).hasFocus;
-                return DsfrFocusWidget(
-                  isFocused: isFocused,
-                  child: CustomPaint(
-                    painter: _CustomShapePainter(size, _getBackgroundColor(context), isSelected),
-                    child: ClipPath(
-                      clipper: _CustomShapeClipper(size, isSelected),
-                      child: _TagButton(
-                        label: label,
-                        padding: _getPadding(),
-                        size: size,
-                        backgroundColor: _getBackgroundColor(context),
-                        highlightColor: _getHighlightColor(context),
-                        textStyle: _getTextStyle(context),
-                        icon: icon,
-                        iconFontSize: _getIconFontSize(),
-                        onTap: onTap,
-                        isSelected: isSelected,
-                        onSelectionChanged: onSelectionChanged,
-                        enabled: enabled,
-                      ),
-                    ),
-                  ),
-                );
-              },
+    final enabled = widget.enabled;
+    final isSelected = widget.isSelected;
+    final size = widget.size;
+    final label = widget.label;
+    final onTap = widget.onTap;
+    final icon = widget.icon;
+    final onSelectionChanged = widget.onSelectionChanged;
+    final focusNode = widget.focusNode;
+
+    return Semantics(
+      enabled: enabled,
+      selected: isSelected,
+      child: DsfrFocusWidget(
+        isFocused: hasFocus,
+        child: CustomPaint(
+          painter: _CustomShapePainter(size, _getBackgroundColor(context), isSelected),
+          child: ClipPath(
+            clipper: _CustomShapeClipper(size, isSelected),
+            child: _TagButton(
+              label: label,
+              padding: _getPadding(),
+              size: size,
+              backgroundColor: _getBackgroundColor(context),
+              highlightColor: _getHighlightColor(context),
+              textStyle: _getTextStyle(context),
+              icon: icon,
+              iconFontSize: _getIconFontSize(),
+              onTap: onTap,
+              isSelected: isSelected,
+              onSelectionChanged: onSelectionChanged,
+              enabled: enabled,
+              focusNode: focusNode,
+              onFocusChange: (final hasFocus) => setState(() => this.hasFocus = hasFocus),
             ),
           ),
-        );
-      },
+        ),
+      ),
     );
   }
 
   Color _getTextColor(BuildContext context) {
-    if (enabled) {
-      if (isSelected) {
-        return selectedTextColor ?? DsfrColorDecisions.textInvertedBlueFrance(context);
+    if (widget.enabled) {
+      if (widget.isSelected) {
+        return widget.selectedTextColor ?? DsfrColorDecisions.textInvertedBlueFrance(context);
       } else {
-        return textColor ?? DsfrColorDecisions.textActionHighBlueFrance(context);
+        return widget.textColor ?? DsfrColorDecisions.textActionHighBlueFrance(context);
       }
     } else {
       return DsfrColorDecisions.textDisabledGrey(context);
@@ -162,41 +167,41 @@ class DsfrTag extends StatelessWidget {
 
   DsfrTextStyle _getTextStyle(BuildContext context) {
     var textColor = _getTextColor(context);
-    switch (size) {
+    switch (widget.size) {
       case DsfrComponentSize.md:
         return DsfrTextStyle.bodyMd(color: textColor);
       case DsfrComponentSize.sm:
         return DsfrTextStyle.bodySm(color: textColor);
       default:
-        throw UnimplementedError('Size $size is not implemented');
+        throw UnimplementedError('Size ${widget.size} is not implemented');
     }
   }
 
   double _getIconFontSize() {
-    switch (size) {
+    switch (widget.size) {
       case DsfrComponentSize.md:
         return 16;
       case DsfrComponentSize.sm:
         return 12;
       default:
-        throw UnimplementedError('Size $size is not implemented');
+        throw UnimplementedError('Size ${widget.size} is not implemented');
     }
   }
 
   EdgeInsets _getPadding() {
-    return switch (size) {
+    return switch (widget.size) {
       DsfrComponentSize.md => const EdgeInsets.fromLTRB(12, 4, 20, 4),
       DsfrComponentSize.sm => const EdgeInsets.fromLTRB(8, 2, 14, 2),
-      _ => throw UnimplementedError('Size $size is not implemented'),
+      _ => throw UnimplementedError('Size ${widget.size} is not implemented'),
     };
   }
 
   Color _getBackgroundColor(BuildContext context) {
-    if (enabled) {
-      if (isSelected) {
-        return selectedBackgroundColor ?? DsfrColorDecisions.backgroundActionHighBlueFrance(context);
+    if (widget.enabled) {
+      if (widget.isSelected) {
+        return widget.selectedBackgroundColor ?? DsfrColorDecisions.backgroundActionHighBlueFrance(context);
       } else {
-        return backgroundColor ?? DsfrColorDecisions.backgroundActionLowBlueFrance(context);
+        return widget.backgroundColor ?? DsfrColorDecisions.backgroundActionLowBlueFrance(context);
       }
     } else {
       return DsfrColorDecisions.backgroundDisabledGrey(context);
@@ -204,18 +209,19 @@ class DsfrTag extends StatelessWidget {
   }
 
   Color? _getHighlightColor(BuildContext context) {
-    if (enabled) {
-      final hasNoCustomBackgroundColors = (backgroundColor == null) && (highlightColor == null);
-      final hasNoCustomSelectedBackgroundColors = (selectedBackgroundColor == null) && (selectedHighlightColor == null);
-      final shouldUseDefaultHighlightColor = (!isSelected && hasNoCustomBackgroundColors) ||
-          (isSelected && hasNoCustomBackgroundColors && hasNoCustomSelectedBackgroundColors);
+    if (widget.enabled) {
+      final hasNoCustomBackgroundColors = (widget.backgroundColor == null) && (widget.highlightColor == null);
+      final hasNoCustomSelectedBackgroundColors =
+          (widget.selectedBackgroundColor == null) && (widget.selectedHighlightColor == null);
+      final shouldUseDefaultHighlightColor = (!widget.isSelected && hasNoCustomBackgroundColors) ||
+          (widget.isSelected && hasNoCustomBackgroundColors && hasNoCustomSelectedBackgroundColors);
 
       if (shouldUseDefaultHighlightColor) {
-        return isSelected
+        return widget.isSelected
             ? DsfrColorDecisions.backgroundActionHighBlueFranceHover(context)
             : DsfrColorDecisions.backgroundActionLowBlueFranceHover(context);
       } else {
-        return isSelected ? selectedHighlightColor : highlightColor;
+        return widget.isSelected ? widget.selectedHighlightColor : widget.highlightColor;
       }
     } else {
       return DsfrColorDecisions.backgroundDisabledGrey(context);
@@ -237,6 +243,8 @@ class _TagButton extends StatelessWidget {
     this.isSelected = false,
     this.onSelectionChanged,
     this.enabled = true,
+    this.focusNode,
+    this.onFocusChange,
   });
 
   final InlineSpan label;
@@ -251,6 +259,8 @@ class _TagButton extends StatelessWidget {
   final bool isSelected;
   final ValueChanged<bool>? onSelectionChanged;
   final bool enabled;
+  final FocusNode? focusNode;
+  final ValueChanged<bool>? onFocusChange;
 
   @override
   Widget build(BuildContext context) {
@@ -258,6 +268,8 @@ class _TagButton extends StatelessWidget {
       color: backgroundColor,
       shape: isSelected ? null : const StadiumBorder(),
       child: InkWell(
+        onFocusChange: onFocusChange,
+        focusNode: focusNode,
         highlightColor: highlightColor,
         splashFactory: enabled ? null : NoSplash.splashFactory,
         onTap: enabled
