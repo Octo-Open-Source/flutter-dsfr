@@ -80,8 +80,7 @@ class _TagsPageState extends State<TagsPage> {
             if (_showDeletableTagSm)
               DsfrTag.sm(
                 label: TextSpan(text: 'Tag supprimable'),
-                onTap: () => setState(() => _showDeletableTagSm = false),
-                isDeletable: true,
+                onDelete: () => setState(() => _showDeletableTagSm = false),
               ),
             Text(
               'Taille MD',
@@ -132,8 +131,7 @@ class _TagsPageState extends State<TagsPage> {
             if (_showDeletableTagMd)
               DsfrTag.md(
                 label: TextSpan(text: 'Tag supprimable'),
-                onTap: () => setState(() => _showDeletableTagMd = false),
-                isDeletable: true,
+                onDelete: () => setState(() => _showDeletableTagMd = false),
               ),
           ],
         ),

@@ -20,7 +20,7 @@ class DsfrTag extends StatefulWidget {
     this.isSelected = false,
     this.onSelectionChanged,
     this.enabled = true,
-    this.isDeletable = false,
+    this.onDelete,
   }) : assert(onSelectionChanged == null || onTap == null);
 
   const DsfrTag.sm({
@@ -38,7 +38,7 @@ class DsfrTag extends StatefulWidget {
     final bool isSelected = false,
     final ValueChanged<bool>? onSelectionChanged,
     final bool enabled = true,
-    final bool isDeletable = false,
+    final GestureTapCallback? onDelete,
   }) : this._(
           key: key,
           label: label,
@@ -55,7 +55,7 @@ class DsfrTag extends StatefulWidget {
           isSelected: isSelected,
           onSelectionChanged: onSelectionChanged,
           enabled: enabled,
-          isDeletable: isDeletable,
+          onDelete: onDelete,
         );
 
   const DsfrTag.md({
@@ -73,7 +73,7 @@ class DsfrTag extends StatefulWidget {
     final bool isSelected = false,
     final ValueChanged<bool>? onSelectionChanged,
     final bool enabled = true,
-    final bool isDeletable = false,
+    final GestureTapCallback? onDelete,
 
   }) : this._(
           key: key,
@@ -91,7 +91,7 @@ class DsfrTag extends StatefulWidget {
           isSelected: isSelected,
           onSelectionChanged: onSelectionChanged,
           enabled: enabled,
-          isDeletable: isDeletable,
+          onDelete: onDelete,
         );
 
   final InlineSpan label;
@@ -109,7 +109,7 @@ class DsfrTag extends StatefulWidget {
   final bool isSelected;
   final ValueChanged<bool>? onSelectionChanged;
   final bool enabled;
-  final bool isDeletable;
+  final GestureTapCallback? onDelete;
 
   @override
   State<DsfrTag> createState() => _DsfrTagState();
@@ -147,13 +147,13 @@ class _DsfrTagState extends State<DsfrTag> {
                 backgroundColor: _getBackgroundColor(context),
                 highlightColor: _getHighlightColor(context),
                 textStyle: _getTextStyle(context),
-                icon: icon: isDeletable ? null : icon,,
+                icon: onDelete == null ? icon : null,
                 iconFontSize: _getIconFontSize(),
                 onTap: onTap,
                 isSelected: isSelected,
                 onSelectionChanged: onSelectionChanged,
                 enabled: enabled,
-                isDeletable: isDeletable,
+                onDelete: onDelete,
                 focusNode: focusNode,
                 onFocusChange: (final hasFocus) => setState(() => this.hasFocus = hasFocus),
               ),
@@ -254,7 +254,7 @@ class _TagButton extends StatelessWidget {
     this.isSelected = false,
     this.onSelectionChanged,
     this.enabled = true,
-    this.isDeletable = false,
+    this.onDelete,
     this.focusNode,
     this.onFocusChange,
   });
@@ -271,7 +271,7 @@ class _TagButton extends StatelessWidget {
   final bool isSelected;
   final ValueChanged<bool>? onSelectionChanged;
   final bool enabled;
-  final bool isDeletable;
+  final GestureTapCallback? onDelete;
   final FocusNode? focusNode;
   final ValueChanged<bool>? onFocusChange;
 
@@ -289,7 +289,9 @@ class _TagButton extends StatelessWidget {
             ? () {
                 if (onSelectionChanged != null) {
                   onSelectionChanged!(!isSelected);
-                } else {
+                } else if (onDelete != null) {
+              onDelete?.call();
+            } else {
                   onTap?.call();
                 }
               }
@@ -313,7 +315,7 @@ class _TagButton extends StatelessWidget {
                     ),
                   ),
                 label,
-                    if (isDeletable) ...[
+                    if (onDelete != null) ...[
                       const WidgetSpan(
                         child: SizedBox(width: DsfrSpacings.s1v),
                       ),
