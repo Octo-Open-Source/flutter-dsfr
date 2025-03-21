@@ -17,11 +17,10 @@ class DsfrTag extends StatelessWidget {
     this.icon,
     this.onTap,
     this.focusNode,
-    this.isSelectable = false,
     this.isSelected = false,
     this.onSelectionChanged,
     this.enabled = true,
-  });
+  }) : assert(onSelectionChanged == null || onTap == null);
 
   const DsfrTag.sm({
     required final InlineSpan label,
@@ -51,7 +50,6 @@ class DsfrTag extends StatelessWidget {
           selectedTextColor: selectedTextColor,
           icon: icon,
           onTap: onTap,
-          isSelectable: isSelectable,
           isSelected: isSelected,
           onSelectionChanged: onSelectionChanged,
           enabled: enabled,
@@ -85,7 +83,6 @@ class DsfrTag extends StatelessWidget {
           selectedTextColor: selectedTextColor,
           icon: icon,
           onTap: onTap,
-          isSelectable: isSelectable,
           isSelected: isSelected,
           onSelectionChanged: onSelectionChanged,
           enabled: enabled,
@@ -103,13 +100,14 @@ class DsfrTag extends StatelessWidget {
   final Color? selectedHighlightColor;
   final Color? selectedTextColor;
   final FocusNode? focusNode;
-  final bool isSelectable;
   final bool isSelected;
   final ValueChanged<bool>? onSelectionChanged;
   final bool enabled;
 
   @override
   Widget build(final context) {
+    final effectiveFocusNode = focusNode ?? FocusNode();
+
     return Builder(
       builder: (final context) {
         return Semantics(
@@ -118,11 +116,10 @@ class DsfrTag extends StatelessWidget {
           child: Focus(
             focusNode: focusNode,
             canRequestFocus: enabled,
-            child: isSelected
-                ? CustomPaint(
-              painter: _CustomShapePainter(size, _getBackgroundColor(context)),
+            child: CustomPaint(
+              painter: _CustomShapePainter(size, _getBackgroundColor(context), isSelected),
               child: ClipPath(
-                clipper: _CustomShapeClipper(size),
+                clipper: _CustomShapeClipper(size, isSelected),
                 child: _TagButton(
                   label: label,
                   padding: _getPadding(),
@@ -133,27 +130,12 @@ class DsfrTag extends StatelessWidget {
                   icon: icon,
                   iconFontSize: _getIconFontSize(),
                   onTap: onTap,
-                  isSelectable: isSelectable,
                   isSelected: isSelected,
                   onSelectionChanged: onSelectionChanged,
                   enabled: enabled,
+                  focusNode: effectiveFocusNode,
                 ),
               ),
-            )
-                : _TagButton(
-              label: label,
-              padding: _getPadding(),
-              size: size,
-              backgroundColor: _getBackgroundColor(context),
-              highlightColor: _getHighlightColor(context),
-              textStyle: _getTextStyle(context),
-              icon: icon,
-              iconFontSize: _getIconFontSize(),
-              onTap: onTap,
-              isSelectable: isSelectable,
-              isSelected: isSelected,
-              onSelectionChanged: onSelectionChanged,
-              enabled: enabled,
             ),
           ),
         );
@@ -197,22 +179,11 @@ class DsfrTag extends StatelessWidget {
   }
 
   EdgeInsets _getPadding() {
-    switch (size) {
-      case DsfrComponentSize.md:
-        if (isSelected) {
-          return const EdgeInsets.fromLTRB(12, 4, 20, 4);
-        } else {
-          return const EdgeInsets.symmetric(vertical: 4, horizontal: 12);
-        }
-      case DsfrComponentSize.sm:
-        if (isSelected) {
-          return const EdgeInsets.fromLTRB(8, 2, 14, 2);
-        } else {
-          return const EdgeInsets.symmetric(vertical: 2, horizontal: 8);
-        }
-      default:
-        throw UnimplementedError('Size $size is not implemented');
-    }
+    return switch (size) {
+      DsfrComponentSize.md => const EdgeInsets.fromLTRB(12, 4, 20, 4),
+      DsfrComponentSize.sm => const EdgeInsets.fromLTRB(8, 2, 14, 2),
+      _ => throw UnimplementedError('Size $size is not implemented'),
+    };
   }
 
   Color _getBackgroundColor(BuildContext context) {
@@ -249,7 +220,6 @@ class DsfrTag extends StatelessWidget {
 
 class _TagButton extends StatelessWidget {
   const _TagButton({
-    super.key,
     required this.label,
     required this.padding,
     required this.size,
@@ -259,10 +229,10 @@ class _TagButton extends StatelessWidget {
     this.icon,
     this.iconFontSize,
     this.onTap,
-    this.isSelectable = false,
     this.isSelected = false,
     this.onSelectionChanged,
     this.enabled = true,
+    required this.focusNode,
   });
 
   final InlineSpan label;
@@ -274,10 +244,10 @@ class _TagButton extends StatelessWidget {
   final Color? backgroundColor;
   final Color? highlightColor;
   final DsfrTextStyle textStyle;
-  final bool isSelectable;
   final bool isSelected;
   final ValueChanged<bool>? onSelectionChanged;
   final bool enabled;
+  final FocusNode focusNode;
 
   @override
   Widget build(BuildContext context) {
@@ -285,15 +255,14 @@ class _TagButton extends StatelessWidget {
       color: backgroundColor,
       shape: isSelected ? null : const StadiumBorder(),
       child: InkWell(
-        customBorder: isSelected ? null : const StadiumBorder(),
         highlightColor: highlightColor,
         splashFactory: enabled ? null : NoSplash.splashFactory,
         onTap: enabled
             ? () {
-                if (isSelectable) {
-                  onSelectionChanged?.call(!isSelected);
+                if (onSelectionChanged != null) {
+                  onSelectionChanged!(!isSelected);
                 } else {
-                  onTap;
+                  onTap?.call();
                 }
               }
             : null,
@@ -337,9 +306,11 @@ const double _spaceBetweenButtonAndTag = 1;
 class _CustomShapeClipper extends CustomClipper<Path> {
   const _CustomShapeClipper(
     this.componentSize,
+    this.selected,
   );
 
   final DsfrComponentSize componentSize;
+  final bool selected;
 
   @override
   Path getClip(Size size) {
@@ -356,13 +327,19 @@ class _CustomShapeClipper extends CustomClipper<Path> {
         Radius.circular(_tagCornerRadius),
       ),
     );
+    if (!selected) {
+      return path;
+    }
     final Path cutoutPath = Path()..addOval(Rect.fromCircle(center: cutoutCenter, radius: cutoutRadius));
     return Path.combine(PathOperation.difference, path, cutoutPath);
   }
 
   @override
   bool shouldReclip(covariant CustomClipper<Path> oldClipper) {
-    return false;
+    if (oldClipper is _CustomShapeClipper) {
+      return oldClipper.componentSize != componentSize || oldClipper.selected != selected;
+    }
+    return true;
   }
 }
 
@@ -370,10 +347,12 @@ class _CustomShapePainter extends CustomPainter {
   const _CustomShapePainter(
     this.componentSize,
     this.backgroundColor,
+    this.selected,
   );
 
   final DsfrComponentSize componentSize;
   final Color backgroundColor;
+  final bool selected;
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -397,6 +376,10 @@ class _CustomShapePainter extends CustomPainter {
         Radius.circular(_tagCornerRadius),
       ),
     );
+
+    if (!selected) {
+      return canvas.drawPath(path, tagPaint);
+    }
 
     final Path cutoutPath = Path()..addOval(Rect.fromCircle(center: cutoutCenter, radius: cutoutRadius));
     final Path finalPath = Path.combine(PathOperation.difference, path, cutoutPath);
@@ -429,6 +412,9 @@ class _CustomShapePainter extends CustomPainter {
 
   @override
   bool shouldRepaint(covariant CustomPainter oldDelegate) {
-    return oldDelegate is! _CustomShapePainter;
+    if (oldDelegate is _CustomShapePainter) {
+      return oldDelegate.componentSize != componentSize || oldDelegate.selected != selected;
+    }
+    return true;
   }
 }
