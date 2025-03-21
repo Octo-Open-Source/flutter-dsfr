@@ -21,7 +21,9 @@ class DsfrTag extends StatefulWidget {
     this.onSelectionChanged,
     this.enabled = true,
     this.onDelete,
-  }) : assert(onSelectionChanged == null || onTap == null);
+  }) : assert((onSelectionChanged == null || onTap == null) &&
+            (onSelectionChanged == null || onDelete == null) &&
+            (onTap == null || onDelete == null));
 
   const DsfrTag.sm({
     required final InlineSpan label,
@@ -34,7 +36,6 @@ class DsfrTag extends StatefulWidget {
     final Color? selectedHighlightColor,
     final Color? selectedTextColor,
     final Key? key,
-    final bool isSelectable = false,
     final bool isSelected = false,
     final ValueChanged<bool>? onSelectionChanged,
     final bool enabled = true,
@@ -69,12 +70,10 @@ class DsfrTag extends StatefulWidget {
     final Color? selectedHighlightColor,
     final Color? selectedTextColor,
     final Key? key,
-    final bool isSelectable = false,
     final bool isSelected = false,
     final ValueChanged<bool>? onSelectionChanged,
     final bool enabled = true,
     final GestureTapCallback? onDelete,
-
   }) : this._(
           key: key,
           label: label,
@@ -147,13 +146,14 @@ class _DsfrTagState extends State<DsfrTag> {
                 backgroundColor: _getBackgroundColor(context),
                 highlightColor: _getHighlightColor(context),
                 textStyle: _getTextStyle(context),
-                icon: onDelete == null ? icon : null,
+                icon: widget.onDelete == null ? icon : null,
                 iconFontSize: _getIconFontSize(),
                 onTap: onTap,
                 isSelected: isSelected,
                 onSelectionChanged: onSelectionChanged,
                 enabled: enabled,
-                onDelete: onDelete,
+                onDelete: widget.onDelete,
+                isClickable: isClickable(),
                 focusNode: focusNode,
                 onFocusChange: (final hasFocus) => setState(() => this.hasFocus = hasFocus),
               ),
@@ -221,22 +221,30 @@ class _DsfrTagState extends State<DsfrTag> {
 
   Color? _getHighlightColor(BuildContext context) {
     if (widget.enabled) {
-      final hasNoCustomBackgroundColors = (widget.backgroundColor == null) && (widget.highlightColor == null);
-      final hasNoCustomSelectedBackgroundColors =
-          (widget.selectedBackgroundColor == null) && (widget.selectedHighlightColor == null);
-      final shouldUseDefaultHighlightColor = (!widget.isSelected && hasNoCustomBackgroundColors) ||
-          (widget.isSelected && hasNoCustomBackgroundColors && hasNoCustomSelectedBackgroundColors);
-
-      if (shouldUseDefaultHighlightColor) {
-        return widget.isSelected
-            ? DsfrColorDecisions.backgroundActionHighBlueFranceHover(context)
-            : DsfrColorDecisions.backgroundActionLowBlueFranceHover(context);
+      if (!isClickable()) {
+        return _getBackgroundColor(context);
       } else {
-        return widget.isSelected ? widget.selectedHighlightColor : widget.highlightColor;
+        final hasNoCustomBackgroundColors = (widget.backgroundColor == null) && (widget.highlightColor == null);
+        final hasNoCustomSelectedBackgroundColors =
+            (widget.selectedBackgroundColor == null) && (widget.selectedHighlightColor == null);
+        final shouldUseDefaultHighlightColor = (!widget.isSelected && hasNoCustomBackgroundColors) ||
+            (widget.isSelected && hasNoCustomBackgroundColors && hasNoCustomSelectedBackgroundColors);
+
+        if (shouldUseDefaultHighlightColor) {
+          return widget.isSelected
+              ? DsfrColorDecisions.backgroundActionHighBlueFranceHover(context)
+              : DsfrColorDecisions.backgroundActionLowBlueFranceHover(context);
+        } else {
+          return widget.isSelected ? widget.selectedHighlightColor : widget.highlightColor;
+        }
       }
     } else {
       return DsfrColorDecisions.backgroundDisabledGrey(context);
     }
+  }
+
+  bool isClickable() {
+    return widget.onTap != null || widget.onDelete != null || widget.onSelectionChanged != null;
   }
 }
 
@@ -255,6 +263,7 @@ class _TagButton extends StatelessWidget {
     this.onSelectionChanged,
     this.enabled = true,
     this.onDelete,
+    this.isClickable = true,
     this.focusNode,
     this.onFocusChange,
   });
@@ -272,6 +281,7 @@ class _TagButton extends StatelessWidget {
   final ValueChanged<bool>? onSelectionChanged;
   final bool enabled;
   final GestureTapCallback? onDelete;
+  final bool isClickable;
   final FocusNode? focusNode;
   final ValueChanged<bool>? onFocusChange;
 
@@ -284,14 +294,14 @@ class _TagButton extends StatelessWidget {
         onFocusChange: onFocusChange,
         focusNode: focusNode,
         highlightColor: highlightColor,
-        splashFactory: enabled ? null : NoSplash.splashFactory,
+        splashFactory: enabled && isClickable ? null : NoSplash.splashFactory,
         onTap: enabled
             ? () {
                 if (onSelectionChanged != null) {
                   onSelectionChanged!(!isSelected);
                 } else if (onDelete != null) {
-              onDelete?.call();
-            } else {
+                  onDelete?.call();
+                } else {
                   onTap?.call();
                 }
               }
@@ -315,20 +325,20 @@ class _TagButton extends StatelessWidget {
                     ),
                   ),
                 label,
-                    if (onDelete != null) ...[
-                      const WidgetSpan(
-                        child: SizedBox(width: DsfrSpacings.s1v),
-                      ),
-                      WidgetSpan(
-                        alignment: PlaceholderAlignment.middle,
-                        baseline: TextBaseline.alphabetic,
-                        child: Icon(
-                          DsfrIcons.systemCloseLine,
-                          size: iconFontSize,
-                          color: textStyle.color,
-                        ),
-                      ),
-                    ],
+                if (onDelete != null) ...[
+                  const WidgetSpan(
+                    child: SizedBox(width: DsfrSpacings.s1v),
+                  ),
+                  WidgetSpan(
+                    alignment: PlaceholderAlignment.middle,
+                    baseline: TextBaseline.alphabetic,
+                    child: Icon(
+                      DsfrIcons.systemCloseLine,
+                      size: iconFontSize,
+                      color: textStyle.color,
+                    ),
+                  ),
+                ],
               ],
             ),
             style: textStyle,

@@ -17,8 +17,8 @@ void main() {
   Widget tagSmSelectable = DsfrTag.sm(
     label: TextSpan(text: 'small tag selectable'),
     icon: DsfrIcons.systemArrowRightLine,
-    isSelectable: true,
     isSelected: true,
+    onSelectionChanged: (isSelected) {},
   );
 
   Widget tagSmDisabled = DsfrTag.sm(
@@ -44,8 +44,8 @@ void main() {
   Widget tagMdSelectable = DsfrTag.md(
     label: TextSpan(text: 'medium tag selectable'),
     icon: DsfrIcons.systemArrowRightLine,
-    isSelectable: true,
     isSelected: true,
+    onSelectionChanged: (isSelected) {},
   );
 
   Widget tagMdDisabled = DsfrTag.md(
