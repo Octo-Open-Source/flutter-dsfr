@@ -116,26 +116,34 @@ class DsfrTag extends StatelessWidget {
           child: Focus(
             focusNode: focusNode,
             canRequestFocus: enabled,
-            child: CustomPaint(
-              painter: _CustomShapePainter(size, _getBackgroundColor(context), isSelected),
-              child: ClipPath(
-                clipper: _CustomShapeClipper(size, isSelected),
-                child: _TagButton(
-                  label: label,
-                  padding: _getPadding(),
-                  size: size,
-                  backgroundColor: _getBackgroundColor(context),
-                  highlightColor: _getHighlightColor(context),
-                  textStyle: _getTextStyle(context),
-                  icon: icon,
-                  iconFontSize: _getIconFontSize(),
-                  onTap: onTap,
-                  isSelected: isSelected,
-                  onSelectionChanged: onSelectionChanged,
-                  enabled: enabled,
-                  focusNode: effectiveFocusNode,
-                ),
-              ),
+            child: Builder(
+              builder: (final context) {
+                final isFocused = Focus.of(context).hasFocus;
+                return DsfrFocusWidget(
+                  isFocused: isFocused,
+                  child: CustomPaint(
+                    painter: _CustomShapePainter(size, _getBackgroundColor(context), isSelected),
+                    child: ClipPath(
+                      clipper: _CustomShapeClipper(size, isSelected),
+                      child: _TagButton(
+                        label: label,
+                        padding: _getPadding(),
+                        size: size,
+                        backgroundColor: _getBackgroundColor(context),
+                        highlightColor: _getHighlightColor(context),
+                        textStyle: _getTextStyle(context),
+                        icon: icon,
+                        iconFontSize: _getIconFontSize(),
+                        onTap: onTap,
+                        isSelected: isSelected,
+                        onSelectionChanged: onSelectionChanged,
+                        enabled: enabled,
+                        focusNode: effectiveFocusNode,
+                      ),
+                    ),
+                  ),
+                );
+              },
             ),
           ),
         );
