@@ -106,8 +106,6 @@ class DsfrTag extends StatelessWidget {
 
   @override
   Widget build(final context) {
-    final effectiveFocusNode = focusNode ?? FocusNode();
-
     return Builder(
       builder: (final context) {
         return Semantics(
@@ -138,7 +136,6 @@ class DsfrTag extends StatelessWidget {
                         isSelected: isSelected,
                         onSelectionChanged: onSelectionChanged,
                         enabled: enabled,
-                        focusNode: effectiveFocusNode,
                       ),
                     ),
                   ),
@@ -240,7 +237,6 @@ class _TagButton extends StatelessWidget {
     this.isSelected = false,
     this.onSelectionChanged,
     this.enabled = true,
-    required this.focusNode,
   });
 
   final InlineSpan label;
@@ -255,7 +251,6 @@ class _TagButton extends StatelessWidget {
   final bool isSelected;
   final ValueChanged<bool>? onSelectionChanged;
   final bool enabled;
-  final FocusNode focusNode;
 
   @override
   Widget build(BuildContext context) {
@@ -279,20 +274,19 @@ class _TagButton extends StatelessWidget {
           child: Text.rich(
             TextSpan(
               children: [
-                if (icon != null) ...[
+                if (icon != null)
                   WidgetSpan(
                     alignment: PlaceholderAlignment.middle,
                     baseline: TextBaseline.alphabetic,
-                    child: Icon(
-                      icon,
-                      size: iconFontSize,
-                      color: textStyle.color,
+                    child: Padding(
+                      padding: EdgeInsets.only(right: DsfrSpacings.s1v),
+                      child: Icon(
+                        icon,
+                        size: iconFontSize,
+                        color: textStyle.color,
+                      ),
                     ),
                   ),
-                  const WidgetSpan(
-                    child: SizedBox(width: DsfrSpacings.s1v),
-                  ),
-                ],
                 label,
               ],
             ),
