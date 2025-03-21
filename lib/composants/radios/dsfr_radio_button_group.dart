@@ -10,7 +10,7 @@ class DsfrRadioButtonGroup<T> extends StatefulWidget {
   final String? description;
   final Map<T, String> values;
   final T? initialValue;
-  final Function(T? value) onCallback;
+  final Function(T? value) onValueChange;
   final bool enabled;
   final DsfrComposantState composantState;
   final Direction direction;
@@ -22,7 +22,7 @@ class DsfrRadioButtonGroup<T> extends StatefulWidget {
     required this.title,
     this.description,
     required this.values,
-    required this.onCallback,
+    required this.onValueChange,
     this.initialValue,
     this.enabled = true,
     this.composantState = const DsfrComposantState.none(),
@@ -46,7 +46,7 @@ class DsfrRadioButtonGroup<T> extends StatefulWidget {
           description: description,
           values: values,
           initialValue: initialValue,
-          onCallback: onCallback,
+          onValueChange: onCallback,
           enabled: enabled,
           composantState: composantState,
           direction: Direction.horizontal,
@@ -69,7 +69,7 @@ class DsfrRadioButtonGroup<T> extends StatefulWidget {
           description: description,
           values: values,
           initialValue: initialValue,
-          onCallback: onCallback,
+          onValueChange: onCallback,
           enabled: enabled,
           composantState: composantState,
           direction: Direction.vertical,
@@ -92,7 +92,7 @@ class _DsfrRadioButtonGroupState<T> extends State<DsfrRadioButtonGroup<T>> {
 
   void _handleChange(final T? value) => setState(() {
         _value = value;
-        widget.onCallback(_value);
+        widget.onValueChange(_value);
       });
 
   @override

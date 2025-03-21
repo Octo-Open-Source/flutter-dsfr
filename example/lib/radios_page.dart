@@ -1,5 +1,6 @@
 import 'package:example/mise_en_page/page_section.dart';
 import 'package:example/mise_en_page/page_sub_section.dart';
+import 'package:flutter_dsfr/atoms/dsfr_group.dart';
 import 'package:flutter_dsfr/composants/radios/dsfr_radio_button.dart';
 import 'package:example/page_item.dart';
 import 'package:flutter/material.dart';
@@ -233,6 +234,37 @@ class _RadiosPageState extends State<RadiosPage> {
                       enabled: false,
                     ),
                   ]),
+                  PageSubSection(
+                    title: 'Avec des description',
+                    children: [
+                      DsfrGroup<DsfrRadioButton>(label: 'Bouton radios avec des descriptions', description: 'description du groupe', children: [
+                        DsfrRadioButton(
+                          label: 'Bouton Un',
+                          description: 'description du bouton un',
+                          value: 8,
+                          groupValue: _value,
+                          onChanged: (final value) {
+                            if (value != null) {
+                              setState(() => _value = value);
+                            }
+                          },
+                          size: DsfrComponentSize.sm,
+                        ),
+                        DsfrRadioButton(
+                          label: 'Bouton Deux',
+                          description: 'description du bouton deux',
+                          value: 9,
+                          groupValue: _value,
+                          onChanged: (final value) {
+                            if (value != null) {
+                              setState(() => _value = value);
+                            }
+                          },
+                          size: DsfrComponentSize.sm,
+                        ),
+                      ]),
+                    ],
+                  ),
                 ],
               )
             ],
