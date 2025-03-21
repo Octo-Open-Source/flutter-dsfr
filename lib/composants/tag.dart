@@ -122,30 +122,33 @@ class _DsfrTagState extends State<DsfrTag> {
     final onSelectionChanged = widget.onSelectionChanged;
     final focusNode = widget.focusNode;
 
-    return Semantics(
-      enabled: enabled,
-      selected: isSelected,
-      child: DsfrFocusWidget(
-        isFocused: hasFocus,
-        child: CustomPaint(
-          painter: _CustomShapePainter(size, _getBackgroundColor(context), isSelected),
-          child: ClipPath(
-            clipper: _CustomShapeClipper(size, isSelected),
-            child: _TagButton(
-              label: label,
-              padding: _getPadding(),
-              size: size,
-              backgroundColor: _getBackgroundColor(context),
-              highlightColor: _getHighlightColor(context),
-              textStyle: _getTextStyle(context),
-              icon: icon,
-              iconFontSize: _getIconFontSize(),
-              onTap: onTap,
-              isSelected: isSelected,
-              onSelectionChanged: onSelectionChanged,
-              enabled: enabled,
-              focusNode: focusNode,
-              onFocusChange: (final hasFocus) => setState(() => this.hasFocus = hasFocus),
+    return MergeSemantics(
+      child: Semantics(
+        enabled: enabled,
+        selected: onSelectionChanged != null && isSelected,
+        button: onTap != null,
+        child: DsfrFocusWidget(
+          isFocused: hasFocus,
+          child: CustomPaint(
+            painter: _CustomShapePainter(size, _getBackgroundColor(context), isSelected),
+            child: ClipPath(
+              clipper: _CustomShapeClipper(size, isSelected),
+              child: _TagButton(
+                label: label,
+                padding: _getPadding(),
+                size: size,
+                backgroundColor: _getBackgroundColor(context),
+                highlightColor: _getHighlightColor(context),
+                textStyle: _getTextStyle(context),
+                icon: icon,
+                iconFontSize: _getIconFontSize(),
+                onTap: onTap,
+                isSelected: isSelected,
+                onSelectionChanged: onSelectionChanged,
+                enabled: enabled,
+                focusNode: focusNode,
+                onFocusChange: (final hasFocus) => setState(() => this.hasFocus = hasFocus),
+              ),
             ),
           ),
         ),
