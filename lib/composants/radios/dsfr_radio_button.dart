@@ -34,7 +34,7 @@ class DsfrRadioButton<T> extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final state =
-        GroupProvider.of(context)?.composantState.state ?? this.composantState?.state ?? DsfrComposantStateEnum.none;
+        GroupProvider.of(context)?.composantState.state ?? this.composantState.state;
     return Semantics(
       enabled: enabled,
       child: DsfrFormState(
