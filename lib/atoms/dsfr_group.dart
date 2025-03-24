@@ -9,12 +9,13 @@ enum Direction {
   horizontal,
 }
 
-class DsfrGroup<T> extends StatelessWidget {
+class DsfrGroup<T extends Widget> extends StatelessWidget {
   final String label;
   final String? description;
   final DsfrComposantState composantState;
   final Direction direction;
   final List<T> children;
+  final Widget? separator;
 
   const DsfrGroup({
     super.key,
@@ -23,6 +24,7 @@ class DsfrGroup<T> extends StatelessWidget {
     this.composantState = const DsfrComposantState.none(),
     this.direction = Direction.vertical,
     required this.children,
+    this.separator,
   });
 
   @override
@@ -36,15 +38,19 @@ class DsfrGroup<T> extends StatelessWidget {
           children: [
             Text(
               label,
-              style: DsfrTextStyle.bodyMd(color: getTextColor(context, composantState.state)),
+              style: DsfrTextStyle.bodyMd(
+                  color: getTextColor(context, composantState.state)),
             ),
-            SizedBox(height: description != null ? DsfrSpacings.s1w : DsfrSpacings.s2w),
+            SizedBox(
+                height:
+                    description != null ? DsfrSpacings.s1w : DsfrSpacings.s2w),
             description != null
                 ? Padding(
                     padding: const EdgeInsets.only(bottom: DsfrSpacings.s2w),
                     child: Text(
                       description!,
-                      style: DsfrTextStyle.bodyXs(color: DsfrColorDecisions.textMentionGrey(context)),
+                      style: DsfrTextStyle.bodyXs(
+                          color: DsfrColorDecisions.textMentionGrey(context)),
                     ),
                   )
                 : const SizedBox.shrink(),
@@ -52,9 +58,7 @@ class DsfrGroup<T> extends StatelessWidget {
                 ? Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     spacing: DsfrSpacings.s2w,
-                    children: children.map((final widget) {
-                      return widget as Widget;
-                    }).toList(),
+                    children: _childrenWithSeparator,
                   )
                 : Wrap(
                     spacing: DsfrSpacings.s1w,
@@ -67,6 +71,16 @@ class DsfrGroup<T> extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  List<Widget> get _childrenWithSeparator {
+    if (separator == null) return children;
+    return children.isEmpty
+        ? []
+        : List.generate(
+            children.length * 2,
+            (i) => i.isEven ? children[i ~/ 2] : separator!,
+          );
   }
 }
 

@@ -1,4 +1,5 @@
 import 'package:flutter_dsfr/atoms/dsfr_form_state.dart';
+import 'package:flutter_dsfr/atoms/dsfr_group.dart';
 import 'package:flutter_dsfr/atoms/focus_widget.dart';
 import 'package:flutter_dsfr/fondamentaux/color_decisions.g.dart';
 import 'package:flutter_dsfr/fondamentaux/fonts.dart';
@@ -8,17 +9,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dsfr/helpers/color_utils.dart';
 import 'package:flutter_dsfr/helpers/composant_state.dart';
 
-enum DsfrToggleLabelLocation {
+enum DsfrSwitchLabelLocation {
   left,
   right,
 }
 
-class DsfrToggleSwitch extends StatefulWidget {
-  const DsfrToggleSwitch({
+class DsfrSwitch extends StatefulWidget {
+  const DsfrSwitch({
     super.key,
     required this.label,
     required this.value,
-    this.labelLocation = DsfrToggleLabelLocation.right,
+    this.labelLocation = DsfrSwitchLabelLocation.right,
     this.enabled = true,
     this.onChanged,
     this.description,
@@ -29,23 +30,24 @@ class DsfrToggleSwitch extends StatefulWidget {
   final String label;
   final bool value;
   final bool enabled;
-  final DsfrToggleLabelLocation labelLocation;
+  final DsfrSwitchLabelLocation labelLocation;
   final DsfrComposantState composantState;
   final ValueChanged<bool>? onChanged;
   final String? description;
   final String? status;
 
   @override
-  State<DsfrToggleSwitch> createState() => _DsfrToggleSwitchState();
+  State<DsfrSwitch> createState() => _DsfrSwitchState();
 }
 
-class _DsfrToggleSwitchState extends State<DsfrToggleSwitch> with MaterialStateMixin<DsfrToggleSwitch> {
+class _DsfrSwitchState extends State<DsfrSwitch> with MaterialStateMixin<DsfrSwitch> {
   @override
   Widget build(final context) {
+    final composantState = GroupProvider.of(context)?.composantState ?? widget.composantState;
     final textColor = widget.enabled
-        ? getTextColor(context, widget.composantState.state)
+        ? getTextColor(context, composantState.state)
         : DsfrColorDecisions.textDisabledGrey(context);
-    final statusTextColor = switch ((widget.enabled, widget.composantState.state)) {
+    final statusTextColor = switch ((widget.enabled, composantState.state)) {
       (false, _) => DsfrColorDecisions.textDisabledGrey(context),
       (true, DsfrComposantStateEnum.error) => DsfrColorDecisions.textDefaultError(context),
       (true, DsfrComposantStateEnum.success) => DsfrColorDecisions.textDefaultSuccess(context),
@@ -59,7 +61,7 @@ class _DsfrToggleSwitchState extends State<DsfrToggleSwitch> with MaterialStateM
         child: _Switch(
           value: widget.value,
           enabled: widget.enabled,
-          composantState: widget.composantState.state,
+          composantState: composantState.state,
         ),
       ),
       Expanded(
@@ -73,12 +75,12 @@ class _DsfrToggleSwitchState extends State<DsfrToggleSwitch> with MaterialStateM
     var columnChildren = [
       Row(
         spacing: DsfrSpacings.s2w,
-        children: widget.labelLocation == DsfrToggleLabelLocation.left ? rowChildren.reversed.toList() : rowChildren,
+        children: widget.labelLocation == DsfrSwitchLabelLocation.left ? rowChildren.reversed.toList() : rowChildren,
       ),
       if (widget.status != null)
         Align(
           alignment:
-              widget.labelLocation == DsfrToggleLabelLocation.left ? Alignment.centerRight : Alignment.centerLeft,
+              widget.labelLocation == DsfrSwitchLabelLocation.left ? Alignment.centerRight : Alignment.centerLeft,
           child: Text(
             widget.status!,
             style: DsfrTextStyle.bodyXs(
@@ -107,7 +109,7 @@ class _DsfrToggleSwitchState extends State<DsfrToggleSwitch> with MaterialStateM
         excludeFromSemantics: true,
         onFocusChange: updateMaterialState(WidgetState.focused),
         child: DsfrFormState(
-          composantState: widget.composantState,
+          composantState: composantState,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: columnChildren,

@@ -1,46 +1,46 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_dsfr/composants/toggle_switch.dart';
+import 'package:flutter_dsfr/composants/switches/switch.dart';
 import '../../helpers/a11y_test.skip.dart';
 
 void main() {
-  Widget toggleLeft = DsfrToggleSwitch(
+  Widget toggleLeft = DsfrSwitch(
     label: 'Vos favoris',
-    labelLocation: DsfrToggleLabelLocation.left,
+    labelLocation: DsfrSwitchLabelLocation.left,
     value: true,
     onChanged: (final value) {},
   );
 
-  Widget toggleRight = DsfrToggleSwitch(
+  Widget toggleRight = DsfrSwitch(
     label: 'Vos favoris',
-    labelLocation: DsfrToggleLabelLocation.right,
+    labelLocation: DsfrSwitchLabelLocation.right,
     value: true,
     onChanged: (final value) {},
   );
 
-  Widget toggleDisabledOn = DsfrToggleSwitch(
+  Widget toggleDisabledOn = DsfrSwitch(
     label: 'Vos favoris',
     enabled: false,
     value: false,
   );
 
-  Widget toggleDisabledOff = DsfrToggleSwitch(
+  Widget toggleDisabledOff = DsfrSwitch(
     label: 'Vos favoris',
     enabled: false,
     value: true,
   );
 
-  Widget toggleLeftWithDescription = DsfrToggleSwitch(
+  Widget toggleLeftWithDescription = DsfrSwitch(
     label: 'Vos favoris',
-    labelLocation: DsfrToggleLabelLocation.left,
+    labelLocation: DsfrSwitchLabelLocation.left,
     value: true,
     onChanged: (final value) {},
     description: 'description',
   );
 
-  Widget toggleRightWithDescription = DsfrToggleSwitch(
+  Widget toggleRightWithDescription = DsfrSwitch(
     label: 'Vos favoris',
-    labelLocation: DsfrToggleLabelLocation.right,
+    labelLocation: DsfrSwitchLabelLocation.right,
     value: true,
     onChanged: (final value) {},
     description: 'description',

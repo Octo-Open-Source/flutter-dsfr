@@ -19,7 +19,7 @@ import 'package:example/slider_page.dart';
 import 'package:example/stepper_page.dart';
 import 'package:example/tags_page.dart';
 import 'package:example/text_page.dart';
-import 'package:example/toggles_page.dart';
+import 'package:example/switches_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dsfr/fondamentaux/color_decisions.g.dart';
 import 'package:flutter_dsfr/helpers/theme_mode_provider.dart';
