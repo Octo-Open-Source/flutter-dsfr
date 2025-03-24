@@ -7,6 +7,7 @@ export 'composants/checkbox_icon.dart';
 export 'composants/divider.dart';
 export 'composants/input.dart';
 export 'composants/input_headless.dart';
+export 'composants/date_input.dart';
 export 'composants/link.dart';
 export 'composants/link_icon_position.dart';
 export 'composants/modal.dart';

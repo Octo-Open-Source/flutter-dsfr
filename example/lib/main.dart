@@ -18,6 +18,7 @@ import 'package:example/toggles_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dsfr/fondamentaux/color_decisions.g.dart';
 import 'package:flutter_dsfr/helpers/theme_mode_provider.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() {
   runApp(const MyApp());
@@ -46,6 +47,15 @@ class _MyAppState extends State<MyApp> {
             scaffoldBackgroundColor: DsfrColorDecisions.backgroundDefaultGrey(context),
           ),
           themeMode: themeMode,
+          localizationsDelegates: [
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          supportedLocales: [
+            Locale('fr'),
+            Locale('en'),
+          ],
           home: MasterPage(
             toggleTheme: () {
               setState(() {
