@@ -29,6 +29,7 @@ import 'package:example/tooltips_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dsfr/fondamentaux/color_decisions.g.dart';
 import 'package:flutter_dsfr/helpers/theme_mode_provider.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/foundation.dart';
 
@@ -61,21 +62,30 @@ class _MyAppState extends State<MyApp> {
               scaffoldBackgroundColor: DsfrColorDecisions.backgroundDefaultGrey(context),
             ),
             themeMode: themeMode,
-            home: MasterPage(
-              toggleTheme: () {
-                setState(() {
-                  final isDarkMode = themeMode == ThemeMode.dark;
-                  themeMode = isDarkMode ? ThemeMode.light : ThemeMode.dark;
-                });
-              },
-              pageItems: [
-                SandboxPage.model,
-                TextPage.model,
-                AccordionsPage.model,
-                ButtonsPage.model,
-                CheckboxPage.model,
-                ColorsPage.model,
-                DecisionsPage.model,SelectPage.model,
+            localizationsDelegates: [
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          supportedLocales: [
+            Locale('fr'),
+            Locale('en'),
+          ],
+          home: MasterPage(
+            toggleTheme: () {
+              setState(() {
+                final isDarkMode = themeMode == ThemeMode.dark;
+                themeMode = isDarkMode ? ThemeMode.light : ThemeMode.dark;
+              });
+            },
+            pageItems: [
+              SandboxPage.model,
+              TextPage.model,
+              AccordionsPage.model,
+              ButtonsPage.model,
+              CheckboxPage.model,
+              ColorsPage.model,
+              DecisionsPage.model,SelectPage.model,
                 IconsPage.model,
                 InputsPage.model,
                 LinksPage.model,

@@ -1,11 +1,10 @@
 // ignore_for_file: prefer-correct-callback-field-name
 
+import 'package:flutter_dsfr/flutter_dsfr.dart';
 import 'package:flutter_dsfr/fondamentaux/color_decisions_extension.dart';
-import 'package:flutter_dsfr/fondamentaux/fonts.dart';
-import 'package:flutter_dsfr/fondamentaux/spacing.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_dsfr/fondamentaux/color_decisions.g.dart';
+import 'package:intl/intl.dart';
 
 class DsfrInputHeadless extends StatefulWidget {
   const DsfrInputHeadless({
@@ -22,6 +21,11 @@ class DsfrInputHeadless extends StatefulWidget {
     this.width,
     this.isPasswordMode = false,
     this.passwordVisibility = false,
+    this.isDatePicker = false,
+    this.firstDate,
+    this.lastDate,
+    this.initialDate,
+    this.locale,
     this.autocorrect,
     this.fillColor,
     this.radius = DsfrSpacings.s1v,
@@ -50,6 +54,11 @@ class DsfrInputHeadless extends StatefulWidget {
   final bool enabled;
   final bool autofocus;
   final bool isPasswordMode;
+  final bool isDatePicker;
+  final DateTime? firstDate;
+  final DateTime? lastDate;
+  final DateTime? initialDate;
+  final Locale? locale;
   final bool passwordVisibility;
   final bool? autocorrect;
   final int maxLines;
@@ -83,6 +92,22 @@ class _DsfrInputHeadlessState extends State<DsfrInputHeadless> {
 
   void _listener() {
     setState(() => _isFocused = _focusNode.hasFocus);
+  }
+
+  Future<void> _selectDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+      locale: widget.locale,
+      context: context,
+      initialDate: widget.initialDate ?? DateTime.now(),
+      firstDate: widget.firstDate ?? DateTime.now().subtract(const Duration(days: 365)),
+      lastDate: widget.lastDate ?? DateTime.now().add(const Duration(days: 365)),
+    );
+    if (picked != null) {
+      setState(() {
+        widget.controller?.text = DateFormat('dd/MM/yyyy').format(picked);
+        widget.onChanged.call(widget.controller!.text);
+      });
+    }
   }
 
   @override
@@ -130,10 +155,12 @@ class _DsfrInputHeadlessState extends State<DsfrInputHeadless> {
             initialValue: widget.initialValue,
             focusNode: _focusNode,
             decoration: InputDecoration(
+              suffixIcon: widget.isDatePicker ? Icon(DsfrIcons.businessCalendarLine) : null,
               suffixText: widget.suffixText,
               suffixStyle: widget.enabled
                   ? DsfrTextStyle.bodyMd(color: widget.inputColor ?? DsfrColorDecisions.textDefaultGrey(context))
                   : DsfrTextStyle.bodyMd(color: DsfrColorDecisions.textDisabledGrey(context)),
+              contentPadding: widget.isDatePicker ? EdgeInsets.symmetric(vertical: 15, horizontal: 10) : null,
               filled: true,
               fillColor: widget.enabled
                   ? widget.fillColor ?? DsfrColorDecisions.backgroundContrastGrey(context)
@@ -157,6 +184,7 @@ class _DsfrInputHeadlessState extends State<DsfrInputHeadless> {
             maxLines: widget.maxLines,
             minLines: widget.minLines,
             onChanged: widget.onChanged,
+            readOnly: widget.isDatePicker ? true : false,
             onTapOutside: (final event) => FocusManager.instance.primaryFocus?.unfocus(),
             onFieldSubmitted: widget.onFieldSubmitted,
             validator: widget.validator,
@@ -164,6 +192,7 @@ class _DsfrInputHeadlessState extends State<DsfrInputHeadless> {
             enabled: widget.enabled,
             scrollPadding: widget.scrollPadding,
             autofillHints: widget.autofillHints,
+            onTap: widget.isDatePicker ? () { _selectDate(context);} : null,
           ),
         ),
       ),
