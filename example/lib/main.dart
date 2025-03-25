@@ -81,6 +81,7 @@ class _MyAppState extends State<MyApp> {
               BadgesPage.model,
               StepperPage.model,
               AlertPage.model,
+              TooltipsPage.model,
             ],
           ),
           builder: (final context, final child) => AccessibilityTools(child: child),
