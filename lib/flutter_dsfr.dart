@@ -1,6 +1,7 @@
 export 'atoms/focus_widget.dart';
 export 'atoms/dsfr_group.dart';
 export 'composants/accordions.dart';
+export 'composants/dsfr_alert.dart';
 export 'composants/buttons/button.dart';
 export 'composants/buttons/button_border.dart';
 export 'composants/buttons/france_connect_button.dart';
