@@ -37,9 +37,9 @@ class _TogglesPageState extends State<TogglesPage> {
                 PageSubSection(
                   title: 'Label à gauche',
                   children: [
-                    DsfrSwitch(
+                    DsfrToggleSwitch(
                       label: 'Libellé de l\'interrupteur',
-                      labelLocation: DsfrSwitchLabelLocation.left,
+                      labelLocation: DsfrToggleSwitchLabelLocation.left,
                       value: _toggleLeft,
                       onChanged: (final value) {
                         setState(() {
@@ -47,9 +47,9 @@ class _TogglesPageState extends State<TogglesPage> {
                         });
                       },
                     ),
-                    DsfrSwitch(
+                    DsfrToggleSwitch(
                       label: 'Libellé de l\'interrupteur',
-                      labelLocation: DsfrSwitchLabelLocation.left,
+                      labelLocation: DsfrToggleSwitchLabelLocation.left,
                       value: !_toggleRight,
                       onChanged: (final value) {
                         setState(() {
@@ -57,15 +57,15 @@ class _TogglesPageState extends State<TogglesPage> {
                         });
                       },
                     ),
-                    DsfrSwitch(
+                    DsfrToggleSwitch(
                       label: 'Libellé de l\'interrupteur',
-                      labelLocation: DsfrSwitchLabelLocation.left,
+                      labelLocation: DsfrToggleSwitchLabelLocation.left,
                       enabled: false,
                       value: false,
                     ),
-                    DsfrSwitch(
+                    DsfrToggleSwitch(
                       label: 'Libellé de l\'interrupteur',
-                      labelLocation: DsfrSwitchLabelLocation.left,
+                      labelLocation: DsfrToggleSwitchLabelLocation.left,
                       enabled: false,
                       value: true,
                     ),
@@ -74,7 +74,7 @@ class _TogglesPageState extends State<TogglesPage> {
                 PageSubSection(
                   title: 'Label à droite',
                   children: [
-                    DsfrSwitch(
+                    DsfrToggleSwitch(
                       label: 'Libellé de l\'interrupteur',
                       value: _toggleLeft,
                       onChanged: (final value) {
@@ -83,7 +83,7 @@ class _TogglesPageState extends State<TogglesPage> {
                         });
                       },
                     ),
-                    DsfrSwitch(
+                    DsfrToggleSwitch(
                       label: 'Libellé de l\'interrupteur',
                       value: !_toggleRight,
                       onChanged: (final value) {
@@ -92,12 +92,12 @@ class _TogglesPageState extends State<TogglesPage> {
                         });
                       },
                     ),
-                    DsfrSwitch(
+                    DsfrToggleSwitch(
                       label: 'Libellé de l\'interrupteur',
                       enabled: false,
                       value: false,
                     ),
-                    DsfrSwitch(
+                    DsfrToggleSwitch(
                       label: 'Libellé de l\'interrupteur',
                       enabled: false,
                       value: true,
@@ -110,10 +110,10 @@ class _TogglesPageState extends State<TogglesPage> {
               title: 'Avec description',
               children: [
                 PageSubSection(title: 'Label à gauche', children: [
-                  DsfrSwitch(
+                  DsfrToggleSwitch(
                     label: 'Libellé de l\'interrupteur',
                     description: 'Texte de description additionnel',
-                    labelLocation: DsfrSwitchLabelLocation.left,
+                    labelLocation: DsfrToggleSwitchLabelLocation.left,
                     value: _toggleLeft,
                     onChanged: (final value) {
                       setState(() {
@@ -121,10 +121,10 @@ class _TogglesPageState extends State<TogglesPage> {
                       });
                     },
                   ),
-                  DsfrSwitch(
+                  DsfrToggleSwitch(
                     label: 'Libellé de l\'interrupteur',
                     description: 'Texte de description additionnel',
-                    labelLocation: DsfrSwitchLabelLocation.left,
+                    labelLocation: DsfrToggleSwitchLabelLocation.left,
                     value: !_toggleRight,
                     onChanged: (final value) {
                       setState(() {
@@ -132,17 +132,17 @@ class _TogglesPageState extends State<TogglesPage> {
                       });
                     },
                   ),
-                  DsfrSwitch(
+                  DsfrToggleSwitch(
                     label: 'Libellé de l\'interrupteur',
                     description: 'Texte de description additionnel',
-                    labelLocation: DsfrSwitchLabelLocation.left,
+                    labelLocation: DsfrToggleSwitchLabelLocation.left,
                     enabled: false,
                     value: false,
                   ),
-                  DsfrSwitch(
+                  DsfrToggleSwitch(
                     label: 'Libellé de l\'interrupteur',
                     description: 'Texte de description additionnel',
-                    labelLocation: DsfrSwitchLabelLocation.left,
+                    labelLocation: DsfrToggleSwitchLabelLocation.left,
                     enabled: false,
                     value: true,
                   ),
@@ -150,7 +150,7 @@ class _TogglesPageState extends State<TogglesPage> {
                 PageSubSection(
                   title: 'Label à droite',
                   children: [
-                    DsfrSwitch(
+                    DsfrToggleSwitch(
                       label: 'Libellé de l\'interrupteur',
                       description: 'Texte de description additionnel',
                       value: _toggleLeft,
@@ -160,7 +160,7 @@ class _TogglesPageState extends State<TogglesPage> {
                         });
                       },
                     ),
-                    DsfrSwitch(
+                    DsfrToggleSwitch(
                       label: 'Libellé de l\'interrupteur',
                       description: 'Texte de description additionnel',
                       value: !_toggleRight,
@@ -170,13 +170,13 @@ class _TogglesPageState extends State<TogglesPage> {
                         });
                       },
                     ),
-                    DsfrSwitch(
+                    DsfrToggleSwitch(
                       label: 'Libellé de l\'interrupteur',
                       description: 'Texte de description additionnel',
                       enabled: false,
                       value: false,
                     ),
-                    DsfrSwitch(
+                    DsfrToggleSwitch(
                       label: 'Libellé de l\'interrupteur',
                       description: 'Texte de description additionnel',
                       enabled: false,
@@ -190,10 +190,10 @@ class _TogglesPageState extends State<TogglesPage> {
               title: 'Avec statut',
               children: [
                 PageSubSection(title: 'Label à gauche', children: [
-                  DsfrSwitch(
+                  DsfrToggleSwitch(
                     label: 'Libellé de l\'interrupteur',
                     status: _toggleLeft ? 'Activé' : 'Désactivé',
-                    labelLocation: DsfrSwitchLabelLocation.left,
+                    labelLocation: DsfrToggleSwitchLabelLocation.left,
                     value: _toggleLeft,
                     onChanged: (final value) {
                       setState(() {
@@ -201,10 +201,10 @@ class _TogglesPageState extends State<TogglesPage> {
                       });
                     },
                   ),
-                  DsfrSwitch(
+                  DsfrToggleSwitch(
                     label: 'Libellé de l\'interrupteur',
                     status: !_toggleRight ? 'Activé' : 'Désactivé',
-                    labelLocation: DsfrSwitchLabelLocation.left,
+                    labelLocation: DsfrToggleSwitchLabelLocation.left,
                     value: !_toggleRight,
                     onChanged: (final value) {
                       setState(() {
@@ -212,25 +212,25 @@ class _TogglesPageState extends State<TogglesPage> {
                       });
                     },
                   ),
-                  DsfrSwitch(
+                  DsfrToggleSwitch(
                     label: 'Libellé de l\'interrupteur',
                     status: 'Désactivé',
-                    labelLocation: DsfrSwitchLabelLocation.left,
+                    labelLocation: DsfrToggleSwitchLabelLocation.left,
                     enabled: false,
                     value: false,
                   ),
-                  DsfrSwitch(
+                  DsfrToggleSwitch(
                     label: 'Libellé de l\'interrupteur',
                     status: 'Désactivé',
-                    labelLocation: DsfrSwitchLabelLocation.left,
+                    labelLocation: DsfrToggleSwitchLabelLocation.left,
                     enabled: false,
                     value: true,
                   ),
-                  DsfrSwitch(
+                  DsfrToggleSwitch(
                     label: 'Libellé de l\'interrupteur',
                     description: 'Texte de description additionnel',
                     status: _toggleLeft ? 'Activé' : 'Désactivé',
-                    labelLocation: DsfrSwitchLabelLocation.left,
+                    labelLocation: DsfrToggleSwitchLabelLocation.left,
                     value: _toggleLeft,
                     onChanged: (final value) {
                       setState(() {
@@ -242,7 +242,7 @@ class _TogglesPageState extends State<TogglesPage> {
                 PageSubSection(
                   title: 'Label à droite',
                   children: [
-                    DsfrSwitch(
+                    DsfrToggleSwitch(
                       label: 'Libellé de l\'interrupteur',
                       status: _toggleLeft ? 'Activé' : 'Désactivé',
                       value: _toggleLeft,
@@ -252,7 +252,7 @@ class _TogglesPageState extends State<TogglesPage> {
                         });
                       },
                     ),
-                    DsfrSwitch(
+                    DsfrToggleSwitch(
                       label: 'Libellé de l\'interrupteur',
                       status: !_toggleRight ? 'Activé' : 'Désactivé',
                       value: !_toggleRight,
@@ -262,19 +262,19 @@ class _TogglesPageState extends State<TogglesPage> {
                         });
                       },
                     ),
-                    DsfrSwitch(
+                    DsfrToggleSwitch(
                       label: 'Libellé de l\'interrupteur',
                       status: 'Désactivé',
                       enabled: false,
                       value: false,
                     ),
-                    DsfrSwitch(
+                    DsfrToggleSwitch(
                       label: 'Libellé de l\'interrupteur',
                       status: 'Désactivé',
                       enabled: false,
                       value: true,
                     ),
-                    DsfrSwitch(
+                    DsfrToggleSwitch(
                       label: 'Libellé de l\'interrupteur',
                       description: 'Texte de description additionnel',
                       status: _toggleLeft ? 'Activé' : 'Désactivé',
@@ -293,11 +293,11 @@ class _TogglesPageState extends State<TogglesPage> {
               title: 'Avec state',
               children: [
                 PageSubSection(title: 'Label à gauche', children: [
-                  DsfrSwitch(
+                  DsfrToggleSwitch(
                     label: 'Libellé de l\'interrupteur',
                     description: 'Texte de description additionnel',
                     status: _toggleLeft ? 'Activé' : 'Désactivé',
-                    labelLocation: DsfrSwitchLabelLocation.left,
+                    labelLocation: DsfrToggleSwitchLabelLocation.left,
                     composantState: DsfrComposantState.error(
                         errorMessage: "Texte d'erreur obligatoire"),
                     value: _toggleLeft,
@@ -307,11 +307,11 @@ class _TogglesPageState extends State<TogglesPage> {
                       });
                     },
                   ),
-                  DsfrSwitch(
+                  DsfrToggleSwitch(
                     label: 'Libellé de l\'interrupteur',
                     description: 'Texte de description additionnel',
                     status: !_toggleLeft ? 'Activé' : 'Désactivé',
-                    labelLocation: DsfrSwitchLabelLocation.left,
+                    labelLocation: DsfrToggleSwitchLabelLocation.left,
                     composantState: DsfrComposantState.error(
                         errorMessage: "Texte d'erreur obligatoire"),
                     value: !_toggleLeft,
@@ -321,11 +321,11 @@ class _TogglesPageState extends State<TogglesPage> {
                       });
                     },
                   ),
-                  DsfrSwitch(
+                  DsfrToggleSwitch(
                     label: 'Libellé de l\'interrupteur',
                     description: 'Texte de description additionnel',
                     status: _toggleLeft ? 'Activé' : 'Désactivé',
-                    labelLocation: DsfrSwitchLabelLocation.left,
+                    labelLocation: DsfrToggleSwitchLabelLocation.left,
                     composantState: DsfrComposantState.success(
                         message: "Texte de validation optionnel"),
                     value: _toggleLeft,
@@ -335,11 +335,11 @@ class _TogglesPageState extends State<TogglesPage> {
                       });
                     },
                   ),
-                  DsfrSwitch(
+                  DsfrToggleSwitch(
                     label: 'Libellé de l\'interrupteur',
                     description: 'Texte de description additionnel',
                     status: !_toggleLeft ? 'Activé' : 'Désactivé',
-                    labelLocation: DsfrSwitchLabelLocation.left,
+                    labelLocation: DsfrToggleSwitchLabelLocation.left,
                     composantState: DsfrComposantState.success(
                         message: "Texte de validation optionnel"),
                     value: !_toggleLeft,
@@ -353,11 +353,11 @@ class _TogglesPageState extends State<TogglesPage> {
                 PageSubSection(
                   title: 'Label à droite',
                   children: [
-                    DsfrSwitch(
+                    DsfrToggleSwitch(
                       label: 'Libellé de l\'interrupteur',
                       description: 'Texte de description additionnel',
                       status: _toggleLeft ? 'Activé' : 'Désactivé',
-                      labelLocation: DsfrSwitchLabelLocation.right,
+                      labelLocation: DsfrToggleSwitchLabelLocation.right,
                       composantState: DsfrComposantState.error(
                           errorMessage: "Texte d'erreur obligatoire"),
                       value: _toggleLeft,
@@ -367,11 +367,11 @@ class _TogglesPageState extends State<TogglesPage> {
                         });
                       },
                     ),
-                    DsfrSwitch(
+                    DsfrToggleSwitch(
                       label: 'Libellé de l\'interrupteur',
                       description: 'Texte de description additionnel',
                       status: !_toggleLeft ? 'Activé' : 'Désactivé',
-                      labelLocation: DsfrSwitchLabelLocation.right,
+                      labelLocation: DsfrToggleSwitchLabelLocation.right,
                       composantState: DsfrComposantState.error(
                           errorMessage: "Texte d'erreur obligatoire"),
                       value: !_toggleLeft,
@@ -381,11 +381,11 @@ class _TogglesPageState extends State<TogglesPage> {
                         });
                       },
                     ),
-                    DsfrSwitch(
+                    DsfrToggleSwitch(
                       label: 'Libellé de l\'interrupteur',
                       description: 'Texte de description additionnel',
                       status: _toggleLeft ? 'Activé' : 'Désactivé',
-                      labelLocation: DsfrSwitchLabelLocation.right,
+                      labelLocation: DsfrToggleSwitchLabelLocation.right,
                       composantState: DsfrComposantState.success(
                           message: "Texte de validation optionnel"),
                       value: _toggleLeft,
@@ -395,11 +395,11 @@ class _TogglesPageState extends State<TogglesPage> {
                         });
                       },
                     ),
-                    DsfrSwitch(
+                    DsfrToggleSwitch(
                       label: 'Libellé de l\'interrupteur',
                       description: 'Texte de description additionnel',
                       status: !_toggleLeft ? 'Activé' : 'Désactivé',
-                      labelLocation: DsfrSwitchLabelLocation.right,
+                      labelLocation: DsfrToggleSwitchLabelLocation.right,
                       composantState: DsfrComposantState.success(
                           message: "Texte de validation optionnel"),
                       value: !_toggleLeft,
@@ -422,14 +422,14 @@ class _TogglesPageState extends State<TogglesPage> {
                     PageSubSection(
                       title: 'standard',
                       children: [
-                        SwitchGroup(
+                        DsfrToggleSwitchGroup(
                           label: 'Légende',
                           description:
                               'Texte de description additionnel (optionnel)',
                           children: [
-                            DsfrSwitch(
+                            DsfrToggleSwitch(
                               label: 'Interrupteur 1',
-                              labelLocation: DsfrSwitchLabelLocation.left,
+                              labelLocation: DsfrToggleSwitchLabelLocation.left,
                               value: _toggleLeft,
                               onChanged: (final value) {
                                 setState(() {
@@ -437,9 +437,9 @@ class _TogglesPageState extends State<TogglesPage> {
                                 });
                               },
                             ),
-                            DsfrSwitch(
+                            DsfrToggleSwitch(
                               label: 'Interrupteur 2',
-                              labelLocation: DsfrSwitchLabelLocation.left,
+                              labelLocation: DsfrToggleSwitchLabelLocation.left,
                               value: !_toggleLeft,
                               onChanged: (final value) {
                                 setState(() {
@@ -447,9 +447,9 @@ class _TogglesPageState extends State<TogglesPage> {
                                 });
                               },
                             ),
-                            DsfrSwitch(
+                            DsfrToggleSwitch(
                               label: 'Interrupteur 3',
-                              labelLocation: DsfrSwitchLabelLocation.left,
+                              labelLocation: DsfrToggleSwitchLabelLocation.left,
                               value: _toggleLeft,
                               onChanged: (final value) {
                                 setState(() {
@@ -457,9 +457,9 @@ class _TogglesPageState extends State<TogglesPage> {
                                 });
                               },
                             ),
-                            DsfrSwitch(
+                            DsfrToggleSwitch(
                               label: 'Interrupteur 4',
-                              labelLocation: DsfrSwitchLabelLocation.left,
+                              labelLocation: DsfrToggleSwitchLabelLocation.left,
                               value: !_toggleLeft,
                               onChanged: (final value) {
                                 setState(() {
@@ -474,16 +474,16 @@ class _TogglesPageState extends State<TogglesPage> {
                     PageSubSection(
                       title: 'succès',
                       children: [
-                        SwitchGroup(
+                        DsfrToggleSwitchGroup(
                           label: 'Légende',
                           description:
                               'Texte de description additionnel (optionnel)',
                           composantState: DsfrComposantState.success(
                               message: "Texte de validation optionnel"),
                           children: [
-                            DsfrSwitch(
+                            DsfrToggleSwitch(
                               label: 'Interrupteur 1',
-                              labelLocation: DsfrSwitchLabelLocation.left,
+                              labelLocation: DsfrToggleSwitchLabelLocation.left,
                               value: _toggleLeft,
                               onChanged: (final value) {
                                 setState(() {
@@ -491,9 +491,9 @@ class _TogglesPageState extends State<TogglesPage> {
                                 });
                               },
                             ),
-                            DsfrSwitch(
+                            DsfrToggleSwitch(
                               label: 'Interrupteur 2',
-                              labelLocation: DsfrSwitchLabelLocation.left,
+                              labelLocation: DsfrToggleSwitchLabelLocation.left,
                               value: !_toggleLeft,
                               onChanged: (final value) {
                                 setState(() {
@@ -501,9 +501,9 @@ class _TogglesPageState extends State<TogglesPage> {
                                 });
                               },
                             ),
-                            DsfrSwitch(
+                            DsfrToggleSwitch(
                               label: 'Interrupteur 3',
-                              labelLocation: DsfrSwitchLabelLocation.left,
+                              labelLocation: DsfrToggleSwitchLabelLocation.left,
                               value: _toggleLeft,
                               onChanged: (final value) {
                                 setState(() {
@@ -511,9 +511,9 @@ class _TogglesPageState extends State<TogglesPage> {
                                 });
                               },
                             ),
-                            DsfrSwitch(
+                            DsfrToggleSwitch(
                               label: 'Interrupteur 4',
-                              labelLocation: DsfrSwitchLabelLocation.left,
+                              labelLocation: DsfrToggleSwitchLabelLocation.left,
                               value: !_toggleLeft,
                               onChanged: (final value) {
                                 setState(() {
@@ -528,16 +528,16 @@ class _TogglesPageState extends State<TogglesPage> {
                     PageSubSection(
                       title: 'erreur',
                       children: [
-                        SwitchGroup(
+                        DsfrToggleSwitchGroup(
                           label: 'Légende',
                           description:
                               'Texte de description additionnel (optionnel)',
                           composantState: DsfrComposantState.error(
                               errorMessage: "Texte d'erreur obligatoire"),
                           children: [
-                            DsfrSwitch(
+                            DsfrToggleSwitch(
                               label: 'Interrupteur 1',
-                              labelLocation: DsfrSwitchLabelLocation.left,
+                              labelLocation: DsfrToggleSwitchLabelLocation.left,
                               value: _toggleLeft,
                               onChanged: (final value) {
                                 setState(() {
@@ -545,9 +545,9 @@ class _TogglesPageState extends State<TogglesPage> {
                                 });
                               },
                             ),
-                            DsfrSwitch(
+                            DsfrToggleSwitch(
                               label: 'Interrupteur 2',
-                              labelLocation: DsfrSwitchLabelLocation.left,
+                              labelLocation: DsfrToggleSwitchLabelLocation.left,
                               value: !_toggleLeft,
                               onChanged: (final value) {
                                 setState(() {
@@ -555,9 +555,9 @@ class _TogglesPageState extends State<TogglesPage> {
                                 });
                               },
                             ),
-                            DsfrSwitch(
+                            DsfrToggleSwitch(
                               label: 'Interrupteur 3',
-                              labelLocation: DsfrSwitchLabelLocation.left,
+                              labelLocation: DsfrToggleSwitchLabelLocation.left,
                               value: _toggleLeft,
                               onChanged: (final value) {
                                 setState(() {
@@ -565,9 +565,9 @@ class _TogglesPageState extends State<TogglesPage> {
                                 });
                               },
                             ),
-                            DsfrSwitch(
+                            DsfrToggleSwitch(
                               label: 'Interrupteur 4',
-                              labelLocation: DsfrSwitchLabelLocation.left,
+                              labelLocation: DsfrToggleSwitchLabelLocation.left,
                               value: !_toggleLeft,
                               onChanged: (final value) {
                                 setState(() {
@@ -587,14 +587,14 @@ class _TogglesPageState extends State<TogglesPage> {
                     PageSubSection(
                       title: 'standard',
                       children: [
-                        SwitchGroup(
+                        DsfrToggleSwitchGroup(
                           label: 'Légende',
                           description:
                               'Texte de description additionnel (optionnel)',
                           children: [
-                            DsfrSwitch(
+                            DsfrToggleSwitch(
                               label: 'Interrupteur 1',
-                              labelLocation: DsfrSwitchLabelLocation.right,
+                              labelLocation: DsfrToggleSwitchLabelLocation.right,
                               value: _toggleRight,
                               onChanged: (final value) {
                                 setState(() {
@@ -602,9 +602,9 @@ class _TogglesPageState extends State<TogglesPage> {
                                 });
                               },
                             ),
-                            DsfrSwitch(
+                            DsfrToggleSwitch(
                               label: 'Interrupteur 2',
-                              labelLocation: DsfrSwitchLabelLocation.right,
+                              labelLocation: DsfrToggleSwitchLabelLocation.right,
                               value: !_toggleRight,
                               onChanged: (final value) {
                                 setState(() {
@@ -612,9 +612,9 @@ class _TogglesPageState extends State<TogglesPage> {
                                 });
                               },
                             ),
-                            DsfrSwitch(
+                            DsfrToggleSwitch(
                               label: 'Interrupteur 3',
-                              labelLocation: DsfrSwitchLabelLocation.right,
+                              labelLocation: DsfrToggleSwitchLabelLocation.right,
                               value: _toggleRight,
                               onChanged: (final value) {
                                 setState(() {
@@ -622,9 +622,9 @@ class _TogglesPageState extends State<TogglesPage> {
                                 });
                               },
                             ),
-                            DsfrSwitch(
+                            DsfrToggleSwitch(
                               label: 'Interrupteur 4',
-                              labelLocation: DsfrSwitchLabelLocation.right,
+                              labelLocation: DsfrToggleSwitchLabelLocation.right,
                               value: !_toggleRight,
                               onChanged: (final value) {
                                 setState(() {
@@ -639,16 +639,16 @@ class _TogglesPageState extends State<TogglesPage> {
                     PageSubSection(
                       title: 'succès',
                       children: [
-                        SwitchGroup(
+                        DsfrToggleSwitchGroup(
                           label: 'Légende',
                           description:
                               'Texte de description additionnel (optionnel)',
                           composantState: DsfrComposantState.success(
                               message: "Texte de validation optionnel"),
                           children: [
-                            DsfrSwitch(
+                            DsfrToggleSwitch(
                               label: 'Interrupteur 1',
-                              labelLocation: DsfrSwitchLabelLocation.right,
+                              labelLocation: DsfrToggleSwitchLabelLocation.right,
                               value: _toggleRight,
                               onChanged: (final value) {
                                 setState(() {
@@ -656,9 +656,9 @@ class _TogglesPageState extends State<TogglesPage> {
                                 });
                               },
                             ),
-                            DsfrSwitch(
+                            DsfrToggleSwitch(
                               label: 'Interrupteur 2',
-                              labelLocation: DsfrSwitchLabelLocation.right,
+                              labelLocation: DsfrToggleSwitchLabelLocation.right,
                               value: !_toggleRight,
                               onChanged: (final value) {
                                 setState(() {
@@ -666,9 +666,9 @@ class _TogglesPageState extends State<TogglesPage> {
                                 });
                               },
                             ),
-                            DsfrSwitch(
+                            DsfrToggleSwitch(
                               label: 'Interrupteur 3',
-                              labelLocation: DsfrSwitchLabelLocation.right,
+                              labelLocation: DsfrToggleSwitchLabelLocation.right,
                               value: _toggleRight,
                               onChanged: (final value) {
                                 setState(() {
@@ -676,9 +676,9 @@ class _TogglesPageState extends State<TogglesPage> {
                                 });
                               },
                             ),
-                            DsfrSwitch(
+                            DsfrToggleSwitch(
                               label: 'Interrupteur 4',
-                              labelLocation: DsfrSwitchLabelLocation.right,
+                              labelLocation: DsfrToggleSwitchLabelLocation.right,
                               value: !_toggleRight,
                               onChanged: (final value) {
                                 setState(() {
@@ -693,16 +693,16 @@ class _TogglesPageState extends State<TogglesPage> {
                     PageSubSection(
                       title: 'erreur',
                       children: [
-                        SwitchGroup(
+                        DsfrToggleSwitchGroup(
                           label: 'Légende',
                           description:
                               'Texte de description additionnel (optionnel)',
                           composantState: DsfrComposantState.error(
                               errorMessage: "Texte d'erreur obligatoire"),
                           children: [
-                            DsfrSwitch(
+                            DsfrToggleSwitch(
                               label: 'Interrupteur 1',
-                              labelLocation: DsfrSwitchLabelLocation.right,
+                              labelLocation: DsfrToggleSwitchLabelLocation.right,
                               value: _toggleRight,
                               onChanged: (final value) {
                                 setState(() {
@@ -710,9 +710,9 @@ class _TogglesPageState extends State<TogglesPage> {
                                 });
                               },
                             ),
-                            DsfrSwitch(
+                            DsfrToggleSwitch(
                               label: 'Interrupteur 2',
-                              labelLocation: DsfrSwitchLabelLocation.right,
+                              labelLocation: DsfrToggleSwitchLabelLocation.right,
                               value: !_toggleRight,
                               onChanged: (final value) {
                                 setState(() {
@@ -720,9 +720,9 @@ class _TogglesPageState extends State<TogglesPage> {
                                 });
                               },
                             ),
-                            DsfrSwitch(
+                            DsfrToggleSwitch(
                               label: 'Interrupteur 3',
-                              labelLocation: DsfrSwitchLabelLocation.right,
+                              labelLocation: DsfrToggleSwitchLabelLocation.right,
                               value: _toggleRight,
                               onChanged: (final value) {
                                 setState(() {
@@ -730,9 +730,9 @@ class _TogglesPageState extends State<TogglesPage> {
                                 });
                               },
                             ),
-                            DsfrSwitch(
+                            DsfrToggleSwitch(
                               label: 'Interrupteur 4',
-                              labelLocation: DsfrSwitchLabelLocation.right,
+                              labelLocation: DsfrToggleSwitchLabelLocation.right,
                               value: !_toggleRight,
                               onChanged: (final value) {
                                 setState(() {

@@ -38,19 +38,15 @@ class DsfrGroup<T extends Widget> extends StatelessWidget {
           children: [
             Text(
               label,
-              style: DsfrTextStyle.bodyMd(
-                  color: getTextColor(context, composantState.state)),
+              style: DsfrTextStyle.bodyMd(color: getTextColor(context, composantState.state)),
             ),
-            SizedBox(
-                height:
-                    description != null ? DsfrSpacings.s1w : DsfrSpacings.s2w),
+            SizedBox(height: description != null ? DsfrSpacings.s1w : DsfrSpacings.s2w),
             description != null
                 ? Padding(
                     padding: const EdgeInsets.only(bottom: DsfrSpacings.s2w),
                     child: Text(
                       description!,
-                      style: DsfrTextStyle.bodyXs(
-                          color: DsfrColorDecisions.textMentionGrey(context)),
+                      style: DsfrTextStyle.bodyXs(color: DsfrColorDecisions.textMentionGrey(context)),
                     ),
                   )
                 : const SizedBox.shrink(),

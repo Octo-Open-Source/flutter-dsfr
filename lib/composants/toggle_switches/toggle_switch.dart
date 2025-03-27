@@ -9,17 +9,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dsfr/helpers/color_utils.dart';
 import 'package:flutter_dsfr/helpers/composant_state.dart';
 
-enum DsfrSwitchLabelLocation {
+enum DsfrToggleSwitchLabelLocation {
   left,
   right,
 }
 
-class DsfrSwitch extends StatefulWidget {
-  const DsfrSwitch({
+class DsfrToggleSwitch extends StatefulWidget {
+  const DsfrToggleSwitch({
     super.key,
     required this.label,
     required this.value,
-    this.labelLocation = DsfrSwitchLabelLocation.right,
+    this.labelLocation = DsfrToggleSwitchLabelLocation.right,
     this.enabled = true,
     this.onChanged,
     this.description,
@@ -30,17 +30,17 @@ class DsfrSwitch extends StatefulWidget {
   final String label;
   final bool value;
   final bool enabled;
-  final DsfrSwitchLabelLocation labelLocation;
+  final DsfrToggleSwitchLabelLocation labelLocation;
   final DsfrComposantState composantState;
   final ValueChanged<bool>? onChanged;
   final String? description;
   final String? status;
 
   @override
-  State<DsfrSwitch> createState() => _DsfrSwitchState();
+  State<DsfrToggleSwitch> createState() => _DsfrToggleSwitchState();
 }
 
-class _DsfrSwitchState extends State<DsfrSwitch> with MaterialStateMixin<DsfrSwitch> {
+class _DsfrToggleSwitchState extends State<DsfrToggleSwitch> with MaterialStateMixin<DsfrToggleSwitch> {
   @override
   Widget build(final context) {
     final composantState = GroupProvider.of(context)?.composantState ?? widget.composantState;
@@ -75,12 +75,12 @@ class _DsfrSwitchState extends State<DsfrSwitch> with MaterialStateMixin<DsfrSwi
     var columnChildren = [
       Row(
         spacing: DsfrSpacings.s2w,
-        children: widget.labelLocation == DsfrSwitchLabelLocation.left ? rowChildren.reversed.toList() : rowChildren,
+        children: widget.labelLocation == DsfrToggleSwitchLabelLocation.left ? rowChildren.reversed.toList() : rowChildren,
       ),
       if (widget.status != null)
         Align(
           alignment:
-              widget.labelLocation == DsfrSwitchLabelLocation.left ? Alignment.centerRight : Alignment.centerLeft,
+              widget.labelLocation == DsfrToggleSwitchLabelLocation.left ? Alignment.centerRight : Alignment.centerLeft,
           child: Text(
             widget.status!,
             style: DsfrTextStyle.bodyXs(
