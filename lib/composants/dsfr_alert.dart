@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_dsfr/flutter_dsfr.dart';
-import 'package:flutter_dsfr/helpers/dsfr_component_size.dart';
 
 enum DsfrAlertType {
   info,
@@ -123,18 +121,24 @@ class _DsfrAlertState extends State<DsfrAlert> {
               Spacer(),
               Align(
                 alignment: Alignment.topRight,
-                child: DsfrButton(
-                  iconSemanticLabel: widget.closeLabel,
-                  icon: DsfrIcons.systemCloseLine,
-                  iconLocation: DsfrButtonIconLocation.right,
-                  variant: DsfrButtonVariant.tertiaryWithoutBorder,
-                  size: DsfrComponentSize.sm,
-                  onPressed: () => {
-                    setState(() {
-                      isVisible = false;
-                      widget.onClose?.call();
-                    })
-                  }
+                child: Semantics(
+                  button: true,
+                  label: widget.closeLabel,
+                  child: InkWell(
+                    onTap: () => {
+                      setState(() {
+                        isVisible = false;
+                        widget.onClose?.call();
+                      })
+                    },
+                    child: SizedBox(
+                      width: 48,
+                      height: 48,
+                      child: Center(
+                        child: Icon(DsfrIcons.systemCloseLine, size: 16),
+                      ),
+                    ),
+                  ),
                 ),
               ),
             ],
