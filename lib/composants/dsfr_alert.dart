@@ -24,18 +24,12 @@ extension DsfrAlertTypeExtension on DsfrAlertType {
       };
   }
 
-  Color getBorderColor(BuildContext context) {
-    switch (this) {
-      case DsfrAlertType.info:
-        return DsfrColorDecisions.borderPlainInfo(context);
-      case DsfrAlertType.warning:
-        return DsfrColorDecisions.borderPlainWarning(context);
-      case DsfrAlertType.error:
-        return DsfrColorDecisions.borderPlainError(context);
-      case DsfrAlertType.success:
-        return DsfrColorDecisions.borderPlainSuccess(context);
-    }
-  }
+ Color getBorderColor(BuildContext context) => switch (this) {
+        DsfrAlertType.info => DsfrColorDecisions.borderPlainInfo(context),
+        DsfrAlertType.warning => DsfrColorDecisions.borderPlainWarning(context),
+        DsfrAlertType.error => DsfrColorDecisions.borderPlainError(context),
+        DsfrAlertType.success => DsfrColorDecisions.borderPlainSuccess(context)
+      };
 }
 
 class DsfrAlert extends StatefulWidget {
