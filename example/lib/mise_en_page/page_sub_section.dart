@@ -14,7 +14,10 @@ class PageSubSection extends StatelessWidget {
       spacing: 16,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(title, style: DsfrTextStyle.headline5(color: DsfrColorDecisions.textTitleBlueFrance(context))),
+        Padding(
+          padding: const EdgeInsets.only(top: 16),
+          child: Text(title, style: DsfrTextStyle.headline5(color: DsfrColorDecisions.textTitleBlueFrance(context))),
+        ),
         ...children,
       ],
     );
