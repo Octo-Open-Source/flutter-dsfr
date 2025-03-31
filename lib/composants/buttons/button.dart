@@ -76,8 +76,6 @@ class DsfrButton extends StatelessWidget {
         size: size,
         foregroundColor: foregroundColor,
         onPressed: onPressed,
-        child: Center(
-          child: Row(mainAxisSize: MainAxisSize.min, spacing: DsfrSpacings.s1w, children: buttonWidget),
-        ));
+        child: Row(mainAxisSize: MainAxisSize.min, spacing: DsfrSpacings.s1w, children: buttonWidget));
   }
 }

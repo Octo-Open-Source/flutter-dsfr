@@ -51,12 +51,13 @@ extension DsfrAlertTypeExtension on DsfrAlertType {
   }
 }
 
-class DsfrAlert extends StatelessWidget {
+class DsfrAlert extends StatefulWidget {
   final DsfrAlertType type;
   final String? title;
   final String? description;
   final bool isDismissible;
   final String closeLabel;
+  final Function()? onClose;
 
   const DsfrAlert({
     super.key,
@@ -65,12 +66,23 @@ class DsfrAlert extends StatelessWidget {
     this.description,
     this.isDismissible = false,
     this.closeLabel = 'Fermer',
+    this.onClose,
   });
 
   @override
+  State<DsfrAlert> createState() => _DsfrAlertState();
+}
+
+class _DsfrAlertState extends State<DsfrAlert> {
+  bool isVisible = true;
+
+  @override
   Widget build(BuildContext context) {
+    if (!isVisible) {
+      return SizedBox.shrink();
+    }
     return DecoratedBox(
-      decoration: BoxDecoration(border: Border.all(color: type.getBorderColor(context))),
+      decoration: BoxDecoration(border: Border.all(color: widget.type.getBorderColor(context))),
       child: IntrinsicHeight(
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -78,12 +90,12 @@ class DsfrAlert extends StatelessWidget {
           spacing: 16,
           children: [
             DecoratedBox(
-              decoration: BoxDecoration(color: type.getBackgroundColor(context)),
+              decoration: BoxDecoration(color: widget.type.getBackgroundColor(context)),
               child: Align(
                   alignment: Alignment.topCenter,
                   child: Padding(
                     padding: const EdgeInsets.fromLTRB(8, 16, 8, 0),
-                    child: Icon(type.icon, color: DsfrColorDecisions.backgroundDefaultGrey(context)),
+                    child: Icon(widget.type.icon, color: DsfrColorDecisions.backgroundDefaultGrey(context)),
                   )),
             ),
             Expanded(
@@ -93,31 +105,36 @@ class DsfrAlert extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   spacing: 4,
                   children: [
-                    if (title != null)
+                    if (widget.title != null)
                       Text(
-                        title!,
+                        widget.title!,
                         style: DsfrTextStyle.headline5(color: DsfrColorDecisions.textTitleGrey(context)),
                       ),
-                    if (description != null)
+                    if (widget.description != null)
                       Text(
-                        description!,
+                        widget.description!,
                         style: DsfrTextStyle.bodyMd(color: DsfrColorDecisions.textDefaultGrey(context)),
                       ),
                   ],
                 ),
               ),
             ),
-            if (isDismissible) ...[
+            if (widget.isDismissible) ...[
               Spacer(),
               Align(
                 alignment: Alignment.topRight,
                 child: DsfrButton(
-                  iconSemanticLabel: closeLabel,
+                  iconSemanticLabel: widget.closeLabel,
                   icon: DsfrIcons.systemCloseLine,
                   iconLocation: DsfrButtonIconLocation.right,
                   variant: DsfrButtonVariant.tertiaryWithoutBorder,
                   size: DsfrComponentSize.sm,
-                  onPressed: () => {}, //TODO
+                  onPressed: () => {
+                    setState(() {
+                      isVisible = false;
+                      widget.onClose?.call();
+                    })
+                  }
                 ),
               ),
             ],
