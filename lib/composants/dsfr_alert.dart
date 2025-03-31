@@ -22,9 +22,8 @@ extension DsfrAlertTypeExtension on DsfrAlertType {
         DsfrAlertType.error => DsfrColorDecisions.backgroundFlatError(context),
         DsfrAlertType.success => DsfrColorDecisions.backgroundFlatSuccess(context)
       };
-  }
 
- Color getBorderColor(BuildContext context) => switch (this) {
+  Color getBorderColor(BuildContext context) => switch (this) {
         DsfrAlertType.info => DsfrColorDecisions.borderPlainInfo(context),
         DsfrAlertType.warning => DsfrColorDecisions.borderPlainWarning(context),
         DsfrAlertType.error => DsfrColorDecisions.borderPlainError(context),
@@ -100,8 +99,7 @@ class _DsfrAlertState extends State<DsfrAlert> {
                 ),
               ),
             ),
-            if (widget.isDismissible) ...[
-              Spacer(),
+            if (widget.isDismissible)
               Align(
                 alignment: Alignment.topRight,
                 child: Semantics(
@@ -124,7 +122,6 @@ class _DsfrAlertState extends State<DsfrAlert> {
                   ),
                 ),
               ),
-            ],
           ],
         ),
       ),
