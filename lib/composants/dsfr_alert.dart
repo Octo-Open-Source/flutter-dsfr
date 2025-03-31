@@ -16,17 +16,12 @@ extension DsfrAlertTypeExtension on DsfrAlertType {
         DsfrAlertType.success => DsfrIcons.systemFrSuccessFill
       };
 
-  Color getBackgroundColor(BuildContext context) {
-    switch (this) {
-      case DsfrAlertType.info:
-        return DsfrColorDecisions.backgroundFlatInfo(context);
-      case DsfrAlertType.warning:
-        return DsfrColorDecisions.backgroundFlatWarning(context);
-      case DsfrAlertType.error:
-        return DsfrColorDecisions.backgroundFlatError(context);
-      case DsfrAlertType.success:
-        return DsfrColorDecisions.backgroundFlatSuccess(context);
-    }
+  Color getBackgroundColor(BuildContext context) => switch (this) {
+        DsfrAlertType.info => DsfrColorDecisions.backgroundFlatInfo(context),
+        DsfrAlertType.warning => DsfrColorDecisions.backgroundFlatWarning(context),
+        DsfrAlertType.error => DsfrColorDecisions.backgroundFlatError(context),
+        DsfrAlertType.success => DsfrColorDecisions.backgroundFlatSuccess(context)
+      };
   }
 
   Color getBorderColor(BuildContext context) {
