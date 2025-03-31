@@ -13,7 +13,7 @@ class TooltipsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(20), // gestion du padding ?
+      padding: EdgeInsets.all(20),
       child: Column(
         children: [
           Row(
@@ -21,19 +21,24 @@ class TooltipsPage extends StatelessWidget {
             children: [
               DsfrTooltip(
                 message: 'Infobulle',
+                forceBottom: true,
+                child: Icon(Icons.info_outline),
+              ),
+              DsfrTooltip(
+                message: 'Ceci est un message informatif d\'une importance toute relative',
+                tootipHorizontalPadding: 8,
+                messageTextAlign: TextAlign.center,
+                forceBottom: true,
                 child: Icon(Icons.info_outline),
               ),
               DsfrTooltip(
                 message: 'Infobulle',
-                child: Icon(Icons.info_outline),
-              ),
-              DsfrTooltip(
-                message: 'Infobulle',
+                forceBottom: true,
                 child: Icon(Icons.info_outline),
               ),
             ],
           ),
-          SizedBox(height: 100),
+          SizedBox(height: 60),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
