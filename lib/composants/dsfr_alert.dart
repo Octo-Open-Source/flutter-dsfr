@@ -65,7 +65,7 @@ class DsfrAlert extends StatefulWidget {
     this.isDismissible = false,
     this.closeLabel = 'Fermer',
     this.onClose,
-  });
+  }) : assert(title != null || description != null);
 
   @override
   State<DsfrAlert> createState() => _DsfrAlertState();
