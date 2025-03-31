@@ -9,18 +9,12 @@ enum DsfrAlertType {
 }
 
 extension DsfrAlertTypeExtension on DsfrAlertType {
-  IconData get icon {
-    switch (this) {
-      case DsfrAlertType.info:
-        return DsfrIcons.systemFrInfoFill;
-      case DsfrAlertType.warning:
-        return DsfrIcons.systemFrWarningFill;
-      case DsfrAlertType.error:
-        return DsfrIcons.systemFrErrorFill;
-      case DsfrAlertType.success:
-        return DsfrIcons.systemFrSuccessFill;
-    }
-  }
+  IconData get icon => switch (this) {
+        DsfrAlertType.info => DsfrIcons.systemFrInfoFill,
+        DsfrAlertType.warning => DsfrIcons.systemFrWarningFill,
+        DsfrAlertType.error => DsfrIcons.systemFrErrorFill,
+        DsfrAlertType.success => DsfrIcons.systemFrSuccessFill
+      };
 
   Color getBackgroundColor(BuildContext context) {
     switch (this) {
