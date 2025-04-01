@@ -24,7 +24,7 @@ export 'components/stepper.dart';
 export 'components/tag.dart';
 export 'components/toggle_switches/toggle_switch.dart';
 export 'components/toggle_switches/toggle_switch_group.dart';
-export 'composants/tooltip.dart';
+export 'components/tooltip.dart';
 export 'fondamentaux/colors.g.dart';
 export 'fondamentaux/color_decisions.g.dart';
 export 'fondamentaux/fonts.dart';

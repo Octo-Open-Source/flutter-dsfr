@@ -1,6 +1,6 @@
 import 'package:example/page_item.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_dsfr/composants/tooltip.dart';
+import 'package:flutter_dsfr/components/tooltip.dart';
 
 class TooltipsPage extends StatelessWidget {
   const TooltipsPage({super.key});
