@@ -1,3 +1,4 @@
+import 'package:example/mise_en_page/page_sub_section.dart';
 import 'package:flutter_dsfr/flutter_dsfr.dart';
 import 'package:example/page_item.dart';
 import 'package:flutter/material.dart';
@@ -61,7 +62,60 @@ class ButtonsPage extends StatelessWidget {
       padding: const EdgeInsets.all(16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: children.separator(gap).toList(),
+        children: [
+          ...children.separator(gap).toList(),
+          PageSubSection(
+            title: 'Groupe de boutons vertical',
+            children: [
+              DsfrGroup<DsfrButton>(
+                direction: Direction.vertical,
+                children: [
+                  DsfrButton(
+                    label: 'button',
+                    variant: DsfrButtonVariant.primary,
+                    size: DsfrComponentSize.sm,
+                    onPressed: _handleTap,
+                  ),
+                  DsfrButton(
+                    label: 'button',
+                    variant: DsfrButtonVariant.primary,
+                    size: DsfrComponentSize.sm,
+                    onPressed: _handleTap,
+                  )
+                ],
+              ),
+            ],
+          ),
+          PageSubSection(
+            title: 'Groupe de boutons horizontal',
+            children: [
+              DsfrGroup<DsfrButton>(
+                direction: Direction.horizontal,
+                children: [
+                  DsfrButton(
+                    label: 'button',
+                    variant: DsfrButtonVariant.primary,
+                    size: DsfrComponentSize.sm,
+                    onPressed: _handleTap,
+                  ),
+                  DsfrButton(
+                    label: 'button',
+                    variant: DsfrButtonVariant.primary,
+                    size: DsfrComponentSize.sm,
+                    onPressed: _handleTap,
+                  ),
+                  DsfrButton(
+                    label: 'button',
+                    variant: DsfrButtonVariant.primary,
+                    size: DsfrComponentSize.sm,
+                    onPressed: _handleTap,
+                  )
+                ],
+              ),
+            ],
+          ),
+          SizedBox(height: 200),
+        ],
       ),
     );
   }

@@ -17,7 +17,7 @@ class DsfrFormState extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (GroupProvider.of(context) != null) {
+    if (GroupProvider.of(context) != null || componentState.state == DsfrComponentStateEnum.none) {
       return child;
     } else {
       return IntrinsicHeight(
@@ -30,10 +30,8 @@ class DsfrFormState extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Flexible(child: child),
-                  if (componentState.state != DsfrComponentStateEnum.none) ...[
-                    const SizedBox(height: DsfrSpacings.s2w),
-                    ComponentStateWidget(componentState: componentState),
-                  ],
+                  const SizedBox(height: DsfrSpacings.s2w),
+                  ComponentStateWidget(componentState: componentState),
                 ],
               ),
             ),

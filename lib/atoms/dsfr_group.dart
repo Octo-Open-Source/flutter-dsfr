@@ -10,7 +10,7 @@ enum Direction {
 }
 
 class DsfrGroup<T extends Widget> extends StatelessWidget {
-  final String label;
+  final String? label;
   final String? description;
   final DsfrComponentState componentState;
   final Direction direction;
@@ -19,7 +19,7 @@ class DsfrGroup<T extends Widget> extends StatelessWidget {
 
   const DsfrGroup({
     super.key,
-    required this.label,
+    this.label,
     this.description,
     this.componentState = const DsfrComponentState.none(),
     this.direction = Direction.vertical,
@@ -36,20 +36,21 @@ class DsfrGroup<T extends Widget> extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              label,
-              style: DsfrTextStyle.bodyMd(color: getTextColor(context, componentState.state)),
-            ),
-            SizedBox(height: description != null ? DsfrSpacings.s1w : DsfrSpacings.s2w),
-            description != null
-                ? Padding(
-                    padding: const EdgeInsets.only(bottom: DsfrSpacings.s2w),
-                    child: Text(
-                      description!,
-                      style: DsfrTextStyle.bodyXs(color: DsfrColorDecisions.textMentionGrey(context)),
-                    ),
-                  )
-                : const SizedBox.shrink(),
+            if (label != null) ...[
+              Text(
+                label!,
+                style: DsfrTextStyle.bodyMd(color: getTextColor(context, componentState.state)),
+              ),
+              SizedBox(height: description != null ? DsfrSpacings.s1w : DsfrSpacings.s2w),
+            ],
+            if (description != null)
+              Padding(
+                padding: const EdgeInsets.only(bottom: DsfrSpacings.s2w),
+                child: Text(
+                  description!,
+                  style: DsfrTextStyle.bodyXs(color: DsfrColorDecisions.textMentionGrey(context)),
+                ),
+              ),
             direction == Direction.vertical
                 ? Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
