@@ -6,16 +6,20 @@ class DsfrFileUploader extends StatelessWidget {
   final String title;
   final String description;
   final String buttonLabel;
+  final String fileIndicatorLabel;
   final bool disabled;
   final DsfrComponentState componentState;
+  final Function() onBrowse;
 
   const DsfrFileUploader({
     super.key,
-    this.title = 'Ajouter un fichier',
     required this.description,
+    this.title = 'Ajouter un fichier',
     this.buttonLabel = 'Parcourir...',
+    this.fileIndicatorLabel = 'Aucun fichier selectionné.',
     this.disabled = false,
     this.componentState = const DsfrComponentState.none(),
+    required this.onBrowse,
   });
 
   Color _getTitleColor(BuildContext context) => switch ((disabled, componentState.state)) {
@@ -46,29 +50,13 @@ class DsfrFileUploader extends StatelessWidget {
           spacing: 8,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Material(
-              borderRadius: BorderRadius.circular(4),
-              color: disabled
-                  ? DsfrColorDecisions.backgroundDisabledGrey(context)
-                  : DsfrColorDecisions.backgroundContrastGrey(context),
-              child: InkWell(
-                onTap: () {},
-                borderRadius: BorderRadius.circular(4),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                  child: Text(
-                    buttonLabel,
-                    style: DsfrTextStyle.bodySm(
-                      color: disabled
-                          ? DsfrColorDecisions.textDisabledGrey(context)
-                          : DsfrColorDecisions.textDefaultGrey(context),
-                    ),
-                  ),
-                ),
-              ),
+            _BrowseButton(
+              disabled: disabled,
+              onBrowse: onBrowse,
+              buttonLabel: buttonLabel,
             ),
             Text(
-              'Aucun fichier selectionné.',
+              fileIndicatorLabel,
               style: DsfrTextStyle.bodySm(
                 color: disabled
                     ? DsfrColorDecisions.textDisabledGrey(context)
@@ -80,24 +68,67 @@ class DsfrFileUploader extends StatelessWidget {
         if (componentState.state == DsfrComponentStateEnum.error)
           Padding(
             padding: const EdgeInsets.only(top: 16),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Icon(
-                  DsfrIcons.systemFrErrorFill,
-                  color: DsfrColorDecisions.borderPlainError(context),
-                  size: 16,
-                ),
-                const SizedBox(width: DsfrSpacings.s1v),
-                Flexible(
-                  child: Text(
-                    componentState.text!,
-                    style: DsfrTextStyle.bodyXs(color: DsfrColorDecisions.textDefaultError(context)),
-                  ),
-                ),
-              ],
-            ),
+            child: _ErrorNotice(message: componentState.text!),
           )
+      ],
+    );
+  }
+}
+
+class _BrowseButton extends StatelessWidget {
+  final bool disabled;
+  final Function() onBrowse;
+  final String buttonLabel;
+
+  const _BrowseButton({required this.disabled, required this.onBrowse, required this.buttonLabel});
+
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      borderRadius: BorderRadius.circular(4),
+      color: disabled
+          ? DsfrColorDecisions.backgroundDisabledGrey(context)
+          : DsfrColorDecisions.backgroundContrastGrey(context),
+      child: InkWell(
+        onTap: onBrowse,
+        borderRadius: BorderRadius.circular(4),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+          child: Text(
+            buttonLabel,
+            style: DsfrTextStyle.bodySm(
+              color:
+                  disabled ? DsfrColorDecisions.textDisabledGrey(context) : DsfrColorDecisions.textDefaultGrey(context),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _ErrorNotice extends StatelessWidget {
+  final String message;
+
+  const _ErrorNotice({required this.message});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Icon(
+          DsfrIcons.systemFrErrorFill,
+          color: DsfrColorDecisions.borderPlainError(context),
+          size: 16,
+        ),
+        const SizedBox(width: DsfrSpacings.s1v),
+        Flexible(
+          child: Text(
+            message,
+            style: DsfrTextStyle.bodyXs(color: DsfrColorDecisions.textDefaultError(context)),
+          ),
+        ),
       ],
     );
   }
