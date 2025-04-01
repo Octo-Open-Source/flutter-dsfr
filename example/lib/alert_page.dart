@@ -31,10 +31,18 @@ class AlertPage extends StatelessWidget {
           PageSubSection(title: 'Variantes : titre seul et description longue', children: [
             DsfrAlert(type: DsfrAlertType.info, title: 'Titre'),
             DsfrAlert(
-                type: DsfrAlertType.success,
-                title: 'Titre',
-                description:
-                    'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'),
+              type: DsfrAlertType.success,
+              title: 'Titre',
+              description:
+                  'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+            ),
+            DsfrAlert(
+              type: DsfrAlertType.success,
+              title: 'Titre',
+              description:
+              'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+              onClose: (){},
+            ),
           ]),
         ],
       );
@@ -53,7 +61,7 @@ class _DsfrAlertWithCloseState extends State<DsfrAlertWithClose> {
 
   @override
   Widget build(final context) {
-    return PageSubSection(title: 'Alerte avec îcone de fermeture', children: [
+    return PageSubSection(title: 'Alerte avec icône de fermeture', children: [
       if (isInfoVisible)
         DsfrAlert(
           type: DsfrAlertType.info,

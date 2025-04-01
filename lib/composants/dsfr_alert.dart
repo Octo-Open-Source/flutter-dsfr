@@ -55,20 +55,19 @@ class DsfrAlert extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.stretch,
-          spacing: 16,
           children: [
             DecoratedBox(
               decoration: BoxDecoration(color: type.getBackgroundColor(context)),
               child: Align(
                   alignment: Alignment.topCenter,
                   child: Padding(
-                    padding: const EdgeInsets.fromLTRB(8, 16, 8, 0),
+                    padding: const EdgeInsets.symmetric(horizontal: 8,vertical:  16),
                     child: Icon(type.icon, color: DsfrColorDecisions.backgroundDefaultGrey(context)),
                   )),
             ),
             Expanded(
               child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 16),
+                padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   spacing: 4,
