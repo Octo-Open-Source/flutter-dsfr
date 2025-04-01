@@ -8,6 +8,7 @@ export 'components/buttons/france_connect_button.dart';
 export 'components/checkboxes/checkbox.dart';
 export 'components/divider.dart';
 export 'components/dsfr_badge.dart';
+export 'components/file_uploader.dart';
 export 'components/input.dart';
 export 'components/input_headless.dart';
 export 'components/link.dart';

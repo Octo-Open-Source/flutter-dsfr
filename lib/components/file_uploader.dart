@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dsfr/flutter_dsfr.dart';
-import 'package:flutter_dsfr/helpers/composant_state.dart';
+import 'package:flutter_dsfr/helpers/dsfr_component_state.dart';
 
 class DsfrFileUploader extends StatelessWidget {
   final String title;
   final String description;
   final String buttonLabel;
   final bool disabled;
-  final DsfrComposantState componentState;
+  final DsfrComponentState componentState;
 
   const DsfrFileUploader({
     super.key,
@@ -15,12 +15,12 @@ class DsfrFileUploader extends StatelessWidget {
     required this.description,
     this.buttonLabel = 'Parcourir...',
     this.disabled = false,
-    this.componentState = const DsfrComposantState.none(),
+    this.componentState = const DsfrComponentState.none(),
   });
 
   Color _getTitleColor(BuildContext context) => switch ((disabled, componentState.state)) {
         (true, _) => DsfrColorDecisions.textDisabledGrey(context),
-        (false, DsfrComposantStateEnum.error) => DsfrColorDecisions.textDefaultError(context),
+        (false, DsfrComponentState.error) => DsfrColorDecisions.textDefaultError(context),
         (false, _) => DsfrColorDecisions.textLabelGrey(context)
       };
 
@@ -77,7 +77,7 @@ class DsfrFileUploader extends StatelessWidget {
             ),
           ],
         ),
-        if (componentState.state == DsfrComposantStateEnum.error)
+        if (componentState.state == DsfrComponentStateEnum.error)
           Padding(
             padding: const EdgeInsets.only(top: 16),
             child: Row(
