@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_dsfr/atoms/composant_state_widget.dart';
 import 'package:flutter_dsfr/flutter_dsfr.dart';
 import 'package:flutter_dsfr/helpers/composant_state.dart';
 
-class FileUploader extends StatelessWidget {
+class DsfrFileUploader extends StatelessWidget {
   final String title;
   final String description;
   final String buttonLabel;
   final bool disabled;
   final DsfrComposantState componentState;
 
-  const FileUploader({
+  const DsfrFileUploader({
     super.key,
     this.title = 'Ajouter un fichier',
     required this.description,

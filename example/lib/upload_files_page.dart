@@ -18,16 +18,16 @@ class UploadFilesPage extends StatelessWidget {
           child: Column(
             spacing: 32,
             children: [
-              FileUploader(
+              DsfrFileUploader(
                 description:
                     "Taille maximale : 500 Mo. Formats supportés : jpg, png, pdf. Plusieurs fichiers possibles. Lorem ipsum dolor sit amet, consectetur adipiscing.",
               ),
-              FileUploader(
+              DsfrFileUploader(
                 componentState: DsfrComposantState.error(errorMessage: "Format de fichier non supporté"),
                 description:
                     "Taille maximale : 500 Mo. Formats supportés : jpg, png, pdf. Plusieurs fichiers possibles. Lorem ipsum dolor sit amet, consectetur adipiscing.",
               ),
-              FileUploader(
+              DsfrFileUploader(
                 disabled: true,
                 description:
                     "Taille maximale : 500 Mo. Formats supportés : jpg, png, pdf. Plusieurs fichiers possibles. Lorem ipsum dolor sit amet, consectetur adipiscing.",
