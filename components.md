@@ -8,7 +8,7 @@
 | Composant                                                          | DSFR Flutter | Commentaires                                                       |
 |--------------------------------------------------------------------|-------------|--------------------------------------------------------------------|
 | Accordéon (Accordion)                                              | ✅           |                                                                    |
-| Ajout de fichier (Upload)                                          | ❌           |                                                                    |
+| Ajout de fichier (Upload)                                          | ✅           |                                                                    |
 | Alerte (Alert)                                                     | ✅           |                                                                    |
 | Badge                                                              | ✅           |                                                                    |
 | Bandeau d'information importante (Notice)                          | ❌           |                                                                    |

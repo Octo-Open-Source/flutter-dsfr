@@ -21,6 +21,7 @@ import 'package:example/stepper_page.dart';
 import 'package:example/tags_page.dart';
 import 'package:example/text_page.dart';
 import 'package:example/switches_page.dart';
+import 'package:example/upload_files_page.dart';
 import 'package:example/tooltips_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dsfr/fondamentaux/color_decisions.g.dart';
@@ -83,6 +84,7 @@ class _MyAppState extends State<MyApp> {
               StepperPage.model,
               AlertPage.model,
               TooltipsPage.model,
+              UploadFilesPage.model,
             ],
           ),
           builder: (final context, final child) => AccessibilityTools(child: child),
