@@ -27,10 +27,7 @@ class AlertPage extends StatelessWidget {
             DsfrAlert(type: DsfrAlertType.warning, description: 'description'),
             DsfrAlert(type: DsfrAlertType.error, description: 'description'),
           ]),
-          PageSubSection(title: 'Alerte avec îcone de fermeture', children: [
-            DsfrAlert(type: DsfrAlertType.info, title: 'Titre', description: 'description', isDismissible: true),
-            DsfrAlert(type: DsfrAlertType.success, title: 'Titre', description: 'description', isDismissible: true),
-          ]),
+          DsfrAlertWithClose(),
           PageSubSection(title: 'Variantes : titre seul et description longue', children: [
             DsfrAlert(type: DsfrAlertType.info, title: 'Titre'),
             DsfrAlert(
@@ -41,4 +38,40 @@ class AlertPage extends StatelessWidget {
           ]),
         ],
       );
+}
+
+class DsfrAlertWithClose extends StatefulWidget {
+  const DsfrAlertWithClose({super.key});
+
+  @override
+  State<DsfrAlertWithClose> createState() => _DsfrAlertWithCloseState();
+}
+
+class _DsfrAlertWithCloseState extends State<DsfrAlertWithClose> {
+  bool isInfoVisible = true;
+  bool isSuccessVisible = true;
+
+  @override
+  Widget build(final context) {
+    return PageSubSection(title: 'Alerte avec îcone de fermeture', children: [
+      if (isInfoVisible)
+        DsfrAlert(
+          type: DsfrAlertType.info,
+          title: 'Titre',
+          description: 'description',
+          onClose: () => setState(() {
+            isInfoVisible = false;
+          }),
+        ),
+      if (isSuccessVisible)
+        DsfrAlert(
+          type: DsfrAlertType.success,
+          title: 'Titre',
+          description: 'description',
+          onClose: () => setState(() {
+            isSuccessVisible = false;
+          }),
+        ),
+    ]);
+  }
 }

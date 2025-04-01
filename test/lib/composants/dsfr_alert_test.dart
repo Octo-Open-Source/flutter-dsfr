@@ -17,7 +17,7 @@ void main() {
   );
 
   final alertWithCloseButton =
-      DsfrAlert(type: DsfrAlertType.info, title: 'Titre', description: 'description', isDismissible: true);
+      DsfrAlert(type: DsfrAlertType.info, title: 'Titre', description: 'description', onClose: () {});
 
   accessibilityTest(componentName: 'Alerte info', isLightMode: true, child: alertInfo);
   accessibilityTest(componentName: 'Alerte info', isLightMode: false, child: alertInfo);
