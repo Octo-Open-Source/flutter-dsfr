@@ -1,7 +1,7 @@
 import 'package:flutter_dsfr/flutter_dsfr.dart';
 import 'package:example/page_item.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_dsfr/helpers/composant_state.dart';
+import 'package:flutter_dsfr/helpers/dsfr_component_state.dart';
 
 class CheckboxPage extends StatefulWidget {
   const CheckboxPage({super.key});
@@ -79,7 +79,7 @@ class _CheckboxPageState extends State<CheckboxPage> {
             description: 'case à cocher avec erreur',
             value: false,
             onChanged: (final value) {},
-            composantState: DsfrComposantState.error(
+            componentState: DsfrComponentState.error(
               errorMessage: 'Texte d\'erreur obligatoire',
             ),
           ),
@@ -88,7 +88,7 @@ class _CheckboxPageState extends State<CheckboxPage> {
             description: 'case à cocher avec succès',
             value: false,
             onChanged: (final value) {},
-            composantState: DsfrComposantState.success(
+            componentState: DsfrComponentState.success(
               message: 'Texte de validation',
             ),
           ),
@@ -190,7 +190,7 @@ class _CheckboxPageState extends State<CheckboxPage> {
           Divider(),
           DsfrGroup<DsfrCheckbox>(
             label: 'Groupe en erreur',
-            composantState: DsfrComposantState.error(errorMessage: 'Texte d\'erreur obligatoire'),
+            componentState: DsfrComponentState.error(errorMessage: 'Texte d\'erreur obligatoire'),
             children: [
               DsfrCheckbox.md(
                 label: 'Libellé',
@@ -218,7 +218,7 @@ class _CheckboxPageState extends State<CheckboxPage> {
           Divider(),
           DsfrGroup<DsfrCheckbox>(
             label: 'Groupe en succès',
-            composantState: DsfrComposantState.success(message: 'Texte de validation optionnel'),
+            componentState: DsfrComponentState.success(message: 'Texte de validation optionnel'),
             children: [
               DsfrCheckbox.md(
                 label: 'Libellé',

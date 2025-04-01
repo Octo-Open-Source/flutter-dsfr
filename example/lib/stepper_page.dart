@@ -1,6 +1,6 @@
 import 'package:example/page_item.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_dsfr/composants/stepper.dart';
+import 'package:flutter_dsfr/components/stepper.dart';
 
 class StepperPage extends StatelessWidget {
   const StepperPage({super.key});

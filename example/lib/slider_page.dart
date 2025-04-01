@@ -2,9 +2,9 @@ import 'package:example/mise_en_page/page_section.dart';
 import 'package:example/mise_en_page/page_sub_section.dart';
 import 'package:example/page_item.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_dsfr/composants/sliders/range_slider.dart';
-import 'package:flutter_dsfr/composants/sliders/slider.dart';
-import 'package:flutter_dsfr/helpers/composant_state.dart';
+import 'package:flutter_dsfr/components/sliders/range_slider.dart';
+import 'package:flutter_dsfr/components/sliders/slider.dart';
+import 'package:flutter_dsfr/helpers/dsfr_component_state.dart';
 
 class SliderPage extends StatefulWidget {
   const SliderPage({super.key});
@@ -185,7 +185,7 @@ class _SliderPageState extends State<SliderPage> {
                     DsfrSlider.sm(
                       label: "Curseur SM",
                       value: _value,
-                      composantState: DsfrComposantState.success(message: "Texte validation optionnel"),
+                      componentState: DsfrComponentState.success(message: "Texte validation optionnel"),
                       onChanged: (final newValue) {
                         setState(() => _value = newValue);
                       },
@@ -193,7 +193,7 @@ class _SliderPageState extends State<SliderPage> {
                     DsfrSlider.md(
                       label: "Curseur MD",
                       value: _value,
-                      composantState: DsfrComposantState.success(message: "Texte validation optionnel"),
+                      componentState: DsfrComponentState.success(message: "Texte validation optionnel"),
                       onChanged: (final newValue) {
                         setState(() => _value = newValue);
                       },
@@ -206,7 +206,7 @@ class _SliderPageState extends State<SliderPage> {
                     DsfrSlider.sm(
                       label: "Curseur",
                       value: _value,
-                      composantState: DsfrComposantState.error(errorMessage: "Texte d'erreur obligatoire"),
+                      componentState: DsfrComponentState.error(errorMessage: "Texte d'erreur obligatoire"),
                       onChanged: (final newValue) {
                         setState(() => _value = newValue);
                       },
@@ -214,7 +214,7 @@ class _SliderPageState extends State<SliderPage> {
                     DsfrSlider.md(
                       label: "Curseur",
                       value: _value,
-                      composantState: DsfrComposantState.error(errorMessage: "Texte d'erreur obligatoire"),
+                      componentState: DsfrComponentState.error(errorMessage: "Texte d'erreur obligatoire"),
                       onChanged: (final newValue) {
                         setState(() => _value = newValue);
                       },
@@ -377,7 +377,7 @@ class _SliderPageState extends State<SliderPage> {
                     DsfrRangeSlider.sm(
                       label: "Curseur",
                       values: _rangeValues,
-                      composantState: DsfrComposantState.success(message: "Texte validation optionnel"),
+                      componentState: DsfrComponentState.success(message: "Texte validation optionnel"),
                       onChanged: (final newValues) {
                         setState(() => _rangeValues = newValues);
                       },
@@ -385,7 +385,7 @@ class _SliderPageState extends State<SliderPage> {
                     DsfrRangeSlider.md(
                       label: "Curseur",
                       values: _rangeValues,
-                      composantState: DsfrComposantState.success(message: "Texte validation optionnel"),
+                      componentState: DsfrComponentState.success(message: "Texte validation optionnel"),
                       onChanged: (final newValues) {
                         setState(() => _rangeValues = newValues);
                       },
@@ -398,7 +398,7 @@ class _SliderPageState extends State<SliderPage> {
                     DsfrRangeSlider.sm(
                       label: "Curseur SM",
                       values: _rangeValues,
-                      composantState: DsfrComposantState.error(errorMessage: "Texte d'erreur obligatoire"),
+                      componentState: DsfrComponentState.error(errorMessage: "Texte d'erreur obligatoire"),
                       onChanged: (final newValues) {
                         setState(() => _rangeValues = newValues);
                       },
@@ -406,7 +406,7 @@ class _SliderPageState extends State<SliderPage> {
                     DsfrRangeSlider.md(
                       label: "Curseur MD",
                       values: _rangeValues,
-                      composantState: DsfrComposantState.error(errorMessage: "Texte d'erreur obligatoire"),
+                      componentState: DsfrComponentState.error(errorMessage: "Texte d'erreur obligatoire"),
                       onChanged: (final newValues) {
                         setState(() => _rangeValues = newValues);
                       },

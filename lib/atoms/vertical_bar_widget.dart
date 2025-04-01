@@ -1,25 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dsfr/fondamentaux/color_decisions.g.dart';
 import 'package:flutter_dsfr/fondamentaux/spacing.g.dart';
-import 'package:flutter_dsfr/helpers/composant_state.dart';
+import 'package:flutter_dsfr/helpers/dsfr_component_state.dart';
 
 class VerticalBarWidget extends StatelessWidget {
-  final DsfrComposantState composantState;
+  final DsfrComponentState componentState;
 
   const VerticalBarWidget({
     super.key,
-    required this.composantState,
+    required this.componentState,
   });
 
   @override
   Widget build(final context) {
-    if (composantState.state == DsfrComposantStateEnum.none) {
+    if (componentState.state == DsfrComponentStateEnum.none) {
       return const SizedBox.shrink();
     } else {
       return Row(
         children: [
           VerticalDivider(
-            color: composantState.state == DsfrComposantStateEnum.error
+            color: componentState.state == DsfrComponentStateEnum.error
                 ? DsfrColorDecisions.borderPlainError(context)
                 : DsfrColorDecisions.borderPlainSuccess(context),
             width: 0,

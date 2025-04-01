@@ -2,7 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_dsfr/atoms/dsfr_form_state.dart';
 import 'package:flutter_dsfr/flutter_dsfr.dart';
 import 'package:flutter_dsfr/helpers/color_utils.dart';
-import 'package:flutter_dsfr/helpers/composant_state.dart';
+import 'package:flutter_dsfr/helpers/dsfr_component_state.dart';
 
 enum Direction {
   vertical,
@@ -12,7 +12,7 @@ enum Direction {
 class DsfrGroup<T extends Widget> extends StatelessWidget {
   final String label;
   final String? description;
-  final DsfrComposantState composantState;
+  final DsfrComponentState componentState;
   final Direction direction;
   final List<T> children;
   final Widget? separator;
@@ -21,7 +21,7 @@ class DsfrGroup<T extends Widget> extends StatelessWidget {
     super.key,
     required this.label,
     this.description,
-    this.composantState = const DsfrComposantState.none(),
+    this.componentState = const DsfrComponentState.none(),
     this.direction = Direction.vertical,
     required this.children,
     this.separator,
@@ -30,15 +30,15 @@ class DsfrGroup<T extends Widget> extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DsfrFormState(
-      composantState: composantState,
+      componentState: componentState,
       child: GroupProvider(
-        composantState: composantState,
+        componentState: componentState,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               label,
-              style: DsfrTextStyle.bodyMd(color: getTextColor(context, composantState.state)),
+              style: DsfrTextStyle.bodyMd(color: getTextColor(context, componentState.state)),
             ),
             SizedBox(height: description != null ? DsfrSpacings.s1w : DsfrSpacings.s2w),
             description != null
@@ -81,11 +81,11 @@ class DsfrGroup<T extends Widget> extends StatelessWidget {
 }
 
 class GroupProvider extends InheritedWidget {
-  final DsfrComposantState composantState;
+  final DsfrComponentState componentState;
 
   const GroupProvider({
     super.key,
-    required this.composantState,
+    required this.componentState,
     required super.child,
   });
 
@@ -95,6 +95,6 @@ class GroupProvider extends InheritedWidget {
 
   @override
   bool updateShouldNotify(GroupProvider oldWidget) {
-    return oldWidget.composantState != composantState;
+    return oldWidget.componentState != componentState;
   }
 }

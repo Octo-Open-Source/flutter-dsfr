@@ -1,7 +1,7 @@
 import 'package:example/page_item.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_dsfr/composants/buttons/button.dart';
-import 'package:flutter_dsfr/composants/modal.dart';
+import 'package:flutter_dsfr/components/buttons/button.dart';
+import 'package:flutter_dsfr/components/modal.dart';
 import 'package:flutter_dsfr/fondamentaux/color_decisions.g.dart';
 import 'package:flutter_dsfr/fondamentaux/fonts.dart';
 import 'package:flutter_dsfr/fondamentaux/spacing.g.dart';

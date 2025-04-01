@@ -1,7 +1,7 @@
 import 'package:flutter_dsfr/flutter_dsfr.dart';
 import 'package:example/page_item.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_dsfr/helpers/composant_state.dart';
+import 'package:flutter_dsfr/helpers/dsfr_component_state.dart';
 
 import 'mise_en_page/page_section.dart';
 import 'mise_en_page/page_sub_section.dart';
@@ -298,7 +298,7 @@ class _TogglesPageState extends State<TogglesPage> {
                     description: 'Texte de description additionnel',
                     status: _toggleLeft ? 'Activé' : 'Désactivé',
                     labelLocation: DsfrToggleSwitchLabelLocation.left,
-                    composantState: DsfrComposantState.error(
+                    componentState: DsfrComponentState.error(
                         errorMessage: "Texte d'erreur obligatoire"),
                     value: _toggleLeft,
                     onChanged: (final value) {
@@ -312,7 +312,7 @@ class _TogglesPageState extends State<TogglesPage> {
                     description: 'Texte de description additionnel',
                     status: !_toggleLeft ? 'Activé' : 'Désactivé',
                     labelLocation: DsfrToggleSwitchLabelLocation.left,
-                    composantState: DsfrComposantState.error(
+                    componentState: DsfrComponentState.error(
                         errorMessage: "Texte d'erreur obligatoire"),
                     value: !_toggleLeft,
                     onChanged: (final value) {
@@ -326,7 +326,7 @@ class _TogglesPageState extends State<TogglesPage> {
                     description: 'Texte de description additionnel',
                     status: _toggleLeft ? 'Activé' : 'Désactivé',
                     labelLocation: DsfrToggleSwitchLabelLocation.left,
-                    composantState: DsfrComposantState.success(
+                    componentState: DsfrComponentState.success(
                         message: "Texte de validation optionnel"),
                     value: _toggleLeft,
                     onChanged: (final value) {
@@ -340,7 +340,7 @@ class _TogglesPageState extends State<TogglesPage> {
                     description: 'Texte de description additionnel',
                     status: !_toggleLeft ? 'Activé' : 'Désactivé',
                     labelLocation: DsfrToggleSwitchLabelLocation.left,
-                    composantState: DsfrComposantState.success(
+                    componentState: DsfrComponentState.success(
                         message: "Texte de validation optionnel"),
                     value: !_toggleLeft,
                     onChanged: (final value) {
@@ -358,7 +358,7 @@ class _TogglesPageState extends State<TogglesPage> {
                       description: 'Texte de description additionnel',
                       status: _toggleLeft ? 'Activé' : 'Désactivé',
                       labelLocation: DsfrToggleSwitchLabelLocation.right,
-                      composantState: DsfrComposantState.error(
+                      componentState: DsfrComponentState.error(
                           errorMessage: "Texte d'erreur obligatoire"),
                       value: _toggleLeft,
                       onChanged: (final value) {
@@ -372,7 +372,7 @@ class _TogglesPageState extends State<TogglesPage> {
                       description: 'Texte de description additionnel',
                       status: !_toggleLeft ? 'Activé' : 'Désactivé',
                       labelLocation: DsfrToggleSwitchLabelLocation.right,
-                      composantState: DsfrComposantState.error(
+                      componentState: DsfrComponentState.error(
                           errorMessage: "Texte d'erreur obligatoire"),
                       value: !_toggleLeft,
                       onChanged: (final value) {
@@ -386,7 +386,7 @@ class _TogglesPageState extends State<TogglesPage> {
                       description: 'Texte de description additionnel',
                       status: _toggleLeft ? 'Activé' : 'Désactivé',
                       labelLocation: DsfrToggleSwitchLabelLocation.right,
-                      composantState: DsfrComposantState.success(
+                      componentState: DsfrComponentState.success(
                           message: "Texte de validation optionnel"),
                       value: _toggleLeft,
                       onChanged: (final value) {
@@ -400,7 +400,7 @@ class _TogglesPageState extends State<TogglesPage> {
                       description: 'Texte de description additionnel',
                       status: !_toggleLeft ? 'Activé' : 'Désactivé',
                       labelLocation: DsfrToggleSwitchLabelLocation.right,
-                      composantState: DsfrComposantState.success(
+                      componentState: DsfrComponentState.success(
                           message: "Texte de validation optionnel"),
                       value: !_toggleLeft,
                       onChanged: (final value) {
@@ -478,7 +478,7 @@ class _TogglesPageState extends State<TogglesPage> {
                           label: 'Légende',
                           description:
                               'Texte de description additionnel (optionnel)',
-                          composantState: DsfrComposantState.success(
+                          componentState: DsfrComponentState.success(
                               message: "Texte de validation optionnel"),
                           children: [
                             DsfrToggleSwitch(
@@ -532,7 +532,7 @@ class _TogglesPageState extends State<TogglesPage> {
                           label: 'Légende',
                           description:
                               'Texte de description additionnel (optionnel)',
-                          composantState: DsfrComposantState.error(
+                          componentState: DsfrComponentState.error(
                               errorMessage: "Texte d'erreur obligatoire"),
                           children: [
                             DsfrToggleSwitch(
@@ -643,7 +643,7 @@ class _TogglesPageState extends State<TogglesPage> {
                           label: 'Légende',
                           description:
                               'Texte de description additionnel (optionnel)',
-                          composantState: DsfrComposantState.success(
+                          componentState: DsfrComponentState.success(
                               message: "Texte de validation optionnel"),
                           children: [
                             DsfrToggleSwitch(
@@ -697,7 +697,7 @@ class _TogglesPageState extends State<TogglesPage> {
                           label: 'Légende',
                           description:
                               'Texte de description additionnel (optionnel)',
-                          composantState: DsfrComposantState.error(
+                          componentState: DsfrComponentState.error(
                               errorMessage: "Texte d'erreur obligatoire"),
                           children: [
                             DsfrToggleSwitch(

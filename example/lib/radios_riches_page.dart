@@ -1,7 +1,7 @@
 import 'package:flutter_dsfr/flutter_dsfr.dart';
 import 'package:example/page_item.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_dsfr/helpers/composant_state.dart';
+import 'package:flutter_dsfr/helpers/dsfr_component_state.dart';
 
 class RadiosRichesPage extends StatefulWidget {
   const RadiosRichesPage({super.key});
@@ -128,21 +128,21 @@ class _RadiosRichePageState extends State<RadiosRichesPage> {
             title: 'Radios riches en erreur',
             values: const {1: 'Un', 2: 'Deux', 3: 'Trois'},
             onCallback: (final p0) {},
-            composantState: DsfrComposantState.error(errorMessage: 'Texte d\'erreur obligatoire'),
+            componentState: DsfrComponentState.error(errorMessage: 'Texte d\'erreur obligatoire'),
           ),
           const SizedBox(height: DsfrSpacings.s3w),
           DsfrRadioButtonGroup.rich(
             title: 'Radios riches en succès',
             values: const {1: 'Un', 2: 'Deux', 3: 'Trois'},
             onCallback: (final p0) {},
-            composantState: DsfrComposantState.success(message: 'Texte de succès optionnel'),
+            componentState: DsfrComponentState.success(message: 'Texte de succès optionnel'),
           ),
           const SizedBox(height: DsfrSpacings.s3w),
           DsfrRadioButtonGroup.rich(
             title: 'Succès sans texte',
             values: const {1: 'Un', 2: 'Deux', 3: 'Trois'},
             onCallback: (final p0) {},
-            composantState: DsfrComposantState.success(),
+            componentState: DsfrComponentState.success(),
           ),
           const SizedBox(height: DsfrSpacings.s3w),
           DsfrRadioButtonGroup.rich(

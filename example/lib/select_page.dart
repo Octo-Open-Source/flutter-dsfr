@@ -1,7 +1,7 @@
 import 'package:example/page_item.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_dsfr/composants/select.dart';
-import 'package:flutter_dsfr/helpers/composant_state.dart';
+import 'package:flutter_dsfr/components/select.dart';
+import 'package:flutter_dsfr/helpers/dsfr_component_state.dart';
 
 class SelectPage extends StatelessWidget {
   const SelectPage({super.key});
@@ -39,7 +39,7 @@ class SelectPage extends StatelessWidget {
                 DropdownMenuEntry(value: 3, label: 'Trois'),
               ],
               onSelected: (final value) {},
-              composantState: const DsfrComposantState.error(
+              componentState: const DsfrComponentState.error(
                 errorMessage: 'Texte d\'erreur obligatoire',
               ),
             ),
@@ -51,7 +51,7 @@ class SelectPage extends StatelessWidget {
                 DropdownMenuEntry(value: 3, label: 'Trois'),
               ],
               onSelected: (final value) {},
-              composantState: const DsfrComposantState.success(
+              componentState: const DsfrComponentState.success(
                 message: 'Texte de validation optionnel',
               ),
             ),

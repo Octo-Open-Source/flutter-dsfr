@@ -1,11 +1,11 @@
 import 'package:example/mise_en_page/page_section.dart';
 import 'package:example/mise_en_page/page_sub_section.dart';
 import 'package:flutter_dsfr/atoms/dsfr_group.dart';
-import 'package:flutter_dsfr/composants/radios/dsfr_radio_button.dart';
+import 'package:flutter_dsfr/components/radios/dsfr_radio_button.dart';
 import 'package:example/page_item.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_dsfr/composants/radios/dsfr_radio_button_group.dart';
-import 'package:flutter_dsfr/helpers/composant_state.dart';
+import 'package:flutter_dsfr/components/radios/dsfr_radio_button_group.dart';
+import 'package:flutter_dsfr/helpers/dsfr_component_state.dart';
 import 'package:flutter_dsfr/helpers/dsfr_component_size.dart';
 
 class RadiosPage extends StatefulWidget {
@@ -135,7 +135,7 @@ class _RadiosPageState extends State<RadiosPage> {
                         label: 'Bouton Radio - SM',
                         value: 8,
                         groupValue: _value,
-                        composantState: DsfrComposantState.success(message: "Texte de validation optionnel"),
+                        componentState: DsfrComponentState.success(message: "Texte de validation optionnel"),
                         onChanged: (final value) {
                           if (value != null) {
                             setState(() => _value = value);
@@ -147,7 +147,7 @@ class _RadiosPageState extends State<RadiosPage> {
                         label: 'Bouton Radio - MD',
                         value: 9,
                         groupValue: _value,
-                        composantState: DsfrComposantState.success(message: "Texte de validation optionnel"),
+                        componentState: DsfrComponentState.success(message: "Texte de validation optionnel"),
                         onChanged: (final value) {
                           if (value != null) {
                             setState(() => _value = value);
@@ -164,7 +164,7 @@ class _RadiosPageState extends State<RadiosPage> {
                         label: 'Bouton Radio - SM',
                         value: 10,
                         groupValue: _value,
-                        composantState: DsfrComposantState.error(errorMessage: "Texte d'erreur obligatoire"),
+                        componentState: DsfrComponentState.error(errorMessage: "Texte d'erreur obligatoire"),
                         onChanged: (final value) {
                           if (value != null) {
                             setState(() => _value = value);
@@ -176,7 +176,7 @@ class _RadiosPageState extends State<RadiosPage> {
                         label: 'Bouton Radio - MD',
                         value: 11,
                         groupValue: _value,
-                        composantState: DsfrComposantState.error(errorMessage: "Texte d'erreur obligatoire"),
+                        componentState: DsfrComponentState.error(errorMessage: "Texte d'erreur obligatoire"),
                         onChanged: (final value) {
                           if (value != null) {
                             setState(() => _value = value);
@@ -213,7 +213,7 @@ class _RadiosPageState extends State<RadiosPage> {
                       values: const {1: 'Un', 2: 'Deux', 3: 'Trois'},
                       onCallback: (final value) {},
                       size: DsfrComponentSize.sm,
-                      composantState: DsfrComposantState.success(message: 'Texte de validation optionnel'),
+                      componentState: DsfrComponentState.success(message: 'Texte de validation optionnel'),
                     ),
                   ]),
                   PageSubSection(title: 'Erreur', children: [
@@ -222,7 +222,7 @@ class _RadiosPageState extends State<RadiosPage> {
                       values: const {1: 'Un', 2: 'Deux', 3: 'Trois'},
                       onCallback: (final value) {},
                       size: DsfrComponentSize.sm,
-                      composantState: DsfrComposantState.error(errorMessage: 'Texte obligatoire'),
+                      componentState: DsfrComponentState.error(errorMessage: 'Texte obligatoire'),
                     ),
                   ]),
                   PageSubSection(title: 'Désactivé', children: [

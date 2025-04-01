@@ -1,33 +1,33 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_dsfr/fondamentaux/color_decisions.g.dart';
-import 'package:flutter_dsfr/helpers/composant_state.dart';
+import 'package:flutter_dsfr/helpers/dsfr_component_state.dart';
 
-Color getTextColor(BuildContext context, DsfrComposantStateEnum composantStateEnum, {Color? defaultColor}) {
-  switch (composantStateEnum) {
-    case DsfrComposantStateEnum.error:
+Color getTextColor(BuildContext context, DsfrComponentStateEnum componentStateEnum, {Color? defaultColor}) {
+  switch (componentStateEnum) {
+    case DsfrComponentStateEnum.error:
       return DsfrColorDecisions.textDefaultError(context);
-    case DsfrComposantStateEnum.success:
+    case DsfrComponentStateEnum.success:
       return DsfrColorDecisions.textDefaultSuccess(context);
-    case DsfrComposantStateEnum.info:
+    case DsfrComponentStateEnum.info:
       return DsfrColorDecisions.textDefaultInfo(context);
-    case DsfrComposantStateEnum.warning:
+    case DsfrComponentStateEnum.warning:
       return DsfrColorDecisions.textDefaultWarning(context);
-    case DsfrComposantStateEnum.none:
+    case DsfrComponentStateEnum.none:
       return DsfrColorDecisions.textDefaultGrey(context);
   }
 }
 
-Color getBorderColor(BuildContext context, DsfrComposantStateEnum composantStateEnum, {Color? defaultColor}) {
-  switch (composantStateEnum) {
-    case DsfrComposantStateEnum.error:
+Color getBorderColor(BuildContext context, DsfrComponentStateEnum componentStateEnum, {Color? defaultColor}) {
+  switch (componentStateEnum) {
+    case DsfrComponentStateEnum.error:
       return DsfrColorDecisions.borderPlainError(context);
-    case DsfrComposantStateEnum.success:
+    case DsfrComponentStateEnum.success:
       return DsfrColorDecisions.borderPlainSuccess(context);
-    case DsfrComposantStateEnum.info:
+    case DsfrComponentStateEnum.info:
       return DsfrColorDecisions.borderPlainInfo(context);
-    case DsfrComposantStateEnum.warning:
+    case DsfrComponentStateEnum.warning:
       return DsfrColorDecisions.borderPlainWarning(context);
-    case DsfrComposantStateEnum.none:
+    case DsfrComponentStateEnum.none:
       return defaultColor ?? DsfrColorDecisions.borderPlainGrey(context);
   }
 }

@@ -1,7 +1,7 @@
 import 'package:flutter_dsfr/flutter_dsfr.dart';
 import 'package:example/page_item.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_dsfr/helpers/composant_state.dart';
+import 'package:flutter_dsfr/helpers/dsfr_component_state.dart';
 
 class InputsPage extends StatelessWidget {
   const InputsPage({super.key});
@@ -69,14 +69,14 @@ class InputsPage extends StatelessWidget {
           DsfrInput(
             label: 'Input - error',
             onChanged: print,
-            composantState: DsfrComposantState.error(
+            componentState: DsfrComponentState.error(
               errorMessage: 'texte d\'erreur obligatoire',
             ),
           ),
           DsfrInput(
             label: 'Input - success',
             onChanged: print,
-            composantState: DsfrComposantState.success(
+            componentState: DsfrComponentState.success(
               message: 'texte de validation optionnel',
             ),
           ),
