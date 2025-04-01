@@ -63,7 +63,7 @@ class ButtonsPage extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          ...children.separator(gap).toList(),
+          ...children.separator(gap),
           PageSubSection(
             title: 'Groupe de boutons vertical',
             children: [
