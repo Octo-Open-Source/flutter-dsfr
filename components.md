@@ -29,7 +29,7 @@
 | Fil d'Ariane (Breadcrumb)                                          | ❌           | Mobile non concerné                                                                   |
 | Gestionnaire de consentement (Consent banner)                      | ❌           |                                                                    |
 | Indicateur d'étapes (Stepper)                                      | ✅           |                                                                    |
-| Infobulle (Tooltip)                                                | ❌           |                                                                    |
+| Infobulle (Tooltip)                                                | ✅           |                                                                    |
 | Interrupteur (Toggle)                                              | ✅️          |                                                                    |
 | Lettre d'information et réseaux sociaux (Newsletter and follow us) | ❌           |                                                                    |
 | Lien (Link)                                                        | ✅           |                                                                    |
