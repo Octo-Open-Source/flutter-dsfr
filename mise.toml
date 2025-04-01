@@ -1,3 +1,6 @@
 [tools]
-flutter = "3.27.4-stable"
+cocoapods = "1.16.2"
+flutter = "3.29.2"
 python = "3.13.1"
+jq = "1.7.1"
+ruby = "3.3.6"
