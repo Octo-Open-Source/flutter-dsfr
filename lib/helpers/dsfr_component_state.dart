@@ -3,6 +3,7 @@ enum DsfrComponentStateEnum {
   success,
   info,
   warning,
+  highlight,
   none,
 }
 
@@ -37,6 +38,11 @@ class DsfrComponentState {
       : this._(
           state: DsfrComponentStateEnum.warning,
           text: message,
+        );
+
+  const DsfrComponentState.highlight()
+      : this._(
+          state: DsfrComponentStateEnum.highlight,
         );
 
   const DsfrComponentState.none()

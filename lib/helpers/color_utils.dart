@@ -14,6 +14,8 @@ Color getTextColor(BuildContext context, DsfrComponentStateEnum componentStateEn
       return DsfrColorDecisions.textDefaultWarning(context);
     case DsfrComponentStateEnum.none:
       return DsfrColorDecisions.textDefaultGrey(context);
+    case DsfrComponentStateEnum.highlight:
+      throw UnimplementedError();
   }
 }
 
@@ -29,5 +31,7 @@ Color getBorderColor(BuildContext context, DsfrComponentStateEnum componentState
       return DsfrColorDecisions.borderPlainWarning(context);
     case DsfrComponentStateEnum.none:
       return defaultColor ?? DsfrColorDecisions.borderPlainGrey(context);
+    case DsfrComponentStateEnum.highlight:
+      throw UnimplementedError();
   }
 }

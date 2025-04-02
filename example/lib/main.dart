@@ -27,6 +27,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dsfr/fondamentaux/color_decisions.g.dart';
 import 'package:flutter_dsfr/helpers/theme_mode_provider.dart';
 
+import 'highlight_page.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -85,6 +87,7 @@ class _MyAppState extends State<MyApp> {
               AlertPage.model,
               TooltipsPage.model,
               UploadFilesPage.model,
+              HighlightPage.model,
             ],
           ),
           builder: (final context, final child) => AccessibilityTools(child: child),

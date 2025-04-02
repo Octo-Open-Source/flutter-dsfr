@@ -59,6 +59,8 @@ class ComponentStateIcon extends StatelessWidget {
         return DsfrColorDecisions.backgroundFlatWarning(context);
       case DsfrComponentStateEnum.none:
         return DsfrColorDecisions.borderPlainGrey(context);
+      case DsfrComponentStateEnum.highlight:
+        throw UnimplementedError();
     }
   }
 
@@ -74,6 +76,8 @@ class ComponentStateIcon extends StatelessWidget {
         return DsfrIcons.systemFrWarningFill;
       case DsfrComponentStateEnum.none:
         return DsfrIcons.systemFrErrorFill;
+      case DsfrComponentStateEnum.highlight:
+        throw UnimplementedError();
     }
   }
 }

@@ -19,15 +19,26 @@ class VerticalBarWidget extends StatelessWidget {
       return Row(
         children: [
           VerticalDivider(
-            color: componentState.state == DsfrComponentStateEnum.error
-                ? DsfrColorDecisions.borderPlainError(context)
-                : DsfrColorDecisions.borderPlainSuccess(context),
+            color: getColor(context),
             width: 0,
             thickness: 2,
           ),
           const SizedBox(width: DsfrSpacings.s2w),
         ],
       );
+    }
+  }
+
+  Color? getColor(BuildContext context) {
+    switch (componentState.state) {
+      case DsfrComponentStateEnum.highlight:
+        return DsfrColorDecisions.borderDefaultBlueFrance(context);
+      case DsfrComponentStateEnum.error:
+        return DsfrColorDecisions.borderPlainError(context);
+      case DsfrComponentStateEnum.success:
+        return DsfrColorDecisions.borderPlainSuccess(context);
+      default:
+        return null;
     }
   }
 }
