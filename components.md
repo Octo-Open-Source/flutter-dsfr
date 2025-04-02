@@ -34,7 +34,7 @@
 | Lettre d'information et réseaux sociaux (Newsletter and follow us) | ❌           |                                                                    |
 | Lien (Link)                                                        | ✅           |                                                                    |
 | Lien d'évitement (Skiplink)                                        | ❌           |                                                                    |
-| Liste déroulante (Select)                                          | ❌           |                                                                    |
+| Liste déroulante (Select)                                          | ✅           |                                                                    |
 | Menu latéral (Sidemenu)                                            | ❌           |                                                                    |
 | Mise en avant (Callout)                                            | ❌           |                                                                    |
 | Mise en exergue (Highlight)                                        | ❌           |                                                                    |
