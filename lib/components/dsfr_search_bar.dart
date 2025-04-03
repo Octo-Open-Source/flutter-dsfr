@@ -79,7 +79,7 @@ class _DsfrSearchBarState extends State<DsfrSearchBar> {
                         width: 50,
                         height: double.infinity,
                         child: Icon(
-                          Icons.search,
+                          DsfrIcons.systemSearchLine,
                           color: DsfrColorDecisions.backgroundContrastGrey(context),
                         ),
                       ),
