@@ -37,9 +37,6 @@ class _DsfrSearchBarState extends State<DsfrSearchBar> {
 
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
-    double searchBarWidth = screenWidth * 0.99;
-
     return DsfrFocusWidget(
       isFocused: _focusNode.hasFocus,
       borderRadius: BorderRadius.only(topLeft: Radius.circular(8), topRight: Radius.circular(8)),
@@ -47,7 +44,7 @@ class _DsfrSearchBarState extends State<DsfrSearchBar> {
         mainAxisSize: MainAxisSize.min,
         children: [
           Container(
-            width: searchBarWidth,
+            width: double.infinity,
             height: 50,
             decoration: BoxDecoration(
               color: DsfrColorDecisions.backgroundContrastGrey(context),
@@ -90,7 +87,7 @@ class _DsfrSearchBarState extends State<DsfrSearchBar> {
             ),
           ),
           Container(
-            width: searchBarWidth,
+            width: double.infinity,
             height: 2,
             color: DsfrColorDecisions.backgroundActionHighBlueFrance(context),
           ),
