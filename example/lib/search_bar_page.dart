@@ -17,11 +17,26 @@ class SearchBarPage extends StatelessWidget {
     final searchController = TextEditingController();
     return Padding(
       padding: const EdgeInsets.all(16),
-      child: DsfrSearchBar(
-        onSearch: () {
-          print('je recherche : ${searchController.text}');
-        },
-        controller: searchController,
+      child: Column(
+        spacing: 32,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          DsfrSearchBar(
+            onSearch: () {
+              print('je recherche : ${searchController.text}');
+            },
+            controller: searchController,
+          ),
+          FractionallySizedBox(
+            widthFactor: 0.5,
+            child: DsfrSearchBar(
+              onSearch: () {
+                print('je recherche : ${searchController.text}');
+              },
+              controller: searchController,
+            ),
+          ),
+        ],
       ),
     );
   }

@@ -43,52 +43,52 @@ class _DsfrSearchBarState extends State<DsfrSearchBar> {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Container(
-            width: double.infinity,
-            height: 50,
-            decoration: BoxDecoration(
-              color: DsfrColorDecisions.backgroundContrastGrey(context),
-              borderRadius: BorderRadius.only(topLeft: Radius.circular(8), topRight: Radius.circular(8)),
-            ),
-            child: Row(
-              children: [
-                Expanded(
-                  child: TextField(
-                    focusNode: _focusNode,
-                    controller: widget.controller,
-                    decoration: InputDecoration(
-                      hintText: widget.hintText,
-                      hintStyle: DsfrTextStyle.bodySmItalic(color: DsfrColorDecisions.textDefaultGrey(context)),
-                      border: InputBorder.none,
-                      contentPadding: const EdgeInsets.symmetric(horizontal: 10),
-                      labelStyle: DsfrTextStyle.bodyMd(color: DsfrColorDecisions.textDefaultGrey(context)),
+          Material(
+            color: DsfrColorDecisions.backgroundContrastGrey(context),
+            borderRadius: BorderRadius.only(topLeft: Radius.circular(8), topRight: Radius.circular(8)),
+            child: SizedBox(
+              height: 50,
+              child: Row(
+                children: [
+                  Flexible(
+                    child: TextField(
+                      focusNode: _focusNode,
+                      controller: widget.controller,
+                      textInputAction: TextInputAction.search,
+                      decoration: InputDecoration(
+                        hintText: widget.hintText,
+                        hintStyle: DsfrTextStyle.bodySmItalic(color: DsfrColorDecisions.textDefaultGrey(context)),
+                        border: InputBorder.none,
+                        contentPadding: const EdgeInsets.symmetric(horizontal: 10),
+                        labelStyle: DsfrTextStyle.bodyMd(color: DsfrColorDecisions.textDefaultGrey(context)),
+                      ),
                     ),
                   ),
-                ),
-                Material(
-                  color: DsfrColorDecisions.backgroundActionHighBlueFrance(context),
-                  borderRadius: BorderRadius.only(topRight: Radius.circular(8)),
-                  child: Semantics(
-                    label: widget.hintText,
-                    child: InkWell(
-                      onTap: widget.onSearch,
-                      child: SizedBox(
-                        width: 50,
-                        height: double.infinity,
-                        child: Icon(
-                          DsfrIcons.systemSearchLine,
-                          color: DsfrColorDecisions.backgroundContrastGrey(context),
+                  Material(
+                    color: DsfrColorDecisions.backgroundActionHighBlueFrance(context),
+                    borderRadius: BorderRadius.only(topRight: Radius.circular(8)),
+                    child: Semantics(
+                      label: widget.hintText,
+                      child: InkWell(
+                        onTap: widget.onSearch,
+                        child: SizedBox(
+                          width: 50,
+                          height: 50,
+                          child: Icon(
+                            DsfrIcons.systemSearchLine,
+                            color: DsfrColorDecisions.backgroundContrastGrey(context),
+                          ),
                         ),
                       ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
-          Container(
-            width: double.infinity,
-            height: 2,
+          Divider(
+            height: 0,
+            thickness: 2,
             color: DsfrColorDecisions.backgroundActionHighBlueFrance(context),
           ),
         ],
