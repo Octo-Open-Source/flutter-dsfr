@@ -5,6 +5,7 @@ import 'package:example/buttons_page.dart';
 import 'package:example/checkbox_page.dart';
 import 'package:example/colors_page.dart';
 import 'package:example/france_connect_button_page.dart';
+import 'package:example/highlight_page.dart';
 import 'package:example/icons_page.dart';
 import 'package:example/inputs_page.dart';
 import 'package:example/badges_page.dart';
@@ -26,8 +27,8 @@ import 'package:example/tooltips_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dsfr/fondamentaux/color_decisions.g.dart';
 import 'package:flutter_dsfr/helpers/theme_mode_provider.dart';
-
-import 'highlight_page.dart';
+import 'package:device_preview/device_preview.dart';
+import 'package:flutter/foundation.dart';
 
 void main() {
   runApp(const MyApp());
@@ -45,55 +46,58 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(final context) {
-    return ThemeModeProvider.withBuilder(
-      isLightMode: themeMode == ThemeMode.light,
-      builder: (context) {
-        return MaterialApp(
-          theme: ThemeData.light().copyWith(
-            scaffoldBackgroundColor: DsfrColorDecisions.backgroundDefaultGrey(context),
-          ),
-          darkTheme: ThemeData.dark().copyWith(
-            scaffoldBackgroundColor: DsfrColorDecisions.backgroundDefaultGrey(context),
-          ),
-          themeMode: themeMode,
-          home: MasterPage(
-            toggleTheme: () {
-              setState(() {
-                final isDarkMode = themeMode == ThemeMode.dark;
-                themeMode = isDarkMode ? ThemeMode.light : ThemeMode.dark;
-              });
-            },
-            pageItems: [
-              SandboxPage.model,
-              TextPage.model,
-              AccordionsPage.model,
-              ButtonsPage.model,
-              CheckboxPage.model,
-              ColorsPage.model,
-              SelectPage.model,
-              IconsPage.model,
-              InputsPage.model,
-              LinksPage.model,
-              ModalsPage.model,
-              RadiosPage.model,
-              RadiosRichesPage.model,
-              TagsPage.model,
-              TogglesPage.model,
-              NoticePage.model,
-              SliderPage.model,
-              FranceConnectButtonPage.model,
-              BadgesPage.model,
-              StepperPage.model,
-              AlertPage.model,
-              TooltipsPage.model,
-              UploadFilesPage.model,
-              HighlightPage.model,
-            ],
-          ),
-          builder: (final context, final child) => AccessibilityTools(child: child),
-          debugShowCheckedModeBanner: false,
-        );
-      },
+    return DevicePreview(
+      enabled: kIsWeb,
+      builder: (context) => ThemeModeProvider.withBuilder(
+        isLightMode: themeMode == ThemeMode.light,
+        builder: (context) {
+          return MaterialApp(
+            theme: ThemeData.light().copyWith(
+              scaffoldBackgroundColor: DsfrColorDecisions.backgroundDefaultGrey(context),
+            ),
+            darkTheme: ThemeData.dark().copyWith(
+              scaffoldBackgroundColor: DsfrColorDecisions.backgroundDefaultGrey(context),
+            ),
+            themeMode: themeMode,
+            home: MasterPage(
+              toggleTheme: () {
+                setState(() {
+                  final isDarkMode = themeMode == ThemeMode.dark;
+                  themeMode = isDarkMode ? ThemeMode.light : ThemeMode.dark;
+                });
+              },
+              pageItems: [
+                SandboxPage.model,
+                TextPage.model,
+                AccordionsPage.model,
+                ButtonsPage.model,
+                CheckboxPage.model,
+                ColorsPage.model,
+                SelectPage.model,
+                IconsPage.model,
+                InputsPage.model,
+                LinksPage.model,
+                ModalsPage.model,
+                RadiosPage.model,
+                RadiosRichesPage.model,
+                TagsPage.model,
+                TogglesPage.model,
+                NoticePage.model,
+                SliderPage.model,
+                FranceConnectButtonPage.model,
+                BadgesPage.model,
+                StepperPage.model,
+                AlertPage.model,
+                TooltipsPage.model,
+                UploadFilesPage.model,
+                HighlightPage.model,
+              ],
+            ),
+            builder: (final context, final child) => AccessibilityTools(child: child),
+            debugShowCheckedModeBanner: false,
+          );
+        },
+      ),
     );
   }
 }
