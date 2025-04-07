@@ -1,3 +1,5 @@
+import 'package:example/colors/all_colors.g.dart';
+import 'package:example/colors/dsfr_color.dart';
 import 'package:example/page_item.dart';
 import 'package:flutter/material.dart';
 
@@ -11,7 +13,7 @@ class ColorsPage extends StatelessWidget {
 
   @override
   Widget build(final context) {
-    final dsfrColors = allColors();
+    final dsfrColors = DsfrColorsExample.allColors();
     return Column(
       children: [
         Expanded(
@@ -56,27 +58,4 @@ class ColorPresentation extends StatelessWidget {
       ),
     );
   }
-}
-
-List<DsfrColor> allColors() {
-  //TODO: fake data
-  return Colors.primaries.map((e) {
-    return DsfrColor(
-      name: "greenTilleulVerveine850Hover",
-      hex: "#12345678",
-      color: e,
-    );
-  }).toList();
-}
-
-class DsfrColor {
-  const DsfrColor({
-    required this.name,
-    required this.hex,
-    required this.color,
-  });
-
-  final String name;
-  final String hex;
-  final Color color;
 }
