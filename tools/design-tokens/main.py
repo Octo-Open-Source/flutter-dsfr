@@ -1,6 +1,6 @@
 from file import read_as_json, write_dart_file
 from extract_figma import extract
-from generate import generate_dart_colors, generate_dart_decisions, generate_dart_colors_example
+from generate import generate_dart_colors, generate_dart_decisions, generate_dart_example
 
 DESIGN_TOKENS_FILE = "./tools/design-tokens/design-tokens.json"
 OUTPUT_LIB_PATH = "./lib/fondamentaux/"
@@ -14,7 +14,9 @@ def main():
 
     dart_colors = generate_dart_colors(extracted_data.colors)
     dart_decisions = generate_dart_decisions(extracted_data.decisions)
-    dart_examples = generate_dart_colors_example(extracted_data.colors)
+    dart_examples = generate_dart_example(
+        extracted_data.colors, extracted_data.decisions
+    )
 
     write_dart_file(dart_colors, OUTPUT_LIB_PATH + "colors.g.dart")
     write_dart_file(dart_decisions, OUTPUT_LIB_PATH + "color_decisions.g.dart")

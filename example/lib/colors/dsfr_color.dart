@@ -3,11 +3,11 @@ import 'dart:ui';
 class DsfrColor {
   const DsfrColor({
     required this.name,
-    required this.hex,
+    required this.description,
     required this.color,
   });
 
   final String name;
-  final String hex;
+  final String description;
   final Color color;
 }

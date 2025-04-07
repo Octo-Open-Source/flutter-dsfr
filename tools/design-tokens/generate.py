@@ -77,10 +77,12 @@ def generate_dart_decisions(decisions: list[Decision]) -> str:
 # Colors example
 
 
-def template_colors__example_dart() -> str:
+def template_example_dart() -> str:
     return """
 import 'package:example/colors/dsfr_color.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_dsfr/fondamentaux/colors.g.dart';
+import 'package:flutter_dsfr/fondamentaux/color_decisions.g.dart';
 
 class DsfrColorsExample {
 
@@ -89,15 +91,34 @@ class DsfrColorsExample {
       <%COLORS%>
     ];
   }
+
+  static List<DsfrColor> allDecisions(BuildContext context) {
+    return [
+      <%DECISIONS%>
+    ];
+  }
 }
     """.strip()
 
 
-def dart_color_example_functions(color: Color) -> str:
-    return f"DsfrColor(name: '{color.name}', hex: \"{color.hex}\", color: DsfrColors.{color.name}),\n"
+def dart_example_color_functions(color: Color) -> str:
+    return f"DsfrColor(name: '{color.name}', description: \"{color.hex}\", color: DsfrColors.{color.name}),\n"
 
 
-def generate_dart_colors_example(colors: list[Color]) -> str:
-    colors_dart = [dart_color_example_functions(color) for color in colors]
+def dart_example_decision_functions(decision: Decision) -> str:
+    return f"DsfrColor(name: '{decision.name}', description: \"{decision.light_color_name} / {decision.dark_color_name}\", color: DsfrColorDecisions.{decision.name}(context)),\n"
+
+
+def generate_dart_example(colors: list[Color], decisions: list[Decision]) -> str:
+    colors_dart = [
+        dart_example_color_functions(color) for color in colors
+    ]
     colors_dart_str = "".join(colors_dart)
-    return template_colors__example_dart().replace("<%COLORS%>", colors_dart_str)
+
+    decisions_dart = [
+        dart_example_decision_functions(decision) for decision in decisions
+    ]
+    decisions_dart_str = "".join(decisions_dart)
+
+    return template_example_dart().replace("<%COLORS%>", colors_dart_str).replace(
+        "<%DECISIONS%>", decisions_dart_str)
