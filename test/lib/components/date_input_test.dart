@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_dsfr/composants/date_input.dart';
+import 'package:flutter_dsfr/components/date_input.dart';
 import '../../helpers/a11y_test.skip.dart';
 
 void main() {

@@ -4,7 +4,7 @@ import 'package:flutter_dsfr/atoms/dsfr_form_state.dart';
 import 'package:flutter_dsfr/flutter_dsfr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dsfr/helpers/color_utils.dart';
-import 'package:flutter_dsfr/helpers/composant_state.dart';
+import 'package:flutter_dsfr/helpers/dsfr_component_state.dart';
 
 class DateInput extends StatefulWidget {
   const DateInput({
@@ -19,7 +19,7 @@ class DateInput extends StatefulWidget {
     this.locale,
     this.initialValue,
     this.enabled = true,
-    this.composantState = const DsfrComposantState.none(),
+    this.composantState = const DsfrComponentState.none(),
   });
 
   final String label;
@@ -32,7 +32,7 @@ class DateInput extends StatefulWidget {
   final TextEditingController controller;
   final Locale? locale;
   final bool enabled;
-  final DsfrComposantState composantState;
+  final DsfrComponentState composantState;
 
   @override
   State<DateInput> createState() => _DsfrDatePickerState();
@@ -48,7 +48,7 @@ class _DsfrDatePickerState extends State<DateInput> {
   @override
   Widget build(final context) {
     return DsfrFormState(
-        composantState: widget.composantState,
+        componentState: widget.composantState,
         child: FocusTraversalGroup(
             policy: OrderedTraversalPolicy(),
             child: Semantics(
