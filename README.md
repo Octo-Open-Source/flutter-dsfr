@@ -15,7 +15,7 @@ En savoir plus avec [le DSFR web original](https://github.com/GouvernementFR/dsf
 ## Les composants disponibles
 
 Voir le fichier [Liste des composants](components.md) pour connaître l'avancement des composants.
-Vous pouvez également [voir les composants via notre web app](https://octo-open-source.github.io/) (ou en compilant l'app d'exemple sur vos téléphone)
+Vous pouvez également [voir les composants via notre web app](https://octo-open-source.github.io/flutter_dsfr/) (ou en compilant l'app d'exemple sur vos téléphone)
 
 ## Installation
 
