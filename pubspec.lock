@@ -156,9 +156,11 @@ packages:
   dsfr_lints:
     dependency: "direct dev"
     description:
-      path: "tools/dsfr_lints"
-      relative: true
-    source: path
+      path: "."
+      ref: "0.1.0"
+      resolved-ref: "36b99bce902449968b18aeb13218dc9e79f2c353"
+      url: "https://github.com/Octo-Open-Source/flutter-dsfr-linter.git"
+    source: git
     version: "0.1.0"
   fake_async:
     dependency: transitive
