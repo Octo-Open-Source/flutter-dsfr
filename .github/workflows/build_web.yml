@@ -23,19 +23,19 @@ jobs:
           flutter-version: 3.29.2
 
       - name: Build web
-        run: flutter build web
+        run: flutter build web -t example/lib/main.dart
 
       - name: Flutter Web App Deployment
-  # You may pin to the exact commit or the version.
-  # uses: G1J0SHI/Flutter-Web-App-Deployment@7ffe37d043770b4a782fc0457b269a747dd8e23e
+        # You may pin to the exact commit or the version.
+        # uses: G1J0SHI/Flutter-Web-App-Deployment@7ffe37d043770b4a782fc0457b269a747dd8e23e
         uses: G1J0SHI/Flutter-Web-App-Deployment@v1.0
         with:
           # The branch where the web app will be deployed.
           branch: gh_pages # optional, default is gh-pages
           # The base href for the Flutter web application.
-          href: https://octo-open-source.github.io/ # optional, default is /
+          href: example/build/web # optional, default is /
           # The name for Git commits.
           name: update # optional, default is ${{github.actor}}
-          # The email address for Git commits.
-         # email: # optional, default is ${{github.actor}}@users.noreply.github.com
-                
+            # The email address for Git commits.
+          # email: # optional, default is ${{github.actor}}@users.noreply.github.com
+
