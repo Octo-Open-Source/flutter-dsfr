@@ -7,6 +7,7 @@ name: Build Web site
 on:
   push:
     branches: [ "main" ]
+  pull_request:
 
 jobs:
   build:
@@ -28,7 +29,7 @@ jobs:
       - name: Build example project to web
         run: |
           cd example/
-          flutter build web
+          flutter build web --base-href "/flutter-dsfr/"
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
