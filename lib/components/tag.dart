@@ -296,7 +296,7 @@ class _TagButton extends StatelessWidget {
         focusNode: focusNode,
         highlightColor: highlightColor,
         splashFactory: enabled && isClickable ? null : NoSplash.splashFactory,
-        onTap: enabled
+        onTap: enabled && isClickable
             ? () {
           if (onSelectionChanged != null) {
             onSelectionChanged!(!isSelected);
