@@ -3,19 +3,19 @@ import 'package:example/page_item.dart';
 import 'package:flutter/material.dart';
 
 // ignore_for_file: avoid_print
-class TuilesPage extends StatefulWidget {
-  const TuilesPage({super.key});
+class TilesPage extends StatefulWidget {
+  const TilesPage({super.key});
 
   static final model = PageItem(
     title: 'Tuiles',
-    pageBuilder: (final context) => const TuilesPage(),
+    pageBuilder: (final context) => const TilesPage(),
   );
 
   @override
-  State<TuilesPage> createState() => _TuilesPageState();
+  State<TilesPage> createState() => _TilesPageState();
 }
 
-class _TuilesPageState extends State<TuilesPage> {
+class _TilesPageState extends State<TilesPage> {
 
   @override
   Widget build(final context) => SingleChildScrollView(
@@ -32,7 +32,7 @@ class _TuilesPageState extends State<TuilesPage> {
               'Taille SM',
               style: DsfrTextStyle.headline2(color: DsfrColorDecisions.textTitleGrey(context)),
             ),
-            DsfrTuile.sm(
+            DsfrTile.sm(
               title: 'Tuile par défaut',
               description: 'Description',
               detail: 'Détail',
@@ -45,7 +45,7 @@ class _TuilesPageState extends State<TuilesPage> {
                 print('Tuile sm cliquée');
               }
             ),
-            DsfrTuile.sm(
+            DsfrTile.sm(
               title: 'Tuile non cliquable',
               description: 'Description',
               detail: 'Détail',
@@ -56,7 +56,7 @@ class _TuilesPageState extends State<TuilesPage> {
                 ),
               ],
             ),
-            DsfrTuile.sm(
+            DsfrTile.sm(
                 title: 'Tuile par défaut sans icône',
                 description: 'Description',
                 detail: 'Détail',
@@ -70,8 +70,8 @@ class _TuilesPageState extends State<TuilesPage> {
                   print('Tuile sm cliquée');
                 }
             ),
-            DsfrTuile.sm(
-              backgroundType: DsfrTuileBackgroundType.grey,
+            DsfrTile.sm(
+              backgroundType: DsfrTileBackgroundType.grey,
               title: 'Tuile avec fond gris',
               description: 'Description',
               detail: 'Détail',
@@ -88,8 +88,8 @@ class _TuilesPageState extends State<TuilesPage> {
             Container(
               padding: EdgeInsets.all(16),
               color: DsfrColorDecisions.backgroundActionLowBlueFrance(context),
-              child: DsfrTuile.sm(
-                backgroundType: DsfrTuileBackgroundType.lightNoBorder,
+              child: DsfrTile.sm(
+                backgroundType: DsfrTileBackgroundType.lightNoBorder,
                 title: 'Tuile avec fond transparent',
                 description: 'Description',
                 detail: 'Détail',
@@ -105,7 +105,7 @@ class _TuilesPageState extends State<TuilesPage> {
               'Taille MD',
               style: DsfrTextStyle.headline2(color: DsfrColorDecisions.textTitleGrey(context)),
             ),
-            DsfrTuile.md(
+            DsfrTile.md(
                 title: 'Tuile par défaut',
                 description: 'Description',
                 detail: 'Détail',
@@ -118,7 +118,7 @@ class _TuilesPageState extends State<TuilesPage> {
                   print('Tuile md cliquée');
                 }
             ),
-            DsfrTuile.md(
+            DsfrTile.md(
               title: 'Tuile non cliquable',
               description: 'Description',
               detail: 'Détail',
@@ -129,7 +129,7 @@ class _TuilesPageState extends State<TuilesPage> {
                 ),
               ],
             ),
-            DsfrTuile.md(
+            DsfrTile.md(
                 title: 'Tuile par défaut sans icône',
                 description: 'Description',
                 detail: 'Détail',
@@ -143,8 +143,8 @@ class _TuilesPageState extends State<TuilesPage> {
                   print('Tuile md cliquée');
                 }
             ),
-            DsfrTuile.md(
-                backgroundType: DsfrTuileBackgroundType.grey,
+            DsfrTile.md(
+                backgroundType: DsfrTileBackgroundType.grey,
                 title: 'Tuile avec fond gris',
                 description: 'Description',
                 detail: 'Détail',
@@ -161,8 +161,8 @@ class _TuilesPageState extends State<TuilesPage> {
             Container(
               padding: EdgeInsets.all(16),
               color: DsfrColorDecisions.backgroundActionLowBlueFrance(context),
-              child: DsfrTuile.md(
-                  backgroundType: DsfrTuileBackgroundType.lightNoBorder,
+              child: DsfrTile.md(
+                  backgroundType: DsfrTileBackgroundType.lightNoBorder,
                   title: 'Tuile avec fond transparent',
                   description: 'Description',
                   detail: 'Détail',

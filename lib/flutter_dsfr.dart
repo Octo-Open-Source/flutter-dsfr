@@ -29,7 +29,7 @@ export 'components/toggle_switches/toggle_switch.dart';
 export 'components/toggle_switches/toggle_switch_group.dart';
 export 'components/tooltip.dart';
 export 'components/dsfr_search_bar.dart';
-export 'components/tuile.dart';
+export 'components/tile.dart';
 export 'fondamentaux/colors.g.dart';
 export 'fondamentaux/color_decisions.g.dart';
 export 'fondamentaux/fonts.dart';

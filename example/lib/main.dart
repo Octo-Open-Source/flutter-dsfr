@@ -26,7 +26,7 @@ import 'package:example/text_page.dart';
 import 'package:example/switches_page.dart';
 import 'package:example/upload_files_page.dart';
 import 'package:example/tooltips_page.dart';
-import 'package:example/tuiles_page.dart';
+import 'package:example/tiles_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dsfr/fondamentaux/color_decisions.g.dart';
 import 'package:flutter_dsfr/helpers/theme_mode_provider.dart';
@@ -105,7 +105,7 @@ class _MyAppState extends State<MyApp> {
                 UploadFilesPage.model,
                 HighlightPage.model,
                 SearchBarPage.model,
-                TuilesPage.model,
+                TilesPage.model,
               ],
             ),
             builder: (final context, final child) => AccessibilityTools(child: child),

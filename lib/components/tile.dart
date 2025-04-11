@@ -6,7 +6,7 @@ import 'package:flutter_svg/svg.dart';
 const int _badgesAndTagsMaxLength = 4;
 const double _paddingImageAndBadges = 16;
 
-enum DsfrTuileBackgroundType {
+enum DsfrTileBackgroundType {
   light,
   grey,
   lightWithShadow,
@@ -14,13 +14,13 @@ enum DsfrTuileBackgroundType {
   transparent,
 }
 
-class DsfrTuile extends StatelessWidget {
-  const DsfrTuile._({
+class DsfrTile extends StatelessWidget {
+  const DsfrTile._({
     super.key,
     this.backgroundType,
     required this.title,
     this.description,
-    this.detail,
+    this.details,
     required this.size,
     this.imageAsset,
     this.onTap,
@@ -31,25 +31,14 @@ class DsfrTuile extends StatelessWidget {
     this.actionIcon = DsfrIcons.systemArrowRightLine,
   }) : assert(badgesAndTags == null || (badgesAndTags.length <= _badgesAndTagsMaxLength));
 
-  const DsfrTuile.sm({
-    final DsfrTuileBackgroundType? backgroundType,
+  const DsfrTile.sm({
+    final Key? key,
+    final DsfrTileBackgroundType? backgroundType,
     required final String title,
     final String? description,
     final String? detail,
     final String? imageAsset,
-    final double? imageHeight,
-    final double? imageWidth,
     final GestureTapCallback? onTap,
-    final Color? backgroundColor,
-    final Color? highlightColor,
-    final Color? textColor,
-    final Color? selectedBackgroundColor,
-    final Color? selectedHighlightColor,
-    final Color? selectedTextColor,
-    final Key? key,
-    final bool isSelectable = false,
-    final bool isSelected = false,
-    final ValueChanged<bool>? onSelectionChanged,
     final bool enabled = true,
     final List<Widget>? badgesAndTags,
     final bool showActionIcon = true,
@@ -59,7 +48,7 @@ class DsfrTuile extends StatelessWidget {
     backgroundType: backgroundType,
     title: title,
     description: description,
-    detail: detail,
+    details: detail,
     size: DsfrComponentSize.sm,
     imageAsset: imageAsset,
     onTap: onTap,
@@ -69,25 +58,14 @@ class DsfrTuile extends StatelessWidget {
     actionIcon: actionIcon,
   );
 
-  const DsfrTuile.md({
-    final DsfrTuileBackgroundType? backgroundType,
+  const DsfrTile.md({
+    final Key? key,
+    final DsfrTileBackgroundType? backgroundType,
     required final String title,
     final String? description,
     final String? detail,
     final String? imageAsset,
-    final double? imageHeight,
-    final double? imageWidth,
     final GestureTapCallback? onTap,
-    final Color? backgroundColor,
-    final Color? highlightColor,
-    final Color? textColor,
-    final Color? selectedBackgroundColor,
-    final Color? selectedHighlightColor,
-    final Color? selectedTextColor,
-    final Key? key,
-    final bool isSelectable = false,
-    final bool isSelected = false,
-    final ValueChanged<bool>? onSelectionChanged,
     final bool enabled = true,
     final List<Widget>? badgesAndTags,
     final bool showActionIcon = true,
@@ -97,7 +75,7 @@ class DsfrTuile extends StatelessWidget {
     backgroundType: backgroundType,
     title: title,
     description: description,
-    detail: detail,
+    details: detail,
     size: DsfrComponentSize.md,
     imageAsset: imageAsset,
     onTap: onTap,
@@ -105,10 +83,10 @@ class DsfrTuile extends StatelessWidget {
     badgesAndTags: badgesAndTags,
   );
 
-  final DsfrTuileBackgroundType? backgroundType;
+  final DsfrTileBackgroundType? backgroundType;
   final String title;
   final String? description;
-  final String? detail;
+  final String? details;
   final DsfrComponentSize size;
   final GestureTapCallback? onTap;
   final String? imageAsset;
@@ -214,27 +192,36 @@ class DsfrTuile extends StatelessWidget {
 
   Color _getBackgroundColor(BuildContext context) {
     switch (backgroundType) {
-      case DsfrTuileBackgroundType.grey:
+      case DsfrTileBackgroundType.grey:
         return DsfrColorDecisions.backgroundContrastGrey(context);
-      case DsfrTuileBackgroundType.transparent:
+      case DsfrTileBackgroundType.transparent:
         return DsfrColorDecisions.backgroundTransparent(context);
       default:
         return DsfrColorDecisions.backgroundDefaultGrey(context);
     }
   }
 
-  BoxBorder? _getBorder(BuildContext context) {
+  BoxBorder? _getBottomBorder(BuildContext context) {
     Color bottomBorderColor = (onTap == null) ? DsfrColorDecisions.borderPlainGrey(context) :
-        DsfrColorDecisions.borderPlainBlueFrance(context);
-    if (backgroundType == DsfrTuileBackgroundType.lightNoBorder) {
+    DsfrColorDecisions.borderPlainBlueFrance(context);
+    if (backgroundType == DsfrTileBackgroundType.lightNoBorder) {
       return null;
     } else {
       return Border(
-        top: BorderSide(color: DsfrColorDecisions.borderDefaultGrey(context)),
-        right: BorderSide(color: DsfrColorDecisions.borderDefaultGrey(context)),
-        bottom: BorderSide(color: bottomBorderColor,
-            width: 4),
-        left: BorderSide(color: DsfrColorDecisions.borderDefaultGrey(context)),
+        bottom: BorderSide(color: bottomBorderColor, width: 4),
+      );
+    }
+  }
+
+  BoxBorder? _getTopRightLeftBorder(BuildContext context) {
+    DsfrColorDecisions.borderPlainBlueFrance(context);
+    if (backgroundType == DsfrTileBackgroundType.lightNoBorder) {
+      return null;
+    } else {
+      return Border(
+        top: BorderSide(color: DsfrColorDecisions.borderDefaultGrey(context), width: 1),
+        right: BorderSide(color: DsfrColorDecisions.borderDefaultGrey(context), width: 1),
+        left: BorderSide(color: DsfrColorDecisions.borderDefaultGrey(context), width: 1),
       );
     }
   }
@@ -262,63 +249,68 @@ class DsfrTuile extends StatelessWidget {
                 child: InkWell(
                   onTap: onTap,
                   child: Container(
-                    padding: const EdgeInsets.all(24.0),
                     decoration: BoxDecoration(
                         boxShadow: _getShadow(context),
-                        border: _getBorder(context),
+                        border: _getBottomBorder(context),
                     ),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        if (imageAsset != null)
-                          if (imageAsset!.endsWith('svg'))
-                            SvgPicture.asset(
-                              imageAsset!,
-                              height: _getImageHeight(),
-                              fit: BoxFit.fitHeight,
-                              excludeFromSemantics: true,
-                            )
-                          else
-                            Image.asset(imageAsset!, height: _getImageHeight(), fit: BoxFit.fitHeight),
-                        if (imageAsset != null) const SizedBox(height: _paddingImageAndBadges),
-                        if (badgesAndTagsToAdd != null && badgesAndTagsToAdd.isNotEmpty)
-                          Column(
-                            children: [
-                              ExcludeFocus(child: Column(
-                                children: [
-                                  ...badgesAndTagsToAdd
-                                ],
-                              )),
-                              SizedBox(height: _getPaddingBadgesAndTitle()),
-                            ],
-                          ),
-                        Text(
-                          title,
-                          style: _getTitleTextStyle(context),
-                        ),
-                        if (description != null) SizedBox(height: _getPaddingTitleAndDescription()),
-                        if (description != null)
-                          Text(
-                            description!,
-                            style: _getDescriptionTextStyle(context),
-                          ),
-                        if (detail != null) SizedBox(height: _getPaddingDescriptionAndDetail()),
-                        if (detail != null)
-                          Text(
-                            detail!,
-                            style: DsfrTextStyle.bodyXsMedium(color: DsfrColorDecisions.textMentionGrey(context)),
-                          ),
-                        if (showActionIcon && onTap != null)
-                          Container(
-                            alignment: Alignment.centerRight,
-                            child: Icon(
-                              actionIcon,
-                              size: _getIconSize(),
-                              color: _getIconColor(context),
+                    child: Container(
+                      padding: const EdgeInsets.all(24.0),
+                      decoration: BoxDecoration(
+                        border: _getTopRightLeftBorder(context),
+                      ),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          if (imageAsset != null)
+                            if (imageAsset!.endsWith('svg'))
+                              SvgPicture.asset(
+                                imageAsset!,
+                                height: _getImageHeight(),
+                                fit: BoxFit.fitHeight,
+                                excludeFromSemantics: true,
+                              )
+                            else
+                              Image.asset(imageAsset!, height: _getImageHeight(), fit: BoxFit.fitHeight),
+                          if (imageAsset != null) const SizedBox(height: _paddingImageAndBadges),
+                          if (badgesAndTagsToAdd != null && badgesAndTagsToAdd.isNotEmpty)
+                            Column(
+                              children: [
+                                ExcludeFocus(child: Column(
+                                  children: [
+                                    ...badgesAndTagsToAdd
+                                  ],
+                                )),
+                                SizedBox(height: _getPaddingBadgesAndTitle()),
+                              ],
                             ),
+                          Text(
+                            title,
+                            style: _getTitleTextStyle(context),
                           ),
-                      ],
-                    ),
+                          if (description != null) SizedBox(height: _getPaddingTitleAndDescription()),
+                          if (description != null)
+                            Text(
+                              description!,
+                              style: _getDescriptionTextStyle(context),
+                            ),
+                          if (details != null) SizedBox(height: _getPaddingDescriptionAndDetail()),
+                          if (details != null)
+                            Text(
+                              details!,
+                              style: DsfrTextStyle.bodyXsMedium(color: DsfrColorDecisions.textMentionGrey(context)),
+                            ),
+                          if (showActionIcon && onTap != null)
+                            Container(
+                              alignment: Alignment.centerRight,
+                              child: Icon(
+                                actionIcon,
+                                size: _getIconSize(),
+                                color: _getIconColor(context),
+                              ),
+                            ),
+                        ],
+                      ),
+                    )
                   ),
                 )
             ));
