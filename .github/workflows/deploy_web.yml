@@ -2,7 +2,7 @@ name: Deploy web preview of DSFR
 
 on:
   push:
-    branches: ["feat/deploy-pages"]
+    branches: ["main"]
 
 permissions:
   id-token: write
