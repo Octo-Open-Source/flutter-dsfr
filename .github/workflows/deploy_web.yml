@@ -16,27 +16,20 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # - uses: subosito/flutter-action@v2
-      #   with:
-      #     cache: true
-      #     flutter-version: 3.29.2
+      - uses: subosito/flutter-action@v2
+        with:
+          cache: true
+          flutter-version: 3.29.2
 
-      # - name: Install dependencies
-      #   run: |
-      #     cd example
-      #     flutter pub get
-
-      # - name: Build for web
-      #   run: |
-      #     cd example/
-      #     flutter build web --base-href "/flutter-dsfr/"
+      - name: Install dependencies
+        run: |
+          cd example
+          flutter pub get
 
       - name: Build for web
         run: |
-          mkdir -p example/build/web
-          cd example/build/web
-          touch index.html
-          echo 'hello' > index.html
+          cd example/
+          flutter build web --base-href "/flutter-dsfr/"
 
       - name: Upload static files as artifact
         id: deployment
