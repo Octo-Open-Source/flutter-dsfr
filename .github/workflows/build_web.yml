@@ -6,7 +6,7 @@ name: Build Web site
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["tech/githubPages"]
   pull_request:
 
 jobs:
@@ -31,8 +31,19 @@ jobs:
           cd example/
           flutter build web --base-href "/flutter-dsfr/"
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+      - name: Upload static files as artifact
+        id: deployment
+        uses: actions/upload-pages-artifact@v3 # or specific "vX.X.X" version tag for this action
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: example/build/web
+          path: example/build/web
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
