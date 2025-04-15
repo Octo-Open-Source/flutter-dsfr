@@ -101,6 +101,20 @@ class _TilesPageState extends State<TilesPage> {
                 }
               ),
             ),
+            DsfrTile.sm(
+                backgroundType: DsfrTileBackgroundType.lightWithShadow,
+                title: 'Tuile avec ombre',
+                description: 'Description',
+                detail: 'Détail',
+                badgesAndTags: [
+                  DsfrTag.sm(
+                    label: TextSpan(text: 'Tag par défaut'),
+                  ),
+                ],
+                onTap: () {
+                  print('Tuile sm cliquée');
+                }
+            ),
             Text(
               'Taille MD',
               style: DsfrTextStyle.headline2(color: DsfrColorDecisions.textTitleGrey(context)),
@@ -173,6 +187,20 @@ class _TilesPageState extends State<TilesPage> {
                     print('Tuile md cliquée');
                   }
               ),
+            ),
+            DsfrTile.md(
+                backgroundType: DsfrTileBackgroundType.lightWithShadow,
+                title: 'Tuile avec ombre',
+                description: 'Description',
+                detail: 'Détail',
+                badgesAndTags: [
+                  DsfrTag.md(
+                    label: TextSpan(text: 'Tag par défaut'),
+                  ),
+                ],
+                onTap: () {
+                  print('Tuile md cliquée');
+                }
             ),
           ],
         ),

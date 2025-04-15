@@ -1,5 +1,6 @@
 import 'package:flutter_dsfr/flutter_dsfr.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dsfr/fondamentaux/shadow_decisions.dart';
 import 'package:flutter_dsfr/helpers/dsfr_component_size.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -44,19 +45,19 @@ class DsfrTile extends StatelessWidget {
     final bool showActionIcon = true,
     final IconData? actionIcon = DsfrIcons.systemArrowRightLine,
   }) : this._(
-    key: key,
-    backgroundType: backgroundType,
-    title: title,
-    description: description,
-    details: detail,
-    size: DsfrComponentSize.sm,
-    imageAsset: imageAsset,
-    onTap: onTap,
-    enabled: enabled,
-    badgesAndTags: badgesAndTags,
-    showActionIcon: showActionIcon,
-    actionIcon: actionIcon,
-  );
+          key: key,
+          backgroundType: backgroundType,
+          title: title,
+          description: description,
+          details: detail,
+          size: DsfrComponentSize.sm,
+          imageAsset: imageAsset,
+          onTap: onTap,
+          enabled: enabled,
+          badgesAndTags: badgesAndTags,
+          showActionIcon: showActionIcon,
+          actionIcon: actionIcon,
+        );
 
   const DsfrTile.md({
     final Key? key,
@@ -71,17 +72,17 @@ class DsfrTile extends StatelessWidget {
     final bool showActionIcon = true,
     final IconData? actionIcon = DsfrIcons.systemArrowRightLine,
   }) : this._(
-    key: key,
-    backgroundType: backgroundType,
-    title: title,
-    description: description,
-    details: detail,
-    size: DsfrComponentSize.md,
-    imageAsset: imageAsset,
-    onTap: onTap,
-    enabled: enabled,
-    badgesAndTags: badgesAndTags,
-  );
+          key: key,
+          backgroundType: backgroundType,
+          title: title,
+          description: description,
+          details: detail,
+          size: DsfrComponentSize.md,
+          imageAsset: imageAsset,
+          onTap: onTap,
+          enabled: enabled,
+          badgesAndTags: badgesAndTags,
+        );
 
   final DsfrTileBackgroundType? backgroundType;
   final String title;
@@ -167,7 +168,7 @@ class DsfrTile extends StatelessWidget {
         throw UnimplementedError('Size $size is not implemented');
     }
   }
-  
+
   double _getPaddingTitleAndDescription() {
     switch (size) {
       case DsfrComponentSize.md:
@@ -202,8 +203,9 @@ class DsfrTile extends StatelessWidget {
   }
 
   BoxBorder? _getBottomBorder(BuildContext context) {
-    Color bottomBorderColor = (onTap == null) ? DsfrColorDecisions.borderPlainGrey(context) :
-    DsfrColorDecisions.borderPlainBlueFrance(context);
+    Color bottomBorderColor = (onTap == null)
+        ? DsfrColorDecisions.borderPlainGrey(context)
+        : DsfrColorDecisions.borderPlainBlueFrance(context);
     if (backgroundType == DsfrTileBackgroundType.lightNoBorder) {
       return null;
     } else {
@@ -227,8 +229,7 @@ class DsfrTile extends StatelessWidget {
   }
 
   List<BoxShadow>? _getShadow(BuildContext context) {
-    // TODO ajouter l'ombre
-    return null;
+    return backgroundType == DsfrTileBackgroundType.lightWithShadow ? [DsfrShadowDecisions.raised(context)] : null;
   }
 
   @override
@@ -237,82 +238,79 @@ class DsfrTile extends StatelessWidget {
       focusNode: focusNode,
       canRequestFocus: enabled,
       child: Builder(builder: (final context) {
-        final isFocused = Focus
-            .of(context)
-            .hasFocus;
+        final isFocused = Focus.of(context).hasFocus;
         List<Widget>? badgesAndTagsToAdd =
-        badgesAndTags?.takeWhile((element) => element is DsfrBadge || element is DsfrTag).toList();
+            badgesAndTags?.takeWhile((element) => element is DsfrBadge || element is DsfrTag).toList();
         return DsfrFocusWidget(
             isFocused: isFocused,
-            child: Material(
+            child: Container(
+              decoration: BoxDecoration(
+                boxShadow: _getShadow(context),
+                border: _getBottomBorder(context),
+              ),
+              child: Material(
                 color: _getBackgroundColor(context),
                 child: InkWell(
                   onTap: onTap,
                   child: Container(
+                    padding: const EdgeInsets.all(24.0),
                     decoration: BoxDecoration(
-                        boxShadow: _getShadow(context),
-                        border: _getBottomBorder(context),
+                      border: _getTopRightLeftBorder(context),
                     ),
-                    child: Container(
-                      padding: const EdgeInsets.all(24.0),
-                      decoration: BoxDecoration(
-                        border: _getTopRightLeftBorder(context),
-                      ),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          if (imageAsset != null)
-                            if (imageAsset!.endsWith('svg'))
-                              SvgPicture.asset(
-                                imageAsset!,
-                                height: _getImageHeight(),
-                                fit: BoxFit.fitHeight,
-                                excludeFromSemantics: true,
-                              )
-                            else
-                              Image.asset(imageAsset!, height: _getImageHeight(), fit: BoxFit.fitHeight),
-                          if (imageAsset != null) const SizedBox(height: _paddingImageAndBadges),
-                          if (badgesAndTagsToAdd != null && badgesAndTagsToAdd.isNotEmpty)
-                            Column(
-                              children: [
-                                ExcludeFocus(child: Column(
-                                  children: [
-                                    ...badgesAndTagsToAdd
-                                  ],
-                                )),
-                                SizedBox(height: _getPaddingBadgesAndTitle()),
-                              ],
-                            ),
-                          Text(
-                            title,
-                            style: _getTitleTextStyle(context),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        if (imageAsset != null)
+                          if (imageAsset!.endsWith('svg'))
+                            SvgPicture.asset(
+                              imageAsset!,
+                              height: _getImageHeight(),
+                              fit: BoxFit.fitHeight,
+                              excludeFromSemantics: true,
+                            )
+                          else
+                            Image.asset(imageAsset!, height: _getImageHeight(), fit: BoxFit.fitHeight),
+                        if (imageAsset != null) const SizedBox(height: _paddingImageAndBadges),
+                        if (badgesAndTagsToAdd != null && badgesAndTagsToAdd.isNotEmpty)
+                          Column(
+                            children: [
+                              ExcludeFocus(
+                                  child: Column(
+                                children: [...badgesAndTagsToAdd],
+                              )),
+                              SizedBox(height: _getPaddingBadgesAndTitle()),
+                            ],
                           ),
-                          if (description != null) SizedBox(height: _getPaddingTitleAndDescription()),
-                          if (description != null)
-                            Text(
-                              description!,
-                              style: _getDescriptionTextStyle(context),
+                        Text(
+                          title,
+                          style: _getTitleTextStyle(context),
+                        ),
+                        if (description != null) SizedBox(height: _getPaddingTitleAndDescription()),
+                        if (description != null)
+                          Text(
+                            description!,
+                            style: _getDescriptionTextStyle(context),
+                          ),
+                        if (details != null) SizedBox(height: _getPaddingDescriptionAndDetail()),
+                        if (details != null)
+                          Text(
+                            details!,
+                            style: DsfrTextStyle.bodyXsMedium(color: DsfrColorDecisions.textMentionGrey(context)),
+                          ),
+                        if (showActionIcon && onTap != null)
+                          Container(
+                            alignment: Alignment.centerRight,
+                            child: Icon(
+                              actionIcon,
+                              size: _getIconSize(),
+                              color: _getIconColor(context),
                             ),
-                          if (details != null) SizedBox(height: _getPaddingDescriptionAndDetail()),
-                          if (details != null)
-                            Text(
-                              details!,
-                              style: DsfrTextStyle.bodyXsMedium(color: DsfrColorDecisions.textMentionGrey(context)),
-                            ),
-                          if (showActionIcon && onTap != null)
-                            Container(
-                              alignment: Alignment.centerRight,
-                              child: Icon(
-                                actionIcon,
-                                size: _getIconSize(),
-                                color: _getIconColor(context),
-                              ),
-                            ),
-                        ],
-                      ),
-                    )
+                          ),
+                      ],
+                    ),
                   ),
-                )
+                ),
+              ),
             ));
       }),
     );
