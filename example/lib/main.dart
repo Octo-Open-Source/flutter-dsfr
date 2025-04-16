@@ -2,6 +2,7 @@ import 'package:accessibility_tools/accessibility_tools.dart';
 import 'package:example/accordions_page.dart';
 import 'package:example/alert_page.dart';
 import 'package:example/buttons_page.dart';
+import 'package:example/cards_page.dart';
 import 'package:example/checkbox_page.dart';
 import 'package:example/colors/colors_page.dart';
 import 'package:example/colors/decisions_page.dart';
@@ -84,6 +85,7 @@ class _MyAppState extends State<MyApp> {
                 TextPage.model,
                 AccordionsPage.model,
                 ButtonsPage.model,
+                CardsPage.model,
                 CheckboxPage.model,
                 ColorsPage.model,
                 DecisionsPage.model,
