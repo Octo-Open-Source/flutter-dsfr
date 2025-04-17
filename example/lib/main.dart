@@ -15,6 +15,7 @@ import 'package:example/links_page.dart';
 import 'package:example/master_page.dart';
 import 'package:example/modals_page.dart';
 import 'package:example/notice_page.dart';
+import 'package:example/page_item.dart';
 import 'package:example/radios_page.dart';
 import 'package:example/radios_riches_page.dart';
 import 'package:example/sandbox_page.dart';
@@ -80,36 +81,7 @@ class _MyAppState extends State<MyApp> {
                   themeMode = isDarkMode ? ThemeMode.light : ThemeMode.dark;
                 });
               },
-              pageItems: [
-                SandboxPage.model,
-                TextPage.model,
-                AccordionsPage.model,
-                ButtonsPage.model,
-                CardsPage.model,
-                CheckboxPage.model,
-                ColorsPage.model,
-                DecisionsPage.model,
-                SelectPage.model,
-                IconsPage.model,
-                InputsPage.model,
-                LinksPage.model,
-                ModalsPage.model,
-                RadiosPage.model,
-                RadiosRichesPage.model,
-                TagsPage.model,
-                TogglesPage.model,
-                NoticePage.model,
-                SliderPage.model,
-                FranceConnectButtonPage.model,
-                BadgesPage.model,
-                StepperPage.model,
-                AlertPage.model,
-                TooltipsPage.model,
-                UploadFilesPage.model,
-                HighlightPage.model,
-                SearchBarPage.model,
-                TilesPage.model,
-              ],
+              pageItems: _getPageItems(),
             ),
             builder: (final context, final child) => AccessibilityTools(child: child),
             debugShowCheckedModeBanner: false,
@@ -118,4 +90,39 @@ class _MyAppState extends State<MyApp> {
       ),
     );
   }
+}
+
+List<PageItem> _getPageItems() {
+  final items = [
+    TextPage.model,
+    AccordionsPage.model,
+    ButtonsPage.model,
+    CardsPage.model,
+    CheckboxPage.model,
+    ColorsPage.model,
+    DecisionsPage.model,
+    SelectPage.model,
+    IconsPage.model,
+    InputsPage.model,
+    LinksPage.model,
+    ModalsPage.model,
+    RadiosPage.model,
+    RadiosRichesPage.model,
+    TagsPage.model,
+    TogglesPage.model,
+    NoticePage.model,
+    SliderPage.model,
+    FranceConnectButtonPage.model,
+    BadgesPage.model,
+    StepperPage.model,
+    AlertPage.model,
+    TooltipsPage.model,
+    UploadFilesPage.model,
+    HighlightPage.model,
+    SearchBarPage.model,
+    TilesPage.model,
+  ];
+  items.sort((a, b) => a.title.compareTo(b.title));
+  items.insert(0, SandboxPage.model);
+  return items;
 }
