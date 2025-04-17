@@ -6,7 +6,7 @@
 
 
 | Composant                                                          | DSFR Flutter | Commentaires                               |
-|--------------------------------------------------------------------|-------------|--------------------------------------------|
+|--------------------------------------------------------------------|--------------|--------------------------------------------|
 | Accordéon (Accordion)                                              | ✅           |                                            |
 | Ajout de fichier (Upload)                                          | ✅           |                                            |
 | Alerte (Alert)                                                     | ✅           |                                            |
@@ -19,8 +19,8 @@
 | Bouton radio (Radio)                                               | ✅           |                                            |
 | Bouton radio riche (Radio rich)                                    | ✅           |                                            |
 | Case à cocher (Checkbox)                                           | ✅           |                                            |
-| Carte (Card)                                                       | ❌           |                                            |
-| Champ de saisie (Input)                                            | 🚧          | manque : date unique                       |
+| Carte (Card)                                                       | 🚧           | Uniquement titre et description            |
+| Champ de saisie (Input)                                            | 🚧           | manque : date unique                       |
 | Citation (Quote)                                                   | ❌           |                                            |
 | Contenu médias (Content Management)                                | ❌           |                                            |
 | Contrôle segmenté (Segmented control)                              | ❌           |                                            |
@@ -30,7 +30,7 @@
 | Gestionnaire de consentement (Consent banner)                      | ❌           |                                            |
 | Indicateur d'étapes (Stepper)                                      | ✅           |                                            |
 | Infobulle (Tooltip)                                                | ✅           |                                            |
-| Interrupteur (Toggle)                                              | ✅️          |                                            |
+| Interrupteur (Toggle)                                              | ✅️           |                                            |
 | Lettre d'information et réseaux sociaux (Newsletter and follow us) | ❌           |                                            |
 | Lien (Link)                                                        | ✅           |                                            |
 | Lien d'évitement (Skiplink)                                        | ❌           |                                            |
@@ -50,7 +50,7 @@
 | Sélecteur de langue (Translate)                                    | ❌           |                                            |
 | Sommaire (Summary)                                                 | ❌           |                                            |
 | Tableau (Table)                                                    | ❌           |                                            |
-| Tag                                                                | 🚧          | manque : groupe de tags                    |
+| Tag                                                                | 🚧           | manque : groupe de tags                    |
 | Téléchargement de fichier (Download)                               | ❌           |                                            |
 | Transcription                                                      | ❌           |                                            |
 | Tuile (Tile)                                                       | 🚧           | manque : tuile horizontale, état désactivé |
