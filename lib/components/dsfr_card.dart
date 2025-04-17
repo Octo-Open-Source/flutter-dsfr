@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_dsfr/fondamentaux/color_decisions.g.dart';
+import 'package:flutter_dsfr/fondamentaux/dsfr_color_decisions.g.dart';
 import 'package:flutter_dsfr/fondamentaux/dsfr_text_style.dart';
-import 'package:flutter_dsfr/fondamentaux/icons.g.dart';
+import 'package:flutter_dsfr/fondamentaux/dsfr_icons.g.dart';
 import 'package:flutter_dsfr/helpers/dsfr_component_size.dart';
 
 class DsfrCard extends StatelessWidget {

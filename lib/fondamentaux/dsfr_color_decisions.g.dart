@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_using_color_decision
 
 import 'package:flutter/material.dart';
-import 'package:flutter_dsfr/fondamentaux/colors.g.dart';
+import 'package:flutter_dsfr/fondamentaux/dsfr_colors.g.dart';
 import 'package:flutter_dsfr/helpers/dsfr_theme_mode_provider.dart';
 
 class DsfrColorDecisions {

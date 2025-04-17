@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:flutter_dsfr/fondamentaux/color_decisions.g.dart';
+import 'package:flutter_dsfr/fondamentaux/dsfr_color_decisions.g.dart';
 import 'package:flutter_dsfr/fondamentaux/dsfr_text_style.dart';
 
 class PageSection extends StatelessWidget {

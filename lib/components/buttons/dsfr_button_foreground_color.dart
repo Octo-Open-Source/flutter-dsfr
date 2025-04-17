@@ -1,6 +1,6 @@
 import 'package:flutter_dsfr/components/buttons/dsfr_button_variant.dart';
 import 'package:flutter_dsfr/helpers/color_extension.dart';
-import 'package:flutter_dsfr/fondamentaux/color_decisions.g.dart';
+import 'package:flutter_dsfr/fondamentaux/dsfr_color_decisions.g.dart';
 import 'package:flutter/material.dart';
 
 @immutable

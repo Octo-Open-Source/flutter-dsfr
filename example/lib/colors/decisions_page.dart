@@ -1,4 +1,4 @@
-import 'package:example/colors/all_colors.g.dart';
+import 'package:example/colors/dsfr_colors_example.g.dart';
 import 'package:example/colors/color_presentation.dart';
 import 'package:example/colors/sort_colors.dart';
 import 'package:example/page_item.dart';

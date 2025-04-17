@@ -1,7 +1,7 @@
 import 'package:example/colors/dsfr_color.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_dsfr/fondamentaux/colors.g.dart';
-import 'package:flutter_dsfr/fondamentaux/color_decisions.g.dart';
+import 'package:flutter_dsfr/fondamentaux/dsfr_colors.g.dart';
+import 'package:flutter_dsfr/fondamentaux/dsfr_color_decisions.g.dart';
 
 class DsfrColorsExample {
   static List<DsfrColor> allColors() {

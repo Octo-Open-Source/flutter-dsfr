@@ -1,7 +1,7 @@
 import 'package:flutter_dsfr/atoms/dsfr_form_state.dart';
 import 'package:flutter_dsfr/atoms/dsfr_group.dart';
 import 'package:flutter_dsfr/components/checkboxes/dsfr_checkbox_child.dart';
-import 'package:flutter_dsfr/fondamentaux/spacing.g.dart';
+import 'package:flutter_dsfr/fondamentaux/dsfr_spacings.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dsfr/helpers/dsfr_component_state.dart';
 

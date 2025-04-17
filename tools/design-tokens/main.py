@@ -18,9 +18,11 @@ def main():
         extracted_data.colors, extracted_data.decisions
     )
 
-    write_dart_file(dart_colors, OUTPUT_LIB_PATH + "colors.g.dart")
-    write_dart_file(dart_decisions, OUTPUT_LIB_PATH + "color_decisions.g.dart")
-    write_dart_file(dart_examples, OUTPUT_EXAMPLE_PATH + "all_colors.g.dart")
+    write_dart_file(dart_colors, OUTPUT_LIB_PATH + "dsfr_colors.g.dart")
+    write_dart_file(dart_decisions, OUTPUT_LIB_PATH +
+                    "dsfr_color_decisions.g.dart")
+    write_dart_file(dart_examples, OUTPUT_EXAMPLE_PATH +
+                    "dsfr_colors_example.g.dart")
 
 
 if __name__ == "__main__":

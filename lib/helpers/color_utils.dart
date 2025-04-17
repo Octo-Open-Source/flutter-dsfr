@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:flutter_dsfr/fondamentaux/color_decisions.g.dart';
+import 'package:flutter_dsfr/fondamentaux/dsfr_color_decisions.g.dart';
 import 'package:flutter_dsfr/helpers/dsfr_component_state.dart';
 
 Color getTextColor(BuildContext context, DsfrComponentStateEnum componentStateEnum, {Color? defaultColor}) {

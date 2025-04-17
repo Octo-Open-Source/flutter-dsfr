@@ -1,8 +1,8 @@
 // ignore_for_file: prefer_using_color_decision
 
 import 'package:flutter/widgets.dart';
-import 'package:flutter_dsfr/fondamentaux/color_decisions.g.dart';
-import 'package:flutter_dsfr/fondamentaux/colors.g.dart';
+import 'package:flutter_dsfr/fondamentaux/dsfr_color_decisions.g.dart';
+import 'package:flutter_dsfr/fondamentaux/dsfr_colors.g.dart';
 
 extension DsfrColorDecisionsExtension on DsfrColorDecisions {
   static Color backgroundPurpleGlycineLow(BuildContext context) {

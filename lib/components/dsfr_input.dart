@@ -3,9 +3,9 @@
 import 'package:flutter_dsfr/atoms/dsfr_form_state.dart';
 import 'package:flutter_dsfr/components/checkboxes/dsfr_checkbox.dart';
 import 'package:flutter_dsfr/components/dsfr_input_headless.dart';
-import 'package:flutter_dsfr/fondamentaux/color_decisions.g.dart';
+import 'package:flutter_dsfr/fondamentaux/dsfr_color_decisions.g.dart';
 import 'package:flutter_dsfr/fondamentaux/dsfr_text_style.dart';
-import 'package:flutter_dsfr/fondamentaux/spacing.g.dart';
+import 'package:flutter_dsfr/fondamentaux/dsfr_spacings.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dsfr/helpers/color_utils.dart';

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dsfr/components/buttons/dsfr_raw_button.dart';
-import 'package:flutter_dsfr/fondamentaux/spacing.g.dart';
+import 'package:flutter_dsfr/fondamentaux/dsfr_spacings.g.dart';
 import 'package:flutter_dsfr/helpers/dsfr_component_size.dart';
 
 import 'package:flutter_dsfr/components/buttons/dsfr_button_icon_location.dart';

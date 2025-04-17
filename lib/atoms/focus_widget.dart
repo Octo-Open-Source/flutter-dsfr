@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dsfr/fondamentaux/dsfr_color_decisions_extension.dart';
-import 'package:flutter_dsfr/fondamentaux/spacing.g.dart';
+import 'package:flutter_dsfr/fondamentaux/dsfr_spacings.g.dart';
 
 class DsfrFocusWidget extends StatelessWidget {
   const DsfrFocusWidget({

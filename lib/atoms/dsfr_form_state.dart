@@ -2,7 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_dsfr/atoms/component_state_widget.dart';
 import 'package:flutter_dsfr/atoms/dsfr_group.dart';
 import 'package:flutter_dsfr/atoms/vertical_bar_widget.dart';
-import 'package:flutter_dsfr/fondamentaux/spacing.g.dart';
+import 'package:flutter_dsfr/fondamentaux/dsfr_spacings.g.dart';
 import 'package:flutter_dsfr/helpers/dsfr_component_state.dart';
 
 class DsfrFormState extends StatelessWidget {
