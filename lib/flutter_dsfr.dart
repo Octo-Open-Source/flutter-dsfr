@@ -1,4 +1,4 @@
-export 'atoms/focus_widget.dart';
+export 'atoms/dsfr_focus_widget.dart';
 export 'atoms/dsfr_group.dart';
 export 'components/dsfr_accordions.dart';
 export 'components/dsfr_alert.dart';

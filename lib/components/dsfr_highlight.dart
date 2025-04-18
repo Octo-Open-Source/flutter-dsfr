@@ -1,4 +1,4 @@
-import 'package:flutter_dsfr/atoms/vertical_bar_widget.dart';
+import 'package:flutter_dsfr/atoms/dsfr_vertical_bar_widget.dart';
 import 'package:flutter_dsfr/flutter_dsfr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dsfr/helpers/dsfr_component_size.dart';
@@ -27,7 +27,7 @@ class DsfrHighlight extends StatelessWidget {
   Widget build(final context) => IntrinsicHeight(
         child: Row(
           children: [
-            VerticalBarWidget(componentState: DsfrComponentState.highlight()),
+            DsfrVerticalBarWidget(componentState: DsfrComponentState.highlight()),
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.only(left: DsfrSpacings.s2w),

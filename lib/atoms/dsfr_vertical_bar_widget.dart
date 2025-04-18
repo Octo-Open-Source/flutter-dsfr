@@ -3,10 +3,10 @@ import 'package:flutter_dsfr/fondamentaux/dsfr_color_decisions.g.dart';
 import 'package:flutter_dsfr/fondamentaux/dsfr_spacings.g.dart';
 import 'package:flutter_dsfr/helpers/dsfr_component_state.dart';
 
-class VerticalBarWidget extends StatelessWidget {
+class DsfrVerticalBarWidget extends StatelessWidget {
   final DsfrComponentState componentState;
 
-  const VerticalBarWidget({
+  const DsfrVerticalBarWidget({
     super.key,
     required this.componentState,
   });

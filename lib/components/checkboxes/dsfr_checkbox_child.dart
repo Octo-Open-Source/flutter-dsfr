@@ -1,6 +1,6 @@
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_dsfr/atoms/focus_widget.dart';
+import 'package:flutter_dsfr/atoms/dsfr_focus_widget.dart';
 import 'package:flutter_dsfr/components/checkboxes/dsfr_checkbox_icon.dart';
 import 'package:flutter_dsfr/fondamentaux/dsfr_color_decisions.g.dart';
 import 'package:flutter_dsfr/fondamentaux/dsfr_text_style.dart';

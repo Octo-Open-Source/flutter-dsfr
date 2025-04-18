@@ -1,4 +1,4 @@
-import 'package:flutter_dsfr/atoms/focus_widget.dart';
+import 'package:flutter_dsfr/atoms/dsfr_focus_widget.dart';
 import 'package:flutter_dsfr/components/dsfr_link_icon_position.dart';
 import 'package:flutter_dsfr/fondamentaux/dsfr_color_decisions.g.dart';
 import 'package:flutter_dsfr/fondamentaux/dsfr_text_style.dart';

@@ -6,8 +6,8 @@ import 'package:flutter_dsfr/fondamentaux/dsfr_spacings.g.dart';
 import 'package:flutter_dsfr/helpers/color_utils.dart';
 import 'package:flutter_dsfr/helpers/dsfr_component_state.dart';
 
-class ComponentStateWidget extends StatelessWidget {
-  const ComponentStateWidget({
+class DsfrComponentStateWidget extends StatelessWidget {
+  const DsfrComponentStateWidget({
     super.key,
     required this.componentState,
   });
@@ -21,7 +21,7 @@ class ComponentStateWidget extends StatelessWidget {
     } else {
       return Row(
         children: [
-          ComponentStateIcon(state: componentState.state),
+          DsfrComponentStateIcon(state: componentState.state),
           const SizedBox(width: DsfrSpacings.s1v),
           Flexible(
             child: Text(
@@ -37,10 +37,10 @@ class ComponentStateWidget extends StatelessWidget {
   }
 }
 
-class ComponentStateIcon extends StatelessWidget {
+class DsfrComponentStateIcon extends StatelessWidget {
   final DsfrComponentStateEnum state;
 
-  const ComponentStateIcon({super.key, required this.state});
+  const DsfrComponentStateIcon({super.key, required this.state});
 
   @override
   Widget build(BuildContext context) {
