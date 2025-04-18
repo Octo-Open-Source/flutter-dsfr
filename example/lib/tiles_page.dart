@@ -16,6 +16,7 @@ class TilesPage extends StatefulWidget {
 }
 
 class _TilesPageState extends State<TilesPage> {
+
   @override
   Widget build(final context) => SingleChildScrollView(
         padding: EdgeInsets.all(16),
@@ -31,176 +32,350 @@ class _TilesPageState extends State<TilesPage> {
               'Taille SM',
               style: DsfrTextStyle.headline2(color: DsfrColorDecisions.textTitleGrey(context)),
             ),
-            DsfrTile.sm(
-                title: 'Tuile par défaut',
-                description: 'Description',
-                detail: 'Détail',
-                badgesAndTags: [
-                  DsfrTag(
-                    label: TextSpan(text: 'Tag par défaut'),
-                    size: DsfrComponentSize.sm,
-                  ),
-                ],
-                onTap: () {
-                  print('Tuile sm cliquée');
-                }),
-            DsfrTile.sm(
+            DsfrTile(
+              size: DsfrComponentSize.sm,
+              title: 'Tuile par défaut',
+              description: 'Description',
+              details: 'Détail',
+              badgesAndTags: [
+                DsfrBadge.sm(label: 'badge info', type: DsfrBadgeType.information),
+              ],
+              onTap: () {
+                print('Tuile sm cliquée');
+              }
+            ),
+            DsfrTile(
+              size: DsfrComponentSize.sm,
               title: 'Tuile non cliquable',
               description: 'Description',
-              detail: 'Détail',
+              details: 'Détail',
               imageAsset: 'assets/images/city_hall.svg',
               badgesAndTags: [
-                DsfrTag(
-                  label: TextSpan(text: 'Tag par défaut'),
-                  size: DsfrComponentSize.sm,
-                ),
+                DsfrBadge.sm(label: 'badge info', type: DsfrBadgeType.information),
               ],
             ),
-            DsfrTile.sm(
+            DsfrTile(
+                size: DsfrComponentSize.sm,
                 title: 'Tuile par défaut sans icône',
                 description: 'Description',
-                detail: 'Détail',
+                details: 'Détail',
                 badgesAndTags: [
-                  DsfrTag(
-                    label: TextSpan(text: 'Tag par défaut'),
-                    size: DsfrComponentSize.sm,
-                  ),
+                  DsfrBadge.sm(label: 'badge info', type: DsfrBadgeType.information),
                 ],
                 showActionIcon: false,
                 onTap: () {
                   print('Tuile sm cliquée');
-                }),
-            DsfrTile.sm(
-                backgroundType: DsfrTileBackgroundType.grey,
-                title: 'Tuile avec fond gris',
-                description: 'Description',
-                detail: 'Détail',
-                imageAsset: 'assets/images/city_hall.svg',
-                badgesAndTags: [
-                  DsfrTag(
-                    label: TextSpan(text: 'Tag par défaut'),
-                    size: DsfrComponentSize.sm,
-                  ),
-                ],
-                onTap: () {
-                  print('Tuile sm cliquée');
-                }),
+                }
+            ),
+            DsfrTile(
+              size: DsfrComponentSize.sm,
+              backgroundType: DsfrTileBackgroundType.grey,
+              title: 'Tuile avec fond gris',
+              description: 'Description',
+              details: 'Détail',
+              imageAsset: 'assets/images/city_hall.svg',
+              badgesAndTags: [
+                DsfrBadge.sm(label: 'badge info', type: DsfrBadgeType.information),
+              ],
+              onTap: () {
+                print('Tuile sm cliquée');
+              }
+            ),
             Container(
               padding: EdgeInsets.all(16),
               color: DsfrColorDecisions.backgroundActionLowBlueFrance(context),
-              child: DsfrTile.sm(
-                  backgroundType: DsfrTileBackgroundType.lightNoBorder,
-                  title: 'Tuile avec fond transparent',
-                  description: 'Description',
-                  detail: 'Détail',
-                  badgesAndTags: [
-                    DsfrBadge(label: 'badge info', type: DsfrBadgeType.information, size: DsfrComponentSize.sm),
-                  ],
-                  onTap: () {
-                    print('Tuile sm cliquée');
-                  }),
-            ),
-            DsfrTile.sm(
-                backgroundType: DsfrTileBackgroundType.lightWithShadow,
-                title: 'Tuile avec ombre',
+              child: DsfrTile(
+                size: DsfrComponentSize.sm,
+                backgroundType: DsfrTileBackgroundType.lightNoBorder,
+                title: 'Tuile avec fond transparent',
                 description: 'Description',
-                detail: 'Détail',
+                details: 'Détail',
                 badgesAndTags: [
-                  DsfrTag(
-                    label: TextSpan(text: 'Tag par défaut'),
-                    size: DsfrComponentSize.sm,
-                  ),
+                  DsfrBadge.sm(label: 'badge info', type: DsfrBadgeType.information),
                 ],
                 onTap: () {
                   print('Tuile sm cliquée');
-                }),
+                }
+              ),
+            ),
+            DsfrTile(
+                size: DsfrComponentSize.sm,
+                backgroundType: DsfrTileBackgroundType.lightWithShadow,
+                title: 'Tuile avec ombre',
+                description: 'Description',
+                details: 'Détail',
+                badgesAndTags: [
+                  DsfrBadge.sm(label: 'badge info', type: DsfrBadgeType.information),
+                ],
+                onTap: () {
+                  print('Tuile sm cliquée');
+                }
+            ),
             Text(
               'Taille MD',
               style: DsfrTextStyle.headline2(color: DsfrColorDecisions.textTitleGrey(context)),
             ),
-            DsfrTile.md(
+            DsfrTile(
+                size: DsfrComponentSize.md,
                 title: 'Tuile par défaut',
                 description: 'Description',
-                detail: 'Détail',
+                details: 'Détail',
                 badgesAndTags: [
-                  DsfrTag(
-                    label: TextSpan(text: 'Tag par défaut'),
-                    size: DsfrComponentSize.md,
-                  ),
+                  DsfrBadge.md(label: 'badge info', type: DsfrBadgeType.information),
                 ],
                 onTap: () {
                   print('Tuile md cliquée');
-                }),
-            DsfrTile.md(
+                }
+            ),
+            DsfrTile(
+              size: DsfrComponentSize.md,
               title: 'Tuile non cliquable',
               description: 'Description',
-              detail: 'Détail',
+              details: 'Détail',
               imageAsset: 'assets/images/city_hall.svg',
               badgesAndTags: [
-                DsfrTag(
-                  label: TextSpan(text: 'Tag par défaut'),
-                  size: DsfrComponentSize.md,
-                ),
+                DsfrBadge.md(label: 'badge info', type: DsfrBadgeType.information),
               ],
             ),
-            DsfrTile.md(
+            DsfrTile(
+                size: DsfrComponentSize.md,
                 title: 'Tuile par défaut sans icône',
                 description: 'Description',
-                detail: 'Détail',
+                details: 'Détail',
                 badgesAndTags: [
-                  DsfrTag(
-                    label: TextSpan(text: 'Tag par défaut'),
-                    size: DsfrComponentSize.md,
-                  ),
+                  DsfrBadge.md(label: 'badge info', type: DsfrBadgeType.information),
                 ],
                 showActionIcon: false,
                 onTap: () {
                   print('Tuile md cliquée');
-                }),
-            DsfrTile.md(
+                }
+            ),
+            DsfrTile(
+                size: DsfrComponentSize.md,
                 backgroundType: DsfrTileBackgroundType.grey,
                 title: 'Tuile avec fond gris',
                 description: 'Description',
-                detail: 'Détail',
+                details: 'Détail',
                 imageAsset: 'assets/images/city_hall.svg',
                 badgesAndTags: [
-                  DsfrTag(
-                    label: TextSpan(text: 'Tag par défaut'),
-                    size: DsfrComponentSize.md,
-                  ),
+                  DsfrBadge.md(label: 'badge info', type: DsfrBadgeType.information),
                 ],
                 onTap: () {
                   print('Tuile md cliquée');
-                }),
+                }
+            ),
             Container(
               padding: EdgeInsets.all(16),
               color: DsfrColorDecisions.backgroundActionLowBlueFrance(context),
-              child: DsfrTile.md(
+              child: DsfrTile(
+                  size: DsfrComponentSize.md,
                   backgroundType: DsfrTileBackgroundType.lightNoBorder,
                   title: 'Tuile avec fond transparent',
                   description: 'Description',
-                  detail: 'Détail',
+                  details: 'Détail',
                   badgesAndTags: [
-                    DsfrBadge(label: 'badge info', type: DsfrBadgeType.information, size: DsfrComponentSize.md),
+                    DsfrBadge.md(label: 'badge info', type: DsfrBadgeType.information),
                   ],
                   onTap: () {
                     print('Tuile md cliquée');
-                  }),
+                  }
+              ),
             ),
-            DsfrTile.md(
+            DsfrTile(
+                size: DsfrComponentSize.md,
                 backgroundType: DsfrTileBackgroundType.lightWithShadow,
                 title: 'Tuile avec ombre',
                 description: 'Description',
-                detail: 'Détail',
+                details: 'Détail',
                 badgesAndTags: [
-                  DsfrTag(
-                    label: TextSpan(text: 'Tag par défaut'),
-                    size: DsfrComponentSize.md,
-                  ),
+                  DsfrBadge.md(label: 'badge info', type: DsfrBadgeType.information),
                 ],
                 onTap: () {
                   print('Tuile md cliquée');
-                }),
+                }
+            ),
+            Text(
+              'Tuile horizontale',
+              style: DsfrTextStyle.headline1(color: DsfrColorDecisions.textTitleGrey(context)),
+            ),
+            Text(
+              'Taille SM',
+              style: DsfrTextStyle.headline2(color: DsfrColorDecisions.textTitleGrey(context)),
+            ),
+            DsfrTile(
+                size: DsfrComponentSize.md,
+                type: DsfrTileType.horizontal,
+                title: 'Tuile par défaut',
+                description: 'Description',
+                details: 'Détail',
+                badgesAndTags: [
+                  DsfrBadge.sm(label: 'badge info', type: DsfrBadgeType.information),
+                ],
+                onTap: () {
+                  print('Tuile sm cliquée');
+                }
+            ),
+            DsfrTile(
+              size: DsfrComponentSize.md,
+              type: DsfrTileType.horizontal,
+              title: 'Tuile non cliquable',
+              description: 'Description',
+              details: 'Détail',
+              imageAsset: 'assets/images/city_hall.svg',
+              badgesAndTags: [
+                DsfrBadge.sm(label: 'badge info', type: DsfrBadgeType.information),
+              ],
+            ),
+            DsfrTile(
+                size: DsfrComponentSize.md,
+                type: DsfrTileType.horizontal,
+                title: 'Tuile par défaut sans icône',
+                description: 'Description',
+                details: 'Détail',
+                badgesAndTags: [
+                  DsfrBadge.sm(label: 'badge info', type: DsfrBadgeType.information),
+                ],
+                showActionIcon: false,
+                onTap: () {
+                  print('Tuile sm cliquée');
+                }
+            ),
+            DsfrTile(
+                size: DsfrComponentSize.md,
+                type: DsfrTileType.horizontal,
+                backgroundType: DsfrTileBackgroundType.grey,
+                title: 'Tuile avec fond gris',
+                description: 'Description',
+                details: 'Détail',
+                imageAsset: 'assets/images/city_hall.svg',
+                badgesAndTags: [
+                  DsfrBadge.sm(label: 'badge info', type: DsfrBadgeType.information),
+                ],
+                onTap: () {
+                  print('Tuile sm cliquée');
+                }
+            ),
+            Container(
+              padding: EdgeInsets.all(16),
+              color: DsfrColorDecisions.backgroundActionLowBlueFrance(context),
+              child: DsfrTile(
+                  size: DsfrComponentSize.md,
+                  type: DsfrTileType.horizontal,
+                  backgroundType: DsfrTileBackgroundType.lightNoBorder,
+                  title: 'Tuile avec fond transparent',
+                  description: 'Description',
+                  details: 'Détail',
+                  badgesAndTags: [
+                    DsfrBadge.sm(label: 'badge info', type: DsfrBadgeType.information),
+                  ],
+                  onTap: () {
+                    print('Tuile sm cliquée');
+                  }
+              ),
+            ),
+            DsfrTile(
+                size: DsfrComponentSize.md,
+                type: DsfrTileType.horizontal,
+                backgroundType: DsfrTileBackgroundType.lightWithShadow,
+                title: 'Tuile avec ombre',
+                description: 'Description',
+                details: 'Détail',
+                badgesAndTags: [
+                  DsfrBadge.sm(label: 'badge info', type: DsfrBadgeType.information),
+                ],
+                onTap: () {
+                  print('Tuile sm cliquée');
+                }
+            ),
+            Text(
+              'Taille MD',
+              style: DsfrTextStyle.headline2(color: DsfrColorDecisions.textTitleGrey(context)),
+            ),
+            DsfrTile(
+                size: DsfrComponentSize.md,
+                type: DsfrTileType.horizontal,
+                title: 'Tuile par défaut',
+                description: 'Description',
+                details: 'Détail',
+                badgesAndTags: [
+                  DsfrBadge.md(label: 'badge info', type: DsfrBadgeType.information),
+                ],
+                onTap: () {
+                  print('Tuile md cliquée');
+                }
+            ),
+            DsfrTile(
+              size: DsfrComponentSize.md,
+              type: DsfrTileType.horizontal,
+              title: 'Tuile non cliquable',
+              description: 'Description',
+              details: 'Détail',
+              imageAsset: 'assets/images/city_hall.svg',
+              badgesAndTags: [
+                DsfrBadge.md(label: 'badge info', type: DsfrBadgeType.information),
+              ],
+            ),
+            DsfrTile(
+                size: DsfrComponentSize.md,
+                type: DsfrTileType.horizontal,
+                title: 'Tuile par défaut sans icône',
+                description: 'Description',
+                details: 'Détail',
+                badgesAndTags: [
+                  DsfrBadge.md(label: 'badge info', type: DsfrBadgeType.information),
+                ],
+                showActionIcon: false,
+                onTap: () {
+                  print('Tuile md cliquée');
+                }
+            ),
+            DsfrTile(
+                size: DsfrComponentSize.md,
+                type: DsfrTileType.horizontal,
+                backgroundType: DsfrTileBackgroundType.grey,
+                title: 'Tuile avec fond gris',
+                description: 'Description',
+                details: 'Détail',
+                imageAsset: 'assets/images/city_hall.svg',
+                badgesAndTags: [
+                  DsfrBadge.md(label: 'badge info', type: DsfrBadgeType.information),
+                ],
+                onTap: () {
+                  print('Tuile md cliquée');
+                }
+            ),
+            Container(
+              padding: EdgeInsets.all(16),
+              color: DsfrColorDecisions.backgroundActionLowBlueFrance(context),
+              child: DsfrTile(
+                  size: DsfrComponentSize.md,
+                  type: DsfrTileType.horizontal,
+                  backgroundType: DsfrTileBackgroundType.lightNoBorder,
+                  title: 'Tuile avec fond transparent',
+                  description: 'Description',
+                  details: 'Détail',
+                  badgesAndTags: [
+                    DsfrBadge.md(label: 'badge info', type: DsfrBadgeType.information),
+                  ],
+                  onTap: () {
+                    print('Tuile md cliquée');
+                  }
+              ),
+            ),
+            DsfrTile(
+                size: DsfrComponentSize.md,
+                type: DsfrTileType.horizontal,
+                backgroundType: DsfrTileBackgroundType.lightWithShadow,
+                title: 'Tuile avec ombre',
+                description: 'Description',
+                details: 'Détail',
+                badgesAndTags: [
+                  DsfrBadge.md(label: 'badge info', type: DsfrBadgeType.information),
+                ],
+                onTap: () {
+                  print('Tuile md cliquée');
+                }
+            ),
           ],
         ),
       );

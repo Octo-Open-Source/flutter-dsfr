@@ -1,32 +1,37 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dsfr/src/components/dsfr_tile.dart';
+import 'package:flutter_dsfr/helpers/dsfr_component_size.dart';
 import '../../helpers/a11y_test.skip.dart';
 
 void main() {
-  Widget tuileSm = DsfrTile.sm(
+  Widget tuileSm = DsfrTile(
+      size: DsfrComponentSize.sm,
       title: 'Tile default',
       description: 'Description',
-      detail: 'Details',
+      details: 'Details',
   );
 
-  Widget tuileSmWithImage = DsfrTile.sm(
+  Widget tuileSmWithImage = DsfrTile(
+    size: DsfrComponentSize.sm,
     title: 'Tile with image',
     description: 'Description',
-    detail: 'Details',
+    details: 'Details',
     imageAsset: 'assets/images/city_hall.svg',
   );
 
-  Widget tuileMd = DsfrTile.sm(
+  Widget tuileMd = DsfrTile(
+    size: DsfrComponentSize.md,
     title: 'Tile default',
     description: 'Description',
-    detail: 'Details',
+    details: 'Details',
   );
 
-  Widget tuileMdWithImage = DsfrTile.sm(
+  Widget tuileMdWithImage = DsfrTile(
+    size: DsfrComponentSize.md,
     title: 'Tile with image',
     description: 'Description',
-    detail: 'Details',
+    details: 'Details',
     imageAsset: 'assets/images/city_hall.svg',
   );
 

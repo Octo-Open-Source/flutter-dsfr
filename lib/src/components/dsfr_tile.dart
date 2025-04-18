@@ -6,6 +6,11 @@ import 'package:flutter_svg/svg.dart';
 const int _badgesAndTagsMaxLength = 4;
 const double _paddingImageAndBadges = 16;
 
+enum DsfrTileType {
+  vertical,
+  horizontal,
+}
+
 enum DsfrTileBackgroundType {
   light,
   grey,
@@ -15,8 +20,9 @@ enum DsfrTileBackgroundType {
 }
 
 class DsfrTile extends StatelessWidget {
-  const DsfrTile._({
+  const DsfrTile({
     super.key,
+    this.type = DsfrTileType.vertical,
     this.backgroundType,
     required this.title,
     this.description,
@@ -31,63 +37,12 @@ class DsfrTile extends StatelessWidget {
     this.actionIcon = DsfrIcons.systemArrowRightLine,
   }) : assert(badgesAndTags == null || (badgesAndTags.length <= _badgesAndTagsMaxLength));
 
-  const DsfrTile.sm({
-    final Key? key,
-    final DsfrTileBackgroundType? backgroundType,
-    required final String title,
-    final String? description,
-    final String? detail,
-    final String? imageAsset,
-    final GestureTapCallback? onTap,
-    final bool enabled = true,
-    final List<Widget>? badgesAndTags,
-    final bool showActionIcon = true,
-    final IconData? actionIcon = DsfrIcons.systemArrowRightLine,
-  }) : this._(
-          key: key,
-          backgroundType: backgroundType,
-          title: title,
-          description: description,
-          details: detail,
-          size: DsfrComponentSize.sm,
-          imageAsset: imageAsset,
-          onTap: onTap,
-          enabled: enabled,
-          badgesAndTags: badgesAndTags,
-          showActionIcon: showActionIcon,
-          actionIcon: actionIcon,
-        );
-
-  const DsfrTile.md({
-    final Key? key,
-    final DsfrTileBackgroundType? backgroundType,
-    required final String title,
-    final String? description,
-    final String? detail,
-    final String? imageAsset,
-    final GestureTapCallback? onTap,
-    final bool enabled = true,
-    final List<Widget>? badgesAndTags,
-    final bool showActionIcon = true,
-    final IconData? actionIcon = DsfrIcons.systemArrowRightLine,
-  }) : this._(
-          key: key,
-          backgroundType: backgroundType,
-          title: title,
-          description: description,
-          details: detail,
-          size: DsfrComponentSize.md,
-          imageAsset: imageAsset,
-          onTap: onTap,
-          enabled: enabled,
-          badgesAndTags: badgesAndTags,
-        );
-
+  final DsfrComponentSize size;
+  final DsfrTileType? type;
   final DsfrTileBackgroundType? backgroundType;
   final String title;
   final String? description;
   final String? details;
-  final DsfrComponentSize size;
   final GestureTapCallback? onTap;
   final String? imageAsset;
   final FocusNode? focusNode;
@@ -256,56 +211,51 @@ class DsfrTile extends StatelessWidget {
                     decoration: BoxDecoration(
                       border: _getTopRightLeftBorder(context),
                     ),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        if (imageAsset != null)
-                          if (imageAsset!.endsWith('svg'))
-                            SvgPicture.asset(
-                              imageAsset!,
-                              height: _getImageHeight(),
-                              fit: BoxFit.fitHeight,
-                              excludeFromSemantics: true,
-                            )
-                          else
-                            Image.asset(imageAsset!, height: _getImageHeight(), fit: BoxFit.fitHeight),
-                        if (imageAsset != null) const SizedBox(height: _paddingImageAndBadges),
-                        if (badgesAndTagsToAdd != null && badgesAndTagsToAdd.isNotEmpty)
-                          Column(
-                            children: [
-                              ExcludeFocus(
-                                  child: Column(
-                                children: [...badgesAndTagsToAdd],
-                              )),
-                              SizedBox(height: _getPaddingBadgesAndTitle()),
-                            ],
+                    child:
+                    Builder(
+                      builder: (context) {
+                        return switch (type) {
+                          DsfrTileType.vertical =>_VerticalTile(
+                            imageAsset: imageAsset,
+                            imageHeight: _getImageHeight(),
+                            badgesAndTagsToAdd: badgesAndTagsToAdd,
+                            paddingBadgesAndTitle: _getPaddingBadgesAndTitle(),
+                            paddingTitleAndDescription: _getPaddingTitleAndDescription(),
+                            paddingDescriptionAndDetails: _getPaddingDescriptionAndDetail(),
+                            title: title,
+                            description: description,
+                            details: details,
+                            titleTextStyle: _getTitleTextStyle(context),
+                            descriptionTextStyle: _getDescriptionTextStyle(context),
+                            showActionIcon: showActionIcon,
+                            actionIcon: actionIcon,
+                            iconSize: _getIconSize(),
+                            iconColor: _getIconColor(context),
+                            onTap: onTap,
                           ),
-                        Text(
-                          title,
-                          style: _getTitleTextStyle(context),
-                        ),
-                        if (description != null) SizedBox(height: _getPaddingTitleAndDescription()),
-                        if (description != null)
-                          Text(
-                            description!,
-                            style: _getDescriptionTextStyle(context),
+                          DsfrTileType.horizontal => _HorizontalTile(
+                            imageAsset: imageAsset,
+                            imageHeight: _getImageHeight(),
+                            badgesAndTagsToAdd: badgesAndTagsToAdd,
+                            paddingBadgesAndTitle: _getPaddingBadgesAndTitle(),
+                            paddingTitleAndDescription: _getPaddingTitleAndDescription(),
+                            paddingDescriptionAndDetails: _getPaddingDescriptionAndDetail(),
+                            title: title,
+                            description: description,
+                            details: details,
+                            titleTextStyle: _getTitleTextStyle(context),
+                            descriptionTextStyle: _getDescriptionTextStyle(context),
+                            showActionIcon: showActionIcon,
+                            actionIcon: actionIcon,
+                            iconSize: _getIconSize(),
+                            iconColor: _getIconColor(context),
+                            onTap: onTap,
                           ),
-                        if (details != null) SizedBox(height: _getPaddingDescriptionAndDetail()),
-                        if (details != null)
-                          Text(
-                            details!,
-                            style: DsfrTextStyle.bodyXsMedium(color: DsfrColorDecisions.textMentionGrey(context)),
+                          null => throw UnimplementedError(
+                            'Type $type is not implemented',
                           ),
-                        if (showActionIcon && onTap != null)
-                          Container(
-                            alignment: Alignment.centerRight,
-                            child: Icon(
-                              actionIcon,
-                              size: _getIconSize(),
-                              color: _getIconColor(context),
-                            ),
-                          ),
-                      ],
+                        };
+                      },
                     ),
                   ),
                 ),
@@ -313,5 +263,216 @@ class DsfrTile extends StatelessWidget {
             ));
       }),
     );
+  }
+}
+
+class _VerticalTile extends StatelessWidget {
+  final String? imageAsset;
+  final double imageHeight;
+  final List<Widget>? badgesAndTagsToAdd;
+  final double paddingBadgesAndTitle;
+  final double paddingTitleAndDescription;
+  final double paddingDescriptionAndDetails;
+  final String title;
+  final String? description;
+  final String? details;
+  final TextStyle titleTextStyle;
+  final TextStyle descriptionTextStyle;
+  final bool showActionIcon;
+  final IconData? actionIcon;
+  final double iconSize;
+  final Color? iconColor;
+  final GestureTapCallback? onTap;
+
+  const _VerticalTile({
+    required this.imageAsset,
+    required this.imageHeight,
+    required this.badgesAndTagsToAdd,
+    required this.paddingBadgesAndTitle,
+    required this.paddingTitleAndDescription,
+    required this.paddingDescriptionAndDetails,
+    required this.title,
+    required this.description,
+    required this.details,
+    required this.titleTextStyle,
+    required this.descriptionTextStyle,
+    required this.showActionIcon,
+    required this.actionIcon,
+    required this.iconSize,
+    required this.iconColor,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        if (imageAsset != null)
+          _TileImage(imageAsset: imageAsset!, height: imageHeight),
+        if (imageAsset != null) const SizedBox(height: _paddingImageAndBadges),
+        if (badgesAndTagsToAdd != null && badgesAndTagsToAdd!.isNotEmpty)
+          Column(
+            children: [
+              ExcludeFocus(
+                  child: Column(
+                    children: [...badgesAndTagsToAdd!],
+                  )),
+              SizedBox(height: paddingBadgesAndTitle),
+            ],
+          ),
+        Text(
+          title,
+          style: titleTextStyle,
+        ),
+        if (description != null) SizedBox(height: paddingTitleAndDescription),
+        if (description != null)
+          Text(
+            description!,
+            style: descriptionTextStyle,
+          ),
+        if (details != null) SizedBox(height: paddingDescriptionAndDetails),
+        if (details != null)
+          Text(
+            details!,
+            style: DsfrTextStyle.bodyXsMedium(color: DsfrColorDecisions.textMentionGrey(context)),
+          ),
+        if (showActionIcon && onTap != null)
+          Container(
+            alignment: Alignment.centerRight,
+            child: Icon(
+              actionIcon,
+              size: iconSize,
+              color: iconColor,
+            ),
+          ),
+      ],
+    );
+  }
+}
+
+class _HorizontalTile extends StatelessWidget {
+  final String? imageAsset;
+  final double imageHeight;
+  final List<Widget>? badgesAndTagsToAdd;
+  final double paddingBadgesAndTitle;
+  final double paddingTitleAndDescription;
+  final double paddingDescriptionAndDetails;
+  final String title;
+  final String? description;
+  final String? details;
+  final TextStyle titleTextStyle;
+  final TextStyle descriptionTextStyle;
+  final bool showActionIcon;
+  final IconData? actionIcon;
+  final double iconSize;
+  final Color? iconColor;
+  final GestureTapCallback? onTap;
+
+  const _HorizontalTile({
+    required this.imageAsset,
+    required this.imageHeight,
+    required this.badgesAndTagsToAdd,
+    required this.paddingBadgesAndTitle,
+    required this.paddingTitleAndDescription,
+    required this.paddingDescriptionAndDetails,
+    required this.title,
+    required this.description,
+    required this.details,
+    required this.titleTextStyle,
+    required this.descriptionTextStyle,
+    required this.showActionIcon,
+    required this.actionIcon,
+    required this.iconSize,
+    required this.iconColor,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisSize: MainAxisSize.max,
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      spacing: 24,
+      children: [
+        if (imageAsset != null)
+          _TileImage(imageAsset: imageAsset!, height: imageHeight),
+        Expanded(child:
+          Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            if (badgesAndTagsToAdd != null && badgesAndTagsToAdd!.isNotEmpty)
+              Column(
+                mainAxisSize: MainAxisSize.max,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  ExcludeFocus(
+                      child: Column(
+                        children: [...badgesAndTagsToAdd!],
+                      )),
+                  SizedBox(height: paddingBadgesAndTitle),
+                ],
+              ),
+            Text(
+              title,
+              style: titleTextStyle,
+            ),
+            if (description != null) SizedBox(height: paddingTitleAndDescription),
+            if (description != null)
+              Text(
+                description!,
+                style: descriptionTextStyle,
+              ),
+            if (details != null || (showActionIcon && onTap != null))
+              SizedBox(height: paddingDescriptionAndDetails),
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    if (details != null)
+                      Text(
+                        details!,
+                        style: DsfrTextStyle.bodyXsMedium(color: DsfrColorDecisions.textMentionGrey(context)),
+                      ),
+                    if (showActionIcon && onTap != null)
+                      Icon(
+                        actionIcon,
+                        size: iconSize,
+                        color: iconColor,
+                      ),
+                  ],
+                ),
+          ],
+        ),
+        ),
+      ]
+    );
+  }
+}
+
+class _TileImage extends StatelessWidget {
+  final String imageAsset;
+  final double height;
+
+  const _TileImage({
+    required this.imageAsset,
+    required this.height,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    if (imageAsset.endsWith('svg')) {
+      return SvgPicture.asset(
+        imageAsset,
+        height: height,
+        fit: BoxFit.fitHeight,
+        excludeFromSemantics: true,
+      );
+    } else {
+      return Image.asset(imageAsset, height: height, fit: BoxFit.fitHeight);
+    }
   }
 }
