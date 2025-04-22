@@ -1,0 +1,70 @@
+name: Build package for mobile apps
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+
+  build-android:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: subosito/flutter-action@v2
+        with:
+          cache: true
+          flutter-version: 3.29.2
+
+      - name: Install Flutter dependencies
+        shell: bash
+        run: |
+          flutter pub get
+
+      - name: Build Android apk
+        run: |
+          cd example/
+          flutter build apk \
+          -t lib/main.dart \
+          --debug \
+
+
+
+  build-ios:
+    runs-on: macos-13
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: subosito/flutter-action@v2
+        with:
+          cache: true
+          flutter-version: 3.29.2
+
+      - name: Install Flutter dependencies
+        shell: bash
+        run: |
+          flutter pub get
+
+      - name: Check CocoaPods cache
+        uses: actions/cache@v4
+        id: cocoapods-cache
+        with:
+          path: ios/Pods
+          key: ${{ runner.os }}-pods-${{ hashFiles('pubspec.lock') }}
+
+      - name: Install CocoaPods dependencies
+        if: steps.cocoapods-cache.outputs.cache-hit != 'true'
+        shell: bash
+        run: |
+          find . -name "Podfile" -execdir pod install \;
+
+      - name: Build iOS ipa
+        shell: bash
+        run: |
+          cd example/
+          flutter build ipa \
+          -t lib/main.dart \
+          --no-codesign \
+          --debug \
