@@ -22,6 +22,10 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^5.0.0
+  icon_font_generator:
+    git:
+      url: https://github.com/Jupi007/icon_font_generator.git
+      ref: yaru
   meta: ^1.1.8
 
 flutter:

@@ -1,0 +1,16 @@
+icon_font:
+  input_svg_dir: "assets/icons/import"
+  output_font_file: "assets/icons/Dsfr-Icons.otf"
+  
+  output_class_file: "lib/src/fondamentaux/dsfr_icons.g.dart"
+  class_name: "DsfrIcons"
+  package: flutter_dsfr
+  format: false
+  namingStrategy: camel
+
+  font_name: "DsfrIcons"
+  normalize: false
+  ignore_shapes: false
+
+  recursive: true
+  verbose: true
