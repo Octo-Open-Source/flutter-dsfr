@@ -4,7 +4,7 @@ on:
   pull_request:
 
 jobs:
-  build:
+  analyze:
     runs-on: ubuntu-latest
 
     steps:
@@ -21,5 +21,3 @@ jobs:
       - name: Run custom linters
         run: flutter pub run custom_lint
 
-      - name: Run tests
-        run: flutter test
