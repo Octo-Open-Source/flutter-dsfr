@@ -2,6 +2,7 @@ import 'package:example/mise_en_page/page_sub_section.dart';
 import 'package:flutter_dsfr/flutter_dsfr.dart';
 import 'package:example/page_item.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dsfr/helpers/dsfr_component_size.dart';
 
 class AlertPage extends StatelessWidget {
   const AlertPage({super.key});
@@ -16,16 +17,18 @@ class AlertPage extends StatelessWidget {
         padding: const EdgeInsets.all(16),
         children: [
           PageSubSection(title: 'Alerte avec titre et description', children: [
-            DsfrAlert(type: DsfrAlertType.info, title: 'Titre', description: 'description'),
-            DsfrAlert(type: DsfrAlertType.success, title: 'Titre', description: 'description'),
-            DsfrAlert(type: DsfrAlertType.warning, title: 'Titre', description: 'description'),
-            DsfrAlert(type: DsfrAlertType.error, title: 'Titre', description: 'description'),
+            DsfrAlert(type: DsfrAlertType.info, title: 'Titre', description: DsfrAlertDescriptionText('description')),
+            DsfrAlert(
+                type: DsfrAlertType.success, title: 'Titre', description: DsfrAlertDescriptionText('description')),
+            DsfrAlert(
+                type: DsfrAlertType.warning, title: 'Titre', description: DsfrAlertDescriptionText('description')),
+            DsfrAlert(type: DsfrAlertType.error, title: 'Titre', description: DsfrAlertDescriptionText('description')),
           ]),
           PageSubSection(title: 'Alerte avec description seule', children: [
-            DsfrAlert(type: DsfrAlertType.info, description: 'description'),
-            DsfrAlert(type: DsfrAlertType.success, description: 'description'),
-            DsfrAlert(type: DsfrAlertType.warning, description: 'description'),
-            DsfrAlert(type: DsfrAlertType.error, description: 'description'),
+            DsfrAlert(type: DsfrAlertType.info, description: DsfrAlertDescriptionText('description')),
+            DsfrAlert(type: DsfrAlertType.success, description: DsfrAlertDescriptionText('description')),
+            DsfrAlert(type: DsfrAlertType.warning, description: DsfrAlertDescriptionText('description')),
+            DsfrAlert(type: DsfrAlertType.error, description: DsfrAlertDescriptionText('description')),
           ]),
           DsfrAlertWithClose(),
           PageSubSection(title: 'Variantes : titre seul et description longue', children: [
@@ -33,15 +36,36 @@ class AlertPage extends StatelessWidget {
             DsfrAlert(
               type: DsfrAlertType.success,
               title: 'Titre',
-              description:
-                  'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+              description: DsfrAlertDescriptionText(
+                'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+              ),
             ),
             DsfrAlert(
               type: DsfrAlertType.success,
               title: 'Titre',
-              description:
-              'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
-              onClose: (){},
+              description: DsfrAlertDescriptionText(
+                'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+              ),
+              onClose: () {},
+            ),
+          ]),
+          PageSubSection(title: 'Description avec widget', children: [
+            DsfrAlert(
+              type: DsfrAlertType.info,
+              title: 'Titre',
+              description: DsfrAlertDescriptionWidget(
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('Description'),
+                    DsfrLink(
+                      label: 'linklabel',
+                      onTap: () {},
+                      size: DsfrComponentSize.md,
+                    ),
+                  ],
+                ),
+              ),
             ),
           ]),
         ],
@@ -66,7 +90,7 @@ class _DsfrAlertWithCloseState extends State<DsfrAlertWithClose> {
         DsfrAlert(
           type: DsfrAlertType.info,
           title: 'Titre',
-          description: 'description',
+          description: DsfrAlertDescriptionText('description'),
           onClose: () => setState(() {
             isInfoVisible = false;
           }),
@@ -75,7 +99,7 @@ class _DsfrAlertWithCloseState extends State<DsfrAlertWithClose> {
         DsfrAlert(
           type: DsfrAlertType.success,
           title: 'Titre',
-          description: 'description',
+          description: DsfrAlertDescriptionText('description'),
           onClose: () => setState(() {
             isSuccessVisible = false;
           }),

@@ -31,10 +31,24 @@ extension DsfrAlertTypeExtension on DsfrAlertType {
       };
 }
 
+abstract class DsfrAlertDescription {}
+
+class DsfrAlertDescriptionText extends DsfrAlertDescription {
+  final String text;
+
+  DsfrAlertDescriptionText(this.text);
+}
+
+class DsfrAlertDescriptionWidget extends DsfrAlertDescription {
+  final Widget widget;
+
+  DsfrAlertDescriptionWidget(this.widget);
+}
+
 class DsfrAlert extends StatelessWidget {
   final DsfrAlertType type;
   final String? title;
-  final String? description;
+  final DsfrAlertDescription? description;
   final Function()? onClose;
   final String semanticCloseLabel;
 
@@ -61,7 +75,7 @@ class DsfrAlert extends StatelessWidget {
               child: Align(
                   alignment: Alignment.topCenter,
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8,vertical:  16),
+                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
                     child: Icon(type.icon, color: DsfrColorDecisions.backgroundDefaultGrey(context)),
                   )),
             ),
@@ -78,10 +92,12 @@ class DsfrAlert extends StatelessWidget {
                         style: DsfrTextStyle.headline5(color: DsfrColorDecisions.textTitleGrey(context)),
                       ),
                     if (description != null)
-                      Text(
-                        description!,
-                        style: DsfrTextStyle.bodyMd(color: DsfrColorDecisions.textDefaultGrey(context)),
-                      ),
+                      description is DsfrAlertDescriptionText
+                          ? Text(
+                              (description as DsfrAlertDescriptionText).text,
+                              style: DsfrTextStyle.bodyMd(color: DsfrColorDecisions.textDefaultGrey(context)),
+                            )
+                          : (description as DsfrAlertDescriptionWidget).widget,
                   ],
                 ),
               ),
