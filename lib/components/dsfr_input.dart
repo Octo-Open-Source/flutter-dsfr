@@ -9,6 +9,7 @@ import 'package:flutter_dsfr/fondamentaux/dsfr_spacings.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dsfr/helpers/color_utils.dart';
+import 'package:flutter_dsfr/helpers/dsfr_component_size.dart';
 import 'package:flutter_dsfr/helpers/dsfr_component_state.dart';
 
 class DsfrInput extends StatefulWidget {
@@ -207,11 +208,12 @@ class _DsfrInputPasswordLabel extends StatelessWidget {
         FocusTraversalOrder(
           order: const NumericFocusOrder(2),
           child: Flexible(
-            child: DsfrCheckbox.sm(
+            child: DsfrCheckbox(
               label: displayPasswordLabel,
               value: passwordVisibility,
               onChanged: handlePasswordVisibility,
               enabled: enabled,
+              size: DsfrComponentSize.sm,
             ),
           ),
         ),

@@ -3,71 +3,41 @@ import 'package:flutter_dsfr/atoms/dsfr_group.dart';
 import 'package:flutter_dsfr/components/checkboxes/dsfr_checkbox_child.dart';
 import 'package:flutter_dsfr/fondamentaux/dsfr_spacings.g.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dsfr/helpers/dsfr_component_size.dart';
 import 'package:flutter_dsfr/helpers/dsfr_component_state.dart';
 
 class DsfrCheckbox extends StatelessWidget {
-  const DsfrCheckbox._({
+  const DsfrCheckbox({
     super.key,
     required this.label,
+    required this.size,
     required this.value,
-    this.description,
     required this.onChanged,
-    required this.padding,
+    this.description,
     this.focusNode,
     this.enabled = true,
     this.componentState = const DsfrComponentState.none(),
   });
 
-  const DsfrCheckbox.sm({
-    required final String label,
-    required final bool value,
-    final String? description,
-    required final ValueChanged<bool>? onChanged,
-    final FocusNode? focusNode,
-    final Key? key,
-    final enabled = true,
-    final componentState = const DsfrComponentState.none(),
-  }) : this._(
-          key: key,
-          label: label,
-          value: value,
-          description: description,
-          onChanged: onChanged,
-          padding: EdgeInsets.zero,
-          focusNode: focusNode,
-          enabled: enabled,
-          componentState: componentState,
-        );
-
-  const DsfrCheckbox.md({
-    required final String label,
-    required final bool value,
-    final String? description,
-    final ValueChanged<bool>? onChanged,
-    final FocusNode? focusNode,
-    final Key? key,
-    final enabled = true,
-    final componentState = const DsfrComponentState.none(),
-  }) : this._(
-          key: key,
-          label: label,
-          value: value,
-          description: description,
-          onChanged: onChanged,
-          padding: const EdgeInsets.all(DsfrSpacings.s1v),
-          focusNode: focusNode,
-          enabled: enabled,
-          componentState: componentState,
-        );
-
   final String label;
+  final DsfrComponentSize size;
   final bool value;
-  final String? description;
   final ValueChanged<bool>? onChanged;
-  final EdgeInsets padding;
+  final String? description;
   final FocusNode? focusNode;
   final bool enabled;
   final DsfrComponentState componentState;
+
+  EdgeInsets _getPadding(final DsfrComponentSize size) {
+    switch (size) {
+      case DsfrComponentSize.md:
+        return const EdgeInsets.all(DsfrSpacings.s1v);
+      case DsfrComponentSize.sm:
+        return EdgeInsets.zero;
+      default:
+        throw UnimplementedError('Size $size is not implemented');
+    }
+  }
 
   @override
   Widget build(final context) {
@@ -80,7 +50,7 @@ class DsfrCheckbox extends StatelessWidget {
         enabled: enabled,
         description: description,
         state: GroupProvider.of(context)?.componentState.state ?? componentState.state,
-        padding: padding,
+        padding: _getPadding(size),
         focusNode: focusNode,
       ),
     );

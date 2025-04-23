@@ -1,6 +1,7 @@
 import 'package:flutter_dsfr/flutter_dsfr.dart';
 import 'package:example/page_item.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dsfr/helpers/dsfr_component_size.dart';
 import 'package:flutter_dsfr/helpers/dsfr_component_state.dart';
 
 class CheckboxPage extends StatefulWidget {
@@ -29,52 +30,59 @@ class _CheckboxPageState extends State<CheckboxPage> {
       child: Column(
         spacing: 16,
         children: [
-          DsfrCheckbox.sm(
+          DsfrCheckbox(
             label: 'small size',
             value: _value,
             onChanged: (final value) => setState(() {
               _value = value;
             }),
+            size: DsfrComponentSize.sm,
           ),
-          const DsfrCheckbox.sm(
+          const DsfrCheckbox(
             label: 'état désactivé non coché',
             value: false,
             onChanged: null,
             enabled: false,
+            size: DsfrComponentSize.sm,
           ),
-          const DsfrCheckbox.sm(
+          const DsfrCheckbox(
             label: 'état désactivé coché',
             value: true,
             onChanged: null,
             enabled: false,
+            size: DsfrComponentSize.sm,
           ),
-          DsfrCheckbox.md(
+          DsfrCheckbox(
             label: 'medium size',
             value: _value2,
             onChanged: (final value) => setState(() {
               _value2 = value;
             }),
+            size: DsfrComponentSize.md,
           ),
-          DsfrCheckbox.md(
+          DsfrCheckbox(
             label: 'medium size désactivé',
             value: true,
             onChanged: (final value) {},
             enabled: false,
+            size: DsfrComponentSize.md,
           ),
-          DsfrCheckbox.md(
+          DsfrCheckbox(
             label: 'medium size avec description',
             description: 'Description',
             value: true,
             onChanged: (final value) {},
+            size: DsfrComponentSize.md,
           ),
-          DsfrCheckbox.md(
+          DsfrCheckbox(
             label: 'medium size avec description désactivé',
             description: 'Description désactivé',
             enabled: false,
             value: true,
             onChanged: (final value) {},
+            size: DsfrComponentSize.md,
           ),
-          DsfrCheckbox.md(
+          DsfrCheckbox(
             label: 'medium size avec description',
             description: 'case à cocher avec erreur',
             value: false,
@@ -82,8 +90,9 @@ class _CheckboxPageState extends State<CheckboxPage> {
             componentState: DsfrComponentState.error(
               errorMessage: 'Texte d\'erreur obligatoire',
             ),
+            size: DsfrComponentSize.md,
           ),
-          DsfrCheckbox.md(
+          DsfrCheckbox(
             label: 'medium size avec description',
             description: 'case à cocher avec succès',
             value: false,
@@ -91,17 +100,19 @@ class _CheckboxPageState extends State<CheckboxPage> {
             componentState: DsfrComponentState.success(
               message: 'Texte de validation',
             ),
+            size: DsfrComponentSize.md,
           ),
           Row(
             spacing: 12,
             children: [
               Text('row :'),
               Expanded(
-                child: DsfrCheckbox.md(
+                child: DsfrCheckbox(
                   label: 'in a row',
                   description: 'description',
                   value: false,
                   onChanged: (final value) {},
+                  size: DsfrComponentSize.md,
                 ),
               ),
             ],
@@ -116,26 +127,29 @@ class _CheckboxPageState extends State<CheckboxPage> {
           DsfrGroup(
             label: 'Légende',
             children: [
-              DsfrCheckbox.md(
+              DsfrCheckbox(
                 label: 'Libellé',
                 value: _valueGroup1,
                 onChanged: (final value) => setState(() {
                   _valueGroup1 = value;
                 }),
+                size: DsfrComponentSize.md,
               ),
-              DsfrCheckbox.md(
+              DsfrCheckbox(
                 label: 'Libellé',
                 value: _valueGroup2,
                 onChanged: (final value) => setState(() {
                   _valueGroup2 = value;
                 }),
+                size: DsfrComponentSize.md,
               ),
-              DsfrCheckbox.md(
+              DsfrCheckbox(
                 label: 'Libellé',
                 value: _valueGroup3,
                 onChanged: (final value) => setState(() {
                   _valueGroup3 = value;
                 }),
+                size: DsfrComponentSize.md,
               ),
             ],
           ),
@@ -143,19 +157,21 @@ class _CheckboxPageState extends State<CheckboxPage> {
           DsfrGroup<DsfrCheckbox>(
             label: 'Légende',
             children: [
-              DsfrCheckbox.md(
+              DsfrCheckbox(
                 label: 'Libellé',
                 value: _valueGroup1,
                 onChanged: (final value) => setState(() {
                   _valueGroup1 = value;
                 }),
+                size: DsfrComponentSize.md,
               ),
-              DsfrCheckbox.md(
+              DsfrCheckbox(
                 label: 'Libellé',
                 value: _valueGroup2,
                 onChanged: (final value) => setState(() {
                   _valueGroup2 = value;
                 }),
+                size: DsfrComponentSize.md,
               ),
             ],
           ),
@@ -164,26 +180,29 @@ class _CheckboxPageState extends State<CheckboxPage> {
             label: 'Groupe avec description de groupe',
             description: 'Texte de description additionnel',
             children: [
-              DsfrCheckbox.md(
+              DsfrCheckbox(
                 label: 'Libellé',
                 value: _valueGroup1,
                 onChanged: (final value) => setState(() {
                   _valueGroup1 = value;
                 }),
+                size: DsfrComponentSize.md,
               ),
-              DsfrCheckbox.md(
+              DsfrCheckbox(
                 label: 'Libellé',
                 value: _valueGroup2,
                 onChanged: (final value) => setState(() {
                   _valueGroup2 = value;
                 }),
+                size: DsfrComponentSize.md,
               ),
-              DsfrCheckbox.md(
+              DsfrCheckbox(
                 label: 'Libellé',
                 value: _valueGroup3,
                 onChanged: (final value) => setState(() {
                   _valueGroup3 = value;
                 }),
+                size: DsfrComponentSize.md,
               ),
             ],
           ),
@@ -192,26 +211,29 @@ class _CheckboxPageState extends State<CheckboxPage> {
             label: 'Groupe en erreur',
             componentState: DsfrComponentState.error(errorMessage: 'Texte d\'erreur obligatoire'),
             children: [
-              DsfrCheckbox.md(
+              DsfrCheckbox(
                 label: 'Libellé',
                 value: _valueGroup1,
                 onChanged: (final value) => setState(() {
                   _valueGroup1 = value;
                 }),
+                size: DsfrComponentSize.md,
               ),
-              DsfrCheckbox.md(
+              DsfrCheckbox(
                 label: 'Libellé',
                 value: _valueGroup2,
                 onChanged: (final value) => setState(() {
                   _valueGroup2 = value;
                 }),
+                size: DsfrComponentSize.md,
               ),
-              DsfrCheckbox.md(
+              DsfrCheckbox(
                 label: 'Libellé',
                 value: _valueGroup3,
                 onChanged: (final value) => setState(() {
                   _valueGroup3 = value;
                 }),
+                size: DsfrComponentSize.md,
               ),
             ],
           ),
@@ -220,26 +242,29 @@ class _CheckboxPageState extends State<CheckboxPage> {
             label: 'Groupe en succès',
             componentState: DsfrComponentState.success(message: 'Texte de validation optionnel'),
             children: [
-              DsfrCheckbox.md(
+              DsfrCheckbox(
                 label: 'Libellé',
                 value: _valueGroup1,
                 onChanged: (final value) => setState(() {
                   _valueGroup1 = value;
                 }),
+                size: DsfrComponentSize.md,
               ),
-              DsfrCheckbox.md(
+              DsfrCheckbox(
                 label: 'Libellé',
                 value: _valueGroup2,
                 onChanged: (final value) => setState(() {
                   _valueGroup2 = value;
                 }),
+                size: DsfrComponentSize.md,
               ),
-              DsfrCheckbox.md(
+              DsfrCheckbox(
                 label: 'Libellé',
                 value: _valueGroup3,
                 onChanged: (final value) => setState(() {
                   _valueGroup3 = value;
                 }),
+                size: DsfrComponentSize.md,
               ),
             ],
           ),
