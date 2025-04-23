@@ -5,20 +5,11 @@ import 'package:flutter_dsfr/helpers/dsfr_component_size.dart';
 import 'package:flutter_dsfr/helpers/dsfr_component_state.dart';
 
 class DsfrHighlight extends StatelessWidget {
-  const DsfrHighlight.sm({
+  const DsfrHighlight({
     super.key,
     required this.text,
-  }) : size = DsfrComponentSize.sm;
-
-  const DsfrHighlight.md({
-    super.key,
-    required this.text,
-  }) : size = DsfrComponentSize.md;
-
-  const DsfrHighlight.lg({
-    super.key,
-    required this.text,
-  }) : size = DsfrComponentSize.lg;
+    required this.size,
+  });
 
   final String text;
   final DsfrComponentSize size;
