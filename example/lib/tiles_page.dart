@@ -37,8 +37,9 @@ class _TilesPageState extends State<TilesPage> {
                 description: 'Description',
                 detail: 'Détail',
                 badgesAndTags: [
-                  DsfrTag.sm(
+                  DsfrTag(
                     label: TextSpan(text: 'Tag par défaut'),
+                    size: DsfrComponentSize.sm,
                   ),
                 ],
                 onTap: () {
@@ -50,8 +51,9 @@ class _TilesPageState extends State<TilesPage> {
               detail: 'Détail',
               imageAsset: 'assets/images/city_hall.svg',
               badgesAndTags: [
-                DsfrTag.sm(
+                DsfrTag(
                   label: TextSpan(text: 'Tag par défaut'),
+                  size: DsfrComponentSize.sm,
                 ),
               ],
             ),
@@ -60,8 +62,9 @@ class _TilesPageState extends State<TilesPage> {
                 description: 'Description',
                 detail: 'Détail',
                 badgesAndTags: [
-                  DsfrTag.sm(
+                  DsfrTag(
                     label: TextSpan(text: 'Tag par défaut'),
+                    size: DsfrComponentSize.sm,
                   ),
                 ],
                 showActionIcon: false,
@@ -75,8 +78,9 @@ class _TilesPageState extends State<TilesPage> {
                 detail: 'Détail',
                 imageAsset: 'assets/images/city_hall.svg',
                 badgesAndTags: [
-                  DsfrTag.sm(
+                  DsfrTag(
                     label: TextSpan(text: 'Tag par défaut'),
+                    size: DsfrComponentSize.sm,
                   ),
                 ],
                 onTap: () {
@@ -103,8 +107,9 @@ class _TilesPageState extends State<TilesPage> {
                 description: 'Description',
                 detail: 'Détail',
                 badgesAndTags: [
-                  DsfrTag.sm(
+                  DsfrTag(
                     label: TextSpan(text: 'Tag par défaut'),
+                    size: DsfrComponentSize.sm,
                   ),
                 ],
                 onTap: () {
@@ -119,8 +124,9 @@ class _TilesPageState extends State<TilesPage> {
                 description: 'Description',
                 detail: 'Détail',
                 badgesAndTags: [
-                  DsfrTag.md(
+                  DsfrTag(
                     label: TextSpan(text: 'Tag par défaut'),
+                    size: DsfrComponentSize.md,
                   ),
                 ],
                 onTap: () {
@@ -132,8 +138,9 @@ class _TilesPageState extends State<TilesPage> {
               detail: 'Détail',
               imageAsset: 'assets/images/city_hall.svg',
               badgesAndTags: [
-                DsfrTag.md(
+                DsfrTag(
                   label: TextSpan(text: 'Tag par défaut'),
+                  size: DsfrComponentSize.md,
                 ),
               ],
             ),
@@ -142,8 +149,9 @@ class _TilesPageState extends State<TilesPage> {
                 description: 'Description',
                 detail: 'Détail',
                 badgesAndTags: [
-                  DsfrTag.md(
+                  DsfrTag(
                     label: TextSpan(text: 'Tag par défaut'),
+                    size: DsfrComponentSize.md,
                   ),
                 ],
                 showActionIcon: false,
@@ -157,8 +165,9 @@ class _TilesPageState extends State<TilesPage> {
                 detail: 'Détail',
                 imageAsset: 'assets/images/city_hall.svg',
                 badgesAndTags: [
-                  DsfrTag.md(
+                  DsfrTag(
                     label: TextSpan(text: 'Tag par défaut'),
+                    size: DsfrComponentSize.md,
                   ),
                 ],
                 onTap: () {
@@ -185,8 +194,9 @@ class _TilesPageState extends State<TilesPage> {
                 description: 'Description',
                 detail: 'Détail',
                 badgesAndTags: [
-                  DsfrTag.md(
+                  DsfrTag(
                     label: TextSpan(text: 'Tag par défaut'),
+                    size: DsfrComponentSize.md,
                   ),
                 ],
                 onTap: () {

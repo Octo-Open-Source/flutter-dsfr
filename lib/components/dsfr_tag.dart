@@ -3,10 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dsfr/helpers/dsfr_component_size.dart';
 
 class DsfrTag extends StatefulWidget {
-  const DsfrTag._({
+  const DsfrTag({
     super.key,
     required this.label,
-    required this.padding,
     required this.size,
     this.backgroundColor,
     this.highlightColor,
@@ -22,79 +21,10 @@ class DsfrTag extends StatefulWidget {
     this.enabled = true,
     this.onDelete,
   }) : assert((onSelectionChanged == null || onTap == null) &&
-      (onSelectionChanged == null || onDelete == null) &&
-      (onTap == null || onDelete == null));
-
-  const DsfrTag.sm({
-    required final InlineSpan label,
-    final IconData? icon,
-    final GestureTapCallback? onTap,
-    final Color? backgroundColor,
-    final Color? highlightColor,
-    final Color? textColor,
-    final Color? selectedBackgroundColor,
-    final Color? selectedHighlightColor,
-    final Color? selectedTextColor,
-    final Key? key,
-    final bool isSelected = false,
-    final ValueChanged<bool>? onSelectionChanged,
-    final bool enabled = true,
-    final GestureTapCallback? onDelete,
-  }) : this._(
-    key: key,
-    label: label,
-    padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 8),
-    size: DsfrComponentSize.sm,
-    backgroundColor: backgroundColor,
-    highlightColor: highlightColor,
-    textColor: textColor,
-    selectedBackgroundColor: selectedBackgroundColor,
-    selectedHighlightColor: selectedHighlightColor,
-    selectedTextColor: selectedTextColor,
-    icon: icon,
-    onTap: onTap,
-    isSelected: isSelected,
-    onSelectionChanged: onSelectionChanged,
-    enabled: enabled,
-    onDelete: onDelete,
-  );
-
-  const DsfrTag.md({
-    required final InlineSpan label,
-    final IconData? icon,
-    final GestureTapCallback? onTap,
-    final Color? backgroundColor,
-    final Color? highlightColor,
-    final Color? textColor,
-    final Color? selectedBackgroundColor,
-    final Color? selectedHighlightColor,
-    final Color? selectedTextColor,
-    final Key? key,
-    final bool isSelected = false,
-    final ValueChanged<bool>? onSelectionChanged,
-    final bool enabled = true,
-    final GestureTapCallback? onDelete,
-  }) : this._(
-    key: key,
-    label: label,
-    padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 12),
-    size: DsfrComponentSize.md,
-    backgroundColor: backgroundColor,
-    highlightColor: highlightColor,
-    textColor: textColor,
-    selectedBackgroundColor: selectedBackgroundColor,
-    selectedHighlightColor: selectedHighlightColor,
-    selectedTextColor: selectedTextColor,
-    icon: icon,
-    onTap: onTap,
-    isSelected: isSelected,
-    onSelectionChanged: onSelectionChanged,
-    enabled: enabled,
-    onDelete: onDelete,
-  );
+            (onSelectionChanged == null || onDelete == null) &&
+            (onTap == null || onDelete == null));
 
   final InlineSpan label;
-  final EdgeInsets padding;
   final DsfrComponentSize size;
   final GestureTapCallback? onTap;
   final IconData? icon;
@@ -124,7 +54,7 @@ class _DsfrTagState extends State<DsfrTag> {
 
   bool get _shouldUseDefaultHighlightColor =>
       (!widget.isSelected && _hasNoCustomBackgroundColors) ||
-          (widget.isSelected && _hasNoCustomBackgroundColors && _hasNoCustomSelectedBackgroundColors);
+      (widget.isSelected && _hasNoCustomBackgroundColors && _hasNoCustomSelectedBackgroundColors);
 
   bool get _isClickable => widget.onTap != null || widget.onDelete != null || widget.onSelectionChanged != null;
 
@@ -298,14 +228,14 @@ class _TagButton extends StatelessWidget {
         splashFactory: enabled && isClickable ? null : NoSplash.splashFactory,
         onTap: enabled && isClickable
             ? () {
-          if (onSelectionChanged != null) {
-            onSelectionChanged!(!isSelected);
-          } else if (onDelete != null) {
-            onDelete!.call();
-          } else {
-            onTap?.call();
-          }
-        }
+                if (onSelectionChanged != null) {
+                  onSelectionChanged!(!isSelected);
+                } else if (onDelete != null) {
+                  onDelete!.call();
+                } else {
+                  onTap?.call();
+                }
+              }
             : null,
         child: Padding(
           padding: padding,
@@ -358,9 +288,9 @@ const double _spaceBetweenButtonAndTag = 1;
 
 class _CustomShapeClipper extends CustomClipper<Path> {
   const _CustomShapeClipper(
-      this.componentSize,
-      this.selected,
-      );
+    this.componentSize,
+    this.selected,
+  );
 
   final DsfrComponentSize componentSize;
   final bool selected;
@@ -398,10 +328,10 @@ class _CustomShapeClipper extends CustomClipper<Path> {
 
 class _CustomShapePainter extends CustomPainter {
   const _CustomShapePainter(
-      this.componentSize,
-      this.backgroundColor,
-      this.selected,
-      );
+    this.componentSize,
+    this.backgroundColor,
+    this.selected,
+  );
 
   final DsfrComponentSize componentSize;
   final Color backgroundColor;

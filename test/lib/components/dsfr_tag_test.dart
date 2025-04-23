@@ -2,60 +2,71 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dsfr/components/dsfr_tag.dart';
 import 'package:flutter_dsfr/fondamentaux/dsfr_icons.g.dart';
+import 'package:flutter_dsfr/helpers/dsfr_component_size.dart';
 import '../../helpers/a11y_test.skip.dart';
 
 void main() {
-  Widget tagSm = DsfrTag.sm(
+  Widget tagSm = DsfrTag(
     label: TextSpan(text: 'small tag'),
+    size: DsfrComponentSize.sm,
   );
 
-  Widget tagSmWithIcon = DsfrTag.sm(
+  Widget tagSmWithIcon = DsfrTag(
     label: TextSpan(text: 'small tag with icon'),
     icon: DsfrIcons.systemArrowRightLine,
+    size: DsfrComponentSize.sm,
   );
 
-  Widget tagSmSelectable = DsfrTag.sm(
+  Widget tagSmSelectable = DsfrTag(
     label: TextSpan(text: 'small tag selectable'),
     icon: DsfrIcons.systemArrowRightLine,
     isSelected: true,
     onSelectionChanged: (isSelected) {},
+    size: DsfrComponentSize.sm,
   );
 
-  Widget tagSmDisabled = DsfrTag.sm(
+  Widget tagSmDisabled = DsfrTag(
     label: TextSpan(text: 'small tag disabled'),
     enabled: false,
+    size: DsfrComponentSize.sm,
   );
 
-  Widget tagSmDeletable = DsfrTag.sm(
+  Widget tagSmDeletable = DsfrTag(
     label: TextSpan(text: 'small tag deletable'),
     onDelete: () {},
+    size: DsfrComponentSize.sm,
   );
 
 
-  Widget tagMd = DsfrTag.md(
+  Widget tagMd = DsfrTag(
     label: TextSpan(text: 'medium tag'),
+    size: DsfrComponentSize.md,
   );
 
-  Widget tagMdWithIcon = DsfrTag.md(
+  Widget tagMdWithIcon = DsfrTag(
     label: TextSpan(text: 'medium tag with icon'),
     icon: DsfrIcons.systemArrowRightLine,
+    size: DsfrComponentSize.md,
   );
 
-  Widget tagMdSelectable = DsfrTag.md(
+  Widget tagMdSelectable = DsfrTag(
     label: TextSpan(text: 'medium tag selectable'),
     icon: DsfrIcons.systemArrowRightLine,
     isSelected: true,
     onSelectionChanged: (isSelected) {},
+    size: DsfrComponentSize.md,
   );
 
-  Widget tagMdDisabled = DsfrTag.md(
+  Widget tagMdDisabled = DsfrTag(
     label: TextSpan(text: 'medium tag disabled'),
     enabled: false,
+    size: DsfrComponentSize.md,
   );
 
-  Widget tagMdDeletable = DsfrTag.md(
+  Widget tagMdDeletable = DsfrTag(
     label: TextSpan(text: 'medium tag deletable'),
     onDelete: () {},
+    size: DsfrComponentSize.md,
   );
 
   //FIXME: skip, zone de tap trop petite hauteur 26 au lieu de 48
