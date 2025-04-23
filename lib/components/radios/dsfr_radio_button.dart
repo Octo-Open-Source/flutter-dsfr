@@ -93,7 +93,7 @@ class DsfrRadioButton<T> extends StatelessWidget {
     return switch (size) {
       DsfrComponentSize.md => 24.0,
       DsfrComponentSize.sm => 16.0,
-      DsfrComponentSize.lg => throw UnimplementedError(),
+      DsfrComponentSize.lg =>  throw UnimplementedError('Size $size is not implemented'),
     };
   }
 }

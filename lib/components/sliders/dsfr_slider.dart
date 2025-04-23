@@ -25,7 +25,7 @@ class DsfrSlider extends StatelessWidget {
   final DsfrComponentState componentState;
   final String Function(double)? valueLabelBuilder;
 
-  const DsfrSlider._({
+  const DsfrSlider({
     super.key,
     required this.label,
     required this.value,
@@ -41,71 +41,7 @@ class DsfrSlider extends StatelessWidget {
     this.valueLabelBuilder,
     this.componentState = const DsfrComponentState.none(),
     this.showMinMaxLabels = false,
-  });
-
-  const DsfrSlider.sm({
-    final Key? key,
-    required final String label,
-    final String? description,
-    required final double value,
-    final double min = 0.0,
-    final double max = 1.0,
-    final int? division,
-    final ValueChanged<double>? onChanged,
-    final ValueChanged<double>? onChangedStart,
-    final ValueChanged<double>? onChangedEnd,
-    final String Function(double)? valueLabelBuilder,
-    final bool enabled = true,
-    final bool showMinMaxLabels = false,
-    final DsfrComponentState componentState = const DsfrComponentState.none(),
-  }) : this._(
-          key: key,
-          label: label,
-          description: description,
-          value: value,
-          min: min,
-          max: max,
-          divisions: division,
-          onChanged: onChanged,
-          onChangedStart: onChangedStart,
-          onChangedEnd: onChangedEnd,
-          size: DsfrComponentSize.sm,
-          enabled: enabled,
-          valueLabelBuilder: valueLabelBuilder,
-          componentState: componentState,
-          showMinMaxLabels: showMinMaxLabels,
-        );
-
-  const DsfrSlider.md({
-    final Key? key,
-    required final String label,
-    final String? description,
-    required final double value,
-    final double min = 0.0,
-    final double max = 1.0,
-    final int? division,
-    final ValueChanged<double>? onChanged,
-    final ValueChanged<double>? onChangedStart,
-    final ValueChanged<double>? onChangedEnd,
-    final String Function(double)? valueLabelBuilder,
-    final bool enabled = true,
-    final bool showMinMaxLabels = false,
-    final DsfrComponentState componentState = const DsfrComponentState.none(),
-  }) : this._(
-          key: key,
-          label: label,
-          description: description,
-          value: value,
-          min: min,
-          max: max,
-          divisions: division,
-          onChanged: onChanged,
-          size: DsfrComponentSize.md,
-          enabled: enabled,
-          valueLabelBuilder: valueLabelBuilder,
-          componentState: componentState,
-          showMinMaxLabels: showMinMaxLabels,
-        );
+  }) : assert(size != DsfrComponentSize.lg);
 
   @override
   Widget build(BuildContext context) {

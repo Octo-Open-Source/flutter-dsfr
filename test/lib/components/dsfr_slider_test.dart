@@ -1,43 +1,49 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dsfr/components/sliders/dsfr_range_slider.dart';
 import 'package:flutter_dsfr/components/sliders/dsfr_slider.dart';
+import 'package:flutter_dsfr/helpers/dsfr_component_size.dart';
 import 'package:flutter_dsfr/helpers/dsfr_component_state.dart';
 import 'package:flutter_test/flutter_test.dart';
 import '../../helpers/a11y_test.skip.dart';
 
 void main() {
   group('Slider taille SM', () {
-    var dsfrSlider = DsfrSlider.sm(
+    var dsfrSlider = DsfrSlider(
       label: 'label',
       value: 0.5,
       onChanged: (double value) {},
+      size: DsfrComponentSize.sm,
     );
-    var dsfrSliderWithDescription = DsfrSlider.sm(
+    var dsfrSliderWithDescription = DsfrSlider(
       label: 'label',
       description: 'description',
       value: 0.5,
       onChanged: (double value) {},
+      size: DsfrComponentSize.sm,
     );
-    var dsfrSliderError = DsfrSlider.sm(
+    var dsfrSliderError = DsfrSlider(
       label: 'label',
       value: 0.5,
       componentState: DsfrComponentState.error(
         errorMessage: 'Erreur',
       ),
       onChanged: (double value) {},
+      size: DsfrComponentSize.sm,
     );
-    var dsfrSliderSuccess = DsfrSlider.sm(
+    var dsfrSliderSuccess = DsfrSlider(
       label: 'label',
       value: 0.5,
       componentState: DsfrComponentState.success(
         message: 'Succès',
       ),
       onChanged: (double value) {},
+      size: DsfrComponentSize.sm,
     );
-    var dsfrSliderDisabled = DsfrSlider.sm(
+    var dsfrSliderDisabled = DsfrSlider(
       label: 'label',
       value: 0.5,
       enabled: false,
+      size: DsfrComponentSize.sm,
     );
 
     accessibilityTest(componentName: 'slider SM', isLightMode: true, child: dsfrSlider);
@@ -66,37 +72,42 @@ void main() {
   });
 
   group('Slider taille MD', () {
-    var dsfrSlider = DsfrSlider.md(
+    var dsfrSlider = DsfrSlider(
       label: 'label',
       value: 0.5,
       onChanged: (double value) {},
+      size: DsfrComponentSize.md,
     );
-    var dsfrSliderWithDescription = DsfrSlider.md(
+    var dsfrSliderWithDescription = DsfrSlider(
       label: 'label',
       description: 'description',
       value: 0.5,
       onChanged: (double value) {},
+      size: DsfrComponentSize.md,
     );
-    var dsfrSliderError = DsfrSlider.md(
+    var dsfrSliderError = DsfrSlider(
       label: 'label',
       value: 0.5,
       componentState: DsfrComponentState.error(
         errorMessage: 'Erreur',
       ),
       onChanged: (double value) {},
+      size: DsfrComponentSize.md,
     );
-    var dsfrSliderSuccess = DsfrSlider.md(
+    var dsfrSliderSuccess = DsfrSlider(
       label: 'label',
       value: 0.5,
       componentState: DsfrComponentState.success(
         message: 'Succès',
       ),
       onChanged: (double value) {},
+      size: DsfrComponentSize.md,
     );
-    var dsfrSliderDisabled = DsfrSlider.md(
+    var dsfrSliderDisabled = DsfrSlider(
       label: 'label',
       value: 0.5,
       enabled: false,
+      size: DsfrComponentSize.md,
     );
 
     accessibilityTest(componentName: 'slider MD', isLightMode: true, child: dsfrSlider);
@@ -125,42 +136,47 @@ void main() {
   });
 
   group('Slider piste piste crantée', () {
-    var dsfrSlider = DsfrSlider.md(
+    var dsfrSlider = DsfrSlider(
       label: 'label',
-      division: 5,
+      divisions: 5,
       value: 0.5,
       onChanged: (double value) {},
+      size: DsfrComponentSize.md,
     );
-    var dsfrSliderWithDescription = DsfrSlider.md(
+    var dsfrSliderWithDescription = DsfrSlider(
       label: 'label',
-      division: 5,
+      divisions: 5,
       description: 'description',
       value: 0.5,
       onChanged: (double value) {},
+      size: DsfrComponentSize.md,
     );
-    var dsfrSliderError = DsfrSlider.md(
+    var dsfrSliderError = DsfrSlider(
       label: 'label',
-      division: 5,
+      divisions: 5,
       value: 0.5,
       componentState: DsfrComponentState.error(
         errorMessage: 'Erreur',
       ),
       onChanged: (double value) {},
+      size: DsfrComponentSize.md,
     );
-    var dsfrSliderSuccess = DsfrSlider.md(
+    var dsfrSliderSuccess = DsfrSlider(
       label: 'label',
-      division: 5,
+      divisions: 5,
       value: 0.5,
       componentState: DsfrComponentState.success(
         message: 'Succès',
       ),
       onChanged: (double value) {},
+      size: DsfrComponentSize.md,
     );
-    var dsfrSliderDisabled = DsfrSlider.md(
+    var dsfrSliderDisabled = DsfrSlider(
       label: 'label',
-      division: 5,
+      divisions: 5,
       value: 0.5,
       enabled: false,
+      size: DsfrComponentSize.md,
     );
 
     accessibilityTest(componentName: 'slider piste crantée', isLightMode: true, child: dsfrSlider);
@@ -191,37 +207,42 @@ void main() {
   });
 
   group('Slider double taille SM', () {
-    var dsfrRangeSlider = DsfrRangeSlider.sm(
+    var dsfrRangeSlider = DsfrRangeSlider(
       label: 'label',
       values: RangeValues(0.25, 0.75),
       onChanged: (RangeValues value) {},
+      size: DsfrComponentSize.sm,
     );
-    var dsfrRangeSliderWithDescription = DsfrRangeSlider.sm(
+    var dsfrRangeSliderWithDescription = DsfrRangeSlider(
       label: 'label',
       description: 'description',
       values: RangeValues(0.25, 0.75),
       onChanged: (RangeValues value) {},
+      size: DsfrComponentSize.sm,
     );
-    var dsfrRangeSliderError = DsfrRangeSlider.sm(
+    var dsfrRangeSliderError = DsfrRangeSlider(
       label: 'label',
       values: RangeValues(0.25, 0.75),
       componentState: DsfrComponentState.error(
         errorMessage: 'Erreur',
       ),
       onChanged: (RangeValues value) {},
+      size: DsfrComponentSize.sm,
     );
-    var dsfrRangeSliderSuccess = DsfrRangeSlider.sm(
+    var dsfrRangeSliderSuccess = DsfrRangeSlider(
       label: 'label',
       values: RangeValues(0.25, 0.75),
       componentState: DsfrComponentState.success(
         message: 'Succès',
       ),
       onChanged: (RangeValues value) {},
+      size: DsfrComponentSize.sm,
     );
-    var dsfrRangeSliderDisabled = DsfrRangeSlider.sm(
+    var dsfrRangeSliderDisabled = DsfrRangeSlider(
       label: 'label',
       values: RangeValues(0.25, 0.75),
       enabled: false,
+      size: DsfrComponentSize.sm,
     );
 
     accessibilityTest(componentName: 'slider SM', isLightMode: true, child: dsfrRangeSlider);
@@ -252,37 +273,42 @@ void main() {
   });
 
   group('Slider double taille MD', () {
-    var dsfrRangeSlider = DsfrRangeSlider.md(
+    var dsfrRangeSlider = DsfrRangeSlider(
       label: 'label',
       values: RangeValues(0.25, 0.75),
       onChanged: (RangeValues value) {},
+      size: DsfrComponentSize.md,
     );
-    var dsfrRangeSliderWithDescription = DsfrRangeSlider.md(
+    var dsfrRangeSliderWithDescription = DsfrRangeSlider(
       label: 'label',
       description: 'description',
       values: RangeValues(0.25, 0.75),
       onChanged: (RangeValues value) {},
+      size: DsfrComponentSize.md,
     );
-    var dsfrRangeSliderError = DsfrRangeSlider.md(
+    var dsfrRangeSliderError = DsfrRangeSlider(
       label: 'label',
       values: RangeValues(0.25, 0.75),
       componentState: DsfrComponentState.error(
         errorMessage: 'Erreur',
       ),
       onChanged: (RangeValues value) {},
+      size: DsfrComponentSize.md,
     );
-    var dsfrRangeSliderSuccess = DsfrRangeSlider.md(
+    var dsfrRangeSliderSuccess = DsfrRangeSlider(
       label: 'label',
       values: RangeValues(0.25, 0.75),
       componentState: DsfrComponentState.success(
         message: 'Succès',
       ),
       onChanged: (RangeValues value) {},
+      size: DsfrComponentSize.md,
     );
-    var dsfrRangeSliderDisabled = DsfrRangeSlider.md(
+    var dsfrRangeSliderDisabled = DsfrRangeSlider(
       label: 'label',
       values: RangeValues(0.25, 0.75),
       enabled: false,
+      size: DsfrComponentSize.md,
     );
 
     accessibilityTest(componentName: 'slider MD', isLightMode: true, child: dsfrRangeSlider);

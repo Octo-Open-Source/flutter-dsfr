@@ -4,6 +4,7 @@ import 'package:example/page_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dsfr/components/sliders/dsfr_range_slider.dart';
 import 'package:flutter_dsfr/components/sliders/dsfr_slider.dart';
+import 'package:flutter_dsfr/helpers/dsfr_component_size.dart';
 import 'package:flutter_dsfr/helpers/dsfr_component_state.dart';
 
 class SliderPage extends StatefulWidget {
@@ -37,95 +38,105 @@ class _SliderPageState extends State<SliderPage> {
                 PageSubSection(
                   title: "Actifs",
                   children: [
-                    DsfrSlider.sm(
+                    DsfrSlider(
                       label: "Curseur SM",
                       value: _value,
                       onChanged: (final newValue) {
                         setState(() => _value = newValue);
                       },
+                      size: DsfrComponentSize.sm,
                     ),
-                    DsfrSlider.md(
+                    DsfrSlider(
                       label: "Curseur MD",
                       value: _value,
                       onChanged: (final newValue) {
                         setState(() => _value = newValue);
                       },
+                      size: DsfrComponentSize.md,
                     ),
                   ],
                 ),
                 PageSubSection(
                   title: "Avec description",
                   children: [
-                    DsfrSlider.sm(
+                    DsfrSlider(
                       label: "Curseur SM",
                       description: "Texte de description additionnel",
                       value: _value,
                       onChanged: (final newValue) {
                         setState(() => _value = newValue);
                       },
+                      size: DsfrComponentSize.sm,
                     ),
-                    DsfrSlider.md(
+                    DsfrSlider(
                       label: "Curseur MD",
                       description: "Texte de description additionnel",
                       value: _value,
                       onChanged: (final newValue) {
                         setState(() => _value = newValue);
                       },
+                      size: DsfrComponentSize.md,
                     ),
                   ],
                 ),
                 PageSubSection(
                   title: "Avec label de valeur min et max",
                   children: [
-                    DsfrSlider.sm(
+                    DsfrSlider(
                       label: "Curseur SM",
                       value: _value,
                       showMinMaxLabels: true,
                       onChanged: (final newValue) {
                         setState(() => _value = newValue);
                       },
+                      size: DsfrComponentSize.sm,
                     ),
-                    DsfrSlider.md(
+                    DsfrSlider(
                       label: "Curseur MD",
                       value: _value,
                       showMinMaxLabels: true,
                       onChanged: (final newValue) {
                         setState(() => _value = newValue);
                       },
+                      size: DsfrComponentSize.md,
                     ),
                   ],
                 ),
                 PageSubSection(
                   title: "Désactivés",
                   children: [
-                    DsfrSlider.sm(
+                    DsfrSlider(
                       label: "Curseur SM",
                       enabled: false,
                       value: 0.25,
+                      size: DsfrComponentSize.sm,
                     ),
-                    DsfrSlider.md(
+                    DsfrSlider(
                       label: "Curseur MD",
                       enabled: false,
                       value: 0.35,
+                      size: DsfrComponentSize.md,
                     ),
                   ],
                 ),
                 PageSubSection(
                   title: "Désactivés avec description",
                   children: [
-                    DsfrSlider.sm(
+                    DsfrSlider(
                       label: "Curseur SM",
                       description: "Texte de description additionnel, valeur de 0 à 100",
                       showMinMaxLabels: true,
                       enabled: false,
                       value: 0.77,
+                      size: DsfrComponentSize.sm,
                     ),
-                    DsfrSlider.md(
+                    DsfrSlider(
                       label: "Curseur MD",
                       description: "Texte de description additionnel, valeur de 0 à 100",
                       showMinMaxLabels: true,
                       enabled: false,
                       value: 0.88,
+                      size: DsfrComponentSize.md,
                     ),
                   ],
                 ),
@@ -137,40 +148,44 @@ class _SliderPageState extends State<SliderPage> {
                 PageSubSection(
                   title: "Actifs",
                   children: [
-                    DsfrSlider.sm(
+                    DsfrSlider(
                       label: "Curseur SM",
                       value: _value,
-                      division: 5,
+                      divisions: 5,
                       showMinMaxLabels: true,
                       onChanged: (final newValue) {
                         setState(() => _value = newValue);
                       },
+                      size: DsfrComponentSize.sm,
                     ),
-                    DsfrSlider.md(
+                    DsfrSlider(
                       label: "Curseur MD",
                       value: _value,
-                      division: 5,
+                      divisions: 5,
                       showMinMaxLabels: true,
                       onChanged: (final newValue) {
                         setState(() => _value = newValue);
                       },
+                      size: DsfrComponentSize.md,
                     ),
                   ],
                 ),
                 PageSubSection(
                   title: "Désactivés",
                   children: [
-                    DsfrSlider.sm(
+                    DsfrSlider(
                       label: "Curseur SM - désactivé piste crantée",
                       enabled: false,
                       value: 0.25,
-                      division: 5,
+                      divisions: 5,
+                      size: DsfrComponentSize.sm,
                     ),
-                    DsfrSlider.md(
+                    DsfrSlider(
                       label: "Curseur MD - désactivé piste crantée",
                       enabled: false,
                       value: 0.35,
-                      division: 5,
+                      divisions: 5,
+                      size: DsfrComponentSize.md,
                     ),
                   ],
                 ),
@@ -182,42 +197,46 @@ class _SliderPageState extends State<SliderPage> {
                 PageSubSection(
                   title: "En succès",
                   children: [
-                    DsfrSlider.sm(
+                    DsfrSlider(
                       label: "Curseur SM",
                       value: _value,
                       componentState: DsfrComponentState.success(message: "Texte validation optionnel"),
                       onChanged: (final newValue) {
                         setState(() => _value = newValue);
                       },
+                      size: DsfrComponentSize.sm,
                     ),
-                    DsfrSlider.md(
+                    DsfrSlider(
                       label: "Curseur MD",
                       value: _value,
                       componentState: DsfrComponentState.success(message: "Texte validation optionnel"),
                       onChanged: (final newValue) {
                         setState(() => _value = newValue);
                       },
+                      size: DsfrComponentSize.md,
                     ),
                   ],
                 ),
                 PageSubSection(
                   title: "En erreur",
                   children: [
-                    DsfrSlider.sm(
+                    DsfrSlider(
                       label: "Curseur",
                       value: _value,
                       componentState: DsfrComponentState.error(errorMessage: "Texte d'erreur obligatoire"),
                       onChanged: (final newValue) {
                         setState(() => _value = newValue);
                       },
+                      size: DsfrComponentSize.sm,
                     ),
-                    DsfrSlider.md(
+                    DsfrSlider(
                       label: "Curseur",
                       value: _value,
                       componentState: DsfrComponentState.error(errorMessage: "Texte d'erreur obligatoire"),
                       onChanged: (final newValue) {
                         setState(() => _value = newValue);
                       },
+                      size: DsfrComponentSize.md,
                     ),
                   ],
                 )
@@ -229,95 +248,105 @@ class _SliderPageState extends State<SliderPage> {
                 PageSubSection(
                   title: "Actifs",
                   children: [
-                    DsfrRangeSlider.sm(
+                    DsfrRangeSlider(
                       label: "Curseur SM",
                       values: _rangeValues,
                       onChanged: (final newValues) {
                         setState(() => _rangeValues = newValues);
                       },
+                      size: DsfrComponentSize.sm,
                     ),
-                    DsfrRangeSlider.md(
+                    DsfrRangeSlider(
                       label: "Curseur MD",
                       values: _rangeValues,
                       onChanged: (final newValues) {
                         setState(() => _rangeValues = newValues);
                       },
+                      size: DsfrComponentSize.md,
                     ),
                   ],
                 ),
                 PageSubSection(
                   title: "Avec description",
                   children: [
-                    DsfrRangeSlider.sm(
+                    DsfrRangeSlider(
                       label: "Curseur SM",
                       description: "Texte de description additionnel",
                       values: _rangeValues,
                       onChanged: (final newValues) {
                         setState(() => _rangeValues = newValues);
                       },
+                      size: DsfrComponentSize.sm,
                     ),
-                    DsfrRangeSlider.md(
+                    DsfrRangeSlider(
                       label: "Curseur MD",
                       description: "Texte de description additionnel",
                       values: _rangeValues,
                       onChanged: (final newValues) {
                         setState(() => _rangeValues = newValues);
                       },
+                      size: DsfrComponentSize.md,
                     ),
                   ],
                 ),
                 PageSubSection(
                   title: "Avec label de valeur min et max",
                   children: [
-                    DsfrRangeSlider.sm(
+                    DsfrRangeSlider(
                       label: "Curseur SM",
                       values: _rangeValues,
                       showMinMaxLabels: true,
                       onChanged: (final newValues) {
                         setState(() => _rangeValues = newValues);
                       },
+                      size: DsfrComponentSize.sm,
                     ),
-                    DsfrRangeSlider.md(
+                    DsfrRangeSlider(
                       label: "Curseur MD",
                       values: _rangeValues,
                       showMinMaxLabels: true,
                       onChanged: (final newValues) {
                         setState(() => _rangeValues = newValues);
                       },
+                      size: DsfrComponentSize.md,
                     ),
                   ],
                 ),
                 PageSubSection(
                   title: "Désactivés",
                   children: [
-                    DsfrRangeSlider.sm(
+                    DsfrRangeSlider(
                       label: "Curseur SM",
                       enabled: false,
                       values: RangeValues(0.20, 0.45),
+                      size: DsfrComponentSize.sm,
                     ),
-                    DsfrRangeSlider.md(
+                    DsfrRangeSlider(
                       label: "Curseur MD",
                       enabled: false,
                       values: RangeValues(0.35, 0.65),
+                      size: DsfrComponentSize.md,
                     ),
                   ],
                 ),
                 PageSubSection(
                   title: "Désactivés avec description",
                   children: [
-                    DsfrRangeSlider.sm(
+                    DsfrRangeSlider(
                       label: "Curseur SM",
                       description: "Texte de description additionnel, valeur de 0 à 100",
                       showMinMaxLabels: true,
                       enabled: false,
                       values: RangeValues(0.12, 0.77),
+                      size: DsfrComponentSize.sm,
                     ),
-                    DsfrRangeSlider.md(
+                    DsfrRangeSlider(
                       label: "Curseur MD",
                       description: "Texte de description additionnel, valeur de 0 à 100",
                       showMinMaxLabels: true,
                       enabled: false,
                       values: RangeValues(0.05, 0.88),
+                      size: DsfrComponentSize.md,
                     ),
                   ],
                 ),
@@ -329,40 +358,44 @@ class _SliderPageState extends State<SliderPage> {
                 PageSubSection(
                   title: "Actifs",
                   children: [
-                    DsfrRangeSlider.sm(
+                    DsfrRangeSlider(
                       label: "Curseur SM",
                       values: _rangeValues,
-                      division: 5,
+                      divisions: 5,
                       showMinMaxLabels: true,
                       onChanged: (final newValues) {
                         setState(() => _rangeValues = newValues);
                       },
+                      size: DsfrComponentSize.sm,
                     ),
-                    DsfrRangeSlider.md(
+                    DsfrRangeSlider(
                       label: "Curseur MD",
                       values: _rangeValues,
-                      division: 5,
+                      divisions: 5,
                       showMinMaxLabels: true,
                       onChanged: (final newValues) {
                         setState(() => _rangeValues = newValues);
                       },
+                      size: DsfrComponentSize.md,
                     ),
                   ],
                 ),
                 PageSubSection(
                   title: "Désactivés",
                   children: [
-                    DsfrRangeSlider.sm(
+                    DsfrRangeSlider(
                       label: "Curseur SM",
                       enabled: false,
                       values: RangeValues(0.25, 0.75),
-                      division: 5,
+                      divisions: 5,
+                      size: DsfrComponentSize.sm,
                     ),
-                    DsfrRangeSlider.md(
+                    DsfrRangeSlider(
                       label: "Curseur MD",
                       enabled: false,
                       values: RangeValues(0.15, 0.85),
-                      division: 5,
+                      divisions: 5,
+                      size: DsfrComponentSize.md,
                     ),
                   ],
                 ),
@@ -374,42 +407,46 @@ class _SliderPageState extends State<SliderPage> {
                 PageSubSection(
                   title: "En succès",
                   children: [
-                    DsfrRangeSlider.sm(
+                    DsfrRangeSlider(
                       label: "Curseur",
                       values: _rangeValues,
                       componentState: DsfrComponentState.success(message: "Texte validation optionnel"),
                       onChanged: (final newValues) {
                         setState(() => _rangeValues = newValues);
                       },
+                      size: DsfrComponentSize.sm,
                     ),
-                    DsfrRangeSlider.md(
+                    DsfrRangeSlider(
                       label: "Curseur",
                       values: _rangeValues,
                       componentState: DsfrComponentState.success(message: "Texte validation optionnel"),
                       onChanged: (final newValues) {
                         setState(() => _rangeValues = newValues);
                       },
+                      size: DsfrComponentSize.md,
                     ),
                   ],
                 ),
                 PageSubSection(
                   title: "En erreur",
                   children: [
-                    DsfrRangeSlider.sm(
+                    DsfrRangeSlider(
                       label: "Curseur SM",
                       values: _rangeValues,
                       componentState: DsfrComponentState.error(errorMessage: "Texte d'erreur obligatoire"),
                       onChanged: (final newValues) {
                         setState(() => _rangeValues = newValues);
                       },
+                      size: DsfrComponentSize.sm,
                     ),
-                    DsfrRangeSlider.md(
+                    DsfrRangeSlider(
                       label: "Curseur MD",
                       values: _rangeValues,
                       componentState: DsfrComponentState.error(errorMessage: "Texte d'erreur obligatoire"),
                       onChanged: (final newValues) {
                         setState(() => _rangeValues = newValues);
                       },
+                      size: DsfrComponentSize.md,
                     ),
                   ],
                 )

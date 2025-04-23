@@ -25,7 +25,7 @@ class DsfrRangeSlider extends StatelessWidget {
   final DsfrComponentState componentState;
   final String Function(double)? valueLabelBuilder;
 
-  const DsfrRangeSlider._({
+  const DsfrRangeSlider({
     super.key,
     required this.label,
     required this.values,
@@ -41,77 +41,12 @@ class DsfrRangeSlider extends StatelessWidget {
     this.valueLabelBuilder,
     this.componentState = const DsfrComponentState.none(),
     this.showMinMaxLabels = false,
-  });
-
-  const DsfrRangeSlider.sm({
-    final Key? key,
-    required final String label,
-    final String? description,
-    required final RangeValues values,
-    final double min = 0.0,
-    final double max = 1.0,
-    final int? division,
-    final ValueChanged<RangeValues>? onChanged,
-    final ValueChanged<RangeValues>? onChangedStart,
-    final ValueChanged<RangeValues>? onChangedEnd,
-    final String Function(double)? valueLabelBuilder,
-    final bool enabled = true,
-    final bool showMinMaxLabels = false,
-    final DsfrComponentState componentState = const DsfrComponentState.none(),
-  }) : this._(
-          key: key,
-          label: label,
-          description: description,
-          values: values,
-          min: min,
-          max: max,
-          divisions: division,
-          onChanged: onChanged,
-          onChangedStart: onChangedStart,
-          onChangedEnd: onChangedEnd,
-          size: DsfrComponentSize.sm,
-          enabled: enabled,
-          valueLabelBuilder: valueLabelBuilder,
-          componentState: componentState,
-          showMinMaxLabels: showMinMaxLabels,
-        );
-
-  const DsfrRangeSlider.md({
-    final Key? key,
-    required final String label,
-    final String? description,
-    required final RangeValues values,
-    final double min = 0.0,
-    final double max = 1.0,
-    final int? division,
-    final ValueChanged<RangeValues>? onChanged,
-    final ValueChanged<RangeValues>? onChangedStart,
-    final ValueChanged<RangeValues>? onChangedEnd,
-    final String Function(double)? valueLabelBuilder,
-    final bool enabled = true,
-    final bool showMinMaxLabels = false,
-    final DsfrComponentState componentState = const DsfrComponentState.none(),
-  }) : this._(
-          key: key,
-          label: label,
-          description: description,
-          values: values,
-          min: min,
-          max: max,
-          divisions: division,
-          onChanged: onChanged,
-          size: DsfrComponentSize.md,
-          enabled: enabled,
-          valueLabelBuilder: valueLabelBuilder,
-          componentState: componentState,
-          showMinMaxLabels: showMinMaxLabels,
-        );
+  }) : assert(size != DsfrComponentSize.lg);
 
   @override
   Widget build(BuildContext context) {
     final labelColor = enabled
-        ? getTextColor(context, componentState.state,
-            defaultColor: DsfrColorDecisions.textLabelGrey(context))
+        ? getTextColor(context, componentState.state, defaultColor: DsfrColorDecisions.textLabelGrey(context))
         : DsfrColorDecisions.textDisabledGrey(context);
 
     return DsfrFormState(
