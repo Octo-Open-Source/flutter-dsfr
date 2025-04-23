@@ -31,7 +31,7 @@ extension DsfrAlertTypeExtension on DsfrAlertType {
       };
 }
 
-abstract class DsfrAlertDescription {}
+sealed class DsfrAlertDescription {}
 
 class DsfrAlertDescriptionText extends DsfrAlertDescription {
   final String text;
@@ -92,12 +92,13 @@ class DsfrAlert extends StatelessWidget {
                         style: DsfrTextStyle.headline5(color: DsfrColorDecisions.textTitleGrey(context)),
                       ),
                     if (description != null)
-                      description is DsfrAlertDescriptionText
-                          ? Text(
-                              (description as DsfrAlertDescriptionText).text,
-                              style: DsfrTextStyle.bodyMd(color: DsfrColorDecisions.textDefaultGrey(context)),
-                            )
-                          : (description as DsfrAlertDescriptionWidget).widget,
+                      switch (description!) {
+                        DsfrAlertDescriptionText description => Text(
+                            description.text,
+                            style: DsfrTextStyle.bodyMd(color: DsfrColorDecisions.textDefaultGrey(context)),
+                          ),
+                        DsfrAlertDescriptionWidget description => description.widget,
+                      }
                   ],
                 ),
               ),
