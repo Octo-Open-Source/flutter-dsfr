@@ -16,24 +16,6 @@ class DsfrCard extends StatelessWidget {
     this.description,
   });
 
-  const DsfrCard.sm({
-    super.key,
-    required this.title,
-    this.description,
-  }) : size = DsfrComponentSize.sm;
-
-  const DsfrCard.md({
-    super.key,
-    required this.title,
-    this.description,
-  }) : size = DsfrComponentSize.md;
-
-  const DsfrCard.lg({
-    super.key,
-    required this.title,
-    this.description,
-  }) : size = DsfrComponentSize.lg;
-
   @override
   Widget build(BuildContext context) {
     return Material(
