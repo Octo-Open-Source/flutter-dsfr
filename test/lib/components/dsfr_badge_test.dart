@@ -1,30 +1,83 @@
 import 'package:flutter_dsfr/components/dsfr_badge.dart';
+import 'package:flutter_dsfr/helpers/dsfr_component_size.dart';
 import '../../helpers/a11y_test.skip.dart';
 
 void main() {
-  final smallInfoLabel = DsfrBadge.sm(label: 'badge info', type: DsfrBadgeType.information);
-  final smallSuccessLabel = DsfrBadge.sm(label: 'badge succès', type: DsfrBadgeType.success);
-  final smallErrorLabel = DsfrBadge.sm(label: 'badge erreur', type: DsfrBadgeType.error);
-  final smallWarningLabel = DsfrBadge.sm(label: 'badge avertissement', type: DsfrBadgeType.warning);
-  final smallNewLabel= DsfrBadge.sm(label: 'badge nouveau', type: DsfrBadgeType.news);
+  final smallInfoLabel = DsfrBadge(label: 'badge info', type: DsfrBadgeType.information, size: DsfrComponentSize.sm);
+  final smallSuccessLabel = DsfrBadge(label: 'badge succès', type: DsfrBadgeType.success, size: DsfrComponentSize.sm);
+  final smallErrorLabel = DsfrBadge(label: 'badge erreur', type: DsfrBadgeType.error, size: DsfrComponentSize.sm);
+  final smallWarningLabel =
+      DsfrBadge(label: 'badge avertissement', type: DsfrBadgeType.warning, size: DsfrComponentSize.sm);
+  final smallNewLabel = DsfrBadge(label: 'badge nouveau', type: DsfrBadgeType.news, size: DsfrComponentSize.sm);
 
-  final mediumInfoLabel = DsfrBadge.md(label: 'badge info', type: DsfrBadgeType.information);
-  final mediumSuccessLabel = DsfrBadge.md(label: 'badge succès', type: DsfrBadgeType.success);
-  final mediumErrorLabel = DsfrBadge.md(label: 'badge erreur', type: DsfrBadgeType.error);
-  final mediumWarningLabel = DsfrBadge.md(label: 'badge avertissement', type: DsfrBadgeType.warning);
-  final mediumNewLabel= DsfrBadge.md(label: 'badge nouveau', type: DsfrBadgeType.news);
+  final mediumInfoLabel = DsfrBadge(label: 'badge info', type: DsfrBadgeType.information, size: DsfrComponentSize.md);
+  final mediumSuccessLabel = DsfrBadge(label: 'badge succès', type: DsfrBadgeType.success, size: DsfrComponentSize.md);
+  final mediumErrorLabel = DsfrBadge(label: 'badge erreur', type: DsfrBadgeType.error, size: DsfrComponentSize.md);
+  final mediumWarningLabel =
+      DsfrBadge(label: 'badge avertissement', type: DsfrBadgeType.warning, size: DsfrComponentSize.md);
+  final mediumNewLabel = DsfrBadge(label: 'badge nouveau', type: DsfrBadgeType.news, size: DsfrComponentSize.md);
 
-  final smallInfoLabelWithIcon =DsfrBadge.sm(label: 'badge info', type: DsfrBadgeType.information, withIcon: true);
-  final smallSuccessLabelWithIcon =DsfrBadge.sm(label: 'badge succès', type: DsfrBadgeType.success, withIcon: true);
-  final smallErrorLabelWithIcon =DsfrBadge.sm(label: 'badge erreur', type: DsfrBadgeType.error, withIcon: true);
-  final smallWarningLabelWithIcon =DsfrBadge.sm(label: 'badge avertissement', type: DsfrBadgeType.warning, withIcon: true);
-  final smallNewLabelWithIcon =DsfrBadge.sm(label: 'badge nouveau', type: DsfrBadgeType.news, withIcon: true);
+  final smallInfoLabelWithIcon = DsfrBadge(
+    label: 'badge info',
+    type: DsfrBadgeType.information,
+    withIcon: true,
+    size: DsfrComponentSize.sm,
+  );
+  final smallSuccessLabelWithIcon = DsfrBadge(
+    label: 'badge succès',
+    type: DsfrBadgeType.success,
+    withIcon: true,
+    size: DsfrComponentSize.sm,
+  );
+  final smallErrorLabelWithIcon = DsfrBadge(
+    label: 'badge erreur',
+    type: DsfrBadgeType.error,
+    withIcon: true,
+    size: DsfrComponentSize.sm,
+  );
+  final smallWarningLabelWithIcon = DsfrBadge(
+    label: 'badge avertissement',
+    type: DsfrBadgeType.warning,
+    withIcon: true,
+    size: DsfrComponentSize.sm,
+  );
+  final smallNewLabelWithIcon = DsfrBadge(
+    label: 'badge nouveau',
+    type: DsfrBadgeType.news,
+    withIcon: true,
+    size: DsfrComponentSize.sm,
+  );
 
-  final mediumInfoLabelWithIcon =DsfrBadge.md(label: 'badge info', type: DsfrBadgeType.information, withIcon: true);
-  final mediumSuccessLabelWithIcon =DsfrBadge.md(label: 'badge succès', type: DsfrBadgeType.success, withIcon: true);
-  final mediumErrorLabelWithIcon =DsfrBadge.md(label: 'badge erreur', type: DsfrBadgeType.error, withIcon: true);
-  final mediumWarningLabelWithIcon =DsfrBadge.md(label: 'badge avertissement', type: DsfrBadgeType.warning, withIcon: true);
-  final mediumNewLabelWithIcon =DsfrBadge.md(label: 'badge nouveau', type: DsfrBadgeType.news, withIcon: true);
+  final mediumInfoLabelWithIcon = DsfrBadge(
+    label: 'badge info',
+    type: DsfrBadgeType.information,
+    withIcon: true,
+    size: DsfrComponentSize.md,
+  );
+  final mediumSuccessLabelWithIcon = DsfrBadge(
+    label: 'badge succès',
+    type: DsfrBadgeType.success,
+    withIcon: true,
+    size: DsfrComponentSize.md,
+  );
+  final mediumErrorLabelWithIcon = DsfrBadge(
+    label: 'badge erreur',
+    type: DsfrBadgeType.error,
+    withIcon: true,
+    size: DsfrComponentSize.md,
+  );
+  final mediumWarningLabelWithIcon = DsfrBadge(
+    label: 'badge avertissement',
+    type: DsfrBadgeType.warning,
+    withIcon: true,
+    size: DsfrComponentSize.md,
+  );
+  final mediumNewLabelWithIcon = DsfrBadge(
+    label: 'badge nouveau',
+    type: DsfrBadgeType.news,
+    withIcon: true,
+    size: DsfrComponentSize.md,
+  );
 
   accessibilityTest(componentName: 'Badge info SM', isLightMode: true, child: smallInfoLabel);
   accessibilityTest(componentName: 'Badge info SM', isLightMode: false, child: smallInfoLabel);
@@ -54,8 +107,10 @@ void main() {
   accessibilityTest(componentName: 'Badge succès SM with icon', isLightMode: false, child: smallSuccessLabelWithIcon);
   accessibilityTest(componentName: 'Badge erreur SM with icon', isLightMode: true, child: smallErrorLabelWithIcon);
   accessibilityTest(componentName: 'Badge erreur SM with icon', isLightMode: false, child: smallErrorLabelWithIcon);
-  accessibilityTest(componentName: 'Badge avertissement SM with icon', isLightMode: true, child: smallWarningLabelWithIcon);
-  accessibilityTest(componentName: 'Badge avertissement SM with icon', isLightMode: false, child: smallWarningLabelWithIcon);
+  accessibilityTest(
+      componentName: 'Badge avertissement SM with icon', isLightMode: true, child: smallWarningLabelWithIcon);
+  accessibilityTest(
+      componentName: 'Badge avertissement SM with icon', isLightMode: false, child: smallWarningLabelWithIcon);
   accessibilityTest(componentName: 'Badge nouveau SM with icon', isLightMode: true, child: smallNewLabelWithIcon);
   accessibilityTest(componentName: 'Badge nouveau SM with icon', isLightMode: false, child: smallNewLabelWithIcon);
 
@@ -65,8 +120,10 @@ void main() {
   accessibilityTest(componentName: 'Badge succès MD with icon', isLightMode: false, child: mediumSuccessLabelWithIcon);
   accessibilityTest(componentName: 'Badge erreur MD with icon', isLightMode: true, child: mediumErrorLabelWithIcon);
   accessibilityTest(componentName: 'Badge erreur MD with icon', isLightMode: false, child: mediumErrorLabelWithIcon);
-  accessibilityTest(componentName: 'Badge avertissement MD with icon', isLightMode: true, child: mediumWarningLabelWithIcon);
-  accessibilityTest(componentName: 'Badge avertissement MD with icon', isLightMode: false, child: mediumWarningLabelWithIcon);
+  accessibilityTest(
+      componentName: 'Badge avertissement MD with icon', isLightMode: true, child: mediumWarningLabelWithIcon);
+  accessibilityTest(
+      componentName: 'Badge avertissement MD with icon', isLightMode: false, child: mediumWarningLabelWithIcon);
   accessibilityTest(componentName: 'Badge nouveau MD with icon', isLightMode: true, child: mediumNewLabelWithIcon);
   accessibilityTest(componentName: 'Badge nouveau MD with icon', isLightMode: false, child: mediumNewLabelWithIcon);
 }

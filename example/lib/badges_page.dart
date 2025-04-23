@@ -3,6 +3,7 @@ import 'package:example/mise_en_page/page_sub_section.dart';
 import 'package:flutter_dsfr/flutter_dsfr.dart';
 import 'package:example/page_item.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dsfr/helpers/dsfr_component_size.dart';
 
 class BadgesPage extends StatelessWidget {
   const BadgesPage({super.key});
@@ -24,29 +25,31 @@ class BadgesPage extends StatelessWidget {
               title: 'Badge sans icône',
               children: [
                 PageSubSection(title: 'taille sm', children: [
-                  DsfrBadge.sm(label: 'badge info', type: DsfrBadgeType.information),
-                  DsfrBadge.sm(label: 'badge succès', type: DsfrBadgeType.success),
-                  DsfrBadge.sm(label: 'badge erreur', type: DsfrBadgeType.error),
-                  DsfrBadge.sm(label: 'badge avertissement', type: DsfrBadgeType.warning),
-                  DsfrBadge.sm(label: 'badge nouveau', type: DsfrBadgeType.news),
-                  DsfrBadge.sm(
+                  DsfrBadge(label: 'badge info', type: DsfrBadgeType.information, size: DsfrComponentSize.sm),
+                  DsfrBadge(label: 'badge succès', type: DsfrBadgeType.success, size: DsfrComponentSize.sm),
+                  DsfrBadge(label: 'badge erreur', type: DsfrBadgeType.error, size: DsfrComponentSize.sm),
+                  DsfrBadge(label: 'badge avertissement', type: DsfrBadgeType.warning, size: DsfrComponentSize.sm),
+                  DsfrBadge(label: 'badge nouveau', type: DsfrBadgeType.news, size: DsfrComponentSize.sm),
+                  DsfrBadge(
                     label: 'badge personnalisé',
                     type: DsfrBadgeType.custom,
                     backgroundCustomColor: DsfrColors.greenArchipel100,
                     textCustomColor: DsfrColors.greenArchipelMoon716,
+                    size: DsfrComponentSize.sm,
                   ),
                 ]),
                 PageSubSection(title: 'taille md', children: [
-                  DsfrBadge.md(label: 'badge info', type: DsfrBadgeType.information),
-                  DsfrBadge.md(label: 'badge succès', type: DsfrBadgeType.success),
-                  DsfrBadge.md(label: 'badge erreur', type: DsfrBadgeType.error),
-                  DsfrBadge.md(label: 'badge avertissement', type: DsfrBadgeType.warning),
-                  DsfrBadge.md(label: 'badge nouveau', type: DsfrBadgeType.news),
-                  DsfrBadge.md(
+                  DsfrBadge(label: 'badge info', type: DsfrBadgeType.information, size: DsfrComponentSize.md),
+                  DsfrBadge(label: 'badge succès', type: DsfrBadgeType.success, size: DsfrComponentSize.md),
+                  DsfrBadge(label: 'badge erreur', type: DsfrBadgeType.error, size: DsfrComponentSize.md),
+                  DsfrBadge(label: 'badge avertissement', type: DsfrBadgeType.warning, size: DsfrComponentSize.md),
+                  DsfrBadge(label: 'badge nouveau', type: DsfrBadgeType.news, size: DsfrComponentSize.md),
+                  DsfrBadge(
                     label: 'badge personnalisé',
                     type: DsfrBadgeType.custom,
                     backgroundCustomColor: DsfrColors.greenArchipel100,
                     textCustomColor: DsfrColors.greenArchipelMoon716,
+                    size: DsfrComponentSize.md,
                   ),
                 ])
               ],
@@ -57,21 +60,71 @@ class BadgesPage extends StatelessWidget {
                 PageSubSection(
                   title: 'Taille SM',
                   children: [
-                    DsfrBadge.sm(label: 'badge info', type: DsfrBadgeType.information, withIcon: true),
-                    DsfrBadge.sm(label: 'badge succès', type: DsfrBadgeType.success, withIcon: true),
-                    DsfrBadge.sm(label: 'badge erreur', type: DsfrBadgeType.error, withIcon: true),
-                    DsfrBadge.sm(label: 'badge avertissement', type: DsfrBadgeType.warning, withIcon: true),
-                    DsfrBadge.sm(label: 'badge nouveau', type: DsfrBadgeType.news, withIcon: true),
+                    DsfrBadge(
+                      label: 'badge info',
+                      type: DsfrBadgeType.information,
+                      withIcon: true,
+                      size: DsfrComponentSize.sm,
+                    ),
+                    DsfrBadge(
+                      label: 'badge succès',
+                      type: DsfrBadgeType.success,
+                      withIcon: true,
+                      size: DsfrComponentSize.sm,
+                    ),
+                    DsfrBadge(
+                      label: 'badge erreur',
+                      type: DsfrBadgeType.error,
+                      withIcon: true,
+                      size: DsfrComponentSize.sm,
+                    ),
+                    DsfrBadge(
+                      label: 'badge avertissement',
+                      type: DsfrBadgeType.warning,
+                      withIcon: true,
+                      size: DsfrComponentSize.sm,
+                    ),
+                    DsfrBadge(
+                      label: 'badge nouveau',
+                      type: DsfrBadgeType.news,
+                      withIcon: true,
+                      size: DsfrComponentSize.sm,
+                    ),
                   ],
                 ),
                 PageSubSection(
                   title: 'Taille MD',
                   children: [
-                    DsfrBadge.md(label: 'badge info', type: DsfrBadgeType.information, withIcon: true),
-                    DsfrBadge.md(label: 'badge succès', type: DsfrBadgeType.success, withIcon: true),
-                    DsfrBadge.md(label: 'badge erreur', type: DsfrBadgeType.error, withIcon: true),
-                    DsfrBadge.md(label: 'badge avertissement', type: DsfrBadgeType.warning, withIcon: true),
-                    DsfrBadge.md(label: 'badge nouveau', type: DsfrBadgeType.news, withIcon: true),
+                    DsfrBadge(
+                      label: 'badge info',
+                      type: DsfrBadgeType.information,
+                      withIcon: true,
+                      size: DsfrComponentSize.md,
+                    ),
+                    DsfrBadge(
+                      label: 'badge succès',
+                      type: DsfrBadgeType.success,
+                      withIcon: true,
+                      size: DsfrComponentSize.md,
+                    ),
+                    DsfrBadge(
+                      label: 'badge erreur',
+                      type: DsfrBadgeType.error,
+                      withIcon: true,
+                      size: DsfrComponentSize.md,
+                    ),
+                    DsfrBadge(
+                      label: 'badge avertissement',
+                      type: DsfrBadgeType.warning,
+                      withIcon: true,
+                      size: DsfrComponentSize.md,
+                    ),
+                    DsfrBadge(
+                      label: 'badge nouveau',
+                      type: DsfrBadgeType.news,
+                      withIcon: true,
+                      size: DsfrComponentSize.md,
+                    ),
                   ],
                 ),
               ],

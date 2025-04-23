@@ -1,6 +1,7 @@
 import 'package:flutter_dsfr/flutter_dsfr.dart';
 import 'package:example/page_item.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dsfr/helpers/dsfr_component_size.dart';
 
 // ignore_for_file: avoid_print
 class TilesPage extends StatefulWidget {
@@ -16,7 +17,6 @@ class TilesPage extends StatefulWidget {
 }
 
 class _TilesPageState extends State<TilesPage> {
-
   @override
   Widget build(final context) => SingleChildScrollView(
         padding: EdgeInsets.all(16),
@@ -33,18 +33,17 @@ class _TilesPageState extends State<TilesPage> {
               style: DsfrTextStyle.headline2(color: DsfrColorDecisions.textTitleGrey(context)),
             ),
             DsfrTile.sm(
-              title: 'Tuile par défaut',
-              description: 'Description',
-              detail: 'Détail',
-              badgesAndTags: [
-                DsfrTag.sm(
-                  label: TextSpan(text: 'Tag par défaut'),
-                ),
-              ],
-              onTap: () {
-                print('Tuile sm cliquée');
-              }
-            ),
+                title: 'Tuile par défaut',
+                description: 'Description',
+                detail: 'Détail',
+                badgesAndTags: [
+                  DsfrTag.sm(
+                    label: TextSpan(text: 'Tag par défaut'),
+                  ),
+                ],
+                onTap: () {
+                  print('Tuile sm cliquée');
+                }),
             DsfrTile.sm(
               title: 'Tuile non cliquable',
               description: 'Description',
@@ -68,38 +67,35 @@ class _TilesPageState extends State<TilesPage> {
                 showActionIcon: false,
                 onTap: () {
                   print('Tuile sm cliquée');
-                }
-            ),
+                }),
             DsfrTile.sm(
-              backgroundType: DsfrTileBackgroundType.grey,
-              title: 'Tuile avec fond gris',
-              description: 'Description',
-              detail: 'Détail',
-              imageAsset: 'assets/images/city_hall.svg',
-              badgesAndTags: [
-                DsfrTag.sm(
-                  label: TextSpan(text: 'Tag par défaut'),
-                ),
-              ],
-              onTap: () {
-                print('Tuile sm cliquée');
-              }
-            ),
+                backgroundType: DsfrTileBackgroundType.grey,
+                title: 'Tuile avec fond gris',
+                description: 'Description',
+                detail: 'Détail',
+                imageAsset: 'assets/images/city_hall.svg',
+                badgesAndTags: [
+                  DsfrTag.sm(
+                    label: TextSpan(text: 'Tag par défaut'),
+                  ),
+                ],
+                onTap: () {
+                  print('Tuile sm cliquée');
+                }),
             Container(
               padding: EdgeInsets.all(16),
               color: DsfrColorDecisions.backgroundActionLowBlueFrance(context),
               child: DsfrTile.sm(
-                backgroundType: DsfrTileBackgroundType.lightNoBorder,
-                title: 'Tuile avec fond transparent',
-                description: 'Description',
-                detail: 'Détail',
-                badgesAndTags: [
-                  DsfrBadge.sm(label: 'badge info', type: DsfrBadgeType.information),
-                ],
-                onTap: () {
-                  print('Tuile sm cliquée');
-                }
-              ),
+                  backgroundType: DsfrTileBackgroundType.lightNoBorder,
+                  title: 'Tuile avec fond transparent',
+                  description: 'Description',
+                  detail: 'Détail',
+                  badgesAndTags: [
+                    DsfrBadge(label: 'badge info', type: DsfrBadgeType.information, size: DsfrComponentSize.sm),
+                  ],
+                  onTap: () {
+                    print('Tuile sm cliquée');
+                  }),
             ),
             DsfrTile.sm(
                 backgroundType: DsfrTileBackgroundType.lightWithShadow,
@@ -113,8 +109,7 @@ class _TilesPageState extends State<TilesPage> {
                 ],
                 onTap: () {
                   print('Tuile sm cliquée');
-                }
-            ),
+                }),
             Text(
               'Taille MD',
               style: DsfrTextStyle.headline2(color: DsfrColorDecisions.textTitleGrey(context)),
@@ -130,8 +125,7 @@ class _TilesPageState extends State<TilesPage> {
                 ],
                 onTap: () {
                   print('Tuile md cliquée');
-                }
-            ),
+                }),
             DsfrTile.md(
               title: 'Tuile non cliquable',
               description: 'Description',
@@ -155,8 +149,7 @@ class _TilesPageState extends State<TilesPage> {
                 showActionIcon: false,
                 onTap: () {
                   print('Tuile md cliquée');
-                }
-            ),
+                }),
             DsfrTile.md(
                 backgroundType: DsfrTileBackgroundType.grey,
                 title: 'Tuile avec fond gris',
@@ -170,8 +163,7 @@ class _TilesPageState extends State<TilesPage> {
                 ],
                 onTap: () {
                   print('Tuile md cliquée');
-                }
-            ),
+                }),
             Container(
               padding: EdgeInsets.all(16),
               color: DsfrColorDecisions.backgroundActionLowBlueFrance(context),
@@ -181,12 +173,11 @@ class _TilesPageState extends State<TilesPage> {
                   description: 'Description',
                   detail: 'Détail',
                   badgesAndTags: [
-                    DsfrBadge.md(label: 'badge info', type: DsfrBadgeType.information),
+                    DsfrBadge(label: 'badge info', type: DsfrBadgeType.information, size: DsfrComponentSize.md),
                   ],
                   onTap: () {
                     print('Tuile md cliquée');
-                  }
-              ),
+                  }),
             ),
             DsfrTile.md(
                 backgroundType: DsfrTileBackgroundType.lightWithShadow,
@@ -200,8 +191,7 @@ class _TilesPageState extends State<TilesPage> {
                 ],
                 onTap: () {
                   print('Tuile md cliquée');
-                }
-            ),
+                }),
           ],
         ),
       );

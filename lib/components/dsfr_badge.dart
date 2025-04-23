@@ -18,28 +18,28 @@ class DsfrBadge extends StatelessWidget {
   final bool withIcon;
   final Color? backgroundCustomColor;
   final Color? textCustomColor;
-  final double iconSize;
   final DsfrComponentSize size;
 
-  const DsfrBadge.sm({
+  const DsfrBadge({
     super.key,
     required this.label,
     required this.type,
+    required this.size,
     this.withIcon = false,
     this.backgroundCustomColor,
     this.textCustomColor,
-  })  : iconSize = 16,
-        size = DsfrComponentSize.sm;
+  });
 
-  const DsfrBadge.md({
-    super.key,
-    required this.label,
-    required this.type,
-    this.withIcon = false,
-    this.backgroundCustomColor,
-    this.textCustomColor,
-  })  : iconSize = 18,
-        size = DsfrComponentSize.md;
+  double _getIconSize() {
+    switch (size) {
+      case DsfrComponentSize.sm:
+        return 16;
+      case DsfrComponentSize.md:
+        return 18;
+      default:
+        throw UnimplementedError('Size $size is not implemented');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +57,7 @@ class DsfrBadge extends StatelessWidget {
             if (withIcon)
               Padding(
                 padding: const EdgeInsets.only(right: 6),
-                child: Icon(_getIcon(), size: iconSize, color: _getTextColor(context)),
+                child: Icon(_getIcon(), size: _getIconSize(), color: _getTextColor(context)),
               ),
             Text(
               label.toUpperCase(),
