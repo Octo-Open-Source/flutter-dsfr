@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_dsfr/components/toggle_switches/dsfr_toggle_switch.dart';
+import 'package:flutter_dsfr/src/components/toggle_switches/dsfr_toggle_switch.dart';
 import '../../helpers/a11y_test.skip.dart';
 
 void main() {

@@ -1,8 +1,7 @@
 import 'package:example/mise_en_page/page_sub_section.dart';
-import 'package:flutter_dsfr/flutter_dsfr.dart';
 import 'package:example/page_item.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_dsfr/helpers/dsfr_component_size.dart';
+import 'package:flutter_dsfr/flutter_dsfr.dart';
 
 class AlertPage extends StatelessWidget {
   const AlertPage({super.key});
@@ -44,8 +43,7 @@ class AlertPage extends StatelessWidget {
               type: DsfrAlertType.success,
               title: 'Titre',
               description: DsfrAlertDescriptionText(
-                'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
-              ),
+                  'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',),
               onClose: () {},
             ),
           ]),

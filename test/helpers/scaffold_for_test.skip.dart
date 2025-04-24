@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_dsfr/fondamentaux/dsfr_color_decisions.g.dart';
-import 'package:flutter_dsfr/helpers/dsfr_theme_mode_provider.dart';
+import 'package:flutter_dsfr/src/fondamentaux/dsfr_color_decisions.g.dart';
+import 'package:flutter_dsfr/src/helpers/dsfr_theme_mode_provider.dart';
 
 class ScaffoldForTest extends StatelessWidget {
   final Widget child;

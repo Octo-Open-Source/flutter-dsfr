@@ -1,4 +1,4 @@
-import 'package:flutter_dsfr/components/buttons/dsfr_france_connect_button.dart';
+import 'package:flutter_dsfr/src/components/buttons/dsfr_france_connect_button.dart';
 import '../../../helpers/a11y_test.skip.dart';
 
 void main() {

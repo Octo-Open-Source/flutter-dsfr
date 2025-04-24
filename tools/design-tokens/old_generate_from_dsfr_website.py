@@ -163,7 +163,7 @@ def generate_dart_palette(couleurs: list[Couleur]) -> str:
 def template_decisions_dart() -> str:
     return """
 import 'package:flutter/material.dart';
-import 'package:flutter_dsfr/fondamentaux/colors.g.dart';
+import 'package:flutter_dsfr/src/fondamentaux/colors.g.dart';
 
 class DsfrColorDecisions {
   const DsfrColorDecisions._();

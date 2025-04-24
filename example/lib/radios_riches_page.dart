@@ -1,7 +1,6 @@
 import 'package:flutter_dsfr/flutter_dsfr.dart';
 import 'package:example/page_item.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_dsfr/helpers/dsfr_component_state.dart';
 
 class RadiosRichesPage extends StatefulWidget {
   const RadiosRichesPage({super.key});

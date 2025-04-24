@@ -1,4 +1,4 @@
-import 'package:flutter_dsfr/components/dsfr_stepper.dart';
+import 'package:flutter_dsfr/src/components/dsfr_stepper.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import '../../helpers/a11y_test.skip.dart';

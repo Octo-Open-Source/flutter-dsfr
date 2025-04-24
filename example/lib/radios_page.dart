@@ -1,12 +1,8 @@
 import 'package:example/mise_en_page/page_section.dart';
 import 'package:example/mise_en_page/page_sub_section.dart';
-import 'package:flutter_dsfr/atoms/dsfr_group.dart';
-import 'package:flutter_dsfr/components/radios/dsfr_radio_button.dart';
 import 'package:example/page_item.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_dsfr/components/radios/dsfr_radio_button_group.dart';
-import 'package:flutter_dsfr/helpers/dsfr_component_state.dart';
-import 'package:flutter_dsfr/helpers/dsfr_component_size.dart';
+import 'package:flutter_dsfr/flutter_dsfr.dart';
 
 class RadiosPage extends StatefulWidget {
   const RadiosPage({super.key});

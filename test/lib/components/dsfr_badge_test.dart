@@ -1,4 +1,4 @@
-import 'package:flutter_dsfr/components/dsfr_badge.dart';
+import 'package:flutter_dsfr/src/components/dsfr_badge.dart';
 import 'package:flutter_dsfr/helpers/dsfr_component_size.dart';
 import '../../helpers/a11y_test.skip.dart';
 

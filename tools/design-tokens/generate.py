@@ -40,8 +40,8 @@ def template_decisions_dart() -> str:
 // ignore_for_file: prefer_using_color_decision
 
 import 'package:flutter/material.dart';
-import 'package:flutter_dsfr/fondamentaux/colors.g.dart';
-import 'package:flutter_dsfr/helpers/theme_mode_provider.dart';
+import 'package:flutter_dsfr/src/fondamentaux/colors.g.dart';
+import 'package:flutter_dsfr/src/helpers/theme_mode_provider.dart';
 
 class DsfrColorDecisions {
   const DsfrColorDecisions._();
@@ -81,8 +81,8 @@ def template_example_dart() -> str:
     return """
 import 'package:example/colors/dsfr_color.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_dsfr/fondamentaux/colors.g.dart';
-import 'package:flutter_dsfr/fondamentaux/color_decisions.g.dart';
+import 'package:flutter_dsfr/src/fondamentaux/colors.g.dart';
+import 'package:flutter_dsfr/src/fondamentaux/color_decisions.g.dart';
 
 class DsfrColorsExample {
 

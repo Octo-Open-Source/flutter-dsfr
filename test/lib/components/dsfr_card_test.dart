@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_dsfr/components/dsfr_card.dart';
-import 'package:flutter_dsfr/helpers/dsfr_component_size.dart';
+import 'package:flutter_dsfr/src/components/dsfr_card.dart';
 import '../../helpers/a11y_test.skip.dart';
 
 void main() {

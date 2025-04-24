@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_dsfr/components/dsfr_modal.dart';
+import 'package:flutter_dsfr/src/components/dsfr_modal.dart';
 import '../../helpers/a11y_test.skip.dart';
 
 void main() {

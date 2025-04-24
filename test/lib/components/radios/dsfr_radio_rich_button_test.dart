@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_dsfr/components/radios/dsfr_radio_rich_button.dart';
-import 'package:flutter_dsfr/helpers/dsfr_component_state.dart';
+import 'package:flutter_dsfr/src/components/radios/dsfr_radio_rich_button.dart';
+import 'package:flutter_dsfr/src/helpers/dsfr_component_state.dart';
 import '../../../helpers/a11y_test.skip.dart';
 
 void main() {

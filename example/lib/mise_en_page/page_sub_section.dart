@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
-import 'package:flutter_dsfr/fondamentaux/dsfr_color_decisions.g.dart';
-import 'package:flutter_dsfr/fondamentaux/dsfr_text_style.dart';
+import 'package:flutter_dsfr/flutter_dsfr.dart';
+
 
 class PageSubSection extends StatelessWidget {
   const PageSubSection({super.key, required this.title, required this.children});

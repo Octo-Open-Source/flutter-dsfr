@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_dsfr/components/dsfr_search_bar.dart';
+import 'package:flutter_dsfr/src/components/dsfr_search_bar.dart';
 import '../../helpers/a11y_test.skip.dart';
 
 void main() {
