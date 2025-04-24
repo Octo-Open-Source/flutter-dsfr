@@ -36,6 +36,8 @@ class DsfrInput extends StatefulWidget {
     this.scrollPadding = const EdgeInsets.all(20),
     this.autofillHints,
     this.componentState = const DsfrComponentState.none(),
+    this.textAlign = TextAlign.start,
+    this.maxLength,
   });
 
   final String label;
@@ -60,6 +62,8 @@ class DsfrInput extends StatefulWidget {
   final EdgeInsets scrollPadding;
   final Iterable<String>? autofillHints;
   final DsfrComponentState componentState;
+  final TextAlign textAlign;
+  final int? maxLength;
 
   @override
   State<DsfrInput> createState() => _DsfrInputState();
@@ -139,6 +143,8 @@ class _DsfrInputState extends State<DsfrInput> {
                     scrollPadding: widget.scrollPadding,
                     autofillHints: widget.autofillHints,
                     inputBorderColor: getBorderColor(context, widget.componentState.state),
+                    maxLength: widget.maxLength,
+                    textAlign: widget.textAlign,
                   ),
                 ),
               ),

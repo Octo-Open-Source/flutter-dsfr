@@ -41,6 +41,8 @@ class DsfrInputHeadless extends StatefulWidget {
     this.inputFormatters,
     this.scrollPadding = const EdgeInsets.all(20),
     this.autofillHints,
+    this.maxLength,
+    this.textAlign = TextAlign.start,
   });
 
   final String? initialValue;
@@ -75,6 +77,8 @@ class DsfrInputHeadless extends StatefulWidget {
   final List<TextInputFormatter>? inputFormatters;
   final EdgeInsets scrollPadding;
   final Iterable<String>? autofillHints;
+  final int? maxLength;
+  final TextAlign textAlign;
 
   @override
   State<DsfrInputHeadless> createState() => _DsfrInputHeadlessState();
@@ -151,6 +155,7 @@ class _DsfrInputHeadlessState extends State<DsfrInputHeadless> {
         child: SizedBox(
           width: widget.width,
           child: TextFormField(
+            maxLength: widget.maxLength,
             controller: widget.controller,
             initialValue: widget.initialValue,
             focusNode: _focusNode,
@@ -176,7 +181,7 @@ class _DsfrInputHeadlessState extends State<DsfrInputHeadless> {
             style: widget.enabled
                 ? DsfrTextStyle.bodyMd(color: widget.inputColor ?? DsfrColorDecisions.textDefaultGrey(context))
                 : DsfrTextStyle.bodyMd(color: DsfrColorDecisions.textDisabledGrey(context)),
-            textAlign: TextAlign.start,
+            textAlign: widget.textAlign,
             autofocus: widget.autofocus,
             obscureText: widget.isPasswordMode && !widget.passwordVisibility,
             autocorrect: widget.autocorrect ?? !widget.isPasswordMode,
@@ -192,7 +197,11 @@ class _DsfrInputHeadlessState extends State<DsfrInputHeadless> {
             enabled: widget.enabled,
             scrollPadding: widget.scrollPadding,
             autofillHints: widget.autofillHints,
-            onTap: widget.isDatePicker ? () { _selectDate(context);} : null,
+            onTap: widget.isDatePicker
+                ? () {
+                    _selectDate(context);
+                  }
+                : null,
           ),
         ),
       ),
