@@ -19,7 +19,7 @@ enum DsfrTileBackgroundType {
   transparent,
 }
 
-class DsfrTile extends StatelessWidget {
+class DsfrTile extends StatefulWidget {
   const DsfrTile({
     super.key,
     this.type = DsfrTileType.vertical,
@@ -51,8 +51,107 @@ class DsfrTile extends StatelessWidget {
   final bool showActionIcon;
   final IconData? actionIcon;
 
+  @override
+  State<DsfrTile> createState() => _DsfrTileState();
+}
+
+class _DsfrTileState extends State<DsfrTile> {
+  bool hasFocus = false;
+
+  @override
+  Widget build(final context) {
+    final enabled = widget.enabled;
+    final focusNode = widget.focusNode;
+    final badgesAndTags = widget.badgesAndTags;
+    final onTap = widget.onTap;
+    final type = widget.type;
+    final title = widget.title;
+    final description = widget.description;
+    final details = widget.details;
+    final imageAsset = widget.imageAsset;
+    final showActionIcon = widget.showActionIcon;
+    final actionIcon = widget.actionIcon;
+
+    List<Widget>? badgesAndTagsToAdd =
+      badgesAndTags?.takeWhile((element) => element is DsfrBadge || element is DsfrTag).toList();
+
+    return MergeSemantics(
+        child: Semantics(
+          enabled: enabled,
+          child: DsfrFocusWidget(
+                  isFocused: hasFocus,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      boxShadow: _getShadow(context),
+                      border: _getBottomBorder(context),
+                    ),
+                    child: Material(
+                      color: _getBackgroundColor(context),
+                      child: InkWell(
+                        onFocusChange: (final hasFocus) => setState(() => this.hasFocus = hasFocus),
+                        focusNode: focusNode,
+                        onTap: onTap,
+                        child: Container(
+                          padding: const EdgeInsets.all(24.0),
+                          decoration: BoxDecoration(
+                            border: _getTopRightLeftBorder(context),
+                          ),
+                          child: Builder(
+                            builder: (context) {
+                              return switch (type) {
+                                DsfrTileType.vertical => _VerticalTile(
+                                  imageAsset: imageAsset,
+                                  imageHeight: _getImageHeight(),
+                                  badgesAndTagsToAdd: badgesAndTagsToAdd,
+                                  paddingBadgesAndTitle: _getPaddingBadgesAndTitle(),
+                                  paddingTitleAndDescription: _getPaddingTitleAndDescription(),
+                                  paddingDescriptionAndDetails: _getPaddingDescriptionAndDetail(),
+                                  title: title,
+                                  description: description,
+                                  details: details,
+                                  titleTextStyle: _getTitleTextStyle(context),
+                                  descriptionTextStyle: _getDescriptionTextStyle(context),
+                                  showActionIcon: showActionIcon,
+                                  actionIcon: actionIcon,
+                                  iconSize: _getIconSize(),
+                                  iconColor: _getIconColor(context),
+                                  onTap: onTap,
+                                ),
+                                DsfrTileType.horizontal => _HorizontalTile(
+                                  imageAsset: imageAsset,
+                                  imageHeight: _getImageHeight(),
+                                  badgesAndTagsToAdd: badgesAndTagsToAdd,
+                                  paddingBadgesAndTitle: _getPaddingBadgesAndTitle(),
+                                  paddingTitleAndDescription: _getPaddingTitleAndDescription(),
+                                  paddingDescriptionAndDetails: _getPaddingDescriptionAndDetail(),
+                                  title: title,
+                                  description: description,
+                                  details: details,
+                                  titleTextStyle: _getTitleTextStyle(context),
+                                  descriptionTextStyle: _getDescriptionTextStyle(context),
+                                  showActionIcon: showActionIcon,
+                                  actionIcon: actionIcon,
+                                  iconSize: _getIconSize(),
+                                  iconColor: _getIconColor(context),
+                                  onTap: onTap,
+                                ),
+                                null => throw UnimplementedError(
+                                  'Type $type is not implemented',
+                                ),
+                              };
+                            },
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+            ),
+          ),
+        );
+  }
+
   Color _getTextColor(BuildContext context) {
-    if (enabled) {
+    if (widget.enabled) {
       return DsfrColorDecisions.textTitleBlueFrance(context);
     } else {
       return DsfrColorDecisions.textDisabledGrey(context);
@@ -60,7 +159,7 @@ class DsfrTile extends StatelessWidget {
   }
 
   Color _getIconColor(BuildContext context) {
-    if (enabled) {
+    if (widget.enabled) {
       return DsfrColorDecisions.textActionHighBlueFrance(context);
     } else {
       return DsfrColorDecisions.textDisabledGrey(context);
@@ -69,84 +168,84 @@ class DsfrTile extends StatelessWidget {
 
   DsfrTextStyle _getTitleTextStyle(BuildContext context) {
     var textColor = _getTextColor(context);
-    switch (size) {
+    switch (widget.size) {
       case DsfrComponentSize.md:
         return DsfrTextStyle.bodyLgBold(color: textColor);
       case DsfrComponentSize.sm:
         return DsfrTextStyle.bodyMdBold(color: textColor);
       default:
-        throw UnimplementedError('Size $size is not implemented');
+        throw UnimplementedError('Size ${widget.size} is not implemented');
     }
   }
 
   DsfrTextStyle _getDescriptionTextStyle(BuildContext context) {
-    switch (size) {
+    switch (widget.size) {
       case DsfrComponentSize.md:
         return DsfrTextStyle.bodyMdMedium(color: DsfrColorDecisions.textDefaultGrey(context));
       case DsfrComponentSize.sm:
         return DsfrTextStyle.bodySmMedium(color: DsfrColorDecisions.textDefaultGrey(context));
       default:
-        throw UnimplementedError('Size $size is not implemented');
+        throw UnimplementedError('Size ${widget.size} is not implemented');
     }
   }
 
   double _getImageHeight() {
-    switch (size) {
+    switch (widget.size) {
       case DsfrComponentSize.md:
         return 80;
       case DsfrComponentSize.sm:
         return 56;
       default:
-        throw UnimplementedError('Size $size is not implemented');
+        throw UnimplementedError('Size ${widget.size} is not implemented');
     }
   }
 
   double _getIconSize() {
-    switch (size) {
+    switch (widget.size) {
       case DsfrComponentSize.md:
         return 24;
       case DsfrComponentSize.sm:
         return 16;
       default:
-        throw UnimplementedError('Size $size is not implemented');
+        throw UnimplementedError('Size ${widget.size} is not implemented');
     }
   }
 
   double _getPaddingBadgesAndTitle() {
-    switch (size) {
+    switch (widget.size) {
       case DsfrComponentSize.md:
         return 12;
       case DsfrComponentSize.sm:
         return 8;
       default:
-        throw UnimplementedError('Size $size is not implemented');
+        throw UnimplementedError('Size ${widget.size} is not implemented');
     }
   }
 
   double _getPaddingTitleAndDescription() {
-    switch (size) {
+    switch (widget.size) {
       case DsfrComponentSize.md:
         return 8;
       case DsfrComponentSize.sm:
         return 4;
       default:
-        throw UnimplementedError('Size $size is not implemented');
+        throw UnimplementedError('Size ${widget.size} is not implemented');
     }
   }
 
   double _getPaddingDescriptionAndDetail() {
-    switch (size) {
+    switch (widget.size) {
       case DsfrComponentSize.md:
         return 16;
       case DsfrComponentSize.sm:
         return 12;
       default:
-        throw UnimplementedError('Size $size is not implemented');
+        throw UnimplementedError('Size ${widget.size} is not implemented');
     }
   }
 
   Color _getBackgroundColor(BuildContext context) {
-    switch (backgroundType) {
+    switch (widget.backgroundType) {
       case DsfrTileBackgroundType.grey:
         return DsfrColorDecisions.backgroundContrastGrey(context);
       case DsfrTileBackgroundType.transparent:
@@ -157,10 +256,10 @@ class DsfrTile extends StatelessWidget {
   }
 
   BoxBorder? _getBottomBorder(BuildContext context) {
-    Color bottomBorderColor = (onTap == null)
+    Color bottomBorderColor = (widget.onTap == null)
         ? DsfrColorDecisions.borderPlainGrey(context)
         : DsfrColorDecisions.borderPlainBlueFrance(context);
-    if (backgroundType == DsfrTileBackgroundType.lightNoBorder) {
+    if (widget.backgroundType == DsfrTileBackgroundType.lightNoBorder) {
       return null;
     } else {
       return Border(
@@ -171,7 +270,7 @@ class DsfrTile extends StatelessWidget {
 
   BoxBorder? _getTopRightLeftBorder(BuildContext context) {
     DsfrColorDecisions.borderPlainBlueFrance(context);
-    if (backgroundType == DsfrTileBackgroundType.lightNoBorder) {
+    if (widget.backgroundType == DsfrTileBackgroundType.lightNoBorder) {
       return null;
     } else {
       return Border(
@@ -183,86 +282,7 @@ class DsfrTile extends StatelessWidget {
   }
 
   List<BoxShadow>? _getShadow(BuildContext context) {
-    return backgroundType == DsfrTileBackgroundType.lightWithShadow ? [DsfrShadowDecisions.raised(context)] : null;
-  }
-
-  @override
-  Widget build(final context) {
-    return Focus(
-      focusNode: focusNode,
-      canRequestFocus: enabled,
-      child: Builder(builder: (final context) {
-        final isFocused = Focus.of(context).hasFocus;
-        List<Widget>? badgesAndTagsToAdd =
-            badgesAndTags?.takeWhile((element) => element is DsfrBadge || element is DsfrTag).toList();
-        return DsfrFocusWidget(
-            isFocused: isFocused,
-            child: Container(
-              decoration: BoxDecoration(
-                boxShadow: _getShadow(context),
-                border: _getBottomBorder(context),
-              ),
-              child: Material(
-                color: _getBackgroundColor(context),
-                child: InkWell(
-                  onTap: onTap,
-                  child: Container(
-                    padding: const EdgeInsets.all(24.0),
-                    decoration: BoxDecoration(
-                      border: _getTopRightLeftBorder(context),
-                    ),
-                    child:
-                    Builder(
-                      builder: (context) {
-                        return switch (type) {
-                          DsfrTileType.vertical =>_VerticalTile(
-                            imageAsset: imageAsset,
-                            imageHeight: _getImageHeight(),
-                            badgesAndTagsToAdd: badgesAndTagsToAdd,
-                            paddingBadgesAndTitle: _getPaddingBadgesAndTitle(),
-                            paddingTitleAndDescription: _getPaddingTitleAndDescription(),
-                            paddingDescriptionAndDetails: _getPaddingDescriptionAndDetail(),
-                            title: title,
-                            description: description,
-                            details: details,
-                            titleTextStyle: _getTitleTextStyle(context),
-                            descriptionTextStyle: _getDescriptionTextStyle(context),
-                            showActionIcon: showActionIcon,
-                            actionIcon: actionIcon,
-                            iconSize: _getIconSize(),
-                            iconColor: _getIconColor(context),
-                            onTap: onTap,
-                          ),
-                          DsfrTileType.horizontal => _HorizontalTile(
-                            imageAsset: imageAsset,
-                            imageHeight: _getImageHeight(),
-                            badgesAndTagsToAdd: badgesAndTagsToAdd,
-                            paddingBadgesAndTitle: _getPaddingBadgesAndTitle(),
-                            paddingTitleAndDescription: _getPaddingTitleAndDescription(),
-                            paddingDescriptionAndDetails: _getPaddingDescriptionAndDetail(),
-                            title: title,
-                            description: description,
-                            details: details,
-                            titleTextStyle: _getTitleTextStyle(context),
-                            descriptionTextStyle: _getDescriptionTextStyle(context),
-                            showActionIcon: showActionIcon,
-                            actionIcon: actionIcon,
-                            iconSize: _getIconSize(),
-                            iconColor: _getIconColor(context),
-                            onTap: onTap,
-                          ),
-                          null => throw UnimplementedError(
-                            'Type $type is not implemented',
-                          ),
-                        };
-                      },
-                    ),
-                  ),
-                ),
-              ),
-            ));
-      }),
-    );
+    return widget.backgroundType == DsfrTileBackgroundType.lightWithShadow ? [DsfrShadowDecisions.raised(context)] : null;
   }
 }
 
@@ -308,16 +328,12 @@ class _VerticalTile extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        if (imageAsset != null)
-          _TileImage(imageAsset: imageAsset!, height: imageHeight),
+        if (imageAsset != null) _TileImage(imageAsset: imageAsset!, height: imageHeight),
         if (imageAsset != null) const SizedBox(height: _paddingImageAndBadges),
         if (badgesAndTagsToAdd != null && badgesAndTagsToAdd!.isNotEmpty)
           Column(
             children: [
-              ExcludeFocus(
-                  child: Column(
-                    children: [...badgesAndTagsToAdd!],
-                  )),
+              ...badgesAndTagsToAdd!,
               SizedBox(height: paddingBadgesAndTitle),
             ],
           ),
@@ -391,42 +407,41 @@ class _HorizontalTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisSize: MainAxisSize.max,
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      spacing: 24,
-      children: [
-        if (imageAsset != null)
-          _TileImage(imageAsset: imageAsset!, height: imageHeight),
-        Expanded(child:
-          Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            if (badgesAndTagsToAdd != null && badgesAndTagsToAdd!.isNotEmpty)
-              Column(
-                mainAxisSize: MainAxisSize.max,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  ExcludeFocus(
-                      child: Column(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        spacing: 24,
+        children: [
+          if (imageAsset != null) _TileImage(imageAsset: imageAsset!, height: imageHeight),
+          Expanded(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                if (badgesAndTagsToAdd != null && badgesAndTagsToAdd!.isNotEmpty)
+                  Column(
+                    mainAxisSize: MainAxisSize.max,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      ExcludeFocus(
+                          child: Column(
                         children: [...badgesAndTagsToAdd!],
                       )),
-                  SizedBox(height: paddingBadgesAndTitle),
-                ],
-              ),
-            Text(
-              title,
-              style: titleTextStyle,
-            ),
-            if (description != null) SizedBox(height: paddingTitleAndDescription),
-            if (description != null)
-              Text(
-                description!,
-                style: descriptionTextStyle,
-              ),
-            if (details != null || (showActionIcon && onTap != null))
-              SizedBox(height: paddingDescriptionAndDetails),
+                      SizedBox(height: paddingBadgesAndTitle),
+                    ],
+                  ),
+                Text(
+                  title,
+                  style: titleTextStyle,
+                ),
+                if (description != null) SizedBox(height: paddingTitleAndDescription),
+                if (description != null)
+                  Text(
+                    description!,
+                    style: descriptionTextStyle,
+                  ),
+                if (details != null || (showActionIcon && onTap != null))
+                  SizedBox(height: paddingDescriptionAndDetails),
                 Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -445,11 +460,10 @@ class _HorizontalTile extends StatelessWidget {
                       ),
                   ],
                 ),
-          ],
-        ),
-        ),
-      ]
-    );
+              ],
+            ),
+          ),
+        ]);
   }
 }
 
