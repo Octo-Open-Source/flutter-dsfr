@@ -5,10 +5,26 @@ typedef DsfrAccordionCallback = void Function(int panelIndex, bool isExpanded);
 typedef DsfrAccordionHeaderBuilder = Widget Function(bool isExpanded);
 
 class DsfrAccordion {
-  const DsfrAccordion({
+  const DsfrAccordion._({
     required this.headerBuilder,
     required this.body,
   });
+
+  DsfrAccordion({
+    required final String headerLabel,
+    required final Widget body,
+  }) : this._(
+          headerBuilder: (final isExpanded) => Text(headerLabel),
+          body: body,
+        );
+
+  DsfrAccordion.builder({
+    required final DsfrAccordionHeaderBuilder headerBuilder,
+    required final Widget body,
+  }) : this._(
+          headerBuilder: headerBuilder,
+          body: body,
+        );
 
   final DsfrAccordionHeaderBuilder headerBuilder;
   final Widget body;
