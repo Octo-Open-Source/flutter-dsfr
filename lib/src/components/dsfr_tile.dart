@@ -6,11 +6,6 @@ import 'package:flutter_svg/svg.dart';
 const int _badgesAndTagsMaxLength = 4;
 const double _paddingImageAndBadges = 16;
 
-enum DsfrTileDirection {
-  vertical,
-  horizontal,
-}
-
 enum DsfrTileBackgroundType {
   light,
   grey,
@@ -22,7 +17,7 @@ enum DsfrTileBackgroundType {
 class DsfrTile extends StatefulWidget {
   const DsfrTile({
     super.key,
-    this.direction = DsfrTileDirection.vertical,
+    this.direction = Axis.vertical,
     this.backgroundType,
     required this.title,
     this.description,
@@ -38,7 +33,7 @@ class DsfrTile extends StatefulWidget {
   }) : assert(badgesAndTags == null || (badgesAndTags.length <= _badgesAndTagsMaxLength));
 
   final DsfrComponentSize size;
-  final DsfrTileDirection direction;
+  final Axis direction;
   final DsfrTileBackgroundType? backgroundType;
   final String title;
   final String? description;
@@ -99,7 +94,7 @@ class _DsfrTileState extends State<DsfrTile> {
                           child: Builder(
                             builder: (context) {
                               return switch (direction) {
-                                DsfrTileDirection.vertical => _VerticalTile(
+                                Axis.vertical => _VerticalTile(
                                   imageAsset: imageAsset,
                                   imageHeight: _getImageHeight(),
                                   badgesAndTagsToAdd: badgesAndTagsToAdd,
@@ -117,7 +112,7 @@ class _DsfrTileState extends State<DsfrTile> {
                                   iconColor: _getIconColor(context),
                                   onTap: onTap,
                                 ),
-                                DsfrTileDirection.horizontal => _HorizontalTile(
+                                Axis.horizontal => _HorizontalTile(
                                   imageAsset: imageAsset,
                                   imageHeight: _getImageHeight(),
                                   badgesAndTagsToAdd: badgesAndTagsToAdd,

@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_dsfr/src/components/dsfr_tile.dart';
-import 'package:flutter_dsfr/helpers/dsfr_component_size.dart';
+import 'package:flutter_dsfr/flutter_dsfr.dart';
 import '../../helpers/a11y_test.skip.dart';
 
 void main() {
@@ -36,7 +35,7 @@ void main() {
   );
 
   Widget tileHorizontalSm = DsfrTile(
-    direction: DsfrTileDirection.horizontal,
+    direction: Axis.horizontal,
     size: DsfrComponentSize.sm,
     title: 'Tile default',
     description: 'Description',
@@ -44,7 +43,7 @@ void main() {
   );
 
   Widget tileHorizontalSmWithImage = DsfrTile(
-    direction: DsfrTileDirection.horizontal,
+    direction: Axis.horizontal,
     size: DsfrComponentSize.sm,
     title: 'Tile with image',
     description: 'Description',
@@ -60,7 +59,7 @@ void main() {
   );
 
   Widget tileHorizontalMdWithImage = DsfrTile(
-    direction: DsfrTileDirection.horizontal,
+    direction: Axis.horizontal,
     size: DsfrComponentSize.md,
     title: 'Tile with image',
     description: 'Description',
