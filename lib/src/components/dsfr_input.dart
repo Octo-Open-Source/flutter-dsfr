@@ -1,16 +1,10 @@
 // ignore_for_file: prefer-correct-callback-field-name
 
+import 'package:flutter_dsfr/flutter_dsfr.dart';
 import 'package:flutter_dsfr/src/atoms/dsfr_form_state.dart';
-import 'package:flutter_dsfr/src/components/checkboxes/dsfr_checkbox.dart';
-import 'package:flutter_dsfr/src/components/dsfr_input_headless.dart';
-import 'package:flutter_dsfr/src/fondamentaux/dsfr_color_decisions.g.dart';
-import 'package:flutter_dsfr/src/fondamentaux/dsfr_text_style.dart';
-import 'package:flutter_dsfr/src/fondamentaux/dsfr_spacings.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dsfr/src/helpers/color_utils.dart';
-import 'package:flutter_dsfr/helpers/dsfr_component_size.dart';
-import 'package:flutter_dsfr/src/helpers/dsfr_component_state.dart';
 
 class DsfrInput extends StatefulWidget {
   const DsfrInput({
