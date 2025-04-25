@@ -5,14 +5,14 @@ import 'package:flutter_dsfr/helpers/dsfr_component_size.dart';
 import '../../helpers/a11y_test.skip.dart';
 
 void main() {
-  Widget tuileSm = DsfrTile(
+  Widget tileVerticalSm = DsfrTile(
       size: DsfrComponentSize.sm,
       title: 'Tile default',
       description: 'Description',
       details: 'Details',
   );
 
-  Widget tuileSmWithImage = DsfrTile(
+  Widget tileVerticalSmWithImage = DsfrTile(
     size: DsfrComponentSize.sm,
     title: 'Tile with image',
     description: 'Description',
@@ -20,14 +20,14 @@ void main() {
     imageAsset: 'assets/images/city_hall.svg',
   );
 
-  Widget tuileMd = DsfrTile(
+  Widget tileVerticalMd = DsfrTile(
     size: DsfrComponentSize.md,
     title: 'Tile default',
     description: 'Description',
     details: 'Details',
   );
 
-  Widget tuileMdWithImage = DsfrTile(
+  Widget tileVerticalMdWithImage = DsfrTile(
     size: DsfrComponentSize.md,
     title: 'Tile with image',
     description: 'Description',
@@ -35,12 +35,53 @@ void main() {
     imageAsset: 'assets/images/city_hall.svg',
   );
 
-  accessibilityTest(componentName: 'Tile SM', isLightMode: true, child: tuileSm);
-  accessibilityTest(componentName: 'Tile SM', isLightMode: false, child: tuileSm);
-  accessibilityTest(componentName: 'Tile SM with image', isLightMode: true, child: tuileSmWithImage);
-  accessibilityTest(componentName: 'Tile SM with image', isLightMode: false, child: tuileSmWithImage);
-  accessibilityTest(componentName: 'Tile MD', isLightMode: true, child: tuileMd);
-  accessibilityTest(componentName: 'Tile MD', isLightMode: false, child: tuileMd);
-  accessibilityTest(componentName: 'Tile MD with image', isLightMode: true, child: tuileMdWithImage);
-  accessibilityTest(componentName: 'Tile MD with image', isLightMode: false, child: tuileMdWithImage);
+  Widget tileHorizontalSm = DsfrTile(
+    direction: DsfrTileDirection.horizontal,
+    size: DsfrComponentSize.sm,
+    title: 'Tile default',
+    description: 'Description',
+    details: 'Details',
+  );
+
+  Widget tileHorizontalSmWithImage = DsfrTile(
+    direction: DsfrTileDirection.horizontal,
+    size: DsfrComponentSize.sm,
+    title: 'Tile with image',
+    description: 'Description',
+    details: 'Details',
+    imageAsset: 'assets/images/city_hall.svg',
+  );
+
+  Widget tileHorizontalMd = DsfrTile(
+    size: DsfrComponentSize.md,
+    title: 'Tile default',
+    description: 'Description',
+    details: 'Details',
+  );
+
+  Widget tileHorizontalMdWithImage = DsfrTile(
+    direction: DsfrTileDirection.horizontal,
+    size: DsfrComponentSize.md,
+    title: 'Tile with image',
+    description: 'Description',
+    details: 'Details',
+    imageAsset: 'assets/images/city_hall.svg',
+  );
+
+  accessibilityTest(componentName: 'Tile SM', isLightMode: true, child: tileVerticalSm);
+  accessibilityTest(componentName: 'Tile SM', isLightMode: false, child: tileVerticalSm);
+  accessibilityTest(componentName: 'Tile SM with image', isLightMode: true, child: tileVerticalSmWithImage);
+  accessibilityTest(componentName: 'Tile SM with image', isLightMode: false, child: tileVerticalSmWithImage);
+  accessibilityTest(componentName: 'Tile MD', isLightMode: true, child: tileVerticalMd);
+  accessibilityTest(componentName: 'Tile MD', isLightMode: false, child: tileVerticalMd);
+  accessibilityTest(componentName: 'Tile MD with image', isLightMode: true, child: tileVerticalMdWithImage);
+  accessibilityTest(componentName: 'Tile MD with image', isLightMode: false, child: tileVerticalMdWithImage);
+  accessibilityTest(componentName: 'Tile SM', isLightMode: true, child: tileHorizontalSm);
+  accessibilityTest(componentName: 'Tile SM', isLightMode: false, child: tileHorizontalSm);
+  accessibilityTest(componentName: 'Tile SM with image', isLightMode: true, child: tileHorizontalSmWithImage);
+  accessibilityTest(componentName: 'Tile SM with image', isLightMode: false, child: tileHorizontalSmWithImage);
+  accessibilityTest(componentName: 'Tile MD', isLightMode: true, child: tileHorizontalMd);
+  accessibilityTest(componentName: 'Tile MD', isLightMode: false, child: tileHorizontalMd);
+  accessibilityTest(componentName: 'Tile MD with image', isLightMode: true, child: tileHorizontalMdWithImage);
+  accessibilityTest(componentName: 'Tile MD with image', isLightMode: false, child: tileHorizontalMdWithImage);
 }

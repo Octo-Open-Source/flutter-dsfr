@@ -6,7 +6,7 @@ import 'package:flutter_svg/svg.dart';
 const int _badgesAndTagsMaxLength = 4;
 const double _paddingImageAndBadges = 16;
 
-enum DsfrTileType {
+enum DsfrTileDirection {
   vertical,
   horizontal,
 }
@@ -22,7 +22,7 @@ enum DsfrTileBackgroundType {
 class DsfrTile extends StatefulWidget {
   const DsfrTile({
     super.key,
-    this.type = DsfrTileType.vertical,
+    this.direction = DsfrTileDirection.vertical,
     this.backgroundType,
     required this.title,
     this.description,
@@ -38,7 +38,7 @@ class DsfrTile extends StatefulWidget {
   }) : assert(badgesAndTags == null || (badgesAndTags.length <= _badgesAndTagsMaxLength));
 
   final DsfrComponentSize size;
-  final DsfrTileType? type;
+  final DsfrTileDirection direction;
   final DsfrTileBackgroundType? backgroundType;
   final String title;
   final String? description;
@@ -64,7 +64,7 @@ class _DsfrTileState extends State<DsfrTile> {
     final focusNode = widget.focusNode;
     final badgesAndTags = widget.badgesAndTags;
     final onTap = widget.onTap;
-    final type = widget.type;
+    final direction = widget.direction;
     final title = widget.title;
     final description = widget.description;
     final details = widget.details;
@@ -98,8 +98,8 @@ class _DsfrTileState extends State<DsfrTile> {
                           ),
                           child: Builder(
                             builder: (context) {
-                              return switch (type) {
-                                DsfrTileType.vertical => _VerticalTile(
+                              return switch (direction) {
+                                DsfrTileDirection.vertical => _VerticalTile(
                                   imageAsset: imageAsset,
                                   imageHeight: _getImageHeight(),
                                   badgesAndTagsToAdd: badgesAndTagsToAdd,
@@ -117,7 +117,7 @@ class _DsfrTileState extends State<DsfrTile> {
                                   iconColor: _getIconColor(context),
                                   onTap: onTap,
                                 ),
-                                DsfrTileType.horizontal => _HorizontalTile(
+                                DsfrTileDirection.horizontal => _HorizontalTile(
                                   imageAsset: imageAsset,
                                   imageHeight: _getImageHeight(),
                                   badgesAndTagsToAdd: badgesAndTagsToAdd,
@@ -134,9 +134,6 @@ class _DsfrTileState extends State<DsfrTile> {
                                   iconSize: _getIconSize(),
                                   iconColor: _getIconColor(context),
                                   onTap: onTap,
-                                ),
-                                null => throw UnimplementedError(
-                                  'Type $type is not implemented',
                                 ),
                               };
                             },
@@ -301,7 +298,7 @@ class _VerticalTile extends StatelessWidget {
   final bool showActionIcon;
   final IconData? actionIcon;
   final double iconSize;
-  final Color? iconColor;
+  final Color iconColor;
   final GestureTapCallback? onTap;
 
   const _VerticalTile({
@@ -341,18 +338,20 @@ class _VerticalTile extends StatelessWidget {
           title,
           style: titleTextStyle,
         ),
-        if (description != null) SizedBox(height: paddingTitleAndDescription),
-        if (description != null)
+        if (description != null) ...[
+          SizedBox(height: paddingTitleAndDescription),
           Text(
             description!,
             style: descriptionTextStyle,
           ),
-        if (details != null) SizedBox(height: paddingDescriptionAndDetails),
-        if (details != null)
+        ],
+        if (details != null) ...[
+          SizedBox(height: paddingDescriptionAndDetails),
           Text(
             details!,
             style: DsfrTextStyle.bodyXsMedium(color: DsfrColorDecisions.textMentionGrey(context)),
           ),
+        ],
         if (showActionIcon && onTap != null)
           Container(
             alignment: Alignment.centerRight,
@@ -382,7 +381,7 @@ class _HorizontalTile extends StatelessWidget {
   final bool showActionIcon;
   final IconData? actionIcon;
   final double iconSize;
-  final Color? iconColor;
+  final Color iconColor;
   final GestureTapCallback? onTap;
 
   const _HorizontalTile({
@@ -434,12 +433,13 @@ class _HorizontalTile extends StatelessWidget {
                   title,
                   style: titleTextStyle,
                 ),
-                if (description != null) SizedBox(height: paddingTitleAndDescription),
-                if (description != null)
+                if (description != null) ...[
+                  SizedBox(height: paddingTitleAndDescription),
                   Text(
                     description!,
                     style: descriptionTextStyle,
                   ),
+                ],
                 if (details != null || (showActionIcon && onTap != null))
                   SizedBox(height: paddingDescriptionAndDetails),
                 Row(

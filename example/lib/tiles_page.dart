@@ -204,7 +204,7 @@ class _TilesPageState extends State<TilesPage> {
             ),
             DsfrTile(
                 size: DsfrComponentSize.md,
-                type: DsfrTileType.horizontal,
+                direction: DsfrTileDirection.horizontal,
                 title: 'Tuile par défaut',
                 description: 'Description',
                 details: 'Détail',
@@ -217,7 +217,7 @@ class _TilesPageState extends State<TilesPage> {
             ),
             DsfrTile(
               size: DsfrComponentSize.md,
-              type: DsfrTileType.horizontal,
+              direction: DsfrTileDirection.horizontal,
               title: 'Tuile non cliquable',
               description: 'Description',
               details: 'Détail',
@@ -228,7 +228,7 @@ class _TilesPageState extends State<TilesPage> {
             ),
             DsfrTile(
                 size: DsfrComponentSize.md,
-                type: DsfrTileType.horizontal,
+                direction: DsfrTileDirection.horizontal,
                 title: 'Tuile par défaut sans icône',
                 description: 'Description',
                 details: 'Détail',
@@ -242,7 +242,7 @@ class _TilesPageState extends State<TilesPage> {
             ),
             DsfrTile(
                 size: DsfrComponentSize.md,
-                type: DsfrTileType.horizontal,
+                direction: DsfrTileDirection.horizontal,
                 backgroundType: DsfrTileBackgroundType.grey,
                 title: 'Tuile avec fond gris',
                 description: 'Description',
@@ -260,7 +260,7 @@ class _TilesPageState extends State<TilesPage> {
               color: DsfrColorDecisions.backgroundActionLowBlueFrance(context),
               child: DsfrTile(
                   size: DsfrComponentSize.md,
-                  type: DsfrTileType.horizontal,
+                  direction: DsfrTileDirection.horizontal,
                   backgroundType: DsfrTileBackgroundType.lightNoBorder,
                   title: 'Tuile avec fond transparent',
                   description: 'Description',
@@ -275,7 +275,7 @@ class _TilesPageState extends State<TilesPage> {
             ),
             DsfrTile(
                 size: DsfrComponentSize.md,
-                type: DsfrTileType.horizontal,
+                direction: DsfrTileDirection.horizontal,
                 backgroundType: DsfrTileBackgroundType.lightWithShadow,
                 title: 'Tuile avec ombre',
                 description: 'Description',
@@ -293,7 +293,7 @@ class _TilesPageState extends State<TilesPage> {
             ),
             DsfrTile(
                 size: DsfrComponentSize.md,
-                type: DsfrTileType.horizontal,
+                direction: DsfrTileDirection.horizontal,
                 title: 'Tuile par défaut',
                 description: 'Description',
                 details: 'Détail',
@@ -306,7 +306,7 @@ class _TilesPageState extends State<TilesPage> {
             ),
             DsfrTile(
               size: DsfrComponentSize.md,
-              type: DsfrTileType.horizontal,
+              direction: DsfrTileDirection.horizontal,
               title: 'Tuile non cliquable',
               description: 'Description',
               details: 'Détail',
@@ -317,7 +317,7 @@ class _TilesPageState extends State<TilesPage> {
             ),
             DsfrTile(
                 size: DsfrComponentSize.md,
-                type: DsfrTileType.horizontal,
+                direction: DsfrTileDirection.horizontal,
                 title: 'Tuile par défaut sans icône',
                 description: 'Description',
                 details: 'Détail',
@@ -331,7 +331,7 @@ class _TilesPageState extends State<TilesPage> {
             ),
             DsfrTile(
                 size: DsfrComponentSize.md,
-                type: DsfrTileType.horizontal,
+                direction: DsfrTileDirection.horizontal,
                 backgroundType: DsfrTileBackgroundType.grey,
                 title: 'Tuile avec fond gris',
                 description: 'Description',
@@ -349,7 +349,7 @@ class _TilesPageState extends State<TilesPage> {
               color: DsfrColorDecisions.backgroundActionLowBlueFrance(context),
               child: DsfrTile(
                   size: DsfrComponentSize.md,
-                  type: DsfrTileType.horizontal,
+                  direction: DsfrTileDirection.horizontal,
                   backgroundType: DsfrTileBackgroundType.lightNoBorder,
                   title: 'Tuile avec fond transparent',
                   description: 'Description',
@@ -364,7 +364,7 @@ class _TilesPageState extends State<TilesPage> {
             ),
             DsfrTile(
                 size: DsfrComponentSize.md,
-                type: DsfrTileType.horizontal,
+                direction: DsfrTileDirection.horizontal,
                 backgroundType: DsfrTileBackgroundType.lightWithShadow,
                 title: 'Tuile avec ombre',
                 description: 'Description',
