@@ -68,78 +68,78 @@ class _DsfrTileState extends State<DsfrTile> {
     final actionIcon = widget.actionIcon;
 
     List<Widget>? badgesAndTagsToAdd =
-      badgesAndTags?.takeWhile((element) => element is DsfrBadge || element is DsfrTag).toList();
+        badgesAndTags?.takeWhile((element) => element is DsfrBadge || element is DsfrTag).toList();
 
     return MergeSemantics(
-        child: Semantics(
-          enabled: enabled,
-          child: DsfrFocusWidget(
-                  isFocused: hasFocus,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      boxShadow: _getShadow(context),
-                      border: _getBottomBorder(context),
-                    ),
-                    child: Material(
-                      color: _getBackgroundColor(context),
-                      child: InkWell(
-                        onFocusChange: (final hasFocus) => setState(() => this.hasFocus = hasFocus),
-                        focusNode: focusNode,
-                        onTap: onTap,
-                        child: Container(
-                          padding: const EdgeInsets.all(24.0),
-                          decoration: BoxDecoration(
-                            border: _getTopRightLeftBorder(context),
-                          ),
-                          child: Builder(
-                            builder: (context) {
-                              return switch (direction) {
-                                Axis.vertical => _VerticalTile(
-                                  imageAsset: imageAsset,
-                                  imageHeight: _getImageHeight(),
-                                  badgesAndTagsToAdd: badgesAndTagsToAdd,
-                                  paddingBadgesAndTitle: _getPaddingBadgesAndTitle(),
-                                  paddingTitleAndDescription: _getPaddingTitleAndDescription(),
-                                  paddingDescriptionAndDetails: _getPaddingDescriptionAndDetail(),
-                                  title: title,
-                                  description: description,
-                                  details: details,
-                                  titleTextStyle: _getTitleTextStyle(context),
-                                  descriptionTextStyle: _getDescriptionTextStyle(context),
-                                  showActionIcon: showActionIcon,
-                                  actionIcon: actionIcon,
-                                  iconSize: _getIconSize(),
-                                  iconColor: _getIconColor(context),
-                                  onTap: onTap,
-                                ),
-                                Axis.horizontal => _HorizontalTile(
-                                  imageAsset: imageAsset,
-                                  imageHeight: _getImageHeight(),
-                                  badgesAndTagsToAdd: badgesAndTagsToAdd,
-                                  paddingBadgesAndTitle: _getPaddingBadgesAndTitle(),
-                                  paddingTitleAndDescription: _getPaddingTitleAndDescription(),
-                                  paddingDescriptionAndDetails: _getPaddingDescriptionAndDetail(),
-                                  title: title,
-                                  description: description,
-                                  details: details,
-                                  titleTextStyle: _getTitleTextStyle(context),
-                                  descriptionTextStyle: _getDescriptionTextStyle(context),
-                                  showActionIcon: showActionIcon,
-                                  actionIcon: actionIcon,
-                                  iconSize: _getIconSize(),
-                                  iconColor: _getIconColor(context),
-                                  onTap: onTap,
-                                ),
-                              };
-                            },
-                          ),
-                        ),
-                      ),
-                    ),
+      child: Semantics(
+        enabled: enabled,
+        child: DsfrFocusWidget(
+          isFocused: hasFocus,
+          child: Container(
+            decoration: BoxDecoration(
+              boxShadow: _getShadow(context),
+              border: _getBottomBorder(context),
+            ),
+            child: Material(
+              color: _getBackgroundColor(context),
+              child: InkWell(
+                onFocusChange: (final hasFocus) => setState(() => this.hasFocus = hasFocus),
+                focusNode: focusNode,
+                onTap: enabled ? onTap : null,
+                child: Container(
+                  padding: const EdgeInsets.all(24.0),
+                  decoration: BoxDecoration(
+                    border: _getTopRightLeftBorder(context),
                   ),
+                  child: Builder(
+                    builder: (context) {
+                      return switch (direction) {
+                        Axis.vertical => _VerticalTile(
+                            imageAsset: imageAsset,
+                            imageHeight: _getImageHeight(),
+                            badgesAndTagsToAdd: badgesAndTagsToAdd,
+                            paddingBadgesAndTitle: _getPaddingBadgesAndTitle(),
+                            paddingTitleAndDescription: _getPaddingTitleAndDescription(),
+                            paddingDescriptionAndDetails: _getPaddingDescriptionAndDetail(),
+                            title: title,
+                            description: description,
+                            details: details,
+                            titleTextStyle: _getTitleTextStyle(context),
+                            descriptionTextStyle: _getDescriptionTextStyle(context),
+                            showActionIcon: showActionIcon,
+                            actionIcon: actionIcon,
+                            iconSize: _getIconSize(),
+                            iconColor: _getIconColor(context),
+                            onTap: onTap,
+                          ),
+                        Axis.horizontal => _HorizontalTile(
+                            imageAsset: imageAsset,
+                            imageHeight: _getImageHeight(),
+                            badgesAndTagsToAdd: badgesAndTagsToAdd,
+                            paddingBadgesAndTitle: _getPaddingBadgesAndTitle(),
+                            paddingTitleAndDescription: _getPaddingTitleAndDescription(),
+                            paddingDescriptionAndDetails: _getPaddingDescriptionAndDetail(),
+                            title: title,
+                            description: description,
+                            details: details,
+                            titleTextStyle: _getTitleTextStyle(context),
+                            descriptionTextStyle: _getDescriptionTextStyle(context),
+                            showActionIcon: showActionIcon,
+                            actionIcon: actionIcon,
+                            iconSize: _getIconSize(),
+                            iconColor: _getIconColor(context),
+                            onTap: onTap,
+                          ),
+                      };
+                    },
+                  ),
+                ),
+              ),
             ),
           ),
-        );
+        ),
+      ),
+    );
   }
 
   Color _getTextColor(BuildContext context) {
@@ -248,9 +248,11 @@ class _DsfrTileState extends State<DsfrTile> {
   }
 
   BoxBorder? _getBottomBorder(BuildContext context) {
-    Color bottomBorderColor = (widget.onTap == null)
-        ? DsfrColorDecisions.borderPlainGrey(context)
-        : DsfrColorDecisions.borderPlainBlueFrance(context);
+    Color bottomBorderColor = (widget.enabled)
+        ? (widget.onTap == null)
+            ? DsfrColorDecisions.borderPlainGrey(context)
+            : DsfrColorDecisions.borderPlainBlueFrance(context)
+        : DsfrColorDecisions.backgroundDisabledGrey(context);
     if (widget.backgroundType == DsfrTileBackgroundType.lightNoBorder) {
       return null;
     } else {
@@ -274,7 +276,9 @@ class _DsfrTileState extends State<DsfrTile> {
   }
 
   List<BoxShadow>? _getShadow(BuildContext context) {
-    return widget.backgroundType == DsfrTileBackgroundType.lightWithShadow ? [DsfrShadowDecisions.raised(context)] : null;
+    return widget.backgroundType == DsfrTileBackgroundType.lightWithShadow
+        ? [DsfrShadowDecisions.raised(context)]
+        : null;
   }
 }
 

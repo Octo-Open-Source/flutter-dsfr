@@ -80,6 +80,21 @@ class _TilesPageState extends State<TilesPage> {
                 }
             ),
             DsfrTile(
+                size: DsfrComponentSize.sm,
+                title: 'Tuile désactivée',
+                description: 'Description',
+                details: 'Détail',
+                badgesAndTags: [
+                  DsfrBadge(
+                      size: DsfrComponentSize.sm,
+                      label: 'badge info',
+                      type: DsfrBadgeType.information
+                  ),
+                ],
+                showActionIcon: true,
+                enabled: false,
+            ),
+            DsfrTile(
               size: DsfrComponentSize.sm,
               backgroundType: DsfrTileBackgroundType.grey,
               title: 'Tuile avec fond gris',
@@ -185,6 +200,21 @@ class _TilesPageState extends State<TilesPage> {
                 onTap: () {
                   print('Tuile md cliquée');
                 }
+            ),
+            DsfrTile(
+                size: DsfrComponentSize.md,
+                title: 'Tuile désactivée',
+                description: 'Description',
+                details: 'Détail',
+                badgesAndTags: [
+                  DsfrBadge(
+                      size: DsfrComponentSize.md,
+                      label: 'badge info',
+                      type: DsfrBadgeType.information
+                  ),
+                ],
+                showActionIcon: true,
+                enabled: false,
             ),
             DsfrTile(
                 size: DsfrComponentSize.md,
@@ -301,6 +331,22 @@ class _TilesPageState extends State<TilesPage> {
                 }
             ),
             DsfrTile(
+              size: DsfrComponentSize.sm,
+              direction: Axis.horizontal,
+              title: 'Tuile désactivée',
+              description: 'Description',
+              details: 'Détail',
+              badgesAndTags: [
+                DsfrBadge(
+                    size: DsfrComponentSize.sm,
+                    label: 'badge info',
+                    type: DsfrBadgeType.information
+                ),
+              ],
+              showActionIcon: true,
+              enabled: false,
+            ),
+            DsfrTile(
                 size: DsfrComponentSize.sm,
                 direction: Axis.horizontal,
                 backgroundType: DsfrTileBackgroundType.grey,
@@ -412,6 +458,22 @@ class _TilesPageState extends State<TilesPage> {
                 onTap: () {
                   print('Tuile md cliquée');
                 }
+            ),
+            DsfrTile(
+              size: DsfrComponentSize.md,
+              direction: Axis.horizontal,
+              title: 'Tuile désactivée',
+              description: 'Description',
+              details: 'Détail',
+              badgesAndTags: [
+                DsfrBadge(
+                    size: DsfrComponentSize.md,
+                    label: 'badge info',
+                    type: DsfrBadgeType.information
+                ),
+              ],
+              showActionIcon: true,
+              enabled: false,
             ),
             DsfrTile(
                 size: DsfrComponentSize.md,
