@@ -23,7 +23,7 @@ class DsfrTag extends StatefulWidget {
             (onSelectionChanged == null || onDelete == null) &&
             (onTap == null || onDelete == null));
 
-  final InlineSpan label;
+  final String label;
   final DsfrComponentSize size;
   final GestureTapCallback? onTap;
   final IconData? icon;
@@ -198,7 +198,7 @@ class _TagButton extends StatelessWidget {
     this.onFocusChange,
   });
 
-  final InlineSpan label;
+  final String label;
   final EdgeInsets padding;
   final DsfrComponentSize size;
   final GestureTapCallback? onTap;
@@ -254,7 +254,7 @@ class _TagButton extends StatelessWidget {
                       ),
                     ),
                   ),
-                label,
+                TextSpan(text: label),
                 if (onDelete != null)
                   WidgetSpan(
                     alignment: PlaceholderAlignment.middle,
