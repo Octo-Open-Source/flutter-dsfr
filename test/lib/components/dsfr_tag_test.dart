@@ -7,18 +7,18 @@ import '../../helpers/a11y_test.skip.dart';
 
 void main() {
   Widget tagSm = DsfrTag(
-    label: TextSpan(text: 'small tag'),
+    label: 'small tag',
     size: DsfrComponentSize.sm,
   );
 
   Widget tagSmWithIcon = DsfrTag(
-    label: TextSpan(text: 'small tag with icon'),
+    label: 'small tag with icon',
     icon: DsfrIcons.systemArrowRightLine,
     size: DsfrComponentSize.sm,
   );
 
   Widget tagSmSelectable = DsfrTag(
-    label: TextSpan(text: 'small tag selectable'),
+    label: 'small tag selectable',
     icon: DsfrIcons.systemArrowRightLine,
     isSelected: true,
     onSelectionChanged: (isSelected) {},
@@ -26,31 +26,30 @@ void main() {
   );
 
   Widget tagSmDisabled = DsfrTag(
-    label: TextSpan(text: 'small tag disabled'),
+    label: 'small tag disabled',
     enabled: false,
     size: DsfrComponentSize.sm,
   );
 
   Widget tagSmDeletable = DsfrTag(
-    label: TextSpan(text: 'small tag deletable'),
+    label: 'small tag deletable',
     onDelete: () {},
     size: DsfrComponentSize.sm,
   );
 
-
   Widget tagMd = DsfrTag(
-    label: TextSpan(text: 'medium tag'),
+    label: 'medium tag',
     size: DsfrComponentSize.md,
   );
 
   Widget tagMdWithIcon = DsfrTag(
-    label: TextSpan(text: 'medium tag with icon'),
+    label: 'medium tag with icon',
     icon: DsfrIcons.systemArrowRightLine,
     size: DsfrComponentSize.md,
   );
 
   Widget tagMdSelectable = DsfrTag(
-    label: TextSpan(text: 'medium tag selectable'),
+    label: 'medium tag selectable',
     icon: DsfrIcons.systemArrowRightLine,
     isSelected: true,
     onSelectionChanged: (isSelected) {},
@@ -58,13 +57,13 @@ void main() {
   );
 
   Widget tagMdDisabled = DsfrTag(
-    label: TextSpan(text: 'medium tag disabled'),
+    label: 'medium tag disabled',
     enabled: false,
     size: DsfrComponentSize.md,
   );
 
   Widget tagMdDeletable = DsfrTag(
-    label: TextSpan(text: 'medium tag deletable'),
+    label: 'medium tag deletable',
     onDelete: () {},
     size: DsfrComponentSize.md,
   );
