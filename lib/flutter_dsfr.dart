@@ -1,3 +1,4 @@
+export 'src/atoms/dsfr_component_state_widget.dart';
 export 'src/atoms/dsfr_focus_widget.dart';
 export 'src/atoms/dsfr_group.dart';
 export 'src/components/dsfr_accordions.dart';
@@ -8,6 +9,7 @@ export 'src/components/buttons/dsfr_button.dart';
 export 'src/components/buttons/dsfr_button_border.dart';
 export 'src/components/buttons/dsfr_france_connect_button.dart';
 export 'src/components/checkboxes/dsfr_checkbox.dart';
+export 'src/components/checkboxes/dsfr_checkbox_icon.dart';
 export 'src/components/dsfr_divider.dart';
 export 'src/components/dsfr_badge.dart';
 export 'src/components/dsfr_file_uploader.dart';
