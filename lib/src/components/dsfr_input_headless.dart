@@ -11,7 +11,8 @@ class DsfrInputHeadless extends StatefulWidget {
     this.initialValue,
     this.controller,
     this.suffixText,
-    required this.onChanged,
+    this.onChanged,
+    this.onDateChanged,
     this.onFieldSubmitted,
     this.validator,
     this.keyboardType,
@@ -47,7 +48,8 @@ class DsfrInputHeadless extends StatefulWidget {
   final String? initialValue;
   final TextEditingController? controller;
   final String? suffixText;
-  final ValueChanged<String> onChanged;
+  final ValueChanged<String>? onChanged;
+  final ValueChanged<DateTime>? onDateChanged;
   final ValueChanged<String>? onFieldSubmitted;
   final FormFieldValidator<String>? validator;
   final double? width;
@@ -108,7 +110,7 @@ class _DsfrInputHeadlessState extends State<DsfrInputHeadless> {
     if (picked != null) {
       setState(() {
         widget.controller?.text = DateFormat('dd/MM/yyyy').format(picked);
-        widget.onChanged.call(widget.controller!.text);
+        if (widget.onDateChanged != null) widget.onDateChanged!(picked);
       });
     }
   }

@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter_dsfr/flutter_dsfr.dart';
 import 'package:example/page_item.dart';
 import 'package:flutter/material.dart';
@@ -99,7 +101,7 @@ class InputsPage extends StatelessWidget {
                 firstDate: DateTime.now().subtract(Duration(days: 365)),
                 lastDate: DateTime.now().add(Duration(days: 365)),
                 controller: TextEditingController(),
-                onChanged: (final value) {},
+                onChanged: (final datetime) => print(datetime),
               ),
               DsfrDateInput(
                 label: 'Input choix de date en anglais',
@@ -108,7 +110,7 @@ class InputsPage extends StatelessWidget {
                 firstDate: DateTime.now().subtract(Duration(days: 365)),
                 lastDate: DateTime.now().add(Duration(days: 365)),
                 controller: TextEditingController(),
-                onChanged: (final value) {},
+                onChanged: (final datetime) => print(datetime),
               ),
               DsfrDateInput(
                 label: 'Input choix de date désactivé',

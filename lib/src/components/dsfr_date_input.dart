@@ -23,7 +23,7 @@ class DsfrDateInput extends StatefulWidget {
 
   final String label;
   final String? hintText;
-  final ValueChanged<String> onChanged;
+  final ValueChanged<DateTime> onChanged;
   final DateTime firstDate;
   final DateTime lastDate;
   final DateTime initialDate;
@@ -86,7 +86,7 @@ class _DsfrDatePickerState extends State<DsfrDateInput> {
                         child: DsfrInputHeadless(
                           key: ValueKey(widget.label),
                           controller: widget.controller,
-                          onChanged: widget.onChanged,
+                          onDateChanged: widget.onChanged,
                           isDatePicker: true,
                           firstDate: widget.firstDate,
                           lastDate: widget.lastDate,
