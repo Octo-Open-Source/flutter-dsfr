@@ -55,6 +55,7 @@ class _DsfrSearchBarState extends State<DsfrSearchBar> {
                       focusNode: _focusNode,
                       controller: widget.controller,
                       textInputAction: TextInputAction.search,
+                      onSubmitted: (value) => widget.onSearch(),
                       decoration: InputDecoration(
                         hintText: widget.hintText,
                         hintStyle: DsfrTextStyle.bodySmItalic(color: DsfrColorDecisions.textDefaultGrey(context)),
