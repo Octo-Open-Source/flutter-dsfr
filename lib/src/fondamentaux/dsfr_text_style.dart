@@ -7,11 +7,11 @@ class DsfrTextStyle extends TextStyle {
     super.fontWeight = FontWeight.normal,
     super.color,
     super.fontStyle = FontStyle.normal,
+    super.height = 1.4,
   }) : super(
           package: 'flutter_dsfr',
           fontFamily: 'Marianne',
           fontSize: fontSize,
-          height: 1.4,
         );
 
   const DsfrTextStyle.displayXl({required Color color}) : this(fontSize: 72, fontWeight: FontWeight.bold, color: color);
@@ -54,11 +54,16 @@ class DsfrTextStyle extends TextStyle {
 
   const DsfrTextStyle.bodyMd({required Color color}) : this(fontSize: 16, color: color);
 
+  const DsfrTextStyle.bodyMdFc({required Color color}) : this(fontSize: 17, color: color, height: 1);
+
   const DsfrTextStyle.bodyMdMedium({required Color color})
       : this(fontSize: 16, fontWeight: FontWeight.w500, color: color);
 
   const DsfrTextStyle.bodyMdBold({required Color color})
       : this(fontSize: 16, fontWeight: FontWeight.bold, color: color);
+
+  const DsfrTextStyle.bodyMdBoldFc({required Color color})
+      : this(fontSize: 18, fontWeight: FontWeight.bold, color: color, height: 1);
 
   const DsfrTextStyle.bodySm({required Color color}) : this(fontSize: 14, color: color);
 

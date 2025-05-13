@@ -79,6 +79,7 @@ class DsfrFranceConnectButton extends StatelessWidget {
           icon: DsfrIcons.systemExternalLinkLine,
           iconPosition: DsfrLinkIconPosition.end,
           enabled: enabled,
+          size: DsfrComponentSize.sm,
         ),
       ],
     );
@@ -139,11 +140,11 @@ class _FranceConnectButtonState extends State<_FranceConnectButton> with Materia
                       children: [
                         Text(
                           widget.buttonPrefixLabel,
-                          style: DsfrTextStyle.bodyMd(color: _getTextColor(enabled)),
+                          style: DsfrTextStyle.bodyMdFc(color: _getTextColor(enabled)),
                         ),
                         Text(
                           widget.buttonBoldLabel,
-                          style: DsfrTextStyle.bodyMdBold(color: _getTextColor(enabled)),
+                          style: DsfrTextStyle.bodyMdBoldFc(color: _getTextColor(enabled)),
                         ),
                       ],
                     ),
