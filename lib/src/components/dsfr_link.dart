@@ -83,7 +83,7 @@ class _DsfrLinkState extends State<DsfrLink> with MaterialStateMixin<DsfrLink> {
               ),
               style: _getTextStyle(context).copyWith(
                 shadows: [Shadow(color: _getColor(context), offset: Offset(0, -5))],
-                color: Colors.transparent,
+                color: DsfrColorDecisions.backgroundTransparent(context),
                 decoration: isDisabled ? TextDecoration.none : TextDecoration.underline,
                 decorationColor: _getColor(context),
                 decorationThickness: isPressed || isHovered ? _getClickedUnderlineThickness() : 1,
