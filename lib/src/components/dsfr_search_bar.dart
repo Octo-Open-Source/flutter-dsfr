@@ -18,82 +18,90 @@ class DsfrSearchBar extends StatefulWidget {
 }
 
 class _DsfrSearchBarState extends State<DsfrSearchBar> {
-  late FocusNode _focusNode;
+  late FocusNode _textFieldFocusNode;
+  late FocusNode _buttonFocusNode;
 
   @override
   void initState() {
     super.initState();
-    _focusNode = FocusNode();
-    _focusNode.addListener(() {
+    _textFieldFocusNode = FocusNode();
+    _buttonFocusNode = FocusNode();
+
+    _textFieldFocusNode.addListener(() {
+      setState(() {});
+    });
+
+    _buttonFocusNode.addListener(() {
       setState(() {});
     });
   }
 
   @override
   void dispose() {
-    _focusNode.dispose();
+    _textFieldFocusNode.dispose();
+    _buttonFocusNode.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return DsfrFocusWidget(
-      isFocused: _focusNode.hasFocus,
-      borderRadius: BorderRadius.only(topLeft: Radius.circular(8), topRight: Radius.circular(8)),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Material(
-            color: DsfrColorDecisions.backgroundContrastGrey(context),
-            borderRadius: BorderRadius.only(topLeft: Radius.circular(8), topRight: Radius.circular(8)),
-            child: SizedBox(
-              height: 50,
-              child: Row(
-                children: [
-                  Flexible(
-                    child: TextField(
-                      focusNode: _focusNode,
-                      controller: widget.controller,
-                      textInputAction: TextInputAction.search,
-                      onSubmitted: (value) => widget.onSearch(),
-                      decoration: InputDecoration(
-                        hintText: widget.hintText,
-                        hintStyle: DsfrTextStyle.bodySmItalic(color: DsfrColorDecisions.textDefaultGrey(context)),
-                        border: InputBorder.none,
-                        contentPadding: const EdgeInsets.symmetric(horizontal: 10),
-                        labelStyle: DsfrTextStyle.bodyMd(color: DsfrColorDecisions.textDefaultGrey(context)),
-                      ),
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Row(
+          children: [
+            Flexible(
+              child: DsfrFocusWidget(
+                isFocused: _textFieldFocusNode.hasFocus,
+                borderRadius: BorderRadius.only(topLeft: Radius.circular(8)),
+                child: Material(
+                  color: DsfrColorDecisions.backgroundContrastGrey(context),
+                  child: TextField(
+                    focusNode: _textFieldFocusNode,
+                    controller: widget.controller,
+                    textInputAction: TextInputAction.search,
+                    onSubmitted: (value) => widget.onSearch(),
+                    decoration: InputDecoration(
+                      hintText: widget.hintText,
+                      hintStyle: DsfrTextStyle.bodySmItalic(color: DsfrColorDecisions.textDefaultGrey(context)),
+                      border: InputBorder.none,
+                      contentPadding: const EdgeInsets.symmetric(horizontal: 10),
+                      labelStyle: DsfrTextStyle.bodyMd(color: DsfrColorDecisions.textDefaultGrey(context)),
                     ),
                   ),
-                  Material(
-                    color: DsfrColorDecisions.backgroundActionHighBlueFrance(context),
-                    borderRadius: BorderRadius.only(topRight: Radius.circular(8)),
-                    child: Semantics(
-                      label: widget.hintText,
-                      child: InkWell(
-                        onTap: widget.onSearch,
-                        child: SizedBox(
-                          width: 50,
-                          height: 50,
-                          child: Icon(
-                            DsfrIcons.systemSearchLine,
-                            color: DsfrColorDecisions.backgroundContrastGrey(context),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
+                ),
               ),
             ),
-          ),
-          Divider(
-            height: 0,
-            thickness: 2,
-            color: DsfrColorDecisions.backgroundActionHighBlueFrance(context),
-          ),
-        ],
-      ),
+            DsfrFocusWidget(
+              isFocused: _buttonFocusNode.hasFocus,
+              borderRadius: BorderRadius.only(topRight: Radius.circular(8)),
+              child: Material(
+                color: DsfrColorDecisions.backgroundActionHighBlueFrance(context),
+                child: Semantics(
+                  label: widget.hintText,
+                  child: InkWell(
+                    focusNode: _buttonFocusNode,
+                    onTap: widget.onSearch,
+                    child: SizedBox(
+                      width: 50,
+                      height: 50,
+                      child: Icon(
+                        DsfrIcons.systemSearchLine,
+                        color: DsfrColorDecisions.backgroundContrastGrey(context),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+        Divider(
+          height: 0,
+          thickness: 2,
+          color: DsfrColorDecisions.backgroundActionHighBlueFrance(context),
+        ),
+      ],
     );
   }
 }
