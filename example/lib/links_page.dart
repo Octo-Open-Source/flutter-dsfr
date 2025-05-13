@@ -50,6 +50,12 @@ class LinksPage extends StatelessWidget {
             iconPosition: DsfrLinkIconPosition.end,
             onTap: _handleTap,
           ),
+          DsfrLink(
+            label: 'label sur deux lignes car il est très très très long',
+            icon: DsfrIcons.systemArrowLeftLine,
+            iconPosition: DsfrLinkIconPosition.end,
+            onTap: _handleTap,
+          ),
         ],
       ),
     );
