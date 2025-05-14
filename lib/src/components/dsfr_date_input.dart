@@ -10,7 +10,7 @@ class DsfrDateInput extends StatefulWidget {
     super.key,
     required this.label,
     this.hintText,
-    required this.onChanged,
+    this.onChanged,
     required this.firstDate,
     required this.lastDate,
     required this.initialDate,
@@ -24,7 +24,7 @@ class DsfrDateInput extends StatefulWidget {
 
   final String label;
   final String? hintText;
-  final ValueChanged<DateTime> onChanged;
+  final ValueChanged<DateTime>? onChanged;
   final DateTime firstDate;
   final DateTime lastDate;
   final DateTime initialDate;

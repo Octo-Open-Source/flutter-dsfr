@@ -14,7 +14,7 @@ class DsfrInput extends StatefulWidget {
     this.suffixText,
     this.controller,
     this.initialValue,
-    required this.onChanged,
+    this.onChanged,
     this.onFieldSubmitted,
     this.validator,
     this.enabled = true,
@@ -41,7 +41,7 @@ class DsfrInput extends StatefulWidget {
   final String? suffixText;
   final TextEditingController? controller;
   final String? initialValue;
-  final ValueChanged<String> onChanged;
+  final ValueChanged<String>? onChanged;
   final ValueChanged<String>? onFieldSubmitted;
   final FormFieldValidator<String>? validator;
   final bool enabled;
