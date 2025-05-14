@@ -33,6 +33,7 @@ class DsfrInput extends StatefulWidget {
     this.componentState = const DsfrComponentState.none(),
     this.textAlign = TextAlign.start,
     this.maxLength,
+    this.focusNode,
   });
 
   final String label;
@@ -59,6 +60,7 @@ class DsfrInput extends StatefulWidget {
   final DsfrComponentState componentState;
   final TextAlign textAlign;
   final int? maxLength;
+  final FocusNode? focusNode;
 
   @override
   State<DsfrInput> createState() => _DsfrInputState();
@@ -140,6 +142,7 @@ class _DsfrInputState extends State<DsfrInput> {
                     inputBorderColor: getBorderColor(context, widget.componentState.state),
                     maxLength: widget.maxLength,
                     textAlign: widget.textAlign,
+                    focusNode: widget.focusNode ?? FocusNode(),
                   ),
                 ),
               ),
