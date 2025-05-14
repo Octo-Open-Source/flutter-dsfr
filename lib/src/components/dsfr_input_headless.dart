@@ -162,8 +162,8 @@ class _DsfrInputHeadlessState extends State<DsfrInputHeadless> {
             initialValue: widget.initialValue,
             focusNode: widget.focusNode,
             decoration: InputDecoration(
-              suffixIcon: widget.isDatePicker ? Icon(DsfrIcons.businessCalendarLine) : null,
-              suffixText: widget.suffixText,
+              suffixIcon: widget.isDatePicker ? Icon(DsfrIcons.businessCalendarLine, size: 16) : null,
+              suffixText: widget.suffixText, k
               suffixStyle: widget.enabled
                   ? DsfrTextStyle.bodyMd(color: widget.inputColor ?? DsfrColorDecisions.textDefaultGrey(context))
                   : DsfrTextStyle.bodyMd(color: DsfrColorDecisions.textDisabledGrey(context)),
