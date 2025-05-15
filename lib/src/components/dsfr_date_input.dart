@@ -20,6 +20,7 @@ class DsfrDateInput extends StatefulWidget {
     this.enabled = true,
     this.composantState = const DsfrComponentState.none(),
     this.focusNode,
+    this.width,
   });
 
   final String label;
@@ -34,6 +35,7 @@ class DsfrDateInput extends StatefulWidget {
   final bool enabled;
   final DsfrComponentState composantState;
   final FocusNode? focusNode;
+  final double? width;
 
   @override
   State<DsfrDateInput> createState() => _DsfrDatePickerState();
@@ -97,6 +99,7 @@ class _DsfrDatePickerState extends State<DsfrDateInput> {
                           enabled: widget.enabled,
                           locale: widget.locale,
                           focusNode: widget.focusNode,
+                          width: widget.width,
                         ),
                       ),
                     )
