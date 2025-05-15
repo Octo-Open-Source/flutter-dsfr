@@ -142,7 +142,7 @@ class _DsfrInputState extends State<DsfrInput> {
                     inputBorderColor: getBorderColor(context, widget.componentState.state),
                     maxLength: widget.maxLength,
                     textAlign: widget.textAlign,
-                    focusNode: widget.focusNode ?? FocusNode(),
+                    focusNode: widget.focusNode,
                   ),
                 ),
               ),

@@ -43,7 +43,7 @@ class DsfrInputHeadless extends StatefulWidget {
     this.autofillHints,
     this.maxLength,
     this.textAlign = TextAlign.start,
-    required this.focusNode,
+    this.focusNode,
   });
 
   final String? initialValue;
@@ -81,7 +81,7 @@ class DsfrInputHeadless extends StatefulWidget {
   final Iterable<String>? autofillHints;
   final int? maxLength;
   final TextAlign textAlign;
-  final FocusNode focusNode;
+  final FocusNode? focusNode;
 
   @override
   State<DsfrInputHeadless> createState() => _DsfrInputHeadlessState();
@@ -89,15 +89,17 @@ class DsfrInputHeadless extends StatefulWidget {
 
 class _DsfrInputHeadlessState extends State<DsfrInputHeadless> {
   bool _isFocused = false;
+  late FocusNode _focusNode;
 
   @override
   void initState() {
     super.initState();
-    widget.focusNode.addListener(_listener);
+    _focusNode = widget.focusNode ?? FocusNode();
+    _focusNode.addListener(_listener);
   }
 
   void _listener() {
-    setState(() => _isFocused = widget.focusNode.hasFocus);
+    setState(() => _isFocused = _focusNode.hasFocus);
   }
 
   Future<void> _selectDate(BuildContext context) async {
@@ -118,7 +120,7 @@ class _DsfrInputHeadlessState extends State<DsfrInputHeadless> {
 
   @override
   void dispose() {
-    widget.focusNode
+    _focusNode
       ..removeListener(_listener)
       ..dispose();
     super.dispose();
@@ -160,7 +162,7 @@ class _DsfrInputHeadlessState extends State<DsfrInputHeadless> {
             maxLength: widget.maxLength,
             controller: widget.controller,
             initialValue: widget.initialValue,
-            focusNode: widget.focusNode,
+            focusNode: _focusNode,
             decoration: InputDecoration(
               suffixIcon: widget.isDatePicker ? Icon(DsfrIcons.businessCalendarLine, size: 16) : null,
               suffixText: widget.suffixText,

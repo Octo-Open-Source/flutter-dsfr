@@ -96,7 +96,7 @@ class _DsfrDatePickerState extends State<DsfrDateInput> {
                           initialValue: widget.initialValue,
                           enabled: widget.enabled,
                           locale: widget.locale,
-                          focusNode: widget.focusNode ?? FocusNode(),
+                          focusNode: widget.focusNode,
                         ),
                       ),
                     )
