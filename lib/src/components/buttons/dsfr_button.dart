@@ -36,10 +36,11 @@ class DsfrButton extends StatelessWidget {
   double _getIconSize(final DsfrComponentSize size) {
     switch (size) {
       case DsfrComponentSize.lg:
-        return DsfrSpacings.s3w;
+        return 24;
       case DsfrComponentSize.md:
+        return label != null ? 16 : 24;
       case DsfrComponentSize.sm:
-        return DsfrSpacings.s2w;
+        return 16;
     }
   }
 
