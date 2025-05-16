@@ -173,9 +173,9 @@ class _DsfrTileState extends State<DsfrTile> {
   DsfrTextStyle _getDescriptionTextStyle(BuildContext context) {
     switch (widget.size) {
       case DsfrComponentSize.md:
-        return DsfrTextStyle.bodyMdMedium(color: DsfrColorDecisions.textDefaultGrey(context));
+        return DsfrTextStyle.bodyMd(color: DsfrColorDecisions.textDefaultGrey(context));
       case DsfrComponentSize.sm:
-        return DsfrTextStyle.bodySmMedium(color: DsfrColorDecisions.textDefaultGrey(context));
+        return DsfrTextStyle.bodySm(color: DsfrColorDecisions.textDefaultGrey(context));
       default:
         throw UnimplementedError('Size ${widget.size} is not implemented');
     }

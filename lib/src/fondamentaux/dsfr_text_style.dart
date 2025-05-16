@@ -47,7 +47,7 @@ class DsfrTextStyle extends TextStyle {
   const DsfrTextStyle.bodyLg({required Color color}) : this(fontSize: 18, color: color);
 
   const DsfrTextStyle.bodyLgMedium({required Color color})
-      : this(fontSize: 18, fontWeight: FontWeight.w500, color: color);
+      : this(fontSize: 18, fontWeight: FontWeight.w500, color: color, height: 1);
 
   const DsfrTextStyle.bodyLgBold({required Color color})
       : this(fontSize: 18, fontWeight: FontWeight.bold, color: color);
@@ -57,7 +57,7 @@ class DsfrTextStyle extends TextStyle {
   const DsfrTextStyle.bodyMdFc({required Color color}) : this(fontSize: 17, color: color, height: 1);
 
   const DsfrTextStyle.bodyMdMedium({required Color color})
-      : this(fontSize: 16, fontWeight: FontWeight.w500, color: color);
+      : this(fontSize: 16, fontWeight: FontWeight.w500, color: color, height: 1);
 
   const DsfrTextStyle.bodyMdBold({required Color color})
       : this(fontSize: 16, fontWeight: FontWeight.bold, color: color);
@@ -71,7 +71,7 @@ class DsfrTextStyle extends TextStyle {
       : this(fontSize: 14, color: color, fontStyle: FontStyle.italic);
 
   const DsfrTextStyle.bodySmMedium({required Color color})
-      : this(fontSize: 14, fontWeight: FontWeight.w500, color: color);
+      : this(fontSize: 14, fontWeight: FontWeight.w500, color: color, height: 1);
 
   const DsfrTextStyle.bodySmBold({required Color color})
       : this(fontSize: 14, fontWeight: FontWeight.bold, color: color);
