@@ -54,6 +54,8 @@ class DsfrTextStyle extends TextStyle {
 
   const DsfrTextStyle.bodyMd({required Color color}) : this(fontSize: 16, color: color);
 
+  const DsfrTextStyle.bodyMdCenter({required Color color}) : this(fontSize: 16, color: color,height: 1);
+
   const DsfrTextStyle.bodyMdFc({required Color color}) : this(fontSize: 17, color: color, height: 1);
 
   const DsfrTextStyle.bodyMdMedium({required Color color})

@@ -42,7 +42,7 @@ class DsfrCheckboxChild extends StatelessWidget {
           onTap: (!enabled || onChanged == null) ? null : () => onChanged?.call(!value),
           behavior: HitTestBehavior.opaque,
           child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Focus(
                 focusNode: focusNode,
@@ -75,9 +75,10 @@ class DsfrCheckboxChild extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    if (description != null) SizedBox(height: 16),
                     Text(
                       label,
-                      style: DsfrTextStyle.bodyMd(
+                      style: DsfrTextStyle.bodyMdCenter(
                         color: _getLabelColor(context),
                       ),
                     ),
