@@ -40,7 +40,7 @@ class DsfrComponentStateIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Icon(_getIcon(), color: _getIconColor(context));
+    return Icon(_getIcon(), color: _getIconColor(context), size: 16);
   }
 
   Color _getIconColor(BuildContext context) {
