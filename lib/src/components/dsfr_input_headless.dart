@@ -10,7 +10,9 @@ class DsfrInputHeadless extends StatefulWidget {
     super.key,
     this.initialValue,
     this.controller,
+    this.suffixIcon,
     this.suffixText,
+    this.suffix,
     this.onChanged,
     this.onDateChanged,
     this.onFieldSubmitted,
@@ -48,7 +50,9 @@ class DsfrInputHeadless extends StatefulWidget {
 
   final String? initialValue;
   final TextEditingController? controller;
+  final Widget? suffixIcon;
   final String? suffixText;
+  final Widget? suffix;
   final ValueChanged<String>? onChanged;
   final ValueChanged<DateTime>? onDateChanged;
   final ValueChanged<String>? onFieldSubmitted;
@@ -164,8 +168,9 @@ class _DsfrInputHeadlessState extends State<DsfrInputHeadless> {
             initialValue: widget.initialValue,
             focusNode: _focusNode,
             decoration: InputDecoration(
-              suffixIcon: widget.isDatePicker ? Icon(DsfrIcons.businessCalendarLine, size: 16) : null,
+              suffixIcon: widget.isDatePicker ? Icon(DsfrIcons.businessCalendarLine, size: 16) : widget.suffixIcon,
               suffixText: widget.suffixText,
+              suffix: widget.suffix,
               suffixStyle: widget.enabled
                   ? DsfrTextStyle.bodyMd(color: widget.inputColor ?? DsfrColorDecisions.textDefaultGrey(context))
                   : DsfrTextStyle.bodyMd(color: DsfrColorDecisions.textDisabledGrey(context)),
