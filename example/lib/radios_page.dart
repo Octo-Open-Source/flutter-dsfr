@@ -202,6 +202,15 @@ class _RadiosPageState extends State<RadiosPage> {
                       onCallback: (final value) {},
                       size: DsfrComponentSize.sm,
                     ),
+                    Divider(height: 1),
+                    DsfrRadioButtonGroup.simple(
+                      title: 'en horizontal',
+                      description: 'Description optionnelle',
+                      values: const {1: 'Un', 2: 'Deux', 3: 'Trois'},
+                      onCallback: (final value) {},
+                      size: DsfrComponentSize.sm,
+                      direction: Direction.horizontal,
+                    ),
                   ]),
                   PageSubSection(title: 'Succès', children: [
                     DsfrRadioButtonGroup.simple(
@@ -234,31 +243,31 @@ class _RadiosPageState extends State<RadiosPage> {
                     title: 'Avec des description',
                     children: [
                       DsfrGroup<DsfrRadioButton>(label: 'Bouton radios avec des descriptions', description: 'description du groupe', children: [
-                        DsfrRadioButton(
-                          label: 'Bouton Un',
-                          description: 'description du bouton un',
-                          value: 8,
-                          groupValue: _value,
-                          onChanged: (final value) {
-                            if (value != null) {
-                              setState(() => _value = value);
-                            }
-                          },
-                          size: DsfrComponentSize.sm,
-                        ),
-                        DsfrRadioButton(
-                          label: 'Bouton Deux',
-                          description: 'description du bouton deux',
-                          value: 9,
-                          groupValue: _value,
-                          onChanged: (final value) {
-                            if (value != null) {
-                              setState(() => _value = value);
-                            }
-                          },
-                          size: DsfrComponentSize.sm,
-                        ),
-                      ]),
+                            DsfrRadioButton(
+                              label: 'Bouton Un',
+                              description: 'description du bouton un',
+                              value: 8,
+                              groupValue: _value,
+                              onChanged: (final value) {
+                                if (value != null) {
+                                  setState(() => _value = value);
+                                }
+                              },
+                              size: DsfrComponentSize.sm,
+                            ),
+                            DsfrRadioButton(
+                              label: 'Bouton Deux',
+                              description: 'description du bouton deux',
+                              value: 9,
+                              groupValue: _value,
+                              onChanged: (final value) {
+                                if (value != null) {
+                                  setState(() => _value = value);
+                                }
+                              },
+                              size: DsfrComponentSize.sm,
+                            ),
+                          ]),
                     ],
                   ),
                 ],

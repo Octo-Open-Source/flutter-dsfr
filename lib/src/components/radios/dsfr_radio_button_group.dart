@@ -40,6 +40,7 @@ class DsfrRadioButtonGroup<T> extends StatefulWidget {
     required Function(T? value) onCallback,
     bool enabled = true,
     final DsfrComponentState componentState = const DsfrComponentState.none(),
+    final Direction direction = Direction.horizontal,
   }) : this._(
           key: key,
           title: title,
@@ -49,7 +50,7 @@ class DsfrRadioButtonGroup<T> extends StatefulWidget {
           onValueChange: onCallback,
           enabled: enabled,
           componentState: componentState,
-          direction: Direction.horizontal,
+          direction: direction,
           isRichRadio: true,
         );
 
@@ -63,6 +64,7 @@ class DsfrRadioButtonGroup<T> extends StatefulWidget {
     bool enabled = true,
     final DsfrComponentState componentState = const DsfrComponentState.none(),
     final DsfrComponentSize size = DsfrComponentSize.md,
+    final Direction direction = Direction.vertical,
   }) : this._(
           key: key,
           title: title,
@@ -72,7 +74,7 @@ class DsfrRadioButtonGroup<T> extends StatefulWidget {
           onValueChange: onCallback,
           enabled: enabled,
           componentState: componentState,
-          direction: Direction.vertical,
+          direction: direction,
           isRichRadio: false,
           size: size,
         );

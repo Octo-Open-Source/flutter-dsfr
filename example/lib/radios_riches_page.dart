@@ -122,6 +122,13 @@ class _RadiosRichePageState extends State<RadiosRichesPage> {
               }
             },
           ),
+          const SizedBox(height: DsfrSpacings.s1w),
+          DsfrRadioButtonGroup.rich(
+            title: 'Radios riches vertical',
+            values: const {1: 'Un', 2: 'Deux', 3: 'Trois'},
+            onCallback: (final p0) {},
+            direction: Direction.vertical,
+          ),
           const SizedBox(height: DsfrSpacings.s3w),
           DsfrRadioButtonGroup.rich(
             title: 'Radios riches en erreur',
