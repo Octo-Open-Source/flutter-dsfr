@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dsfr/src/fondamentaux/dsfr_shadow_decisions.dart';
 import 'package:flutter_svg/svg.dart';
 
-const int _badgesAndTagsMaxLength = 4;
 const double _paddingImageAndBadges = 16;
 
 enum DsfrTileBackgroundType {
@@ -30,7 +29,7 @@ class DsfrTile extends StatefulWidget {
     this.badgesAndTags,
     this.showActionIcon = true,
     this.actionIcon = DsfrIcons.systemArrowRightLine,
-  }) : assert(badgesAndTags == null || (badgesAndTags.length <= _badgesAndTagsMaxLength));
+  }) : assert(badgesAndTags == null || (badgesAndTags.length <= 4));
 
   final DsfrComponentSize size;
   final Axis direction;
@@ -98,6 +97,7 @@ class _DsfrTileState extends State<DsfrTile> {
                             imageAsset: imageAsset,
                             imageHeight: _getImageHeight(),
                             badgesAndTagsToAdd: badgesAndTagsToAdd,
+                            paddingBadges: _getPaddingBadges(),
                             paddingBadgesAndTitle: _getPaddingBadgesAndTitle(),
                             paddingTitleAndDescription: _getPaddingTitleAndDescription(),
                             paddingDescriptionAndDetails: _getPaddingDescriptionAndDetail(),
@@ -116,6 +116,7 @@ class _DsfrTileState extends State<DsfrTile> {
                             imageAsset: imageAsset,
                             imageHeight: _getImageHeight(),
                             badgesAndTagsToAdd: badgesAndTagsToAdd,
+                            paddingBadges: _getPaddingBadges(),
                             paddingBadgesAndTitle: _getPaddingBadgesAndTitle(),
                             paddingTitleAndDescription: _getPaddingTitleAndDescription(),
                             paddingDescriptionAndDetails: _getPaddingDescriptionAndDetail(),
@@ -198,6 +199,17 @@ class _DsfrTileState extends State<DsfrTile> {
         return 24;
       case DsfrComponentSize.sm:
         return 16;
+      default:
+        throw UnimplementedError('Size ${widget.size} is not implemented');
+    }
+  }
+
+  double _getPaddingBadges() {
+    switch (widget.size) {
+      case DsfrComponentSize.md:
+        return 12;
+      case DsfrComponentSize.sm:
+        return 8;
       default:
         throw UnimplementedError('Size ${widget.size} is not implemented');
     }
@@ -286,6 +298,7 @@ class _VerticalTile extends StatelessWidget {
   final String? imageAsset;
   final double imageHeight;
   final List<Widget>? badgesAndTagsToAdd;
+  final double paddingBadges;
   final double paddingBadgesAndTitle;
   final double paddingTitleAndDescription;
   final double paddingDescriptionAndDetails;
@@ -304,6 +317,7 @@ class _VerticalTile extends StatelessWidget {
     required this.imageAsset,
     required this.imageHeight,
     required this.badgesAndTagsToAdd,
+    required this.paddingBadges,
     required this.paddingBadgesAndTitle,
     required this.paddingTitleAndDescription,
     required this.paddingDescriptionAndDetails,
@@ -329,7 +343,12 @@ class _VerticalTile extends StatelessWidget {
         if (badgesAndTagsToAdd != null && badgesAndTagsToAdd!.isNotEmpty)
           Column(
             children: [
-              ...badgesAndTagsToAdd!,
+              Wrap(
+                alignment: WrapAlignment.center,
+                spacing: paddingBadges, // horizontal spacing
+                runSpacing: paddingBadges, // vertical spacing
+                children: badgesAndTagsToAdd!,
+              ),
               SizedBox(height: paddingBadgesAndTitle),
             ],
           ),
@@ -369,6 +388,7 @@ class _HorizontalTile extends StatelessWidget {
   final String? imageAsset;
   final double imageHeight;
   final List<Widget>? badgesAndTagsToAdd;
+  final double paddingBadges;
   final double paddingBadgesAndTitle;
   final double paddingTitleAndDescription;
   final double paddingDescriptionAndDetails;
@@ -387,6 +407,7 @@ class _HorizontalTile extends StatelessWidget {
     required this.imageAsset,
     required this.imageHeight,
     required this.badgesAndTagsToAdd,
+    required this.paddingBadges,
     required this.paddingBadgesAndTitle,
     required this.paddingTitleAndDescription,
     required this.paddingDescriptionAndDetails,
@@ -418,13 +439,14 @@ class _HorizontalTile extends StatelessWidget {
               children: [
                 if (badgesAndTagsToAdd != null && badgesAndTagsToAdd!.isNotEmpty)
                   Column(
-                    mainAxisSize: MainAxisSize.max,
+                    mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      ExcludeFocus(
-                          child: Column(
-                        children: [...badgesAndTagsToAdd!],
-                      )),
+                      Wrap(
+                        spacing: paddingBadges, // horizontal spacing
+                        runSpacing: paddingBadges, // vertical spacing
+                        children: badgesAndTagsToAdd!,
+                      ),
                       SizedBox(height: paddingBadgesAndTitle),
                     ],
                   ),
