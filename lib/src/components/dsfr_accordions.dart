@@ -2,7 +2,7 @@ import 'package:flutter_dsfr/flutter_dsfr.dart';
 import 'package:flutter/material.dart';
 
 typedef DsfrAccordionCallback = void Function(int panelIndex, bool isExpanded);
-typedef DsfrAccordionHeaderBuilder = Widget Function(bool isExpanded);
+typedef DsfrAccordionHeaderBuilder = Widget Function(bool isExpanded, BuildContext context);
 
 class DsfrAccordion {
   const DsfrAccordion._({
@@ -12,17 +12,13 @@ class DsfrAccordion {
 
   DsfrAccordion({
     required final String headerLabel,
+    final String? headerExpandedLabel,
     required final Widget body,
   }) : this._(
-          headerBuilder: (final isExpanded) => Text(headerLabel),
-          body: body,
-        );
-
-  DsfrAccordion.builder({
-    required final DsfrAccordionHeaderBuilder headerBuilder,
-    required final Widget body,
-  }) : this._(
-          headerBuilder: headerBuilder,
+          headerBuilder: (final isExpanded, final context) => Text(
+            headerExpandedLabel != null && isExpanded ? headerExpandedLabel : headerLabel,
+            style: DsfrTextStyle.bodyMdMedium(color: DsfrColorDecisions.textActionHighBlueFrance(context)),
+          ),
           body: body,
         );
 
@@ -116,7 +112,7 @@ class _DsfrAccordionState extends State<_DsfrAccordion> with MaterialStateMixin<
                         Expanded(
                           child: Padding(
                             padding: const EdgeInsets.symmetric(horizontal: DsfrSpacings.s2w),
-                            child: widget.item.headerBuilder(widget.isExpanded),
+                            child: widget.item.headerBuilder(widget.isExpanded, context),
                           ),
                         ),
                         AnimatedRotation(

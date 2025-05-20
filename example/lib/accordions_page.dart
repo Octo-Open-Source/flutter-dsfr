@@ -16,9 +16,9 @@ class AccordionsPage extends StatelessWidget {
         children: [
           DsfrAccordionsGroup(
             values: [
-              DsfrAccordion.builder(
-                headerBuilder: (final isExpanded) =>
-                    isExpanded ? const Text('Header Expanded 1') : const Text('Header 1'),
+              DsfrAccordion(
+                headerLabel: 'Header 1',
+                headerExpandedLabel: 'Header 1 Expanded',
                 body: Column(
                   children: [
                     Align(

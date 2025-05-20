@@ -3,12 +3,11 @@ import 'package:flutter_dsfr/src/components/dsfr_accordions.dart';
 import '../../helpers/a11y_test.skip.dart';
 
 void main() {
-  Widget accordionGroupWithBuilder = DsfrAccordionsGroup(
+  Widget accordionGroupWithExpandedLabel = DsfrAccordionsGroup(
     values: [
-      DsfrAccordion.builder(
-        headerBuilder: (bool isExpanded) {
-          return Text(isExpanded ? 'header expanded' : 'header collapsed');
-        },
+      DsfrAccordion(
+        headerLabel: 'header collapsed',
+        headerExpandedLabel: 'header expanded',
         body: Text('body'),
       ),
     ],
@@ -26,12 +25,12 @@ void main() {
   accessibilityTest(
     componentName: 'accordion group with builder',
     isLightMode: true,
-    child: accordionGroupWithBuilder,
+    child: accordionGroupWithExpandedLabel,
   );
   accessibilityTest(
     componentName: 'accordion group with builder',
     isLightMode: false,
-    child: accordionGroupWithBuilder,
+    child: accordionGroupWithExpandedLabel,
   );
 
   accessibilityTest(componentName: 'accordion group', isLightMode: true, child: accordionGroup);
