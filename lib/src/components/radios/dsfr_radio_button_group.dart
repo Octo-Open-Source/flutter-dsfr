@@ -6,7 +6,7 @@ import 'package:flutter_dsfr/src/helpers/dsfr_component_state.dart';
 import 'package:flutter_dsfr/src/helpers/dsfr_component_size.dart';
 
 class DsfrRadioButtonGroup<T> extends StatefulWidget {
-  final String title;
+  final String? title;
   final String? description;
   final Map<T, String> values;
   final T? initialValue;
@@ -19,7 +19,7 @@ class DsfrRadioButtonGroup<T> extends StatefulWidget {
 
   const DsfrRadioButtonGroup._({
     super.key,
-    required this.title,
+    this.title,
     this.description,
     required this.values,
     required this.onValueChange,
@@ -33,7 +33,7 @@ class DsfrRadioButtonGroup<T> extends StatefulWidget {
 
   const DsfrRadioButtonGroup.rich({
     final Key? key,
-    required String title,
+    String? title,
     String? description,
     required Map<T, String> values,
     T? initialValue,
@@ -55,7 +55,7 @@ class DsfrRadioButtonGroup<T> extends StatefulWidget {
 
   const DsfrRadioButtonGroup.simple({
     final Key? key,
-    required String title,
+    String? title,
     String? description,
     required Map<T, String> values,
     T? initialValue,
