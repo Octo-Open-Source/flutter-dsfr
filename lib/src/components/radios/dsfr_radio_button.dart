@@ -59,13 +59,15 @@ class DsfrRadioButton<T> extends StatelessWidget {
                       state: state,
                       size: _getIconSize(),
                     ),
-                    Text(
-                      label,
-                      style: DsfrTextStyle.bodyMd(
-                        color: enabled
-                            ? getTextColor(context, state, defaultColor: DsfrColorDecisions.textLabelGrey(context))
-                            : DsfrColorDecisions.textDisabledGrey(context),
-                      ),
+                    Flexible(
+                      child: Text(
+                        label,
+                        style: DsfrTextStyle.bodyMd(
+                          color: enabled
+                              ? getTextColor(context, state, defaultColor: DsfrColorDecisions.textLabelGrey(context))
+                              : DsfrColorDecisions.textDisabledGrey(context),
+                        ),
+                      )
                     )
                   ],
                 ),
