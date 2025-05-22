@@ -1,10 +1,11 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_dsfr/src/atoms/dsfr_focus_widget.dart';
 import 'package:flutter_dsfr/src/components/radios/dsfr_radio_icon.dart';
 import 'package:flutter_dsfr/src/fondamentaux/dsfr_color_decisions.g.dart';
-import 'package:flutter_dsfr/src/fondamentaux/dsfr_text_style.dart';
 import 'package:flutter_dsfr/src/fondamentaux/dsfr_spacings.g.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter_dsfr/src/fondamentaux/dsfr_text_style.dart';
 import 'package:flutter_dsfr/src/helpers/color_utils.dart';
+import 'package:flutter_dsfr/src/helpers/dsfr_component_size.dart';
 import 'package:flutter_dsfr/src/helpers/dsfr_component_state.dart';
 
 class DsfrRadioRichButton<T> extends StatefulWidget {
@@ -18,7 +19,8 @@ class DsfrRadioRichButton<T> extends StatefulWidget {
     this.enabled = true,
     this.state = DsfrComponentStateEnum.none,
     this.trailingIcon,
-  });
+    required this.size,
+  }) : assert(size != DsfrComponentSize.lg);
 
   final String title;
   final String? description;
@@ -28,6 +30,7 @@ class DsfrRadioRichButton<T> extends StatefulWidget {
   final bool enabled;
   final DsfrComponentStateEnum state;
   final Widget? trailingIcon;
+  final DsfrComponentSize size;
 
   @override
   State<DsfrRadioRichButton<T>> createState() => _DsfrRadioRichButtonState<T>();
@@ -70,7 +73,7 @@ class _DsfrRadioRichButtonState<T> extends State<DsfrRadioRichButton<T>>
                             groupValue: widget.groupValue,
                             enabled: widget.enabled,
                             state: widget.state,
-                            size: 16.0,
+                            size: _getIconSize(),
                           ),
                           const SizedBox(width: DsfrSpacings.s1w),
                           Column(
@@ -135,5 +138,14 @@ class _DsfrRadioRichButtonState<T> extends State<DsfrRadioRichButton<T>>
     } else {
       return getTextColor(context, widget.state, defaultColor: DsfrColorDecisions.textMentionGrey(context));
     }
+  }
+
+  double _getIconSize() {
+    return switch (widget.size) {
+      DsfrComponentSize.md => 24.0,
+      DsfrComponentSize.sm => 16.0,
+      DsfrComponentSize.lg =>
+        throw UnimplementedError('Size ${widget.size} is not implemented'),
+    };
   }
 }

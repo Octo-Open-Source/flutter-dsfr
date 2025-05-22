@@ -15,7 +15,7 @@ class DsfrRadioButtonGroup<T> extends StatefulWidget {
   final DsfrComponentState componentState;
   final Direction direction;
   final bool isRichRadio;
-  final DsfrComponentSize? size;
+  final DsfrComponentSize size;
 
   const DsfrRadioButtonGroup._({
     super.key,
@@ -28,7 +28,7 @@ class DsfrRadioButtonGroup<T> extends StatefulWidget {
     this.componentState = const DsfrComponentState.none(),
     required this.direction,
     required this.isRichRadio,
-    this.size,
+    required this.size,
   });
 
   const DsfrRadioButtonGroup.rich({
@@ -40,6 +40,7 @@ class DsfrRadioButtonGroup<T> extends StatefulWidget {
     required Function(T? value) onCallback,
     bool enabled = true,
     final DsfrComponentState componentState = const DsfrComponentState.none(),
+    final DsfrComponentSize size = DsfrComponentSize.md,
     final Direction direction = Direction.horizontal,
   }) : this._(
           key: key,
@@ -52,6 +53,7 @@ class DsfrRadioButtonGroup<T> extends StatefulWidget {
           componentState: componentState,
           direction: direction,
           isRichRadio: true,
+          size: size,
         );
 
   const DsfrRadioButtonGroup.simple({
@@ -108,8 +110,9 @@ class _DsfrRadioButtonGroupState<T> extends State<DsfrRadioButtonGroup<T>> {
         if (widget.isRichRadio) {
           return DsfrRadioRichButton<T>(
             title: entry.value,
-            value: entry.key,
             groupValue: _value,
+            value: entry.key,
+            size: widget.size,
             onChanged: _handleChange,
             enabled: widget.enabled,
             state: widget.componentState.state,
@@ -119,7 +122,7 @@ class _DsfrRadioButtonGroupState<T> extends State<DsfrRadioButtonGroup<T>> {
             label: entry.value,
             groupValue: _value,
             value: entry.key,
-            size: widget.size ?? DsfrComponentSize.md,
+            size: widget.size,
             onChanged: _handleChange,
             enabled: widget.enabled,
           );

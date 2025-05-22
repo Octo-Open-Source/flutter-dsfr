@@ -31,6 +31,7 @@ class _RadiosRichePageState extends State<RadiosRichesPage> {
             title: 'Un',
             value: 1,
             groupValue: _value,
+            size: DsfrComponentSize.md,
             onChanged: (final value) {
               if (value != null) {
                 setState(() {
@@ -44,6 +45,7 @@ class _RadiosRichePageState extends State<RadiosRichesPage> {
             title: 'Deux',
             value: 2,
             groupValue: _value,
+            size: DsfrComponentSize.md,
             onChanged: (final value) {
               if (value != null) {
                 setState(() {
@@ -57,6 +59,7 @@ class _RadiosRichePageState extends State<RadiosRichesPage> {
             title: 'Trois',
             value: 3,
             groupValue: _value,
+            size: DsfrComponentSize.md,
             onChanged: (final value) {
               if (value != null) {
                 setState(() {
@@ -70,6 +73,7 @@ class _RadiosRichePageState extends State<RadiosRichesPage> {
             title: 'Quatre',
             value: 4,
             groupValue: _value,
+            size: DsfrComponentSize.md,
             onChanged: (final value) {
               if (value != null) {
                 setState(() {
@@ -85,6 +89,7 @@ class _RadiosRichePageState extends State<RadiosRichesPage> {
             description: 'Une description optionnelle',
             value: 4,
             groupValue: _value,
+            size: DsfrComponentSize.md,
             onChanged: (final value) {
               if (value != null) {
                 setState(() {
@@ -99,6 +104,7 @@ class _RadiosRichePageState extends State<RadiosRichesPage> {
             trailingIcon: Icon(Icons.ac_unit_rounded, size: 32),
             value: 5,
             groupValue: _value,
+            size: DsfrComponentSize.md,
             onChanged: (final value) {
               if (value != null) {
                 setState(() {
@@ -114,6 +120,7 @@ class _RadiosRichePageState extends State<RadiosRichesPage> {
             trailingIcon: Icon(Icons.access_alarm_rounded, size: 32),
             value: 6,
             groupValue: _value,
+            size: DsfrComponentSize.md,
             onChanged: (final value) {
               if (value != null) {
                 setState(() {

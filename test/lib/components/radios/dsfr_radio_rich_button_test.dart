@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dsfr/src/components/radios/dsfr_radio_rich_button.dart';
+import 'package:flutter_dsfr/src/helpers/dsfr_component_size.dart';
 import 'package:flutter_dsfr/src/helpers/dsfr_component_state.dart';
 import '../../../helpers/a11y_test.skip.dart';
 
@@ -9,12 +10,14 @@ void main() {
     title: 'Un',
     value: 0,
     groupValue: 0,
+    size: DsfrComponentSize.md,
     onChanged: (final value) {},
   );
   Widget radioDisabled = DsfrRadioRichButton<int>(
     title: 'Un',
     value: 0,
     groupValue: 0,
+    size: DsfrComponentSize.md,
     onChanged: (final value) {},
     enabled: false,
   );
@@ -22,6 +25,7 @@ void main() {
     title: 'Un',
     value: 0,
     groupValue: 0,
+    size: DsfrComponentSize.md,
     onChanged: (final value) {},
     state: DsfrComponentStateEnum.success,
   );
@@ -29,6 +33,7 @@ void main() {
     title: 'Un',
     value: 0,
     groupValue: 0,
+    size: DsfrComponentSize.md,
     onChanged: (final value) {},
     state: DsfrComponentStateEnum.error,
   );
