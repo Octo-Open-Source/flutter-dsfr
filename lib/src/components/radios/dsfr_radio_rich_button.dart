@@ -20,6 +20,7 @@ class DsfrRadioRichButton<T> extends StatefulWidget {
     this.state = DsfrComponentStateEnum.none,
     this.trailingIcon,
     required this.size,
+    this.isExpanded = false,
   }) : assert(size != DsfrComponentSize.lg);
 
   final String title;
@@ -31,6 +32,7 @@ class DsfrRadioRichButton<T> extends StatefulWidget {
   final DsfrComponentStateEnum state;
   final Widget? trailingIcon;
   final DsfrComponentSize size;
+  final bool isExpanded;
 
   @override
   State<DsfrRadioRichButton<T>> createState() => _DsfrRadioRichButtonState<T>();
@@ -39,92 +41,96 @@ class DsfrRadioRichButton<T> extends StatefulWidget {
 class _DsfrRadioRichButtonState<T> extends State<DsfrRadioRichButton<T>>
     with MaterialStateMixin<DsfrRadioRichButton<T>> {
   @override
-  Widget build(final context) => DsfrFocusWidget(
-        isFocused: isFocused,
-        child: Material(
-          color: DsfrColorDecisions.backgroundTransparent(context),
-          child: InkWell(
-            onTap: (!widget.enabled || widget.onChanged == null) ? null : () => widget.onChanged!(widget.value),
-            onHighlightChanged: updateMaterialState(WidgetState.pressed),
-            onHover: updateMaterialState(WidgetState.hovered),
-            focusColor: DsfrColorDecisions.backgroundTransparent(context),
-            canRequestFocus: widget.onChanged != null,
-            onFocusChange: updateMaterialState(WidgetState.focused),
-            child: DecoratedBox(
-              decoration: BoxDecoration(
-                border: Border.fromBorderSide(
-                  BorderSide(
-                    color: getBorderColor(context),
-                  ),
+  Widget build(final context) {
+    final mainAxisSize = widget.isExpanded ? MainAxisSize.max : MainAxisSize.min;
+
+    return DsfrFocusWidget(
+      isFocused: isFocused,
+      child: Material(
+        color: DsfrColorDecisions.backgroundTransparent(context),
+        child: InkWell(
+          onTap: (!widget.enabled || widget.onChanged == null) ? null : () => widget.onChanged!(widget.value),
+          onHighlightChanged: updateMaterialState(WidgetState.pressed),
+          onHover: updateMaterialState(WidgetState.hovered),
+          focusColor: DsfrColorDecisions.backgroundTransparent(context),
+          canRequestFocus: widget.onChanged != null,
+          onFocusChange: updateMaterialState(WidgetState.focused),
+          child: DecoratedBox(
+            decoration: BoxDecoration(
+              border: Border.fromBorderSide(
+                BorderSide(
+                  color: getBorderColor(context),
                 ),
               ),
-              child: IntrinsicHeight(
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Flexible(
-                      child: Padding(
-                        padding: const EdgeInsets.all(DsfrSpacings.s2w),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          spacing: DsfrSpacings.s1w,
-                          children: [
-                            DsfrRadioIcon(
-                              key: ValueKey(widget.title),
-                              value: widget.value,
-                              groupValue: widget.groupValue,
-                              enabled: widget.enabled,
-                              state: widget.state,
-                              size: _getIconSize(),
-                            ),
-                            Flexible(
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                spacing: DsfrSpacings.s1v,
-                                children: [
-                                  Text(
-                                    widget.title,
-                                    style: DsfrTextStyle.bodyMd(color: getLabelColor(context)),
-                                  ),
-                                  if (widget.description != null)
-                                    Text(
-                                      widget.description!,
-                                      style: DsfrTextStyle.bodyXs(color: getDescriptionColor(context)),
-                                    ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    if (widget.trailingIcon != null) ...[
-                      Row(
+            ),
+            child: IntrinsicHeight(
+              child: Row(
+                mainAxisSize: mainAxisSize,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Flexible(
+                    child: Padding(
+                      padding: const EdgeInsets.all(DsfrSpacings.s2w),
+                      child: Row(
+                        mainAxisSize: mainAxisSize,
+                        spacing: DsfrSpacings.s1w,
                         children: [
-                          VerticalDivider(
-                            width: 0,
-                            indent: DsfrSpacings.s1v,
-                            endIndent: DsfrSpacings.s1v,
+                          DsfrRadioIcon(
+                            key: ValueKey(widget.title),
+                            value: widget.value,
+                            groupValue: widget.groupValue,
+                            enabled: widget.enabled,
+                            state: widget.state,
+                            size: _getIconSize(),
                           ),
-                          SizedBox(
-                            width: 88,
-                            height: 88,
-                            child: Center(
-                              child: widget.trailingIcon!,
+                          Flexible(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              spacing: DsfrSpacings.s1v,
+                              children: [
+                                Text(
+                                  widget.title,
+                                  style: DsfrTextStyle.bodyMd(color: getLabelColor(context)),
+                                ),
+                                if (widget.description != null)
+                                  Text(
+                                    widget.description!,
+                                    style: DsfrTextStyle.bodyXs(color: getDescriptionColor(context)),
+                                  ),
+                              ],
                             ),
                           ),
                         ],
-                      )
-                    ]
-                  ],
-                ),
+                      ),
+                    ),
+                  ),
+                  if (widget.trailingIcon != null) ...[
+                    Row(
+                      children: [
+                        VerticalDivider(
+                          width: 0,
+                          indent: DsfrSpacings.s1v,
+                          endIndent: DsfrSpacings.s1v,
+                        ),
+                        SizedBox(
+                          width: 88,
+                          height: 88,
+                          child: Center(
+                            child: widget.trailingIcon!,
+                          ),
+                        ),
+                      ],
+                    )
+                  ]
+                ],
               ),
             ),
           ),
         ),
-      );
+      ),
+    );
+  }
 
   Color getBorderColor(BuildContext context) {
     return widget.groupValue == widget.value
