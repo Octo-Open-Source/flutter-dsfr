@@ -34,6 +34,7 @@ export 'src/components/toggle_switches/dsfr_toggle_switch_group.dart';
 export 'src/components/dsfr_tooltip.dart';
 export 'src/components/dsfr_search_bar.dart';
 export 'src/components/dsfr_tile.dart';
+export 'src/components/dsfr_download_files.dart';
 export 'src/fondamentaux/dsfr_colors.g.dart';
 export 'src/fondamentaux/dsfr_color_decisions.g.dart';
 export 'src/fondamentaux/dsfr_color_decisions_extension.dart';

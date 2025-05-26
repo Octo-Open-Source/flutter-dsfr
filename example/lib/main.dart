@@ -6,6 +6,7 @@ import 'package:example/cards_page.dart';
 import 'package:example/checkbox_page.dart';
 import 'package:example/colors/colors_page.dart';
 import 'package:example/colors/decisions_page.dart';
+import 'package:example/download_files_page.dart';
 import 'package:example/france_connect_button_page.dart';
 import 'package:example/highlight_page.dart';
 import 'package:example/icons_page.dart';
@@ -120,6 +121,7 @@ List<PageItem> _getPageItems() {
     HighlightPage.model,
     SearchBarPage.model,
     TilesPage.model,
+    DownloadFilesPage.model,
   ];
   items.sort((a, b) => a.title.compareTo(b.title));
   items.insert(0, SandboxPage.model);
