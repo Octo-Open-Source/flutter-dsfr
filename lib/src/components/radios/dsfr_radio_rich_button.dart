@@ -61,53 +61,61 @@ class _DsfrRadioRichButtonState<T> extends State<DsfrRadioRichButton<T>>
               child: IntrinsicHeight(
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.all(DsfrSpacings.s2w),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          DsfrRadioIcon(
-                            key: ValueKey(widget.title),
-                            value: widget.value,
-                            groupValue: widget.groupValue,
-                            enabled: widget.enabled,
-                            state: widget.state,
-                            size: _getIconSize(),
-                          ),
-                          const SizedBox(width: DsfrSpacings.s1w),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            spacing: DsfrSpacings.s1v,
-                            children: [
-                              Text(
-                                widget.title,
-                                style: DsfrTextStyle.bodyMd(color: getLabelColor(context)),
+                    Flexible(
+                      child: Padding(
+                        padding: const EdgeInsets.all(DsfrSpacings.s2w),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          spacing: DsfrSpacings.s1w,
+                          children: [
+                            DsfrRadioIcon(
+                              key: ValueKey(widget.title),
+                              value: widget.value,
+                              groupValue: widget.groupValue,
+                              enabled: widget.enabled,
+                              state: widget.state,
+                              size: _getIconSize(),
+                            ),
+                            Flexible(
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                spacing: DsfrSpacings.s1v,
+                                children: [
+                                  Text(
+                                    widget.title,
+                                    style: DsfrTextStyle.bodyMd(color: getLabelColor(context)),
+                                  ),
+                                  if (widget.description != null)
+                                    Text(
+                                      widget.description!,
+                                      style: DsfrTextStyle.bodyXs(color: getDescriptionColor(context)),
+                                    ),
+                                ],
                               ),
-                              if (widget.description != null)
-                                Text(
-                                  widget.description!,
-                                  style: DsfrTextStyle.bodyXs(color: getDescriptionColor(context)),
-                                ),
-                            ],
-                          ),
-                        ],
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                     if (widget.trailingIcon != null) ...[
-                      Spacer(),
-                      VerticalDivider(
-                        width: 0,
-                        indent: DsfrSpacings.s1v,
-                        endIndent: DsfrSpacings.s1v,
-                      ),
-                      SizedBox(
-                        width: 88,
-                        height: 88,
-                        child: Center(
-                          child: widget.trailingIcon!,
-                        ),
+                      Row(
+                        children: [
+                          VerticalDivider(
+                            width: 0,
+                            indent: DsfrSpacings.s1v,
+                            endIndent: DsfrSpacings.s1v,
+                          ),
+                          SizedBox(
+                            width: 88,
+                            height: 88,
+                            child: Center(
+                              child: widget.trailingIcon!,
+                            ),
+                          ),
+                        ],
                       )
                     ]
                   ],
