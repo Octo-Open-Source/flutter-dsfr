@@ -27,6 +27,8 @@ dev_dependencies:
       url: https://github.com/Jupi007/icon_font_generator.git
       ref: yaru
   meta: ^1.1.8
+  analyzer: 7.3.0
+  analyzer_plugin: 0.12.0
 
 flutter:
   assets:
