@@ -4,7 +4,7 @@ import 'package:flutter_dsfr/flutter_dsfr.dart';
 enum DsfrDownloadFilesType {
   link,
   card,
-  tuile,
+  tile,
 }
 
 class DsfrDownloadFiles extends StatelessWidget {
@@ -20,7 +20,7 @@ class DsfrDownloadFiles extends StatelessWidget {
     return switch(type) {
       DsfrDownloadFilesType.link => DsfrDownloadFilesLink(label: label, details: details, onTap: onTap),
       DsfrDownloadFilesType.card => throw('Card type is not implemented yet.'),
-      DsfrDownloadFilesType.tuile => throw('Tuile type is not implemented yet.'),
+      DsfrDownloadFilesType.tile => throw('Tile type is not implemented yet.'),
     };
   }
 }
