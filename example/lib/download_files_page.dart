@@ -22,20 +22,17 @@ class DownloadFilesPage extends StatelessWidget {
               PageSubSection(
                 title: 'Lien',
                 children: [
-                  DsfrDownloadFiles(
-                    type: DsfrDownloadFilesType.link,
+                  DsfrDownloadFiles.link(
                     label: 'Intitulé du fichier à télécharger',
                     details: 'PDF - 61,55 Ko',
                     onTap: () {},
                   ),
-                  DsfrDownloadFiles(
-                    type: DsfrDownloadFilesType.link,
+                  DsfrDownloadFiles.link(
                     label: 'Intitulé du fichier à télécharger sur deux lignes car il est très très très long',
                     details: 'PDF - 61,55 Ko',
                     onTap: () {},
                   ),
-                  DsfrDownloadFiles(
-                    type: DsfrDownloadFilesType.link,
+                  DsfrDownloadFiles.link(
                     label: 'Intitulé du fichier à télécharger désactivé',
                     details: 'PDF - 61,55 Ko',
                   ),
@@ -50,7 +47,84 @@ class DownloadFilesPage extends StatelessWidget {
               PageSubSection(
                 title: 'Tuile',
                 children: [
-                  Text('TODO'),
+                  Text(
+                    'Taille SM',
+                    style: DsfrTextStyle.headline2(color: DsfrColorDecisions.textTitleGrey(context)),
+                  ),
+                  DsfrDownloadFiles.tile(
+                    size: DsfrComponentSize.sm,
+                    label: 'Intitulé du fichier à télécharger',
+                    description: 'Description',
+                    details: 'PDF - 61,55 Ko',
+                    imageAsset: 'assets/images/city_hall.svg',
+                    badgesAndTags: [
+                      DsfrBadge(
+                          size: DsfrComponentSize.sm,
+                          label: 'badge 1',
+                          type: DsfrBadgeType.information
+                      ),
+                      DsfrTag(
+                        size: DsfrComponentSize.sm,
+                        label: 'tag pour tuile',
+                      ),
+                    ],
+                    onTap: () {},
+                  ),
+                  DsfrDownloadFiles.tile(
+                    size: DsfrComponentSize.sm,
+                    label: 'Intitulé du fichier à télécharger désactivé',
+                    description: 'Description',
+                    details: 'PDF - 61,55 Ko',
+                    imageAsset: 'assets/images/city_hall.svg',
+                    badgesAndTags: [
+                      DsfrBadge(
+                          size: DsfrComponentSize.sm,
+                          label: 'badge 1',
+                          type: DsfrBadgeType.information
+                      ),
+                      DsfrTag(
+                        size: DsfrComponentSize.sm,
+                        label: 'tag pour tuile',
+                      ),
+                    ],
+                  ),
+                  Text(
+                    'Taille MD',
+                    style: DsfrTextStyle.headline2(color: DsfrColorDecisions.textTitleGrey(context)),
+                  ),
+                  DsfrDownloadFiles.tile(
+                      size: DsfrComponentSize.md,
+                      label: 'Intitulé du fichier à télécharger',
+                      description: 'Description',
+                      details: 'PDF - 61,55 Ko',
+                      imageAsset: 'assets/images/city_hall.svg',
+                      badgesAndTags: [
+                        DsfrBadge(
+                            size: DsfrComponentSize.md,
+                            label: 'badge 1',
+                            type: DsfrBadgeType.information
+                        ),
+                      ],
+                      onTap: () {},
+                  ),
+                  DsfrDownloadFiles.tile(
+                    size: DsfrComponentSize.md,
+                    label: 'Intitulé du fichier à télécharger désactivé',
+                    description: 'Description',
+                    details: 'PDF - 61,55 Ko',
+                    imageAsset: 'assets/images/city_hall.svg',
+                    badgesAndTags: [
+                      DsfrBadge(
+                          size: DsfrComponentSize.md,
+                          label: 'badge 1',
+                          type: DsfrBadgeType.information
+                      ),
+                      DsfrTag(
+                        size: DsfrComponentSize.md,
+                        label: 'tag pour tuile',
+                      ),
+                    ],
+                  )
                 ],
               )
             ],
