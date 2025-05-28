@@ -32,7 +32,7 @@ class DsfrInputHeadless extends StatefulWidget {
     this.fillColor,
     this.radius = DsfrSpacings.s1v,
     this.maxLines = 1,
-    this.minLines = 1,
+    this.minLines,
     this.enabled = true,
     this.autofocus = false,
     this.inputColor,
@@ -70,7 +70,7 @@ class DsfrInputHeadless extends StatefulWidget {
   final bool passwordVisibility;
   final bool? autocorrect;
   final int maxLines;
-  final int minLines;
+  final int? minLines;
   final TextInputType? keyboardType;
   final TextCapitalization textCapitalization;
   final TextInputAction? textInputAction;

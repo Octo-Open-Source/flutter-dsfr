@@ -21,7 +21,7 @@ class DsfrInput extends StatefulWidget {
     this.autofocus = false,
     this.isPasswordMode = false,
     this.displayPasswordLabel = 'Afficher',
-    this.minLines = 1,
+    this.minLines,
     this.maxLines = 1,
     this.autocorrect,
     this.keyboardType,
@@ -49,7 +49,7 @@ class DsfrInput extends StatefulWidget {
   final bool autofocus;
   final bool isPasswordMode;
   final String displayPasswordLabel;
-  final int minLines;
+  final int? minLines;
   final int maxLines;
   final bool? autocorrect;
   final TextInputType? keyboardType;
