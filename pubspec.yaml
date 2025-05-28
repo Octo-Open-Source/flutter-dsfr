@@ -11,7 +11,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_svg: ^2.0.17
-  intl: ^0.19.0
+  intl: ">=0.19.0" # https://github.com/flutter/flutter/blob/3.32.0/packages/flutter_localizations/pubspec.yaml#L14
 
 dependency_overrides:
   analyzer: 7.3.0
