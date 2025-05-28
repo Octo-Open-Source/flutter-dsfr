@@ -116,6 +116,7 @@ class _DsfrRadioButtonGroupState<T> extends State<DsfrRadioButtonGroup<T>> {
             onChanged: _handleChange,
             enabled: widget.enabled,
             state: widget.componentState.state,
+            isExpanded: widget.direction == Direction.vertical,
           );
         } else {
           return DsfrRadioButton(
