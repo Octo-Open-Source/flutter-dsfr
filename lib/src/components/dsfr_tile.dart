@@ -430,7 +430,7 @@ class _HorizontalTile extends StatelessWidget {
                 SizedBox(height: paddingTitleAndDescription),
                 Text(description!, style: descriptionTextStyle),
               ],
-              if (details != null || (showActionIcon && onTap != null)) SizedBox(height: paddingDescriptionAndDetails),
+              if (details != null || showActionIcon) SizedBox(height: paddingDescriptionAndDetails),
               Row(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -441,7 +441,7 @@ class _HorizontalTile extends StatelessWidget {
                       details!,
                       style: DsfrTextStyle.bodyXsMedium(color: DsfrColorDecisions.textMentionGrey(context)),
                     ),
-                  if (showActionIcon && onTap != null) Icon(actionIcon, size: iconSize, color: iconColor),
+                  if (showActionIcon) Icon(actionIcon, size: iconSize, color: iconColor),
                 ],
               ),
             ],
