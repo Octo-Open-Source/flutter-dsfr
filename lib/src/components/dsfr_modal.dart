@@ -37,24 +37,25 @@ class DsfrModal extends StatelessWidget {
         barrierColor: DsfrColorDecisions.backgroundTransparentActive(context),
         isScrollControlled: true,
         isDismissible: isDismissible,
+        useSafeArea: true,
         routeSettings: RouteSettings(name: name),
       );
 
   @override
   Widget build(final context) => ColoredBox(
         color: DsfrColorDecisions.backgroundDefaultGrey(context),
-        child: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.all(DsfrSpacings.s2w),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                if (isDismissible) ...[
-                  Row(
-                    children: [
-                      const Spacer(),
-                      DsfrButton(
+        child: SingleChildScrollView(
+          child: SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.all(DsfrSpacings.s2w),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  if (isDismissible) ...[
+                    Align(
+                      alignment: Alignment.topRight,
+                      child: DsfrButton(
                         label: closeLabel,
                         icon: DsfrIcons.systemCloseLine,
                         iconLocation: DsfrButtonIconLocation.right,
@@ -62,12 +63,12 @@ class DsfrModal extends StatelessWidget {
                         size: DsfrComponentSize.sm,
                         onPressed: () => Navigator.of(context).pop(),
                       ),
-                    ],
-                  ),
-                  const SizedBox(height: DsfrSpacings.s1w),
+                    ),
+                    const SizedBox(height: DsfrSpacings.s1w),
+                  ],
+                  child,
                 ],
-                child,
-              ],
+              ),
             ),
           ),
         ),
