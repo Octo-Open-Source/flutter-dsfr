@@ -93,7 +93,7 @@ class DsfrInputHeadless extends StatefulWidget {
 
 class _DsfrInputHeadlessState extends State<DsfrInputHeadless> {
   bool _isFocused = false;
-  late FocusNode _focusNode;
+  late final FocusNode _focusNode;
 
   @override
   void initState() {
@@ -113,7 +113,7 @@ class _DsfrInputHeadlessState extends State<DsfrInputHeadless> {
       initialDate: widget.initialDate ?? DateTime.now(),
       firstDate: widget.firstDate ?? DateTime.now().subtract(const Duration(days: 365)),
       lastDate: widget.lastDate ?? DateTime.now().add(const Duration(days: 365)),
-    );
+  );
     if (picked != null) {
       setState(() {
         widget.controller?.text = DateFormat('dd/MM/yyyy').format(picked);
@@ -124,9 +124,10 @@ class _DsfrInputHeadlessState extends State<DsfrInputHeadless> {
 
   @override
   void dispose() {
-    _focusNode
-      ..removeListener(_listener)
-      ..dispose();
+    _focusNode.removeListener(_listener);
+    if (widget.focusNode == null) {
+      _focusNode.dispose();
+    }
     super.dispose();
   }
 
@@ -158,7 +159,7 @@ class _DsfrInputHeadlessState extends State<DsfrInputHeadless> {
           top: Radius.circular(widget.radius + 2),
         ),
       ),
-      child: Padding(
+child: Padding(
         padding: widget.focusPadding.add(EdgeInsets.only(bottom: DsfrSpacings.s0v5)),
         child: SizedBox(
           width: widget.width,
