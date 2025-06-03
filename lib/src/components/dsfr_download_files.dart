@@ -15,6 +15,7 @@ class DsfrDownloadFiles extends StatelessWidget {
     this.imageAsset,
     this.badgesAndTags,
     this.onTap,
+    this.enabled = true,
   });
 
   final DsfrDownloadFilesType type;
@@ -25,12 +26,14 @@ class DsfrDownloadFiles extends StatelessWidget {
   final String? imageAsset;
   final List<Widget>? badgesAndTags;
   final VoidCallback? onTap;
+  final bool enabled;
 
   const DsfrDownloadFiles.link({
     final Key? key,
     required final label,
     required final details,
-    final onTap
+    final onTap,
+    final enabled = true,
   }) : this._(
     key: key,
     type: DsfrDownloadFilesType.link,
@@ -41,6 +44,7 @@ class DsfrDownloadFiles extends StatelessWidget {
     imageAsset: null,
     badgesAndTags: null,
     onTap: onTap,
+    enabled: enabled,
   );
 
   const DsfrDownloadFiles.tile({
@@ -51,7 +55,8 @@ class DsfrDownloadFiles extends StatelessWidget {
     required final details,
     final badgesAndTags,
     final imageAsset,
-    final onTap
+    final onTap,
+    final enabled = true,
   }) : this._(
     key: key,
     type: DsfrDownloadFilesType.tile,
@@ -62,25 +67,31 @@ class DsfrDownloadFiles extends StatelessWidget {
     imageAsset: imageAsset,
     badgesAndTags: badgesAndTags,
     onTap: onTap,
+    enabled: enabled
   );
 
   @override
   Widget build(BuildContext context) {
     return switch (type) {
-      DsfrDownloadFilesType.link => DsfrDownloadFilesLink(label: label, details: details, onTap: onTap),
+      DsfrDownloadFilesType.link => DsfrDownloadFilesLink(
+        label: label,
+        details: details,
+        onTap: onTap,
+        enabled: enabled
+      ),
       DsfrDownloadFilesType.card => throw ('Card type is not implemented yet.'),
       DsfrDownloadFilesType.tile => (size == null) ? throw ('Size is mandatory for tile type.') : DsfrTile(
-          size: size!,
-          direction: Axis.horizontal,
-          title: label,
-          description: description,
-          details: details,
-          imageAsset: imageAsset,
-          enabled: onTap != null,
-          badgesAndTags: badgesAndTags,
-          onTap: onTap,
-          showActionIcon: true,
-          actionIcon: DsfrIcons.systemDownloadLine,
+        size: size!,
+        direction: Axis.horizontal,
+        title: label,
+        description: description,
+        details: details,
+        imageAsset: imageAsset,
+        enabled: enabled,
+        badgesAndTags: badgesAndTags,
+        onTap: onTap,
+        showActionIcon: true,
+        actionIcon: DsfrIcons.systemDownloadLine,
       ),
     };
   }
@@ -90,8 +101,15 @@ class DsfrDownloadFilesLink extends StatelessWidget {
   final String label;
   final String details;
   final VoidCallback? onTap;
+  final bool enabled;
 
-  const DsfrDownloadFilesLink({super.key, required this.label, required this.details, this.onTap});
+  const DsfrDownloadFilesLink({
+    super.key,
+    required this.label,
+    required this.details,
+    this.onTap,
+    this.enabled = true,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -104,6 +122,7 @@ class DsfrDownloadFilesLink extends StatelessWidget {
           iconPosition: DsfrLinkIconPosition.end,
           icon: DsfrIcons.systemDownloadLine,
           onTap: onTap,
+          enabled: enabled,
         ),
         Text(details, style: DsfrTextStyle.bodyXs(color: DsfrColorDecisions.textMentionGrey(context))),
       ],
