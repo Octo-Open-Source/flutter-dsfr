@@ -7,10 +7,7 @@ import 'package:flutter/material.dart';
 class IconsPage extends StatelessWidget {
   const IconsPage({super.key});
 
-  static final model = PageItem(
-    title: 'Icône',
-    pageBuilder: (final context) => const IconsPage(),
-  );
+  static final model = PageItem(title: 'Icône', pageBuilder: (final context) => const IconsPage());
 
   @override
   Widget build(final context) {
@@ -18,9 +15,7 @@ class IconsPage extends StatelessWidget {
     final allIconsKeys = allIcons.keys.toList()..sort();
 
     return GridView.builder(
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 10,
-      ),
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 10),
       itemBuilder: (final context, final index) {
         final allIconsKey = allIconsKeys.elementAtOrNull(index);
 
@@ -28,11 +23,7 @@ class IconsPage extends StatelessWidget {
             ? const SizedBox()
             : Tooltip(
                 message: allIconsKey,
-                child: Icon(
-                  allIcons[allIconsKey],
-                  size: 32,
-                  color: DsfrColors.blueFranceSun113,
-                ),
+                child: Icon(allIcons[allIconsKey], size: 32, color: DsfrColors.blueFranceSun113),
               );
       },
       itemCount: allIcons.length,

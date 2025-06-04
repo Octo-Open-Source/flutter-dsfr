@@ -2,7 +2,6 @@ import 'package:example/colors/dsfr_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dsfr/flutter_dsfr.dart';
 
-
 class DsfrColorsExample {
   static List<DsfrColor> allColors() {
     return [

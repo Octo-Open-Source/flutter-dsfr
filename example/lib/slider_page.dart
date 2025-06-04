@@ -7,10 +7,7 @@ import 'package:flutter_dsfr/flutter_dsfr.dart';
 class SliderPage extends StatefulWidget {
   const SliderPage({super.key});
 
-  static final model = PageItem(
-    title: 'Curseur',
-    pageBuilder: (final context) => const SliderPage(),
-  );
+  static final model = PageItem(title: 'Curseur', pageBuilder: (final context) => const SliderPage());
 
   @override
   State<SliderPage> createState() => _SliderPageState();
@@ -102,18 +99,8 @@ class _SliderPageState extends State<SliderPage> {
                 PageSubSection(
                   title: "Désactivés",
                   children: [
-                    DsfrSlider(
-                      label: "Curseur SM",
-                      enabled: false,
-                      value: 0.25,
-                      size: DsfrComponentSize.sm,
-                    ),
-                    DsfrSlider(
-                      label: "Curseur MD",
-                      enabled: false,
-                      value: 0.35,
-                      size: DsfrComponentSize.md,
-                    ),
+                    DsfrSlider(label: "Curseur SM", enabled: false, value: 0.25, size: DsfrComponentSize.sm),
+                    DsfrSlider(label: "Curseur MD", enabled: false, value: 0.35, size: DsfrComponentSize.md),
                   ],
                 ),
                 PageSubSection(
@@ -236,7 +223,7 @@ class _SliderPageState extends State<SliderPage> {
                       size: DsfrComponentSize.md,
                     ),
                   ],
-                )
+                ),
               ],
             ),
             PageSection(
@@ -446,7 +433,7 @@ class _SliderPageState extends State<SliderPage> {
                       size: DsfrComponentSize.md,
                     ),
                   ],
-                )
+                ),
               ],
             ),
           ],

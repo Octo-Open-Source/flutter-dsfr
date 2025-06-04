@@ -10,16 +10,13 @@ class DsfrButtonBackgroundColor extends WidgetStateColor {
     required final Color active,
     required final Color hover,
     required final Color disabled,
-  })  : _default = $default,
-        _active = active,
-        _hover = hover,
-        _disabled = disabled,
-        super($default.colorToInt());
+  }) : _default = $default,
+       _active = active,
+       _hover = hover,
+       _disabled = disabled,
+       super($default.colorToInt());
 
-  factory DsfrButtonBackgroundColor.fromVariant(
-    final DsfrButtonVariant variant,
-    final BuildContext context,
-  ) {
+  factory DsfrButtonBackgroundColor.fromVariant(final DsfrButtonVariant variant, final BuildContext context) {
     switch (variant) {
       case DsfrButtonVariant.primary:
         return DsfrButtonBackgroundColor(

@@ -5,10 +5,10 @@ import '../../helpers/a11y_test.skip.dart';
 
 void main() {
   Widget tileVerticalSm = DsfrTile(
-      size: DsfrComponentSize.sm,
-      title: 'Tile default',
-      description: 'Description',
-      details: 'Details',
+    size: DsfrComponentSize.sm,
+    title: 'Tile default',
+    description: 'Description',
+    details: 'Details',
   );
 
   Widget tileVerticalSmWithImage = DsfrTile(

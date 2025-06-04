@@ -5,10 +5,7 @@ import 'package:flutter_dsfr/flutter_dsfr.dart';
 class StepperPage extends StatelessWidget {
   const StepperPage({super.key});
 
-  static final model = PageItem(
-    title: 'Indicateur d\'étapes',
-    pageBuilder: (final context) => const StepperPage(),
-  );
+  static final model = PageItem(title: 'Indicateur d\'étapes', pageBuilder: (final context) => const StepperPage());
 
   @override
   Widget build(final context) {
@@ -24,26 +21,10 @@ class StepperPage extends StatelessWidget {
             stepTitle: 'Titre de l\'étape en cours',
             nextStepTitle: 'Titre de la prochaine étape',
           ),
-          DsfrStepper(
-            currentStep: 2,
-            stepsCount: 4,
-            stepTitle: 'Titre de l\'étape en cours',
-          ),
-          DsfrStepper(
-            currentStep: 4,
-            stepsCount: 4,
-            stepTitle: 'Titre de l\'étape en cours',
-          ),
-          DsfrStepper(
-            currentStep: 2,
-            stepsCount: 6,
-            stepTitle: 'Titre de l\'étape en cours',
-          ),
-          DsfrStepper(
-            currentStep: 3,
-            stepsCount: 10,
-            stepTitle: 'Titre de l\'étape en cours',
-          ),
+          DsfrStepper(currentStep: 2, stepsCount: 4, stepTitle: 'Titre de l\'étape en cours'),
+          DsfrStepper(currentStep: 4, stepsCount: 4, stepTitle: 'Titre de l\'étape en cours'),
+          DsfrStepper(currentStep: 2, stepsCount: 6, stepTitle: 'Titre de l\'étape en cours'),
+          DsfrStepper(currentStep: 3, stepsCount: 10, stepTitle: 'Titre de l\'étape en cours'),
         ],
       ),
     );

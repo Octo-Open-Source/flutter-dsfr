@@ -5,21 +5,12 @@ import '../../helpers/a11y_test.skip.dart';
 void main() {
   Widget accordionGroupWithExpandedLabel = DsfrAccordionsGroup(
     values: [
-      DsfrAccordion(
-        headerLabel: 'header collapsed',
-        headerExpandedLabel: 'header expanded',
-        body: Text('body'),
-      ),
+      DsfrAccordion(headerLabel: 'header collapsed', headerExpandedLabel: 'header expanded', body: Text('body')),
     ],
   );
 
   Widget accordionGroup = DsfrAccordionsGroup(
-    values: [
-      DsfrAccordion(
-        headerLabel: 'header',
-        body: Text('body'),
-      ),
-    ],
+    values: [DsfrAccordion(headerLabel: 'header', body: Text('body'))],
   );
 
   accessibilityTest(

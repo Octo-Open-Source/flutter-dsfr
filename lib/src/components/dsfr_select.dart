@@ -83,12 +83,7 @@ class DsfrSelect<T> extends StatelessWidget {
 }
 
 class _Label extends StatelessWidget {
-  const _Label({
-    required this.label,
-    required this.child,
-    this.hint,
-    this.enabled = true,
-  });
+  const _Label({required this.label, required this.child, this.hint, this.enabled = true});
 
   final String label;
   final String? hint;
@@ -97,23 +92,22 @@ class _Label extends StatelessWidget {
 
   @override
   Widget build(final context) => Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          ExcludeSemantics(
-            child: Text(
-              label,
-              style: DsfrTextStyle.bodyMd(
-                color:
-                    enabled ? DsfrColorDecisions.textLabelGrey(context) : DsfrColorDecisions.textDisabledGrey(context),
-              ),
-            ),
+    crossAxisAlignment: CrossAxisAlignment.stretch,
+    children: [
+      ExcludeSemantics(
+        child: Text(
+          label,
+          style: DsfrTextStyle.bodyMd(
+            color: enabled ? DsfrColorDecisions.textLabelGrey(context) : DsfrColorDecisions.textDisabledGrey(context),
           ),
-          if (hint != null) ...[
-            const SizedBox(height: DsfrSpacings.s1v),
-            Text(hint!, style: DsfrTextStyle.bodyXs(color: DsfrColorDecisions.textMentionGrey(context))),
-          ],
-          const SizedBox(height: 10),
-          child,
-        ],
-      );
+        ),
+      ),
+      if (hint != null) ...[
+        const SizedBox(height: DsfrSpacings.s1v),
+        Text(hint!, style: DsfrTextStyle.bodyXs(color: DsfrColorDecisions.textMentionGrey(context))),
+      ],
+      const SizedBox(height: 10),
+      child,
+    ],
+  );
 }

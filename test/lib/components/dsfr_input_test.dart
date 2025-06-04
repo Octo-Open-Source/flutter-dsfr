@@ -5,26 +5,11 @@ import '../../helpers/a11y_test.skip.dart';
 void main() {
   Widget input = DsfrInput(label: 'label', hintText: 'hint', onChanged: (final value) {});
 
-  Widget passwordInput = DsfrInput(
-    label: 'label',
-    hintText: 'hint',
-    onChanged: (final value) {},
-    isPasswordMode: true,
-  );
+  Widget passwordInput = DsfrInput(label: 'label', hintText: 'hint', onChanged: (final value) {}, isPasswordMode: true);
 
-  Widget disabledInput = DsfrInput(
-    label: 'label',
-    hintText: 'hint',
-    onChanged: (final value) {},
-    enabled: false,
-  );
+  Widget disabledInput = DsfrInput(label: 'label', hintText: 'hint', onChanged: (final value) {}, enabled: false);
 
-  Widget textAreaInput = DsfrInput(
-      label: 'label',
-      hintText: 'hint',
-      onChanged: (final value) {},
-      maxLines: 5,
-  );
+  Widget textAreaInput = DsfrInput(label: 'label', hintText: 'hint', onChanged: (final value) {}, maxLines: 5);
 
   Widget longTextAreaInput = DsfrInput(
     label: 'label',

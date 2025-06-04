@@ -72,10 +72,11 @@ class DsfrButton extends StatelessWidget {
     }
 
     return DsfrRawButton(
-        variant: variant,
-        size: size,
-        foregroundColor: foregroundColor,
-        onPressed: onPressed,
-        child: Row(mainAxisSize: MainAxisSize.min, spacing: DsfrSpacings.s1w, children: buttonWidget));
+      variant: variant,
+      size: size,
+      foregroundColor: foregroundColor,
+      onPressed: onPressed,
+      child: Row(mainAxisSize: MainAxisSize.min, spacing: DsfrSpacings.s1w, children: buttonWidget),
+    );
   }
 }

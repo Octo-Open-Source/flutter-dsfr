@@ -20,18 +20,14 @@ void main() {
     var dsfrCheckboxError = DsfrCheckbox(
       label: 'label',
       value: true,
-      componentState: DsfrComponentState.error(
-        errorMessage: 'Erreur',
-      ),
+      componentState: DsfrComponentState.error(errorMessage: 'Erreur'),
       onChanged: (bool value) {},
       size: DsfrComponentSize.sm,
     );
     var dsfrCheckboxSuccess = DsfrCheckbox(
       label: 'label',
       value: true,
-      componentState: DsfrComponentState.success(
-        message: 'Succès',
-      ),
+      componentState: DsfrComponentState.success(message: 'Succès'),
       onChanged: (bool value) {},
       size: DsfrComponentSize.sm,
     );
@@ -68,12 +64,7 @@ void main() {
   });
 
   group('Checkbox taille MD', () {
-    var dsfrCheckboxMd = DsfrCheckbox(
-      label: 'label',
-      value: true,
-      size: DsfrComponentSize.md,
-      onChanged: (value) {},
-    );
+    var dsfrCheckboxMd = DsfrCheckbox(label: 'label', value: true, size: DsfrComponentSize.md, onChanged: (value) {});
     var dsfrCheckboxMdWithDescription = DsfrCheckbox(
       label: 'label',
       value: true,
@@ -84,18 +75,14 @@ void main() {
     var dsfrCheckboxMdError = DsfrCheckbox(
       label: 'label',
       value: true,
-      componentState: DsfrComponentState.error(
-        errorMessage: 'Erreur',
-      ),
+      componentState: DsfrComponentState.error(errorMessage: 'Erreur'),
       size: DsfrComponentSize.md,
       onChanged: (value) {},
     );
     var dsfrCheckboxMdSuccess = DsfrCheckbox(
       label: 'label',
       value: true,
-      componentState: DsfrComponentState.success(
-        message: 'Succès',
-      ),
+      componentState: DsfrComponentState.success(message: 'Succès'),
       size: DsfrComponentSize.md,
       onChanged: (value) {},
     );

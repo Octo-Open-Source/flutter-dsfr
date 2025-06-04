@@ -9,10 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dsfr/src/helpers/color_utils.dart';
 import 'package:flutter_dsfr/src/helpers/dsfr_component_state.dart';
 
-enum DsfrToggleSwitchLabelLocation {
-  left,
-  right,
-}
+enum DsfrToggleSwitchLabelLocation { left, right }
 
 class DsfrToggleSwitch extends StatefulWidget {
   const DsfrToggleSwitch({
@@ -51,42 +48,33 @@ class _DsfrToggleSwitchState extends State<DsfrToggleSwitch> with MaterialStateM
       (false, _) => DsfrColorDecisions.textDisabledGrey(context),
       (true, DsfrComponentStateEnum.error) => DsfrColorDecisions.textDefaultError(context),
       (true, DsfrComponentStateEnum.success) => DsfrColorDecisions.textDefaultSuccess(context),
-      _ => DsfrColorDecisions.textActiveBlueFrance(context)
+      _ => DsfrColorDecisions.textActiveBlueFrance(context),
     };
 
     final rowChildren = [
       DsfrFocusWidget(
         isFocused: isFocused,
         borderRadius: const BorderRadius.all(Radius.circular(24)),
-        child: _Switch(
-          value: widget.value,
-          enabled: widget.enabled,
-          componentState: componentState.state,
-        ),
+        child: _Switch(value: widget.value, enabled: widget.enabled, componentState: componentState.state),
       ),
       Expanded(
-        child: Text(
-          widget.label,
-          style: DsfrTextStyle.bodyMd(color: textColor),
-        ),
+        child: Text(widget.label, style: DsfrTextStyle.bodyMd(color: textColor)),
       ),
     ];
 
     var columnChildren = [
       Row(
         spacing: DsfrSpacings.s2w,
-        children: widget.labelLocation == DsfrToggleSwitchLabelLocation.left ? rowChildren.reversed.toList() : rowChildren,
+        children: widget.labelLocation == DsfrToggleSwitchLabelLocation.left
+            ? rowChildren.reversed.toList()
+            : rowChildren,
       ),
       if (widget.status != null)
         Align(
-          alignment:
-              widget.labelLocation == DsfrToggleSwitchLabelLocation.left ? Alignment.centerRight : Alignment.centerLeft,
-          child: Text(
-            widget.status!,
-            style: DsfrTextStyle.bodyXs(
-              color: statusTextColor,
-            ),
-          ),
+          alignment: widget.labelLocation == DsfrToggleSwitchLabelLocation.left
+              ? Alignment.centerRight
+              : Alignment.centerLeft,
+          child: Text(widget.status!, style: DsfrTextStyle.bodyXs(color: statusTextColor)),
         ),
       if (widget.description != null)
         Padding(
@@ -110,10 +98,7 @@ class _DsfrToggleSwitchState extends State<DsfrToggleSwitch> with MaterialStateM
         onFocusChange: updateMaterialState(WidgetState.focused),
         child: DsfrFormState(
           componentState: componentState,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: columnChildren,
-          ),
+          child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: columnChildren),
         ),
       ),
     );
@@ -121,11 +106,7 @@ class _DsfrToggleSwitchState extends State<DsfrToggleSwitch> with MaterialStateM
 }
 
 class _Switch extends StatelessWidget {
-  const _Switch({
-    required this.value,
-    required this.enabled,
-    required this.componentState,
-  });
+  const _Switch({required this.value, required this.enabled, required this.componentState});
 
   final bool value;
   final bool enabled;
@@ -163,11 +144,7 @@ class _Switch extends StatelessWidget {
         fit: StackFit.expand,
         children: [
           DecoratedBox(
-            decoration: BoxDecoration(
-              color: backgroundColor,
-              border: border,
-              borderRadius: borderRadius,
-            ),
+            decoration: BoxDecoration(color: backgroundColor, border: border, borderRadius: borderRadius),
           ),
           AnimatedPositioned(
             curve: Curves.easeInOut,
@@ -177,18 +154,10 @@ class _Switch extends StatelessWidget {
             bottom: 0,
             duration: Duration(milliseconds: 250),
             child: DecoratedBox(
-              decoration: BoxDecoration(
-                color: circleBackgroundColor,
-                border: border,
-                shape: BoxShape.circle,
-              ),
+              decoration: BoxDecoration(color: circleBackgroundColor, border: border, shape: BoxShape.circle),
               child: Visibility(
                 visible: value,
-                child: Icon(
-                  DsfrIcons.systemCheckLine,
-                  size: 16,
-                  color: iconColor,
-                ),
+                child: Icon(DsfrIcons.systemCheckLine, size: 16, color: iconColor),
               ),
             ),
           ),

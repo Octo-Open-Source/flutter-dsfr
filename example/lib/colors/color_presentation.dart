@@ -16,14 +16,8 @@ class ColorPresentation extends StatelessWidget {
         child: Center(
           child: Column(
             children: [
-              Text(
-                dsfrColor.name,
-                style: TextStyle(color: textColor),
-              ),
-              Text(
-                dsfrColor.description,
-                style: TextStyle(color: textColor),
-              ),
+              Text(dsfrColor.name, style: TextStyle(color: textColor)),
+              Text(dsfrColor.description, style: TextStyle(color: textColor)),
             ],
           ),
         ),

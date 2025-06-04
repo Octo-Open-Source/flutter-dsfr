@@ -6,12 +6,7 @@ class DsfrSearchBar extends StatefulWidget {
   final Function() onSearch;
   final TextEditingController controller;
 
-  const DsfrSearchBar({
-    super.key,
-    this.hintText = 'Rechercher',
-    required this.onSearch,
-    required this.controller,
-  });
+  const DsfrSearchBar({super.key, this.hintText = 'Rechercher', required this.onSearch, required this.controller});
 
   @override
   State<DsfrSearchBar> createState() => _DsfrSearchBarState();
@@ -96,11 +91,7 @@ class _DsfrSearchBarState extends State<DsfrSearchBar> {
             ),
           ],
         ),
-        Divider(
-          height: 0,
-          thickness: 2,
-          color: DsfrColorDecisions.backgroundActionHighBlueFrance(context),
-        ),
+        Divider(height: 0, thickness: 2, color: DsfrColorDecisions.backgroundActionHighBlueFrance(context)),
       ],
     );
   }

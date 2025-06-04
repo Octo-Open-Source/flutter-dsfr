@@ -8,10 +8,7 @@ import 'package:flutter_dsfr/flutter_dsfr.dart';
 class BadgesPage extends StatelessWidget {
   const BadgesPage({super.key});
 
-  static final model = PageItem(
-    title: 'Badges',
-    pageBuilder: (final context) => const BadgesPage(),
-  );
+  static final model = PageItem(title: 'Badges', pageBuilder: (final context) => const BadgesPage());
 
   @override
   Widget build(BuildContext context) {
@@ -24,34 +21,40 @@ class BadgesPage extends StatelessWidget {
             PageSection(
               title: 'Badge sans icône',
               children: [
-                PageSubSection(title: 'taille sm', children: [
-                  DsfrBadge(label: 'badge info', type: DsfrBadgeType.information, size: DsfrComponentSize.sm),
-                  DsfrBadge(label: 'badge succès', type: DsfrBadgeType.success, size: DsfrComponentSize.sm),
-                  DsfrBadge(label: 'badge erreur', type: DsfrBadgeType.error, size: DsfrComponentSize.sm),
-                  DsfrBadge(label: 'badge avertissement', type: DsfrBadgeType.warning, size: DsfrComponentSize.sm),
-                  DsfrBadge(label: 'badge nouveau', type: DsfrBadgeType.news, size: DsfrComponentSize.sm),
-                  DsfrBadge(
-                    label: 'badge personnalisé',
-                    type: DsfrBadgeType.custom,
-                    backgroundCustomColor: DsfrColors.greenArchipel100,
-                    textCustomColor: DsfrColors.greenArchipelMoon716,
-                    size: DsfrComponentSize.sm,
-                  ),
-                ]),
-                PageSubSection(title: 'taille md', children: [
-                  DsfrBadge(label: 'badge info', type: DsfrBadgeType.information, size: DsfrComponentSize.md),
-                  DsfrBadge(label: 'badge succès', type: DsfrBadgeType.success, size: DsfrComponentSize.md),
-                  DsfrBadge(label: 'badge erreur', type: DsfrBadgeType.error, size: DsfrComponentSize.md),
-                  DsfrBadge(label: 'badge avertissement', type: DsfrBadgeType.warning, size: DsfrComponentSize.md),
-                  DsfrBadge(label: 'badge nouveau', type: DsfrBadgeType.news, size: DsfrComponentSize.md),
-                  DsfrBadge(
-                    label: 'badge personnalisé',
-                    type: DsfrBadgeType.custom,
-                    backgroundCustomColor: DsfrColors.greenArchipel100,
-                    textCustomColor: DsfrColors.greenArchipelMoon716,
-                    size: DsfrComponentSize.md,
-                  ),
-                ])
+                PageSubSection(
+                  title: 'taille sm',
+                  children: [
+                    DsfrBadge(label: 'badge info', type: DsfrBadgeType.information, size: DsfrComponentSize.sm),
+                    DsfrBadge(label: 'badge succès', type: DsfrBadgeType.success, size: DsfrComponentSize.sm),
+                    DsfrBadge(label: 'badge erreur', type: DsfrBadgeType.error, size: DsfrComponentSize.sm),
+                    DsfrBadge(label: 'badge avertissement', type: DsfrBadgeType.warning, size: DsfrComponentSize.sm),
+                    DsfrBadge(label: 'badge nouveau', type: DsfrBadgeType.news, size: DsfrComponentSize.sm),
+                    DsfrBadge(
+                      label: 'badge personnalisé',
+                      type: DsfrBadgeType.custom,
+                      backgroundCustomColor: DsfrColors.greenArchipel100,
+                      textCustomColor: DsfrColors.greenArchipelMoon716,
+                      size: DsfrComponentSize.sm,
+                    ),
+                  ],
+                ),
+                PageSubSection(
+                  title: 'taille md',
+                  children: [
+                    DsfrBadge(label: 'badge info', type: DsfrBadgeType.information, size: DsfrComponentSize.md),
+                    DsfrBadge(label: 'badge succès', type: DsfrBadgeType.success, size: DsfrComponentSize.md),
+                    DsfrBadge(label: 'badge erreur', type: DsfrBadgeType.error, size: DsfrComponentSize.md),
+                    DsfrBadge(label: 'badge avertissement', type: DsfrBadgeType.warning, size: DsfrComponentSize.md),
+                    DsfrBadge(label: 'badge nouveau', type: DsfrBadgeType.news, size: DsfrComponentSize.md),
+                    DsfrBadge(
+                      label: 'badge personnalisé',
+                      type: DsfrBadgeType.custom,
+                      backgroundCustomColor: DsfrColors.greenArchipel100,
+                      textCustomColor: DsfrColors.greenArchipelMoon716,
+                      size: DsfrComponentSize.md,
+                    ),
+                  ],
+                ),
               ],
             ),
             PageSection(

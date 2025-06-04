@@ -113,7 +113,7 @@ class _DsfrInputHeadlessState extends State<DsfrInputHeadless> {
       initialDate: widget.initialDate ?? DateTime.now(),
       firstDate: widget.firstDate ?? DateTime.now().subtract(const Duration(days: 365)),
       lastDate: widget.lastDate ?? DateTime.now().add(const Duration(days: 365)),
-  );
+    );
     if (picked != null) {
       setState(() {
         widget.controller?.text = DateFormat('dd/MM/yyyy').format(picked);
@@ -155,11 +155,9 @@ class _DsfrInputHeadlessState extends State<DsfrInputHeadless> {
             strokeAlign: BorderSide.strokeAlignOutside,
           ),
         ),
-        borderRadius: BorderRadius.vertical(
-          top: Radius.circular(widget.radius + 2),
-        ),
+        borderRadius: BorderRadius.vertical(top: Radius.circular(widget.radius + 2)),
       ),
-child: Padding(
+      child: Padding(
         padding: widget.focusPadding.add(EdgeInsets.only(bottom: DsfrSpacings.s0v5)),
         child: SizedBox(
           width: widget.width,

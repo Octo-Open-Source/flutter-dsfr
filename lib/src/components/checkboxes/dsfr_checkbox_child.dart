@@ -60,12 +60,7 @@ class DsfrCheckboxChild extends StatelessWidget {
                     return DsfrFocusWidget(
                       isFocused: isFocused,
                       borderRadius: const BorderRadius.all(Radius.circular(4)),
-                      child: DsfrCheckboxIcon(
-                        value: value,
-                        padding: padding,
-                        enabled: enabled,
-                        state: state,
-                      ),
+                      child: DsfrCheckboxIcon(value: value, padding: padding, enabled: enabled, state: state),
                     );
                   },
                 ),
@@ -76,21 +71,18 @@ class DsfrCheckboxChild extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     if (description != null) SizedBox(height: 16),
-                    Text(
-                      label,
-                      style: DsfrTextStyle.bodyMdCenter(
-                        color: _getLabelColor(context),
-                      ),
-                    ),
+                    Text(label, style: DsfrTextStyle.bodyMdCenter(color: _getLabelColor(context))),
                     if (description != null) ...[
-                      Text(description!,
-                          style: enabled
-                              ? DsfrTextStyle.bodyXs(color: DsfrColorDecisions.textMentionGrey(context))
-                              : DsfrTextStyle.bodyXs(color: DsfrColorDecisions.textDisabledGrey(context))),
+                      Text(
+                        description!,
+                        style: enabled
+                            ? DsfrTextStyle.bodyXs(color: DsfrColorDecisions.textMentionGrey(context))
+                            : DsfrTextStyle.bodyXs(color: DsfrColorDecisions.textDisabledGrey(context)),
+                      ),
                     ],
                   ],
                 ),
-              )
+              ),
             ],
           ),
         ),

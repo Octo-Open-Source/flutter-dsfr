@@ -43,18 +43,18 @@ class DsfrRadioButtonGroup<T> extends StatefulWidget {
     final DsfrComponentSize size = DsfrComponentSize.md,
     final Direction direction = Direction.horizontal,
   }) : this._(
-          key: key,
-          title: title,
-          description: description,
-          values: values,
-          initialValue: initialValue,
-          onValueChange: onCallback,
-          enabled: enabled,
-          componentState: componentState,
-          direction: direction,
-          isRichRadio: true,
-          size: size,
-        );
+         key: key,
+         title: title,
+         description: description,
+         values: values,
+         initialValue: initialValue,
+         onValueChange: onCallback,
+         enabled: enabled,
+         componentState: componentState,
+         direction: direction,
+         isRichRadio: true,
+         size: size,
+       );
 
   const DsfrRadioButtonGroup.simple({
     final Key? key,
@@ -68,18 +68,18 @@ class DsfrRadioButtonGroup<T> extends StatefulWidget {
     final DsfrComponentSize size = DsfrComponentSize.md,
     final Direction direction = Direction.vertical,
   }) : this._(
-          key: key,
-          title: title,
-          description: description,
-          values: values,
-          initialValue: initialValue,
-          onValueChange: onCallback,
-          enabled: enabled,
-          componentState: componentState,
-          direction: direction,
-          isRichRadio: false,
-          size: size,
-        );
+         key: key,
+         title: title,
+         description: description,
+         values: values,
+         initialValue: initialValue,
+         onValueChange: onCallback,
+         enabled: enabled,
+         componentState: componentState,
+         direction: direction,
+         isRichRadio: false,
+         size: size,
+       );
 
   @override
   State<DsfrRadioButtonGroup<T>> createState() => _DsfrRadioButtonGroupState<T>();
@@ -95,9 +95,9 @@ class _DsfrRadioButtonGroupState<T> extends State<DsfrRadioButtonGroup<T>> {
   }
 
   void _handleChange(final T? value) => setState(() {
-        _value = value;
-        widget.onValueChange(_value);
-      });
+    _value = value;
+    widget.onValueChange(_value);
+  });
 
   @override
   Widget build(final context) {

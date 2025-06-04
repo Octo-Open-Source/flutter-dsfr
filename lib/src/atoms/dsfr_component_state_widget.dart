@@ -3,10 +3,7 @@ import 'package:flutter_dsfr/flutter_dsfr.dart';
 import 'package:flutter_dsfr/src/helpers/color_utils.dart';
 
 class DsfrComponentStateWidget extends StatelessWidget {
-  const DsfrComponentStateWidget({
-    super.key,
-    required this.componentState,
-  });
+  const DsfrComponentStateWidget({super.key, required this.componentState});
 
   final DsfrComponentState componentState;
 
@@ -22,9 +19,7 @@ class DsfrComponentStateWidget extends StatelessWidget {
           Flexible(
             child: Text(
               componentState.text!,
-              style: DsfrTextStyle.bodyXs(
-                color: getTextColor(context, componentState.state),
-              ),
+              style: DsfrTextStyle.bodyXs(color: getTextColor(context, componentState.state)),
             ),
           ),
         ],

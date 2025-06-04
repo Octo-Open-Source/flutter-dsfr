@@ -3,12 +3,7 @@ import 'package:flutter_dsfr/src/fondamentaux/dsfr_color_decisions_extension.dar
 import 'package:flutter_dsfr/src/fondamentaux/dsfr_spacings.g.dart';
 
 class DsfrFocusWidget extends StatelessWidget {
-  const DsfrFocusWidget({
-    super.key,
-    required this.isFocused,
-    this.borderRadius,
-    required this.child,
-  });
+  const DsfrFocusWidget({super.key, required this.isFocused, this.borderRadius, required this.child});
 
   final bool isFocused;
   final BorderRadiusGeometry? borderRadius;
@@ -39,9 +34,7 @@ class DsfrFocusWidget extends StatelessWidget {
                       strokeAlign: BorderSide.strokeAlignOutside,
                     ),
                   ),
-                  borderRadius: borderRadius?.add(
-                    const BorderRadius.all(Radius.circular(marginAroundChild)),
-                  ),
+                  borderRadius: borderRadius?.add(const BorderRadius.all(Radius.circular(marginAroundChild))),
                 ),
               ),
             ),

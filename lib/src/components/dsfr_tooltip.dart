@@ -80,13 +80,13 @@ class DsfrTooltipState extends State<DsfrTooltip> with SingleTickerProviderState
     _tooltipTop = tooltipFitsAboveTarget
         ? null
         : tooltipFitsBelowTarget
-            ? targetOffset.dy + targetSize.height
-            : null;
+        ? targetOffset.dy + targetSize.height
+        : null;
     _tooltipBottom = tooltipFitsAboveTarget
         ? contextSize.height - targetOffset.dy
         : tooltipFitsBelowTarget
-            ? null
-            : targetOffset.dy + targetSize.height / 2;
+        ? null
+        : targetOffset.dy + targetSize.height / 2;
     _isInverted = _tooltipTop != null;
     _tooltipAlignment = Alignment(
       (targetOffset.dx) / (contextSize.width - targetSize.width) * 2 - 1.0,
@@ -126,10 +126,7 @@ class DsfrTooltipState extends State<DsfrTooltip> with SingleTickerProviderState
       child: Semantics(
         label: "${widget.semanticsLabel ?? ''}, appuyez deux fois pour afficher le message informatif",
         child: ExcludeSemantics(
-          child: GestureDetector(
-            onTap: _toggle,
-            child: widget.child,
-          ),
+          child: GestureDetector(onTap: _toggle, child: widget.child),
         ),
       ),
       overlayChildBuilder: (context) {
@@ -172,9 +169,7 @@ class DsfrTooltipState extends State<DsfrTooltip> with SingleTickerProviderState
                               child: Text(
                                 widget.message,
                                 textAlign: widget.messageTextAlign,
-                                style: DsfrTextStyle.bodyXs(
-                                  color: DsfrColorDecisions.textDefaultGrey(context),
-                                ),
+                                style: DsfrTextStyle.bodyXs(color: DsfrColorDecisions.textDefaultGrey(context)),
                               ),
                             ),
                           ),
@@ -206,12 +201,7 @@ class TooltipArrowPainter extends CustomPainter {
   final Color borderColor;
   final bool isInverted;
 
-  TooltipArrowPainter({
-    required this.size,
-    required this.color,
-    required this.borderColor,
-    required this.isInverted,
-  });
+  TooltipArrowPainter({required this.size, required this.color, required this.borderColor, required this.isInverted});
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -251,12 +241,7 @@ class TooltipArrow extends StatelessWidget {
   final Color color;
   final bool isInverted;
 
-  const TooltipArrow({
-    super.key,
-    required this.size,
-    required this.color,
-    this.isInverted = false,
-  });
+  const TooltipArrow({super.key, required this.size, required this.color, this.isInverted = false});
 
   @override
   Widget build(BuildContext context) {
@@ -265,10 +250,11 @@ class TooltipArrow extends StatelessWidget {
       child: CustomPaint(
         size: size,
         painter: TooltipArrowPainter(
-            size: size,
-            color: color,
-            isInverted: isInverted,
-            borderColor: DsfrColorDecisions.borderDefaultGrey(context)),
+          size: size,
+          color: color,
+          isInverted: isInverted,
+          borderColor: DsfrColorDecisions.borderDefaultGrey(context),
+        ),
       ),
     );
   }

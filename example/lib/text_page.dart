@@ -5,10 +5,7 @@ import 'package:flutter/material.dart';
 class TextPage extends StatefulWidget {
   const TextPage({super.key});
 
-  static final model = PageItem(
-    title: 'Typographie',
-    pageBuilder: (final context) => const TextPage(),
-  );
+  static final model = PageItem(title: 'Typographie', pageBuilder: (final context) => const TextPage());
 
   @override
   State<TextPage> createState() => _TextPageState();
@@ -54,17 +51,11 @@ class _TextPageState extends State<TextPage> {
         const SizedBox(height: 16),
         Text(
           data,
-          style: dsfrTextStyle.copyWith(
-            color: Colors.white,
-            backgroundColor: Colors.black,
-          ),
+          style: dsfrTextStyle.copyWith(color: Colors.white, backgroundColor: Colors.black),
         ),
         const SizedBox(height: 16),
         const Text('Medium'),
-        Text(
-          data,
-          style: dsfrTextStyle.copyWith(fontWeight: FontWeight.w500),
-        ),
+        Text(data, style: dsfrTextStyle.copyWith(fontWeight: FontWeight.w500)),
         const SizedBox(height: 16),
         Text(
           data,
@@ -76,10 +67,7 @@ class _TextPageState extends State<TextPage> {
         ),
         const SizedBox(height: 16),
         const Text('Bold'),
-        Text(
-          data,
-          style: dsfrTextStyle.copyWith(fontWeight: FontWeight.bold),
-        ),
+        Text(data, style: dsfrTextStyle.copyWith(fontWeight: FontWeight.bold)),
         const SizedBox(height: 16),
         Text(
           data,

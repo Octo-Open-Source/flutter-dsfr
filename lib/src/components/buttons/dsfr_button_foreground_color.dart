@@ -5,17 +5,12 @@ import 'package:flutter/material.dart';
 
 @immutable
 class DsfrButtonForegroundColor extends WidgetStateColor {
-  DsfrButtonForegroundColor({
-    required final Color $default,
-    required final Color disabled,
-  })  : _default = $default,
-        _disabled = disabled,
-        super($default.colorToInt());
+  DsfrButtonForegroundColor({required final Color $default, required final Color disabled})
+    : _default = $default,
+      _disabled = disabled,
+      super($default.colorToInt());
 
-  factory DsfrButtonForegroundColor.fromVariant(
-    final DsfrButtonVariant variant,
-    BuildContext context,
-  ) {
+  factory DsfrButtonForegroundColor.fromVariant(final DsfrButtonVariant variant, BuildContext context) {
     switch (variant) {
       case DsfrButtonVariant.primary:
         return DsfrButtonForegroundColor(
@@ -36,8 +31,7 @@ class DsfrButtonForegroundColor extends WidgetStateColor {
   final Color _disabled;
 
   @override
-  Color resolve(final Set<WidgetState> states) =>
-      states.contains(WidgetState.disabled) ? _disabled : _default;
+  Color resolve(final Set<WidgetState> states) => states.contains(WidgetState.disabled) ? _disabled : _default;
 
   @override
   bool operator ==(final Object other) =>

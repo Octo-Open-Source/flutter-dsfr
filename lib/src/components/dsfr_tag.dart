@@ -19,9 +19,11 @@ class DsfrTag extends StatefulWidget {
     this.onSelectionChanged,
     this.enabled = true,
     this.onDelete,
-  }) : assert((onSelectionChanged == null || onTap == null) &&
-            (onSelectionChanged == null || onDelete == null) &&
-            (onTap == null || onDelete == null));
+  }) : assert(
+         (onSelectionChanged == null || onTap == null) &&
+             (onSelectionChanged == null || onDelete == null) &&
+             (onTap == null || onDelete == null),
+       );
 
   final String label;
   final DsfrComponentSize size;
@@ -247,11 +249,7 @@ class _TagButton extends StatelessWidget {
                     baseline: TextBaseline.alphabetic,
                     child: Padding(
                       padding: EdgeInsets.only(right: DsfrSpacings.s1v),
-                      child: Icon(
-                        icon,
-                        size: iconFontSize,
-                        color: textStyle.color,
-                      ),
+                      child: Icon(icon, size: iconFontSize, color: textStyle.color),
                     ),
                   ),
                 TextSpan(text: label),
@@ -261,11 +259,7 @@ class _TagButton extends StatelessWidget {
                     baseline: TextBaseline.alphabetic,
                     child: Padding(
                       padding: const EdgeInsets.only(left: DsfrSpacings.s1v),
-                      child: Icon(
-                        DsfrIcons.systemCloseLine,
-                        size: iconFontSize,
-                        color: textStyle.color,
-                      ),
+                      child: Icon(DsfrIcons.systemCloseLine, size: iconFontSize, color: textStyle.color),
                     ),
                   ),
               ],
@@ -286,10 +280,7 @@ const double _tagStrokeWidthSizeM = 1.5;
 const double _spaceBetweenButtonAndTag = 1;
 
 class _CustomShapeClipper extends CustomClipper<Path> {
-  const _CustomShapeClipper(
-    this.componentSize,
-    this.selected,
-  );
+  const _CustomShapeClipper(this.componentSize, this.selected);
 
   final DsfrComponentSize componentSize;
   final bool selected;
@@ -326,11 +317,7 @@ class _CustomShapeClipper extends CustomClipper<Path> {
 }
 
 class _CustomShapePainter extends CustomPainter {
-  const _CustomShapePainter(
-    this.componentSize,
-    this.backgroundColor,
-    this.selected,
-  );
+  const _CustomShapePainter(this.componentSize, this.backgroundColor, this.selected);
 
   final DsfrComponentSize componentSize;
   final Color backgroundColor;

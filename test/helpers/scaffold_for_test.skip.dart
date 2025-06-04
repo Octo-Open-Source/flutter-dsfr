@@ -14,9 +14,7 @@ class ScaffoldForTest extends StatelessWidget {
       isLightMode: isLightMode,
       builder: (context) {
         return MaterialApp(
-          theme: ThemeData.light().copyWith(
-            scaffoldBackgroundColor: DsfrColorDecisions.backgroundDefaultGrey(context),
-          ),
+          theme: ThemeData.light().copyWith(scaffoldBackgroundColor: DsfrColorDecisions.backgroundDefaultGrey(context)),
           darkTheme: ThemeData.dark().copyWith(
             scaffoldBackgroundColor: DsfrColorDecisions.backgroundDefaultGrey(context),
           ),

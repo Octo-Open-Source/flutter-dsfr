@@ -1,4 +1,1 @@
-enum DsfrLinkIconPosition {
-  start,
-  end,
-}
+enum DsfrLinkIconPosition { start, end }

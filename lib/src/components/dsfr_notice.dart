@@ -42,11 +42,7 @@ class DsfrNotice extends StatelessWidget {
         ColoredBox(
           color: _getBackgroundColor(context),
           child: Padding(
-            padding: const EdgeInsets.only(
-              left: DsfrSpacings.s2w,
-              bottom: DsfrSpacings.s2w,
-              top: 0,
-            ),
+            padding: const EdgeInsets.only(left: DsfrSpacings.s2w, bottom: DsfrSpacings.s2w, top: 0),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -61,12 +57,7 @@ class DsfrNotice extends StatelessWidget {
                             Icon(_getIcon(), color: color),
                             const SizedBox(width: DsfrSpacings.s1w),
                             Expanded(
-                              child: Text(
-                                titre,
-                                style: textStyle.copyWith(
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
+                              child: Text(titre, style: textStyle.copyWith(fontWeight: FontWeight.bold)),
                             ),
                           ],
                         ),
@@ -79,11 +70,7 @@ class DsfrNotice extends StatelessWidget {
                 IconButton(
                   iconSize: DsfrSpacings.s2w,
                   onPressed: onClose,
-                  icon: Icon(
-                    DsfrIcons.systemCloseLine,
-                    color: color,
-                    semanticLabel: 'Masquer le message',
-                  ),
+                  icon: Icon(DsfrIcons.systemCloseLine, color: color, semanticLabel: 'Masquer le message'),
                 ),
               ],
             ),

@@ -5,20 +5,20 @@ import 'package:meta/meta.dart';
 import 'scaffold_for_test.skip.dart';
 
 @isTest
-void accessibilityTest(
-    {required String componentName, required bool isLightMode, required Widget child, skip = false}) {
-  testWidgets("A11y test: Composant $componentName en mode ${isLightMode ? 'clair' : 'sombre'}",
-      (WidgetTester tester) async {
+void accessibilityTest({
+  required String componentName,
+  required bool isLightMode,
+  required Widget child,
+  skip = false,
+}) {
+  testWidgets("A11y test: Composant $componentName en mode ${isLightMode ? 'clair' : 'sombre'}", (
+    WidgetTester tester,
+  ) async {
     // Given
     final SemanticsHandle handle = tester.ensureSemantics();
 
     // When
-    await tester.pumpWidget(
-      ScaffoldForTest(
-        isLightMode: isLightMode,
-        child: child,
-      ),
-    );
+    await tester.pumpWidget(ScaffoldForTest(isLightMode: isLightMode, child: child));
 
     // Then
     await expectLater(tester, meetsGuideline(androidTapTargetGuideline));

@@ -6,10 +6,7 @@ import 'package:flutter/material.dart';
 class ButtonsPage extends StatelessWidget {
   const ButtonsPage({super.key});
 
-  static final model = PageItem(
-    title: 'Bouton',
-    pageBuilder: (final context) => const ButtonsPage(),
-  );
+  static final model = PageItem(title: 'Bouton', pageBuilder: (final context) => const ButtonsPage());
 
   void _handleTap() {}
 
@@ -24,12 +21,7 @@ class ButtonsPage extends StatelessWidget {
         children.addAll([
           Text('variant: ${variant.name}, size: ${size.name}'),
           DsfrButton(label: label, variant: variant, size: size),
-          DsfrButton(
-            label: label,
-            variant: variant,
-            size: size,
-            onPressed: _handleTap,
-          ),
+          DsfrButton(label: label, variant: variant, size: size, onPressed: _handleTap),
           DsfrButton(
             label: label,
             icon: DsfrIcons.buildingsAncientGateFill,
@@ -80,7 +72,7 @@ class ButtonsPage extends StatelessWidget {
                     variant: DsfrButtonVariant.primary,
                     size: DsfrComponentSize.sm,
                     onPressed: _handleTap,
-                  )
+                  ),
                 ],
               ),
             ],
@@ -108,7 +100,7 @@ class ButtonsPage extends StatelessWidget {
                     variant: DsfrButtonVariant.primary,
                     size: DsfrComponentSize.sm,
                     onPressed: _handleTap,
-                  )
+                  ),
                 ],
               ),
             ],

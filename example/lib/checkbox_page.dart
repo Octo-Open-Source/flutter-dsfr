@@ -5,10 +5,7 @@ import 'package:flutter/material.dart';
 class CheckboxPage extends StatefulWidget {
   const CheckboxPage({super.key});
 
-  static final model = PageItem(
-    title: 'Case à cocher',
-    pageBuilder: (final context) => const CheckboxPage(),
-  );
+  static final model = PageItem(title: 'Case à cocher', pageBuilder: (final context) => const CheckboxPage());
 
   @override
   State<CheckboxPage> createState() => _CheckboxPageState();
@@ -85,9 +82,7 @@ class _CheckboxPageState extends State<CheckboxPage> {
             description: 'case à cocher avec erreur',
             value: false,
             onChanged: (final value) {},
-            componentState: DsfrComponentState.error(
-              errorMessage: 'Texte d\'erreur obligatoire',
-            ),
+            componentState: DsfrComponentState.error(errorMessage: 'Texte d\'erreur obligatoire'),
             size: DsfrComponentSize.md,
           ),
           DsfrCheckbox(
@@ -95,9 +90,7 @@ class _CheckboxPageState extends State<CheckboxPage> {
             description: 'case à cocher avec succès',
             value: false,
             onChanged: (final value) {},
-            componentState: DsfrComponentState.success(
-              message: 'Texte de validation',
-            ),
+            componentState: DsfrComponentState.success(message: 'Texte de validation'),
             size: DsfrComponentSize.md,
           ),
           Row(

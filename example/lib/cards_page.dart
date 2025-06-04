@@ -7,10 +7,7 @@ import 'package:flutter/material.dart';
 class CardsPage extends StatelessWidget {
   const CardsPage({super.key});
 
-  static final model = PageItem(
-    title: 'Cartes',
-    pageBuilder: (final context) => const CardsPage(),
-  );
+  static final model = PageItem(title: 'Cartes', pageBuilder: (final context) => const CardsPage());
 
   @override
   Widget build(BuildContext context) {
@@ -23,27 +20,18 @@ class CardsPage extends StatelessWidget {
             PageSection(
               title: 'Cartes sans média',
               children: [
-                PageSubSection(title: 'Taille SM', children: [
-                  DsfrCard(
-                    title: "Une carte",
-                    description: _loremIpsum,
-                    size: DsfrComponentSize.sm,
-                  ),
-                ]),
-                PageSubSection(title: 'Taille MD', children: [
-                  DsfrCard(
-                    title: "Une carte",
-                    description: _loremIpsum,
-                    size: DsfrComponentSize.md,
-                  ),
-                ]),
-                PageSubSection(title: 'Taille LG', children: [
-                  DsfrCard(
-                    title: "Une carte",
-                    description: _loremIpsum,
-                    size: DsfrComponentSize.lg,
-                  ),
-                ]),
+                PageSubSection(
+                  title: 'Taille SM',
+                  children: [DsfrCard(title: "Une carte", description: _loremIpsum, size: DsfrComponentSize.sm)],
+                ),
+                PageSubSection(
+                  title: 'Taille MD',
+                  children: [DsfrCard(title: "Une carte", description: _loremIpsum, size: DsfrComponentSize.md)],
+                ),
+                PageSubSection(
+                  title: 'Taille LG',
+                  children: [DsfrCard(title: "Une carte", description: _loremIpsum, size: DsfrComponentSize.lg)],
+                ),
               ],
             ),
           ],

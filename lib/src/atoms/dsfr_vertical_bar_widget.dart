@@ -6,10 +6,7 @@ import 'package:flutter_dsfr/src/helpers/dsfr_component_state.dart';
 class DsfrVerticalBarWidget extends StatelessWidget {
   final DsfrComponentState componentState;
 
-  const DsfrVerticalBarWidget({
-    super.key,
-    required this.componentState,
-  });
+  const DsfrVerticalBarWidget({super.key, required this.componentState});
 
   @override
   Widget build(final context) {
@@ -18,11 +15,7 @@ class DsfrVerticalBarWidget extends StatelessWidget {
     } else {
       return Row(
         children: [
-          VerticalDivider(
-            color: getColor(context),
-            width: 0,
-            thickness: 2,
-          ),
+          VerticalDivider(color: getColor(context), width: 0, thickness: 2),
           const SizedBox(width: DsfrSpacings.s2w),
         ],
       );

@@ -3,11 +3,7 @@ import 'package:flutter_dsfr/src/components/dsfr_tooltip.dart';
 import '../../helpers/a11y_test.skip.dart';
 
 void main() {
-  Widget tooltipTop = DsfrTooltip(
-    message: "message",
-    semanticsLabel: "help",
-    child: Icon(Icons.info_outline),
-  );
+  Widget tooltipTop = DsfrTooltip(message: "message", semanticsLabel: "help", child: Icon(Icons.info_outline));
   Widget tooltipBottom = DsfrTooltip(
     message: "message",
     forceBottom: true,

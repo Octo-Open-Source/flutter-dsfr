@@ -56,13 +56,7 @@ class _DsfrRadioRichButtonState<T> extends State<DsfrRadioRichButton<T>>
           canRequestFocus: widget.onChanged != null,
           onFocusChange: updateMaterialState(WidgetState.focused),
           child: DecoratedBox(
-            decoration: BoxDecoration(
-              border: Border.fromBorderSide(
-                BorderSide(
-                  color: getBorderColor(context),
-                ),
-              ),
-            ),
+            decoration: BoxDecoration(border: Border.fromBorderSide(BorderSide(color: getBorderColor(context)))),
             child: IntrinsicHeight(
               child: Row(
                 mainAxisSize: mainAxisSize,
@@ -89,10 +83,7 @@ class _DsfrRadioRichButtonState<T> extends State<DsfrRadioRichButton<T>>
                               crossAxisAlignment: CrossAxisAlignment.start,
                               spacing: DsfrSpacings.s1v,
                               children: [
-                                Text(
-                                  widget.title,
-                                  style: DsfrTextStyle.bodyMd(color: getLabelColor(context)),
-                                ),
+                                Text(widget.title, style: DsfrTextStyle.bodyMd(color: getLabelColor(context))),
                                 if (widget.description != null)
                                   Text(
                                     widget.description!,
@@ -108,21 +99,11 @@ class _DsfrRadioRichButtonState<T> extends State<DsfrRadioRichButton<T>>
                   if (widget.trailingIcon != null) ...[
                     Row(
                       children: [
-                        VerticalDivider(
-                          width: 0,
-                          indent: DsfrSpacings.s1v,
-                          endIndent: DsfrSpacings.s1v,
-                        ),
-                        SizedBox(
-                          width: 88,
-                          height: 88,
-                          child: Center(
-                            child: widget.trailingIcon!,
-                          ),
-                        ),
+                        VerticalDivider(width: 0, indent: DsfrSpacings.s1v, endIndent: DsfrSpacings.s1v),
+                        SizedBox(width: 88, height: 88, child: Center(child: widget.trailingIcon!)),
                       ],
-                    )
-                  ]
+                    ),
+                  ],
                 ],
               ),
             ),
@@ -158,8 +139,7 @@ class _DsfrRadioRichButtonState<T> extends State<DsfrRadioRichButton<T>>
     return switch (widget.size) {
       DsfrComponentSize.md => 24.0,
       DsfrComponentSize.sm => 16.0,
-      DsfrComponentSize.lg =>
-        throw UnimplementedError('Size ${widget.size} is not implemented'),
+      DsfrComponentSize.lg => throw UnimplementedError('Size ${widget.size} is not implemented'),
     };
   }
 }

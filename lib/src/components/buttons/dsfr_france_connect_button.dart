@@ -31,15 +31,15 @@ class DsfrFranceConnectButton extends StatelessWidget {
     final String buttonBoldLabel = 'FranceConnect',
     final String linkLabel = 'Qu\'est-ce que France Connect ?',
   }) : this._(
-          key: key,
-          isFranceConnectPlus: false,
-          onTapButton: onTapButton,
-          onTapLink: onTapLink,
-          enabled: enabled,
-          linkLabel: linkLabel,
-          buttonPrefixLabel: buttonPrefixLabel,
-          buttonBoldLabel: buttonBoldLabel,
-        );
+         key: key,
+         isFranceConnectPlus: false,
+         onTapButton: onTapButton,
+         onTapLink: onTapLink,
+         enabled: enabled,
+         linkLabel: linkLabel,
+         buttonPrefixLabel: buttonPrefixLabel,
+         buttonBoldLabel: buttonBoldLabel,
+       );
 
   const DsfrFranceConnectButton.franceConnectPlus({
     final Key? key,
@@ -50,15 +50,15 @@ class DsfrFranceConnectButton extends StatelessWidget {
     final String buttonBoldLabel = 'FranceConnect',
     final String linkLabel = 'Qu\'est-ce que France Connect ?',
   }) : this._(
-          key: key,
-          isFranceConnectPlus: true,
-          onTapButton: onTapButton,
-          onTapLink: onTapLink,
-          enabled: enabled,
-          linkLabel: linkLabel,
-          buttonPrefixLabel: buttonPrefixLabel,
-          buttonBoldLabel: buttonBoldLabel,
-        );
+         key: key,
+         isFranceConnectPlus: true,
+         onTapButton: onTapButton,
+         onTapLink: onTapLink,
+         enabled: enabled,
+         linkLabel: linkLabel,
+         buttonPrefixLabel: buttonPrefixLabel,
+         buttonBoldLabel: buttonBoldLabel,
+       );
 
   @override
   Widget build(BuildContext context) {
@@ -109,58 +109,57 @@ class _FranceConnectButtonState extends State<_FranceConnectButton> with Materia
   @override
   Widget build(BuildContext context) {
     final enabled = widget.enabled && widget.onTap != null;
-    return Builder(builder: (context) {
-      return DsfrFocusWidget(
-        isFocused: isFocused,
-        child: Semantics(
-          button: true,
-          child: Material(
-            color: enabled
-                ? DsfrColorDecisions.backgroundActionHighBlueFrance(context)
-                : DsfrColorDecisions.backgroundDisabledGrey(context),
-            child: InkWell(
-              onTap: enabled ? widget.onTap : null,
-              onHighlightChanged: updateMaterialState(WidgetState.pressed),
-              onHover: updateMaterialState(WidgetState.hovered),
-              focusColor: DsfrColorDecisions.backgroundTransparent(context),
-              canRequestFocus: enabled,
-              onFocusChange: updateMaterialState(WidgetState.focused),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  spacing: 12,
-                  children: [
-                    SvgPicture.asset(
-                      'packages/flutter_dsfr/assets/icons/france_connect.svg',
-                      excludeFromSemantics: true,
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          widget.buttonPrefixLabel,
-                          style: DsfrTextStyle.bodyMdFc(color: _getTextColor(enabled)),
-                        ),
-                        Text(
-                          widget.buttonBoldLabel,
-                          style: DsfrTextStyle.bodyMdBoldFc(color: _getTextColor(enabled)),
-                        ),
-                      ],
-                    ),
-                    if (widget.isFranceConnectPlus)
+    return Builder(
+      builder: (context) {
+        return DsfrFocusWidget(
+          isFocused: isFocused,
+          child: Semantics(
+            button: true,
+            child: Material(
+              color: enabled
+                  ? DsfrColorDecisions.backgroundActionHighBlueFrance(context)
+                  : DsfrColorDecisions.backgroundDisabledGrey(context),
+              child: InkWell(
+                onTap: enabled ? widget.onTap : null,
+                onHighlightChanged: updateMaterialState(WidgetState.pressed),
+                onHover: updateMaterialState(WidgetState.hovered),
+                focusColor: DsfrColorDecisions.backgroundTransparent(context),
+                canRequestFocus: enabled,
+                onFocusChange: updateMaterialState(WidgetState.focused),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    spacing: 12,
+                    children: [
                       SvgPicture.asset(
-                        'packages/flutter_dsfr/assets/icons/france_connect_plus.svg',
+                        'packages/flutter_dsfr/assets/icons/france_connect.svg',
                         excludeFromSemantics: true,
                       ),
-                  ],
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(widget.buttonPrefixLabel, style: DsfrTextStyle.bodyMdFc(color: _getTextColor(enabled))),
+                          Text(
+                            widget.buttonBoldLabel,
+                            style: DsfrTextStyle.bodyMdBoldFc(color: _getTextColor(enabled)),
+                          ),
+                        ],
+                      ),
+                      if (widget.isFranceConnectPlus)
+                        SvgPicture.asset(
+                          'packages/flutter_dsfr/assets/icons/france_connect_plus.svg',
+                          excludeFromSemantics: true,
+                        ),
+                    ],
+                  ),
                 ),
               ),
             ),
           ),
-        ),
-      );
-    });
+        );
+      },
+    );
   }
 
   Color _getTextColor(bool enabled) {

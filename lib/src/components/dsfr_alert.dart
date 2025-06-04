@@ -1,34 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dsfr/flutter_dsfr.dart';
 
-enum DsfrAlertType {
-  info,
-  warning,
-  error,
-  success,
-}
+enum DsfrAlertType { info, warning, error, success }
 
 extension DsfrAlertTypeExtension on DsfrAlertType {
   IconData get icon => switch (this) {
-        DsfrAlertType.info => DsfrIcons.systemFrInfoFill,
-        DsfrAlertType.warning => DsfrIcons.systemFrWarningFill,
-        DsfrAlertType.error => DsfrIcons.systemFrErrorFill,
-        DsfrAlertType.success => DsfrIcons.systemFrSuccessFill
-      };
+    DsfrAlertType.info => DsfrIcons.systemFrInfoFill,
+    DsfrAlertType.warning => DsfrIcons.systemFrWarningFill,
+    DsfrAlertType.error => DsfrIcons.systemFrErrorFill,
+    DsfrAlertType.success => DsfrIcons.systemFrSuccessFill,
+  };
 
   Color getBackgroundColor(BuildContext context) => switch (this) {
-        DsfrAlertType.info => DsfrColorDecisions.backgroundFlatInfo(context),
-        DsfrAlertType.warning => DsfrColorDecisions.backgroundFlatWarning(context),
-        DsfrAlertType.error => DsfrColorDecisions.backgroundFlatError(context),
-        DsfrAlertType.success => DsfrColorDecisions.backgroundFlatSuccess(context)
-      };
+    DsfrAlertType.info => DsfrColorDecisions.backgroundFlatInfo(context),
+    DsfrAlertType.warning => DsfrColorDecisions.backgroundFlatWarning(context),
+    DsfrAlertType.error => DsfrColorDecisions.backgroundFlatError(context),
+    DsfrAlertType.success => DsfrColorDecisions.backgroundFlatSuccess(context),
+  };
 
   Color getBorderColor(BuildContext context) => switch (this) {
-        DsfrAlertType.info => DsfrColorDecisions.borderPlainInfo(context),
-        DsfrAlertType.warning => DsfrColorDecisions.borderPlainWarning(context),
-        DsfrAlertType.error => DsfrColorDecisions.borderPlainError(context),
-        DsfrAlertType.success => DsfrColorDecisions.borderPlainSuccess(context)
-      };
+    DsfrAlertType.info => DsfrColorDecisions.borderPlainInfo(context),
+    DsfrAlertType.warning => DsfrColorDecisions.borderPlainWarning(context),
+    DsfrAlertType.error => DsfrColorDecisions.borderPlainError(context),
+    DsfrAlertType.success => DsfrColorDecisions.borderPlainSuccess(context),
+  };
 }
 
 sealed class DsfrAlertDescription {}
@@ -73,11 +68,12 @@ class DsfrAlert extends StatelessWidget {
             DecoratedBox(
               decoration: BoxDecoration(color: type.getBackgroundColor(context)),
               child: Align(
-                  alignment: Alignment.topCenter,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
-                    child: Icon(type.icon, color: DsfrColorDecisions.backgroundDefaultGrey(context)),
-                  )),
+                alignment: Alignment.topCenter,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+                  child: Icon(type.icon, color: DsfrColorDecisions.backgroundDefaultGrey(context)),
+                ),
+              ),
             ),
             Expanded(
               child: Padding(
@@ -87,18 +83,15 @@ class DsfrAlert extends StatelessWidget {
                   spacing: 4,
                   children: [
                     if (title != null)
-                      Text(
-                        title!,
-                        style: DsfrTextStyle.headline5(color: DsfrColorDecisions.textTitleGrey(context)),
-                      ),
+                      Text(title!, style: DsfrTextStyle.headline5(color: DsfrColorDecisions.textTitleGrey(context))),
                     if (description != null)
                       switch (description!) {
                         DsfrAlertDescriptionText description => Text(
-                            description.text,
-                            style: DsfrTextStyle.bodyMd(color: DsfrColorDecisions.textDefaultGrey(context)),
-                          ),
+                          description.text,
+                          style: DsfrTextStyle.bodyMd(color: DsfrColorDecisions.textDefaultGrey(context)),
+                        ),
                         DsfrAlertDescriptionWidget description => description.widget,
-                      }
+                      },
                   ],
                 ),
               ),
@@ -114,9 +107,7 @@ class DsfrAlert extends StatelessWidget {
                     child: SizedBox(
                       width: 48,
                       height: 48,
-                      child: Center(
-                        child: Icon(DsfrIcons.systemCloseLine, size: 16),
-                      ),
+                      child: Center(child: Icon(DsfrIcons.systemCloseLine, size: 16)),
                     ),
                   ),
                 ),

@@ -18,25 +18,19 @@ class DsfrShadowDecisions {
 
   static BoxShadow raised(BuildContext context) {
     return DsfrShadows.shadowSm.copyWith(
-      color: DsfrShadows.shadowSm.color.withAlpha(
-        isLightMode(context) ? _lightModeAlpha : _darkModeAlpha,
-      ),
+      color: DsfrShadows.shadowSm.color.withAlpha(isLightMode(context) ? _lightModeAlpha : _darkModeAlpha),
     );
   }
 
   static BoxShadow overlap(BuildContext context) {
     return DsfrShadows.shadowMd.copyWith(
-      color: DsfrShadows.shadowMd.color.withAlpha(
-        isLightMode(context) ? _lightModeAlpha : _darkModeAlpha,
-      ),
+      color: DsfrShadows.shadowMd.color.withAlpha(isLightMode(context) ? _lightModeAlpha : _darkModeAlpha),
     );
   }
 
   static BoxShadow lifted(BuildContext context) {
     return DsfrShadows.shadowLg.copyWith(
-      color: DsfrShadows.shadowLg.color.withAlpha(
-        isLightMode(context) ? _lightModeAlpha : _darkModeAlpha,
-      ),
+      color: DsfrShadows.shadowLg.color.withAlpha(isLightMode(context) ? _lightModeAlpha : _darkModeAlpha),
     );
   }
 }
