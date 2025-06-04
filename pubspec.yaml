@@ -1,37 +1,31 @@
 name: flutter_dsfr
 description: "Système de Design de l'État français en flutter"
 version: 0.4.0
-homepage:
+homepage: https://github.com/Octo-Open-Source/flutter-dsfr
 
 environment:
-  sdk: ^3.6.0
-  flutter: ">=1.17.0"
+  sdk: ^3.8.1
 
 dependencies:
   flutter:
     sdk: flutter
-  flutter_svg: ^2.0.17
-  intl: ">=0.19.0" # https://github.com/flutter/flutter/blob/3.32.0/packages/flutter_localizations/pubspec.yaml#L14
-
-dependency_overrides:
-  analyzer: 7.3.0
-  analyzer_plugin: 0.12.0
-  custom_lint_visitor: 1.0.0+7.3.0
+  flutter_svg: ^2.1.0
+  intl: ^0.20.2
 
 dev_dependencies:
-  custom_lint:
+  custom_lint: ^0.7.5
   dsfr_lints:
     git:
       url: https://github.com/Octo-Open-Source/flutter-dsfr-linter.git
       ref: 0.1.0
   flutter_test:
     sdk: flutter
-  flutter_lints: ^5.0.0
+  flutter_lints: ^6.0.0
   icon_font_generator:
     git:
       url: https://github.com/Jupi007/icon_font_generator.git
       ref: yaru
-  meta: ^1.1.8
+  meta: ^1.16.0
 
 flutter:
   assets:
