@@ -59,7 +59,7 @@ class DsfrBadge extends StatelessWidget {
     );
   }
 
-  Color _getBackgroundColor(context) {
+  Color _getBackgroundColor(BuildContext context) {
     switch (type) {
       case DsfrBadgeType.information:
         return DsfrColorDecisions.backgroundContrastInfo(context);
@@ -90,7 +90,7 @@ class DsfrBadge extends StatelessWidget {
     }
   }
 
-  Color _getTextColor(context) {
+  Color _getTextColor(BuildContext context) {
     switch (type) {
       case DsfrBadgeType.information:
         return DsfrColorDecisions.textDefaultInfo(context);

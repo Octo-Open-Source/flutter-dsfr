@@ -148,7 +148,7 @@ class DsfrNotice extends StatelessWidget {
       type == DsfrNoticeType.alertCallForWitnesses ||
       type == DsfrNoticeType.alertTechnology;
 
-  Color _getLineColor(context) {
+  Color _getLineColor(BuildContext context) {
     switch (type) {
       case DsfrNoticeType.alertAttack:
         return DsfrColorDecisions.borderPlainGrey(context);
