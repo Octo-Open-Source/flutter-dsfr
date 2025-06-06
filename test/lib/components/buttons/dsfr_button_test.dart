@@ -8,21 +8,9 @@ import '../../../helpers/a11y_test.skip.dart';
 
 void main() {
   group('Primary', () {
-    Widget buttonPrimarySm = DsfrButton(
-      label: 'label',
-      size: DsfrComponentSize.sm,
-      variant: DsfrButtonVariant.primary,
-    );
-    Widget buttonPrimaryMd = DsfrButton(
-      label: 'label',
-      size: DsfrComponentSize.md,
-      variant: DsfrButtonVariant.primary,
-    );
-    Widget buttonPrimaryLg = DsfrButton(
-      label: 'label',
-      size: DsfrComponentSize.lg,
-      variant: DsfrButtonVariant.primary,
-    );
+    Widget buttonPrimarySm = DsfrButton(label: 'label', size: DsfrComponentSize.sm, variant: DsfrButtonVariant.primary);
+    Widget buttonPrimaryMd = DsfrButton(label: 'label', size: DsfrComponentSize.md, variant: DsfrButtonVariant.primary);
+    Widget buttonPrimaryLg = DsfrButton(label: 'label', size: DsfrComponentSize.lg, variant: DsfrButtonVariant.primary);
     Widget buttonPrimaryWithIcon = DsfrButton(
       label: 'label',
       size: DsfrComponentSize.md,
@@ -165,5 +153,4 @@ void main() {
     accessibilityTest(componentName: 'Button Tertiary Disabled', isLightMode: true, child: buttonTertiaryDisabled);
     accessibilityTest(componentName: 'Button Tertiary Disabled', isLightMode: false, child: buttonTertiaryDisabled);
   });
-
 }

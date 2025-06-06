@@ -18,17 +18,9 @@ void main() {
     onChanged: (final value) {},
   );
 
-  Widget toggleDisabledOn = DsfrToggleSwitch(
-    label: 'Vos favoris',
-    enabled: false,
-    value: false,
-  );
+  Widget toggleDisabledOn = DsfrToggleSwitch(label: 'Vos favoris', enabled: false, value: false);
 
-  Widget toggleDisabledOff = DsfrToggleSwitch(
-    label: 'Vos favoris',
-    enabled: false,
-    value: true,
-  );
+  Widget toggleDisabledOff = DsfrToggleSwitch(label: 'Vos favoris', enabled: false, value: true);
 
   Widget toggleLeftWithDescription = DsfrToggleSwitch(
     label: 'Vos favoris',
@@ -52,11 +44,7 @@ void main() {
   accessibilityTest(componentName: 'Toggle Right', isLightMode: true, child: toggleRight);
   accessibilityTest(componentName: 'Toggle Right', isLightMode: false, child: toggleRight);
 
-  accessibilityTest(
-    componentName: 'Toggle Left with description',
-    isLightMode: true,
-    child: toggleLeftWithDescription,
-  );
+  accessibilityTest(componentName: 'Toggle Left with description', isLightMode: true, child: toggleLeftWithDescription);
   accessibilityTest(
     componentName: 'Toggle Left with description',
     isLightMode: false,

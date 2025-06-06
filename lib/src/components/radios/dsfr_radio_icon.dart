@@ -34,9 +34,7 @@ class DsfrRadioIcon<T> extends StatelessWidget {
             width: outerDiameter,
             height: outerDiameter,
             decoration: BoxDecoration(
-              border: Border.all(
-                color: getStrokeColor(context),
-              ),
+              border: Border.all(color: getStrokeColor(context)),
               borderRadius: BorderRadius.circular(outerDiameter),
             ),
           ),
@@ -44,10 +42,7 @@ class DsfrRadioIcon<T> extends StatelessWidget {
             width: isSelected ? innerDiameter : 0,
             height: isSelected ? innerDiameter : 0,
             duration: Duration(milliseconds: 200),
-            decoration: BoxDecoration(
-              color: getFillColor(context),
-              borderRadius: BorderRadius.circular(innerDiameter),
-            ),
+            decoration: BoxDecoration(color: getFillColor(context), borderRadius: BorderRadius.circular(innerDiameter)),
           ),
         ],
       ),

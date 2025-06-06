@@ -22,26 +22,24 @@ class DsfrFileUploader extends StatelessWidget {
   });
 
   Color _getTitleColor(BuildContext context) => switch ((disabled, componentState.state)) {
-        (true, _) => DsfrColorDecisions.textDisabledGrey(context),
-        (false, DsfrComponentState.error) => DsfrColorDecisions.textDefaultError(context),
-        (false, _) => DsfrColorDecisions.textLabelGrey(context)
-      };
+    (true, _) => DsfrColorDecisions.textDisabledGrey(context),
+    (false, DsfrComponentState.error) => DsfrColorDecisions.textDefaultError(context),
+    (false, _) => DsfrColorDecisions.textLabelGrey(context),
+  };
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          title,
-          style: DsfrTextStyle.bodyMd(color: _getTitleColor(context)),
-        ),
+        Text(title, style: DsfrTextStyle.bodyMd(color: _getTitleColor(context))),
         SizedBox(height: 12),
         Text(
           description,
           style: DsfrTextStyle.bodyXs(
-            color:
-                disabled ? DsfrColorDecisions.textDisabledGrey(context) : DsfrColorDecisions.textMentionGrey(context),
+            color: disabled
+                ? DsfrColorDecisions.textDisabledGrey(context)
+                : DsfrColorDecisions.textMentionGrey(context),
           ),
         ),
         SizedBox(height: 16),
@@ -49,11 +47,7 @@ class DsfrFileUploader extends StatelessWidget {
           spacing: 8,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            _BrowseButton(
-              disabled: disabled,
-              onBrowse: onBrowse,
-              buttonLabel: buttonLabel,
-            ),
+            _BrowseButton(disabled: disabled, onBrowse: onBrowse, buttonLabel: buttonLabel),
             Text(
               fileIndicatorLabel,
               style: DsfrTextStyle.bodySm(
@@ -68,7 +62,7 @@ class DsfrFileUploader extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(top: 16),
             child: _ErrorNotice(message: componentState.text!),
-          )
+          ),
       ],
     );
   }
@@ -96,8 +90,9 @@ class _BrowseButton extends StatelessWidget {
           child: Text(
             buttonLabel,
             style: DsfrTextStyle.bodySm(
-              color:
-                  disabled ? DsfrColorDecisions.textDisabledGrey(context) : DsfrColorDecisions.textDefaultGrey(context),
+              color: disabled
+                  ? DsfrColorDecisions.textDisabledGrey(context)
+                  : DsfrColorDecisions.textDefaultGrey(context),
             ),
           ),
         ),
@@ -116,17 +111,10 @@ class _ErrorNotice extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Icon(
-          DsfrIcons.systemFrErrorFill,
-          color: DsfrColorDecisions.borderPlainError(context),
-          size: 16,
-        ),
+        Icon(DsfrIcons.systemFrErrorFill, color: DsfrColorDecisions.borderPlainError(context), size: 16),
         const SizedBox(width: DsfrSpacings.s1v),
         Flexible(
-          child: Text(
-            message,
-            style: DsfrTextStyle.bodyXs(color: DsfrColorDecisions.textDefaultError(context)),
-          ),
+          child: Text(message, style: DsfrTextStyle.bodyXs(color: DsfrColorDecisions.textDefaultError(context))),
         ),
       ],
     );

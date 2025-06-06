@@ -55,12 +55,7 @@ class DsfrSlider extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         spacing: 4,
         children: [
-          Text(
-            label,
-            style: DsfrTextStyle.bodyMd(
-              color: labelColor,
-            ),
-          ),
+          Text(label, style: DsfrTextStyle.bodyMd(color: labelColor)),
           if (description != null)
             Text(
               description!,
@@ -123,12 +118,7 @@ class _SliderTheme extends StatelessWidget {
   final bool enabled;
   final String labelText;
 
-  const _SliderTheme({
-    required this.child,
-    required this.size,
-    required this.labelText,
-    this.enabled = true,
-  });
+  const _SliderTheme({required this.child, required this.size, required this.labelText, this.enabled = true});
 
   @override
   Widget build(BuildContext context) {
@@ -170,15 +160,8 @@ class _CustomThumbShape extends RoundSliderThumbShape {
 
   static const double _labelOffset = 4.0;
 
-  _CustomThumbShape(
-    this.context, {
-    required this.labelText,
-    required this.thumbRadius,
-    required this.enabled,
-  }) : super(
-          enabledThumbRadius: thumbRadius,
-          disabledThumbRadius: thumbRadius,
-        );
+  _CustomThumbShape(this.context, {required this.labelText, required this.thumbRadius, required this.enabled})
+    : super(enabledThumbRadius: thumbRadius, disabledThumbRadius: thumbRadius);
 
   @override
   Size getPreferredSize(bool isEnabled, bool isDiscrete) {
@@ -200,17 +183,20 @@ class _CustomThumbShape extends RoundSliderThumbShape {
     required double textScaleFactor,
     required Size sizeWithOverflow,
   }) {
-    super.paint(paintingContext, center,
-        activationAnimation: activationAnimation,
-        enableAnimation: enableAnimation,
-        isDiscrete: isDiscrete,
-        labelPainter: labelPainter,
-        parentBox: parentBox,
-        sliderTheme: sliderTheme,
-        textDirection: textDirection,
-        value: value,
-        textScaleFactor: textScaleFactor,
-        sizeWithOverflow: sizeWithOverflow);
+    super.paint(
+      paintingContext,
+      center,
+      activationAnimation: activationAnimation,
+      enableAnimation: enableAnimation,
+      isDiscrete: isDiscrete,
+      labelPainter: labelPainter,
+      parentBox: parentBox,
+      sliderTheme: sliderTheme,
+      textDirection: textDirection,
+      value: value,
+      textScaleFactor: textScaleFactor,
+      sizeWithOverflow: sizeWithOverflow,
+    );
 
     final Canvas canvas = paintingContext.canvas;
 
@@ -227,15 +213,12 @@ class _CustomThumbShape extends RoundSliderThumbShape {
     final labelSpan = TextSpan(
       text: labelText,
       style: DsfrTextStyle.bodyXs(
-        color:
-            enabled ? DsfrColorDecisions.textActiveBlueFrance(context) : DsfrColorDecisions.textDisabledGrey(context),
+        color: enabled
+            ? DsfrColorDecisions.textActiveBlueFrance(context)
+            : DsfrColorDecisions.textDisabledGrey(context),
       ),
     );
-    final labelTextPainter = TextPainter(
-      text: labelSpan,
-      textAlign: TextAlign.center,
-      textDirection: textDirection,
-    );
+    final labelTextPainter = TextPainter(text: labelSpan, textAlign: TextAlign.center, textDirection: textDirection);
     labelTextPainter.layout();
 
     final labelTextCenter = Offset(
@@ -295,10 +278,7 @@ class _CustomTrackShape extends RoundedRectSliderTrackShape {
       ..strokeWidth = 1.0;
 
     paintingContext.canvas.drawRRect(
-      RRect.fromRectAndRadius(
-        trackRect,
-        Radius.circular(sliderTheme.trackHeight! / 2),
-      ),
+      RRect.fromRectAndRadius(trackRect, Radius.circular(sliderTheme.trackHeight! / 2)),
       borderPaint,
     );
   }
@@ -311,10 +291,7 @@ class _CustomRoundSliderTickMarkShape extends SliderTickMarkShape {
   const _CustomRoundSliderTickMarkShape();
 
   @override
-  Size getPreferredSize({
-    required SliderThemeData sliderTheme,
-    required bool isEnabled,
-  }) {
+  Size getPreferredSize({required SliderThemeData sliderTheme, required bool isEnabled}) {
     final double maxRadius = math.max(_activeTickMarkRadius, _inactiveTickMarkRadius);
     return Size.fromRadius(maxRadius);
   }

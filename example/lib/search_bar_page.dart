@@ -7,10 +7,7 @@ import 'package:flutter/material.dart';
 class SearchBarPage extends StatelessWidget {
   const SearchBarPage({super.key});
 
-  static final model = PageItem(
-    title: 'Barre de recherche',
-    pageBuilder: (final context) => const SearchBarPage(),
-  );
+  static final model = PageItem(title: 'Barre de recherche', pageBuilder: (final context) => const SearchBarPage());
 
   @override
   Widget build(final context) {

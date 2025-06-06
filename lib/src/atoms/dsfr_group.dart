@@ -3,10 +3,7 @@ import 'package:flutter_dsfr/src/atoms/dsfr_form_state.dart';
 import 'package:flutter_dsfr/flutter_dsfr.dart';
 import 'package:flutter_dsfr/src/helpers/color_utils.dart';
 
-enum Direction {
-  vertical,
-  horizontal,
-}
+enum Direction { vertical, horizontal }
 
 class DsfrGroup<T extends Widget> extends StatelessWidget {
   final String? label;
@@ -36,10 +33,7 @@ class DsfrGroup<T extends Widget> extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             if (label != null) ...[
-              Text(
-                label!,
-                style: DsfrTextStyle.bodyMd(color: getTextColor(context, componentState.state)),
-              ),
+              Text(label!, style: DsfrTextStyle.bodyMd(color: getTextColor(context, componentState.state))),
               SizedBox(height: description != null ? DsfrSpacings.s1w : DsfrSpacings.s2w),
             ],
             if (description != null)
@@ -71,23 +65,14 @@ class DsfrGroup<T extends Widget> extends StatelessWidget {
 
   List<Widget> get _childrenWithSeparator {
     if (separator == null) return children;
-    return children.isEmpty
-        ? []
-        : List.generate(
-            children.length * 2,
-            (i) => i.isEven ? children[i ~/ 2] : separator!,
-          );
+    return children.isEmpty ? [] : List.generate(children.length * 2, (i) => i.isEven ? children[i ~/ 2] : separator!);
   }
 }
 
 class GroupProvider extends InheritedWidget {
   final DsfrComponentState componentState;
 
-  const GroupProvider({
-    super.key,
-    required this.componentState,
-    required super.child,
-  });
+  const GroupProvider({super.key, required this.componentState, required super.child});
 
   static GroupProvider? of(BuildContext context) {
     return context.dependOnInheritedWidgetOfExactType<GroupProvider>();

@@ -3,16 +3,8 @@ import 'package:flutter_dsfr/src/components/dsfr_modal.dart';
 import '../../helpers/a11y_test.skip.dart';
 
 void main() {
-  Widget modal = DsfrModal(
-    isDismissible: false,
-    closeLabel: 'Fermer',
-    child: Text("text"),
-  );
-  Widget modalWithCloseButton = DsfrModal(
-    isDismissible: true,
-    closeLabel: 'Fermer',
-    child: Text("text"),
-  );
+  Widget modal = DsfrModal(isDismissible: false, closeLabel: 'Fermer', child: Text("text"));
+  Widget modalWithCloseButton = DsfrModal(isDismissible: true, closeLabel: 'Fermer', child: Text("text"));
 
   accessibilityTest(componentName: 'Modal', isLightMode: true, child: modal);
   accessibilityTest(componentName: 'Modal', isLightMode: false, child: modal);

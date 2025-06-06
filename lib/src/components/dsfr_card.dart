@@ -9,23 +9,13 @@ class DsfrCard extends StatelessWidget {
   final String title;
   final String? description;
 
-  const DsfrCard({
-    super.key,
-    required this.size,
-    required this.title,
-    this.description,
-  });
+  const DsfrCard({super.key, required this.size, required this.title, this.description});
 
   @override
   Widget build(BuildContext context) {
     return Material(
       color: DsfrColorDecisions.backgroundDefaultGrey(context),
-      shape: RoundedRectangleBorder(
-        side: BorderSide(
-          color: DsfrColorDecisions.borderDefaultGrey(context),
-          width: 1.0,
-        ),
-      ),
+      shape: RoundedRectangleBorder(side: BorderSide(color: DsfrColorDecisions.borderDefaultGrey(context), width: 1.0)),
       child: Padding(
         padding: const EdgeInsets.all(24.0),
         child: Column(
@@ -52,10 +42,7 @@ class _Title extends StatelessWidget {
   final String text;
   final DsfrComponentSize size;
 
-  const _Title({
-    required this.text,
-    required this.size,
-  });
+  const _Title({required this.text, required this.size});
 
   @override
   Widget build(BuildContext context) {
@@ -73,10 +60,7 @@ class _Description extends StatelessWidget {
   final String text;
   final DsfrComponentSize size;
 
-  const _Description({
-    required this.text,
-    required this.size,
-  });
+  const _Description({required this.text, required this.size});
 
   @override
   Widget build(BuildContext context) {
@@ -86,21 +70,14 @@ class _Description extends StatelessWidget {
       DsfrComponentSize.md => DsfrTextStyle.bodyMd(color: color),
       DsfrComponentSize.lg => DsfrTextStyle.bodyLg(color: color),
     };
-    return Text(
-      text,
-      style: style,
-      maxLines: 5,
-      overflow: TextOverflow.ellipsis,
-    );
+    return Text(text, style: style, maxLines: 5, overflow: TextOverflow.ellipsis);
   }
 }
 
 class _CardIcon extends StatelessWidget {
   final DsfrComponentSize size;
 
-  const _CardIcon({
-    required this.size,
-  });
+  const _CardIcon({required this.size});
 
   @override
   Widget build(BuildContext context) {

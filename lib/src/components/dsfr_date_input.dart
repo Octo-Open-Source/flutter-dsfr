@@ -50,60 +50,67 @@ class _DsfrDatePickerState extends State<DsfrDateInput> {
   @override
   Widget build(final context) {
     return DsfrFormState(
-        componentState: widget.composantState,
-        child: FocusTraversalGroup(
-            policy: OrderedTraversalPolicy(),
-            child: Semantics(
-                label: widget.label,
-                hint: widget.hintText,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    ExcludeSemantics(
-                      child: Text(
-                        widget.label,
-                        style: DsfrTextStyle.bodyMd(
-                            color: widget.enabled
-                                ? getTextColor(context, widget.composantState.state,
-                                    defaultColor: DsfrColorDecisions.textLabelGrey(context))
-                                : DsfrColorDecisions.textDisabledGrey(context)),
-                      ),
+      componentState: widget.composantState,
+      child: FocusTraversalGroup(
+        policy: OrderedTraversalPolicy(),
+        child: Semantics(
+          label: widget.label,
+          hint: widget.hintText,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              ExcludeSemantics(
+                child: Text(
+                  widget.label,
+                  style: DsfrTextStyle.bodyMd(
+                    color: widget.enabled
+                        ? getTextColor(
+                            context,
+                            widget.composantState.state,
+                            defaultColor: DsfrColorDecisions.textLabelGrey(context),
+                          )
+                        : DsfrColorDecisions.textDisabledGrey(context),
+                  ),
+                ),
+              ),
+              if (widget.hintText != null) ...[
+                const SizedBox(height: DsfrSpacings.s1v),
+                ExcludeSemantics(
+                  child: Text(
+                    widget.hintText!,
+                    style: DsfrTextStyle.bodyXs(
+                      color: widget.enabled
+                          ? DsfrColorDecisions.textMentionGrey(context)
+                          : DsfrColorDecisions.textDisabledGrey(context),
                     ),
-                    if (widget.hintText != null) ...[
-                      const SizedBox(height: DsfrSpacings.s1v),
-                      ExcludeSemantics(
-                        child: Text(
-                          widget.hintText!,
-                          style: DsfrTextStyle.bodyXs(
-                            color: widget.enabled
-                                ? DsfrColorDecisions.textMentionGrey(context)
-                                : DsfrColorDecisions.textDisabledGrey(context),
-                          ),
-                        ),
-                      ),
-                    ],
-                    const SizedBox(height: DsfrSpacings.s1w),
-                    FocusTraversalOrder(
-                      order: const NumericFocusOrder(1),
-                      child: Semantics(
-                        identifier: widget.label,
-                        child: DsfrInputHeadless(
-                          key: ValueKey(widget.label),
-                          controller: widget.controller,
-                          onDateChanged: widget.onChanged,
-                          isDatePicker: true,
-                          firstDate: widget.firstDate,
-                          lastDate: widget.lastDate,
-                          initialDate: widget.initialDate,
-                          initialValue: widget.initialValue,
-                          enabled: widget.enabled,
-                          locale: widget.locale,
-                          focusNode: widget.focusNode,
-                          width: widget.width,
-                        ),
-                      ),
-                    )
-                  ],
-                ))));
+                  ),
+                ),
+              ],
+              const SizedBox(height: DsfrSpacings.s1w),
+              FocusTraversalOrder(
+                order: const NumericFocusOrder(1),
+                child: Semantics(
+                  identifier: widget.label,
+                  child: DsfrInputHeadless(
+                    key: ValueKey(widget.label),
+                    controller: widget.controller,
+                    onDateChanged: widget.onChanged,
+                    isDatePicker: true,
+                    firstDate: widget.firstDate,
+                    lastDate: widget.lastDate,
+                    initialDate: widget.initialDate,
+                    initialValue: widget.initialValue,
+                    enabled: widget.enabled,
+                    locale: widget.locale,
+                    focusNode: widget.focusNode,
+                    width: widget.width,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }

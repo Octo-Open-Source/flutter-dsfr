@@ -67,8 +67,8 @@ class DsfrRadioButton<T> extends StatelessWidget {
                               ? getTextColor(context, state, defaultColor: DsfrColorDecisions.textLabelGrey(context))
                               : DsfrColorDecisions.textDisabledGrey(context),
                         ),
-                      )
-                    )
+                      ),
+                    ),
                   ],
                 ),
                 if (description != null)
@@ -95,7 +95,7 @@ class DsfrRadioButton<T> extends StatelessWidget {
     return switch (size) {
       DsfrComponentSize.md => 24.0,
       DsfrComponentSize.sm => 16.0,
-      DsfrComponentSize.lg =>  throw UnimplementedError('Size $size is not implemented'),
+      DsfrComponentSize.lg => throw UnimplementedError('Size $size is not implemented'),
     };
   }
 }

@@ -7,10 +7,7 @@ import 'package:flutter/material.dart';
 class DecisionsPage extends StatelessWidget {
   const DecisionsPage({super.key});
 
-  static final model = PageItem(
-    title: 'Couleurs - Décisions',
-    pageBuilder: (final context) => const DecisionsPage(),
-  );
+  static final model = PageItem(title: 'Couleurs - Décisions', pageBuilder: (final context) => const DecisionsPage());
 
   @override
   Widget build(final context) {

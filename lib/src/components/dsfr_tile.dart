@@ -5,13 +5,7 @@ import 'package:flutter_svg/svg.dart';
 
 const double _paddingImageAndBadges = 16;
 
-enum DsfrTileBackgroundType {
-  light,
-  grey,
-  lightWithShadow,
-  lightNoBorder,
-  transparent,
-}
+enum DsfrTileBackgroundType { light, grey, lightWithShadow, lightNoBorder, transparent }
 
 class DsfrTile extends StatefulWidget {
   const DsfrTile({
@@ -66,8 +60,9 @@ class _DsfrTileState extends State<DsfrTile> {
     final showActionIcon = widget.showActionIcon;
     final actionIcon = widget.actionIcon;
 
-    List<Widget>? badgesAndTagsToAdd =
-        badgesAndTags?.takeWhile((element) => element is DsfrBadge || element is DsfrTag).toList();
+    List<Widget>? badgesAndTagsToAdd = badgesAndTags
+        ?.takeWhile((element) => element is DsfrBadge || element is DsfrTag)
+        .toList();
 
     return MergeSemantics(
       child: Semantics(
@@ -75,10 +70,7 @@ class _DsfrTileState extends State<DsfrTile> {
         child: DsfrFocusWidget(
           isFocused: hasFocus,
           child: Container(
-            decoration: BoxDecoration(
-              boxShadow: _getShadow(context),
-              border: _getBottomBorder(context),
-            ),
+            decoration: BoxDecoration(boxShadow: _getShadow(context), border: _getBottomBorder(context)),
             child: Material(
               color: _getBackgroundColor(context),
               child: InkWell(
@@ -87,50 +79,48 @@ class _DsfrTileState extends State<DsfrTile> {
                 onTap: enabled ? onTap : null,
                 child: Container(
                   padding: const EdgeInsets.all(24.0),
-                  decoration: BoxDecoration(
-                    border: _getTopRightLeftBorder(context),
-                  ),
+                  decoration: BoxDecoration(border: _getTopRightLeftBorder(context)),
                   child: Builder(
                     builder: (context) {
                       return switch (direction) {
                         Axis.vertical => _VerticalTile(
-                            imageAsset: imageAsset,
-                            imageHeight: _getImageHeight(),
-                            badgesAndTagsToAdd: badgesAndTagsToAdd,
-                            paddingBadges: _getPaddingBadges(),
-                            paddingBadgesAndTitle: _getPaddingBadgesAndTitle(),
-                            paddingTitleAndDescription: _getPaddingTitleAndDescription(),
-                            paddingDescriptionAndDetails: _getPaddingDescriptionAndDetail(),
-                            title: title,
-                            description: description,
-                            details: details,
-                            titleTextStyle: _getTitleTextStyle(context),
-                            descriptionTextStyle: _getDescriptionTextStyle(context),
-                            showActionIcon: showActionIcon,
-                            actionIcon: actionIcon,
-                            iconSize: _getIconSize(),
-                            iconColor: _getIconColor(context),
-                            onTap: onTap,
-                          ),
+                          imageAsset: imageAsset,
+                          imageHeight: _getImageHeight(),
+                          badgesAndTagsToAdd: badgesAndTagsToAdd,
+                          paddingBadges: _getPaddingBadges(),
+                          paddingBadgesAndTitle: _getPaddingBadgesAndTitle(),
+                          paddingTitleAndDescription: _getPaddingTitleAndDescription(),
+                          paddingDescriptionAndDetails: _getPaddingDescriptionAndDetail(),
+                          title: title,
+                          description: description,
+                          details: details,
+                          titleTextStyle: _getTitleTextStyle(context),
+                          descriptionTextStyle: _getDescriptionTextStyle(context),
+                          showActionIcon: showActionIcon,
+                          actionIcon: actionIcon,
+                          iconSize: _getIconSize(),
+                          iconColor: _getIconColor(context),
+                          onTap: onTap,
+                        ),
                         Axis.horizontal => _HorizontalTile(
-                            imageAsset: imageAsset,
-                            imageHeight: _getImageHeight(),
-                            badgesAndTagsToAdd: badgesAndTagsToAdd,
-                            paddingBadges: _getPaddingBadges(),
-                            paddingBadgesAndTitle: _getPaddingBadgesAndTitle(),
-                            paddingTitleAndDescription: _getPaddingTitleAndDescription(),
-                            paddingDescriptionAndDetails: _getPaddingDescriptionAndDetail(),
-                            title: title,
-                            description: description,
-                            details: details,
-                            titleTextStyle: _getTitleTextStyle(context),
-                            descriptionTextStyle: _getDescriptionTextStyle(context),
-                            showActionIcon: showActionIcon,
-                            actionIcon: actionIcon,
-                            iconSize: _getIconSize(),
-                            iconColor: _getIconColor(context),
-                            onTap: onTap,
-                          ),
+                          imageAsset: imageAsset,
+                          imageHeight: _getImageHeight(),
+                          badgesAndTagsToAdd: badgesAndTagsToAdd,
+                          paddingBadges: _getPaddingBadges(),
+                          paddingBadgesAndTitle: _getPaddingBadgesAndTitle(),
+                          paddingTitleAndDescription: _getPaddingTitleAndDescription(),
+                          paddingDescriptionAndDetails: _getPaddingDescriptionAndDetail(),
+                          title: title,
+                          description: description,
+                          details: details,
+                          titleTextStyle: _getTitleTextStyle(context),
+                          descriptionTextStyle: _getDescriptionTextStyle(context),
+                          showActionIcon: showActionIcon,
+                          actionIcon: actionIcon,
+                          iconSize: _getIconSize(),
+                          iconColor: _getIconColor(context),
+                          onTap: onTap,
+                        ),
                       };
                     },
                   ),
@@ -262,15 +252,13 @@ class _DsfrTileState extends State<DsfrTile> {
   BoxBorder? _getBottomBorder(BuildContext context) {
     Color bottomBorderColor = (widget.enabled)
         ? (widget.onTap == null)
-            ? DsfrColorDecisions.borderPlainGrey(context)
-            : DsfrColorDecisions.borderPlainBlueFrance(context)
+              ? DsfrColorDecisions.borderPlainGrey(context)
+              : DsfrColorDecisions.borderPlainBlueFrance(context)
         : DsfrColorDecisions.backgroundDisabledGrey(context);
     if (widget.backgroundType == DsfrTileBackgroundType.lightNoBorder) {
       return null;
     } else {
-      return Border(
-        bottom: BorderSide(color: bottomBorderColor, width: 4),
-      );
+      return Border(bottom: BorderSide(color: bottomBorderColor, width: 4));
     }
   }
 
@@ -352,32 +340,19 @@ class _VerticalTile extends StatelessWidget {
               SizedBox(height: paddingBadgesAndTitle),
             ],
           ),
-        Text(
-          title,
-          style: titleTextStyle,
-        ),
+        Text(title, style: titleTextStyle),
         if (description != null) ...[
           SizedBox(height: paddingTitleAndDescription),
-          Text(
-            description!,
-            style: descriptionTextStyle,
-          ),
+          Text(description!, style: descriptionTextStyle),
         ],
         if (details != null) ...[
           SizedBox(height: paddingDescriptionAndDetails),
-          Text(
-            details!,
-            style: DsfrTextStyle.bodyXsMedium(color: DsfrColorDecisions.textMentionGrey(context)),
-          ),
+          Text(details!, style: DsfrTextStyle.bodyXsMedium(color: DsfrColorDecisions.textMentionGrey(context))),
         ],
         if (showActionIcon && onTap != null)
           Container(
             alignment: Alignment.centerRight,
-            child: Icon(
-              actionIcon,
-              size: iconSize,
-              color: iconColor,
-            ),
+            child: Icon(actionIcon, size: iconSize, color: iconColor),
           ),
       ],
     );
@@ -426,65 +401,54 @@ class _HorizontalTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-        mainAxisSize: MainAxisSize.max,
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        spacing: 24,
-        children: [
-          if (imageAsset != null) _TileImage(imageAsset: imageAsset!, height: imageHeight),
-          Expanded(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                if (badgesAndTagsToAdd != null && badgesAndTagsToAdd!.isNotEmpty)
-                  Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Wrap(
-                        spacing: paddingBadges, // horizontal spacing
-                        runSpacing: paddingBadges, // vertical spacing
-                        children: badgesAndTagsToAdd!,
-                      ),
-                      SizedBox(height: paddingBadgesAndTitle),
-                    ],
-                  ),
-                Text(
-                  title,
-                  style: titleTextStyle,
-                ),
-                if (description != null) ...[
-                  SizedBox(height: paddingTitleAndDescription),
-                  Text(
-                    description!,
-                    style: descriptionTextStyle,
-                  ),
-                ],
-                if (details != null || (showActionIcon && onTap != null))
-                  SizedBox(height: paddingDescriptionAndDetails),
-                Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.end,
+      mainAxisSize: MainAxisSize.max,
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      spacing: 24,
+      children: [
+        if (imageAsset != null) _TileImage(imageAsset: imageAsset!, height: imageHeight),
+        Expanded(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              if (badgesAndTagsToAdd != null && badgesAndTagsToAdd!.isNotEmpty)
+                Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    if (details != null)
-                      Text(
-                        details!,
-                        style: DsfrTextStyle.bodyXsMedium(color: DsfrColorDecisions.textMentionGrey(context)),
-                      ),
-                    if (showActionIcon && onTap != null)
-                      Icon(
-                        actionIcon,
-                        size: iconSize,
-                        color: iconColor,
-                      ),
+                    Wrap(
+                      spacing: paddingBadges, // horizontal spacing
+                      runSpacing: paddingBadges, // vertical spacing
+                      children: badgesAndTagsToAdd!,
+                    ),
+                    SizedBox(height: paddingBadgesAndTitle),
                   ],
                 ),
+              Text(title, style: titleTextStyle),
+              if (description != null) ...[
+                SizedBox(height: paddingTitleAndDescription),
+                Text(description!, style: descriptionTextStyle),
               ],
-            ),
+              if (details != null || (showActionIcon && onTap != null)) SizedBox(height: paddingDescriptionAndDetails),
+              Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  if (details != null)
+                    Text(
+                      details!,
+                      style: DsfrTextStyle.bodyXsMedium(color: DsfrColorDecisions.textMentionGrey(context)),
+                    ),
+                  if (showActionIcon && onTap != null) Icon(actionIcon, size: iconSize, color: iconColor),
+                ],
+              ),
+            ],
           ),
-        ]);
+        ),
+      ],
+    );
   }
 }
 
@@ -492,20 +456,12 @@ class _TileImage extends StatelessWidget {
   final String imageAsset;
   final double height;
 
-  const _TileImage({
-    required this.imageAsset,
-    required this.height,
-  });
+  const _TileImage({required this.imageAsset, required this.height});
 
   @override
   Widget build(BuildContext context) {
     if (imageAsset.endsWith('svg')) {
-      return SvgPicture.asset(
-        imageAsset,
-        height: height,
-        fit: BoxFit.fitHeight,
-        excludeFromSemantics: true,
-      );
+      return SvgPicture.asset(imageAsset, height: height, fit: BoxFit.fitHeight, excludeFromSemantics: true);
     } else {
       return Image.asset(imageAsset, height: height, fit: BoxFit.fitHeight);
     }

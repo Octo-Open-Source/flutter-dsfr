@@ -16,5 +16,4 @@ void main() {
   //FIXME: skip, zone de tap trop petite (48, 40) au lieu de (48, 48)
   accessibilityTest(componentName: 'Select', isLightMode: true, child: select, skip: true);
   accessibilityTest(componentName: 'Select', isLightMode: false, child: select, skip: true);
-
 }

@@ -47,22 +47,22 @@ class _DsfrRawButtonState extends State<DsfrRawButton> with MaterialStateMixin<D
   }
 
   EdgeInsetsGeometry _getPadding(final DsfrComponentSize size) => switch (size) {
-        DsfrComponentSize.lg => const EdgeInsets.symmetric(vertical: 10, horizontal: 24),
-        DsfrComponentSize.md => const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-        DsfrComponentSize.sm => const EdgeInsets.symmetric(vertical: 4, horizontal: 12),
-      };
+    DsfrComponentSize.lg => const EdgeInsets.symmetric(vertical: 10, horizontal: 24),
+    DsfrComponentSize.md => const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+    DsfrComponentSize.sm => const EdgeInsets.symmetric(vertical: 4, horizontal: 12),
+  };
 
   TextStyle _getTextStyle(final DsfrComponentSize size, final Color color) => switch (size) {
-        DsfrComponentSize.lg => DsfrTextStyle.bodyLgMedium(color: color),
-        DsfrComponentSize.md => DsfrTextStyle.bodyMdMedium(color: color),
-        DsfrComponentSize.sm => DsfrTextStyle.bodySmMedium(color: color),
-      };
+    DsfrComponentSize.lg => DsfrTextStyle.bodyLgMedium(color: color),
+    DsfrComponentSize.md => DsfrTextStyle.bodyMdMedium(color: color),
+    DsfrComponentSize.sm => DsfrTextStyle.bodySmMedium(color: color),
+  };
 
   double _getMinHeight(final DsfrComponentSize size) => switch (size) {
-        DsfrComponentSize.lg => DsfrSpacings.s6w,
-        DsfrComponentSize.md => DsfrSpacings.s5w,
-        DsfrComponentSize.sm => DsfrSpacings.s4w,
-      };
+    DsfrComponentSize.lg => DsfrSpacings.s6w,
+    DsfrComponentSize.md => DsfrSpacings.s5w,
+    DsfrComponentSize.sm => DsfrSpacings.s4w,
+  };
 
   @override
   void didUpdateWidget(final DsfrRawButton oldWidget) {
@@ -89,12 +89,8 @@ class _DsfrRawButtonState extends State<DsfrRawButton> with MaterialStateMixin<D
     final border = widget.foregroundColor == null
         ? DsfrButtonBorder.fromVariant(widget.variant, context)
         : DsfrButtonBorder(
-            $default: Border.fromBorderSide(
-              BorderSide(color: widget.foregroundColor!),
-            ),
-            disabled: Border.fromBorderSide(
-              BorderSide(color: DsfrColorDecisions.borderDisabledGrey(context)),
-            ),
+            $default: Border.fromBorderSide(BorderSide(color: widget.foregroundColor!)),
+            disabled: Border.fromBorderSide(BorderSide(color: DsfrColorDecisions.borderDisabledGrey(context))),
           );
 
     final textColor = foregroundColor.resolve(materialStates);
@@ -136,10 +132,7 @@ class _DsfrRawButtonState extends State<DsfrRawButton> with MaterialStateMixin<D
                     heightFactor: 1,
                     child: IconTheme(
                       data: IconThemeData(color: textColor),
-                      child: DefaultTextStyle(
-                        style: _getTextStyle(widget.size, textColor),
-                        child: widget.child,
-                      ),
+                      child: DefaultTextStyle(style: _getTextStyle(widget.size, textColor), child: widget.child),
                     ),
                   ),
                 ),

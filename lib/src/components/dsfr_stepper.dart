@@ -25,10 +25,7 @@ class DsfrStepper extends StatelessWidget {
           "Étape $currentStep sur $stepsCount",
           style: DsfrTextStyle.bodySm(color: DsfrColorDecisions.textDefaultGrey(context)),
         ),
-        Text(
-          stepTitle,
-          style: DsfrTextStyle.bodyXlBold(color: DsfrColorDecisions.textTitleGrey(context)),
-        ),
+        Text(stepTitle, style: DsfrTextStyle.bodyXlBold(color: DsfrColorDecisions.textTitleGrey(context))),
         Row(
           spacing: 8,
           children: [
@@ -40,7 +37,7 @@ class DsfrStepper extends StatelessWidget {
                       ? DsfrColorDecisions.backgroundActiveBlueFrance(context)
                       : DsfrColorDecisions.backgroundContrastGrey(context),
                 ),
-              )
+              ),
           ],
         ),
         if (nextStepTitle != null && currentStep != stepsCount)
@@ -50,11 +47,12 @@ class DsfrStepper extends StatelessWidget {
               style: DsfrTextStyle.bodyXsBold(color: DsfrColorDecisions.textMentionGrey(context)),
               children: [
                 TextSpan(
-                    text: nextStepTitle,
-                    style: DsfrTextStyle.bodyXs(color: DsfrColorDecisions.textMentionGrey(context))),
+                  text: nextStepTitle,
+                  style: DsfrTextStyle.bodyXs(color: DsfrColorDecisions.textMentionGrey(context)),
+                ),
               ],
             ),
-          )
+          ),
       ],
     );
   }

@@ -14,47 +14,37 @@ class DownloadFilesPage extends StatelessWidget {
 
   @override
   Widget build(final context) => SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.only(top: 16, right: 16, left: 16, bottom: 124),
-          child: PageSection(
-            title: 'Téléchargement de fichiers',
+    child: Padding(
+      padding: const EdgeInsets.only(top: 16, right: 16, left: 16, bottom: 124),
+      child: PageSection(
+        title: 'Téléchargement de fichiers',
+        children: [
+          PageSubSection(
+            title: 'Lien',
             children: [
-              PageSubSection(
-                title: 'Lien',
-                children: [
-                  DsfrDownloadFiles(
-                    type: DsfrDownloadFilesType.link,
-                    label: 'Intitulé du fichier à télécharger',
-                    details: 'PDF - 61,55 Ko',
-                    onTap: () {},
-                  ),
-                  DsfrDownloadFiles(
-                    type: DsfrDownloadFilesType.link,
-                    label: 'Intitulé du fichier à télécharger sur deux lignes car il est très très très long',
-                    details: 'PDF - 61,55 Ko',
-                    onTap: () {},
-                  ),
-                  DsfrDownloadFiles(
-                    type: DsfrDownloadFilesType.link,
-                    label: 'Intitulé du fichier à télécharger désactivé',
-                    details: 'PDF - 61,55 Ko',
-                  ),
-                ],
+              DsfrDownloadFiles(
+                type: DsfrDownloadFilesType.link,
+                label: 'Intitulé du fichier à télécharger',
+                details: 'PDF - 61,55 Ko',
+                onTap: () {},
               ),
-              PageSubSection(
-                title: 'Carte',
-                children: [
-                  Text('TODO'),
-                ],
+              DsfrDownloadFiles(
+                type: DsfrDownloadFilesType.link,
+                label: 'Intitulé du fichier à télécharger sur deux lignes car il est très très très long',
+                details: 'PDF - 61,55 Ko',
+                onTap: () {},
               ),
-              PageSubSection(
-                title: 'Tuile',
-                children: [
-                  Text('TODO'),
-                ],
-              )
+              DsfrDownloadFiles(
+                type: DsfrDownloadFilesType.link,
+                label: 'Intitulé du fichier à télécharger désactivé',
+                details: 'PDF - 61,55 Ko',
+              ),
             ],
           ),
-        ),
-      );
+          PageSubSection(title: 'Carte', children: [Text('TODO')]),
+          PageSubSection(title: 'Tuile', children: [Text('TODO')]),
+        ],
+      ),
+    ),
+  );
 }

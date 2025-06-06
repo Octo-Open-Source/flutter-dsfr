@@ -2,14 +2,26 @@ import 'package:flutter_dsfr/src/components/dsfr_alert.dart';
 import '../../helpers/a11y_test.skip.dart';
 
 void main() {
-  final alertInfo =
-      DsfrAlert(type: DsfrAlertType.info, title: 'Titre', description: DsfrAlertDescriptionText('description'));
-  final alertSuccess =
-      DsfrAlert(type: DsfrAlertType.success, title: 'Titre', description: DsfrAlertDescriptionText('description'));
-  final alertWarning =
-      DsfrAlert(type: DsfrAlertType.warning, title: 'Titre', description: DsfrAlertDescriptionText('description'));
-  final alertError =
-      DsfrAlert(type: DsfrAlertType.error, title: 'Titre', description: DsfrAlertDescriptionText('description'));
+  final alertInfo = DsfrAlert(
+    type: DsfrAlertType.info,
+    title: 'Titre',
+    description: DsfrAlertDescriptionText('description'),
+  );
+  final alertSuccess = DsfrAlert(
+    type: DsfrAlertType.success,
+    title: 'Titre',
+    description: DsfrAlertDescriptionText('description'),
+  );
+  final alertWarning = DsfrAlert(
+    type: DsfrAlertType.warning,
+    title: 'Titre',
+    description: DsfrAlertDescriptionText('description'),
+  );
+  final alertError = DsfrAlert(
+    type: DsfrAlertType.error,
+    title: 'Titre',
+    description: DsfrAlertDescriptionText('description'),
+  );
 
   final alertWithoutTitle = DsfrAlert(type: DsfrAlertType.info, description: DsfrAlertDescriptionText('description'));
   final alertWithoutDescription = DsfrAlert(type: DsfrAlertType.info, title: 'title');
@@ -22,7 +34,11 @@ void main() {
   );
 
   final alertWithCloseButton = DsfrAlert(
-      type: DsfrAlertType.info, title: 'Titre', description: DsfrAlertDescriptionText('description'), onClose: () {});
+    type: DsfrAlertType.info,
+    title: 'Titre',
+    description: DsfrAlertDescriptionText('description'),
+    onClose: () {},
+  );
 
   accessibilityTest(componentName: 'Alerte info', isLightMode: true, child: alertInfo);
   accessibilityTest(componentName: 'Alerte info', isLightMode: false, child: alertInfo);

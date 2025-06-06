@@ -6,10 +6,7 @@ import 'package:flutter_dsfr/src/helpers/dsfr_component_size.dart';
 import '../../helpers/a11y_test.skip.dart';
 
 void main() {
-  Widget tagSm = DsfrTag(
-    label: 'small tag',
-    size: DsfrComponentSize.sm,
-  );
+  Widget tagSm = DsfrTag(label: 'small tag', size: DsfrComponentSize.sm);
 
   Widget tagSmWithIcon = DsfrTag(
     label: 'small tag with icon',
@@ -25,22 +22,11 @@ void main() {
     size: DsfrComponentSize.sm,
   );
 
-  Widget tagSmDisabled = DsfrTag(
-    label: 'small tag disabled',
-    enabled: false,
-    size: DsfrComponentSize.sm,
-  );
+  Widget tagSmDisabled = DsfrTag(label: 'small tag disabled', enabled: false, size: DsfrComponentSize.sm);
 
-  Widget tagSmDeletable = DsfrTag(
-    label: 'small tag deletable',
-    onDelete: () {},
-    size: DsfrComponentSize.sm,
-  );
+  Widget tagSmDeletable = DsfrTag(label: 'small tag deletable', onDelete: () {}, size: DsfrComponentSize.sm);
 
-  Widget tagMd = DsfrTag(
-    label: 'medium tag',
-    size: DsfrComponentSize.md,
-  );
+  Widget tagMd = DsfrTag(label: 'medium tag', size: DsfrComponentSize.md);
 
   Widget tagMdWithIcon = DsfrTag(
     label: 'medium tag with icon',
@@ -56,17 +42,9 @@ void main() {
     size: DsfrComponentSize.md,
   );
 
-  Widget tagMdDisabled = DsfrTag(
-    label: 'medium tag disabled',
-    enabled: false,
-    size: DsfrComponentSize.md,
-  );
+  Widget tagMdDisabled = DsfrTag(label: 'medium tag disabled', enabled: false, size: DsfrComponentSize.md);
 
-  Widget tagMdDeletable = DsfrTag(
-    label: 'medium tag deletable',
-    onDelete: () {},
-    size: DsfrComponentSize.md,
-  );
+  Widget tagMdDeletable = DsfrTag(label: 'medium tag deletable', onDelete: () {}, size: DsfrComponentSize.md);
 
   //FIXME: skip, zone de tap trop petite hauteur 26 au lieu de 48
   accessibilityTest(componentName: 'Tag SM', isLightMode: true, child: tagSm, skip: true);

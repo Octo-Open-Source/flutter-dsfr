@@ -17,11 +17,7 @@ void main() {
       stepTitle: 'Titre de l\'étape en cours',
       nextStepTitle: 'Titre de la prochaine étape',
     );
-    var dsfrStepper3 = DsfrStepper(
-      currentStep: 1,
-      stepsCount: 8,
-      stepTitle: 'Titre de l\'étape en cours',
-    );
+    var dsfrStepper3 = DsfrStepper(currentStep: 1, stepsCount: 8, stepTitle: 'Titre de l\'étape en cours');
 
     accessibilityTest(componentName: 'Stepper 1', isLightMode: true, child: dsfrStepper1);
     accessibilityTest(componentName: 'Stepper 1', isLightMode: false, child: dsfrStepper1);

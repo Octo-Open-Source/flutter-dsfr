@@ -70,10 +70,7 @@ class _MyAppState extends State<MyApp> {
               GlobalWidgetsLocalizations.delegate,
               GlobalCupertinoLocalizations.delegate,
             ],
-            supportedLocales: [
-              Locale('fr'),
-              Locale('en'),
-            ],
+            supportedLocales: [Locale('fr'), Locale('en')],
             home: MasterPage(
               toggleTheme: () {
                 setState(() {

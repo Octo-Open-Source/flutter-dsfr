@@ -2,11 +2,7 @@ import 'package:example/page_item.dart';
 import 'package:flutter/material.dart';
 
 class MasterPage extends StatefulWidget {
-  const MasterPage({
-    super.key,
-    required this.pageItems,
-    required this.toggleTheme,
-  });
+  const MasterPage({super.key, required this.pageItems, required this.toggleTheme});
 
   final List<PageItem> pageItems;
   final void Function() toggleTheme;
@@ -25,10 +21,7 @@ class _MasterPageState extends State<MasterPage> {
       body: widget.pageItems.elementAtOrNull(_currentIndex)?.pageBuilder(context),
       floatingActionButton: FloatingActionButton(
         onPressed: widget.toggleTheme,
-        child: const Icon(
-          Icons.lightbulb,
-          semanticLabel: "Changer de thème",
-        ),
+        child: const Icon(Icons.lightbulb, semanticLabel: "Changer de thème"),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
       drawer: Drawer(

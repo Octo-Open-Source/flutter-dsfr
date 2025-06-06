@@ -3,11 +3,7 @@ import 'package:flutter_dsfr/src/components/dsfr_notice.dart';
 import '../../helpers/a11y_test.skip.dart';
 
 void main() {
-  Widget bandeauxGenericInfo = DsfrNotice(
-    titre: 'titre',
-    description: 'description',
-    onClose: () {},
-  );
+  Widget bandeauxGenericInfo = DsfrNotice(titre: 'titre', description: 'description', onClose: () {});
   Widget bandeauxGenericWarning = DsfrNotice(
     titre: 'Titre du bandeau',
     description: 'Texte de description lorem ipsum dolor sit amet, consectetur.',
@@ -78,8 +74,16 @@ void main() {
   accessibilityTest(componentName: 'Notice Alert Attack', isLightMode: true, child: bandeauxAlertAttack);
   accessibilityTest(componentName: 'Notice Alert Attack', isLightMode: false, child: bandeauxAlertAttack);
 
-  accessibilityTest(componentName: 'Notice Alert Call For Witnesses', isLightMode: true, child: bandeauxAlertCallForWitnesses);
-  accessibilityTest(componentName: 'Notice Alert Call For Witnesses', isLightMode: false, child: bandeauxAlertCallForWitnesses);
+  accessibilityTest(
+    componentName: 'Notice Alert Call For Witnesses',
+    isLightMode: true,
+    child: bandeauxAlertCallForWitnesses,
+  );
+  accessibilityTest(
+    componentName: 'Notice Alert Call For Witnesses',
+    isLightMode: false,
+    child: bandeauxAlertCallForWitnesses,
+  );
 
   accessibilityTest(componentName: 'Notice Alert Technology', isLightMode: true, child: bandeauxAlertTechnology);
   accessibilityTest(componentName: 'Notice Alert Technology', isLightMode: false, child: bandeauxAlertTechnology);

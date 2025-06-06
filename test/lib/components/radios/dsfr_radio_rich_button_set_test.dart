@@ -45,7 +45,11 @@ void main() {
 
     //FIXME: skip, contraste trop faible
     accessibilityTest(
-        componentName: 'Group Radio rich disabled', isLightMode: true, child: radioSetDisabled, skip: true);
+      componentName: 'Group Radio rich disabled',
+      isLightMode: true,
+      child: radioSetDisabled,
+      skip: true,
+    );
     accessibilityTest(
       componentName: 'Group Radio rich disabled',
       isLightMode: false,
@@ -93,11 +97,6 @@ void main() {
 
     //FIXME: skip, contraste trop faible
     accessibilityTest(componentName: 'Group Radio disabled', isLightMode: true, child: radioSetDisabled, skip: true);
-    accessibilityTest(
-      componentName: 'Group Radio disabled',
-      isLightMode: false,
-      child: radioSetDisabled,
-      skip: true,
-    );
+    accessibilityTest(componentName: 'Group Radio disabled', isLightMode: false, child: radioSetDisabled, skip: true);
   });
 }

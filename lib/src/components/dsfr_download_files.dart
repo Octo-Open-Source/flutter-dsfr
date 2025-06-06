@@ -1,11 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_dsfr/flutter_dsfr.dart';
 
-enum DsfrDownloadFilesType {
-  link,
-  card,
-  tile,
-}
+enum DsfrDownloadFilesType { link, card, tile }
 
 class DsfrDownloadFiles extends StatelessWidget {
   final DsfrDownloadFilesType type;
@@ -17,10 +13,10 @@ class DsfrDownloadFiles extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return switch(type) {
+    return switch (type) {
       DsfrDownloadFilesType.link => DsfrDownloadFilesLink(label: label, details: details, onTap: onTap),
-      DsfrDownloadFilesType.card => throw('Card type is not implemented yet.'),
-      DsfrDownloadFilesType.tile => throw('Tile type is not implemented yet.'),
+      DsfrDownloadFilesType.card => throw ('Card type is not implemented yet.'),
+      DsfrDownloadFilesType.tile => throw ('Tile type is not implemented yet.'),
     };
   }
 }
@@ -44,7 +40,7 @@ class DsfrDownloadFilesLink extends StatelessWidget {
           icon: DsfrIcons.systemDownloadFill,
           onTap: onTap,
         ),
-        Text(details, style: DsfrTextStyle.bodyXs(color: DsfrColorDecisions.textMentionGrey(context)),),
+        Text(details, style: DsfrTextStyle.bodyXs(color: DsfrColorDecisions.textMentionGrey(context))),
       ],
     );
   }

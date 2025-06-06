@@ -69,7 +69,7 @@ Ce projet nécessite d'avoir installé Flutter sur son poste. La version actuell
 ### Conventions
 
 Voici les conventions à suivre pour contribuer :
-- Nommage - On utilise un prefix "DSFR" + le nom anglais des composants indiqué sur le site du Design System.
+- Nommage - On utilise un prefix "Dsfr" + le nom anglais des composants indiqué sur le site du Design System.
 - IDE - Longeur des lignes pour le formattage réglé à 120 caractères.
 - Documentation - Le fichier [liste des composants](components.md) doit être mis à jour dans la même PR qui contient des nouveautés autour d'un composant.
 - Commit - Usage de [Conventional Commits](https://www.conventionalcommits.org/) pour les messages de commit et pour les titres de PR.
@@ -94,4 +94,4 @@ Voici les conventions à suivre pour contribuer :
 
 ### Remerciements
 
-Merci à Lucas Saudon qui a créé une première base de projet sur laquelle nous avons continué à implémenter le système de design.
+Merci à [@lsaudon](https://github.com/lsaudon) qui a créé une première base de projet sur laquelle nous avons continué à implémenter le système de design.

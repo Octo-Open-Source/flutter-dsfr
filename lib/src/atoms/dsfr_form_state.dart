@@ -6,11 +6,7 @@ import 'package:flutter_dsfr/src/fondamentaux/dsfr_spacings.g.dart';
 import 'package:flutter_dsfr/src/helpers/dsfr_component_state.dart';
 
 class DsfrFormState extends StatelessWidget {
-  const DsfrFormState({
-    super.key,
-    required this.componentState,
-    required this.child,
-  });
+  const DsfrFormState({super.key, required this.componentState, required this.child});
 
   final DsfrComponentState componentState;
   final Widget child;

@@ -1,14 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_dsfr/flutter_dsfr.dart';
 
-enum DsfrBadgeType {
-  information,
-  warning,
-  success,
-  error,
-  news,
-  custom,
-}
+enum DsfrBadgeType { information, warning, success, error, news, custom }
 
 class DsfrBadge extends StatelessWidget {
   final String label;
@@ -42,10 +35,7 @@ class DsfrBadge extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DecoratedBox(
-      decoration: BoxDecoration(
-        color: _getBackgroundColor(context),
-        borderRadius: BorderRadius.circular(4),
-      ),
+      decoration: BoxDecoration(color: _getBackgroundColor(context), borderRadius: BorderRadius.circular(4)),
       child: Padding(
         padding: _getPadding(),
         child: Row(
@@ -69,7 +59,7 @@ class DsfrBadge extends StatelessWidget {
     );
   }
 
-  Color _getBackgroundColor(context) {
+  Color _getBackgroundColor(BuildContext context) {
     switch (type) {
       case DsfrBadgeType.information:
         return DsfrColorDecisions.backgroundContrastInfo(context);
@@ -100,7 +90,7 @@ class DsfrBadge extends StatelessWidget {
     }
   }
 
-  Color _getTextColor(context) {
+  Color _getTextColor(BuildContext context) {
     switch (type) {
       case DsfrBadgeType.information:
         return DsfrColorDecisions.textDefaultInfo(context);

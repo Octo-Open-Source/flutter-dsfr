@@ -51,11 +51,7 @@ class _DsfrLinkState extends State<DsfrLink> with MaterialStateMixin<DsfrLink> {
             padding: widget.iconPosition == DsfrLinkIconPosition.start
                 ? const EdgeInsets.only(right: DsfrSpacings.s1w)
                 : const EdgeInsets.only(left: DsfrSpacings.s1w),
-            child: Icon(
-              widget.icon,
-              size: _getIconSize(),
-              color: _getColor(context),
-            ),
+            child: Icon(widget.icon, size: _getIconSize(), color: _getColor(context)),
           ),
         ),
       ],
@@ -78,9 +74,7 @@ class _DsfrLinkState extends State<DsfrLink> with MaterialStateMixin<DsfrLink> {
           child: DsfrFocusWidget(
             isFocused: isFocused,
             child: Text.rich(
-              TextSpan(
-                children:  widget.iconPosition == DsfrLinkIconPosition.start ?list : list.reversed.toList(),
-              ),
+              TextSpan(children: widget.iconPosition == DsfrLinkIconPosition.start ? list : list.reversed.toList()),
               style: _getTextStyle(context).copyWith(
                 shadows: [Shadow(color: _getColor(context), offset: Offset(0, -5))],
                 color: DsfrColorDecisions.backgroundTransparent(context),

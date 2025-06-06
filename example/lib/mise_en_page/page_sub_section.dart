@@ -1,7 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_dsfr/flutter_dsfr.dart';
 
-
 class PageSubSection extends StatelessWidget {
   const PageSubSection({super.key, required this.title, required this.children});
 

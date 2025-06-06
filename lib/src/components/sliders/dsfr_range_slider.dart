@@ -55,12 +55,7 @@ class DsfrRangeSlider extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         spacing: 4,
         children: [
-          Text(
-            label,
-            style: DsfrTextStyle.bodyMd(
-              color: labelColor,
-            ),
-          ),
+          Text(label, style: DsfrTextStyle.bodyMd(color: labelColor)),
           if (description != null)
             Text(
               description!,
@@ -124,12 +119,7 @@ class _RangeSliderTheme extends StatelessWidget {
   final bool enabled;
   final String labelText;
 
-  const _RangeSliderTheme({
-    required this.child,
-    required this.size,
-    required this.labelText,
-    this.enabled = true,
-  });
+  const _RangeSliderTheme({required this.child, required this.size, required this.labelText, this.enabled = true});
 
   @override
   Widget build(BuildContext context) {
@@ -148,11 +138,7 @@ class _RangeSliderTheme extends StatelessWidget {
         disabledInactiveTickMarkColor: DsfrColorDecisions.backgroundDisabledGrey(context),
         thumbColor: DsfrColorDecisions.backgroundDefaultGrey(context),
         trackHeight: getTrackHeight(size),
-        rangeThumbShape: _CustomRangeThumbShape(
-          context,
-          thumbRadius: getTrackHeight(size),
-          enabled: enabled,
-        ),
+        rangeThumbShape: _CustomRangeThumbShape(context, thumbRadius: getTrackHeight(size), enabled: enabled),
         rangeTrackShape: _CustomRangeTrackShape(context: context, labelText: labelText),
         rangeTickMarkShape: _CustomRoundRangeSliderTickMarkShape(enabled: enabled),
       ),
@@ -166,14 +152,8 @@ class _CustomRangeThumbShape extends RoundRangeSliderThumbShape {
   final double thumbRadius;
   final bool enabled;
 
-  _CustomRangeThumbShape(
-    this.context, {
-    required this.thumbRadius,
-    required this.enabled,
-  }) : super(
-          enabledThumbRadius: thumbRadius,
-          disabledThumbRadius: thumbRadius,
-        );
+  _CustomRangeThumbShape(this.context, {required this.thumbRadius, required this.enabled})
+    : super(enabledThumbRadius: thumbRadius, disabledThumbRadius: thumbRadius);
 
   @override
   Size getPreferredSize(bool isEnabled, bool isDiscrete) {
@@ -243,12 +223,7 @@ class _CustomRangeTrackShape extends RoundedRectRangeSliderTrackShape {
     final double trackRight = trackLeft + parentBox.size.width;
     final double trackBottom = trackTop + trackHeight;
 
-    return Rect.fromLTRB(
-      math.min(trackLeft, trackRight),
-      trackTop,
-      math.max(trackLeft, trackRight),
-      trackBottom,
-    );
+    return Rect.fromLTRB(math.min(trackLeft, trackRight), trackTop, math.max(trackLeft, trackRight), trackBottom);
   }
 
   @override
@@ -298,10 +273,7 @@ class _CustomRangeTrackShape extends RoundedRectRangeSliderTrackShape {
       ..strokeWidth = 1.0;
 
     paintingContext.canvas.drawRRect(
-      RRect.fromRectAndRadius(
-        trackRect,
-        Radius.circular(sliderTheme.trackHeight! / 2),
-      ),
+      RRect.fromRectAndRadius(trackRect, Radius.circular(sliderTheme.trackHeight! / 2)),
       borderPaint,
     );
 
@@ -309,15 +281,12 @@ class _CustomRangeTrackShape extends RoundedRectRangeSliderTrackShape {
     final labelSpan = TextSpan(
       text: labelText,
       style: DsfrTextStyle.bodyXs(
-        color:
-            isEnabled ? DsfrColorDecisions.textActiveBlueFrance(context) : DsfrColorDecisions.textDisabledGrey(context),
+        color: isEnabled
+            ? DsfrColorDecisions.textActiveBlueFrance(context)
+            : DsfrColorDecisions.textDisabledGrey(context),
       ),
     );
-    final labelTextPainter = TextPainter(
-      text: labelSpan,
-      textAlign: TextAlign.center,
-      textDirection: textDirection,
-    );
+    final labelTextPainter = TextPainter(text: labelSpan, textAlign: TextAlign.center, textDirection: textDirection);
     labelTextPainter.layout();
 
     final double activeCenterX = (startThumbCenter.dx + endThumbCenter.dx) / 2;

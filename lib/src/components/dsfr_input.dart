@@ -162,19 +162,12 @@ class _DsfrInputLabel extends StatelessWidget {
   final DsfrComponentState componentState;
   final bool enabled;
 
-  const _DsfrInputLabel({
-    required this.labelText,
-    required this.componentState,
-    required this.enabled,
-  });
+  const _DsfrInputLabel({required this.labelText, required this.componentState, required this.enabled});
 
   @override
   Widget build(BuildContext context) {
     return ExcludeSemantics(
-      child: Text(
-        labelText,
-        style: DsfrTextStyle.bodyMd(color: _getLabelColor(context)),
-      ),
+      child: Text(labelText, style: DsfrTextStyle.bodyMd(color: _getLabelColor(context))),
     );
   }
 
@@ -209,7 +202,9 @@ class _DsfrInputPasswordLabel extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Flexible(child: _DsfrInputLabel(labelText: inputLabel, componentState: componentState, enabled: enabled)),
+        Flexible(
+          child: _DsfrInputLabel(labelText: inputLabel, componentState: componentState, enabled: enabled),
+        ),
         Spacer(),
         FocusTraversalOrder(
           order: const NumericFocusOrder(2),
