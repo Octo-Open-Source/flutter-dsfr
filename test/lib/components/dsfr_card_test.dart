@@ -5,19 +5,19 @@ import '../../helpers/a11y_test.skip.dart';
 
 void main() {
   Widget cardSm = DsfrCard(
+    size: DsfrComponentSize.sm,
     title: 'Titre de la tuile',
     description: 'Description de la tuile',
-    size: DsfrComponentSize.sm,
   );
   Widget cardMd = DsfrCard(
+    size: DsfrComponentSize.md,
     title: 'Titre de la tuile',
     description: 'Description de la tuile',
-    size: DsfrComponentSize.md,
   );
   Widget cardLg = DsfrCard(
+    size: DsfrComponentSize.lg,
     title: 'Titre de la tuile',
     description: 'Description de la tuile',
-    size: DsfrComponentSize.lg,
   );
 
   accessibilityTest(componentName: 'Card SM', themeMode: ThemeMode.light, child: cardSm);

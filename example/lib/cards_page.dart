@@ -22,15 +22,60 @@ class CardsPage extends StatelessWidget {
               children: [
                 PageSubSection(
                   title: 'Taille SM',
-                  children: [DsfrCard(title: "Une carte", description: _loremIpsum, size: DsfrComponentSize.sm)],
+                  children: [
+                    DsfrCard(
+                      size: DsfrComponentSize.sm,
+                      title: "Une carte",
+                      details: "Détails",
+                      detailsIcon: DsfrIcons.systemArrowRightLine,
+                      description: _loremIpsum,
+                      badgesAndTags: [
+                        DsfrBadge(
+                          size: DsfrComponentSize.sm,
+                          label: 'badge info',
+                          type: DsfrBadgeType.information
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
                 PageSubSection(
                   title: 'Taille MD',
-                  children: [DsfrCard(title: "Une carte", description: _loremIpsum, size: DsfrComponentSize.md)],
+                  children: [
+                    DsfrCard(
+                      size: DsfrComponentSize.md,
+                      title: "Une carte",
+                      details: "Détails",
+                      detailsIcon: DsfrIcons.systemArrowRightLine,
+                      description: _loremIpsum,
+                      badgesAndTags: [
+                        DsfrBadge(
+                          size: DsfrComponentSize.md,
+                          label: 'badge info',
+                          type: DsfrBadgeType.information
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
                 PageSubSection(
                   title: 'Taille LG',
-                  children: [DsfrCard(title: "Une carte", description: _loremIpsum, size: DsfrComponentSize.lg)],
+                  children: [
+                    DsfrCard(
+                      size: DsfrComponentSize.lg,
+                      title: "Une carte",
+                      details: "Détails",
+                      detailsIcon: DsfrIcons.systemArrowRightLine,
+                      description: _loremIpsum,
+                      badgesAndTags: [
+                        DsfrBadge(
+                          size: DsfrComponentSize.md,
+                          label: 'badge info',
+                          type: DsfrBadgeType.information
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
               ],
             ),
