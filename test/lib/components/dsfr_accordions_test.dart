@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_dsfr/src/components/dsfr_accordions.dart';
 import '../../helpers/a11y_test.skip.dart';
 
@@ -15,15 +15,15 @@ void main() {
 
   accessibilityTest(
     componentName: 'accordion group with builder',
-    isLightMode: true,
+    themeMode: ThemeMode.light,
     child: accordionGroupWithExpandedLabel,
   );
   accessibilityTest(
     componentName: 'accordion group with builder',
-    isLightMode: false,
+    themeMode: ThemeMode.dark,
     child: accordionGroupWithExpandedLabel,
   );
 
-  accessibilityTest(componentName: 'accordion group', isLightMode: true, child: accordionGroup);
-  accessibilityTest(componentName: 'accordion group', isLightMode: false, child: accordionGroup);
+  accessibilityTest(componentName: 'accordion group', themeMode: ThemeMode.light, child: accordionGroup);
+  accessibilityTest(componentName: 'accordion group', themeMode: ThemeMode.dark, child: accordionGroup);
 }

@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dsfr/src/components/toggle_switches/dsfr_toggle_switch.dart';
 import '../../helpers/a11y_test.skip.dart';
@@ -38,36 +37,60 @@ void main() {
     description: 'description',
   );
 
-  accessibilityTest(componentName: 'Toggle Left', isLightMode: true, child: toggleLeft);
-  accessibilityTest(componentName: 'Toggle Left', isLightMode: false, child: toggleLeft);
+  accessibilityTest(componentName: 'Toggle Left', themeMode: ThemeMode.light, child: toggleLeft);
+  accessibilityTest(componentName: 'Toggle Left', themeMode: ThemeMode.dark, child: toggleLeft);
 
-  accessibilityTest(componentName: 'Toggle Right', isLightMode: true, child: toggleRight);
-  accessibilityTest(componentName: 'Toggle Right', isLightMode: false, child: toggleRight);
+  accessibilityTest(componentName: 'Toggle Right', themeMode: ThemeMode.light, child: toggleRight);
+  accessibilityTest(componentName: 'Toggle Right', themeMode: ThemeMode.dark, child: toggleRight);
 
-  accessibilityTest(componentName: 'Toggle Left with description', isLightMode: true, child: toggleLeftWithDescription);
   accessibilityTest(
     componentName: 'Toggle Left with description',
-    isLightMode: false,
+    themeMode: ThemeMode.light,
+    child: toggleLeftWithDescription,
+  );
+  accessibilityTest(
+    componentName: 'Toggle Left with description',
+    themeMode: ThemeMode.dark,
     child: toggleLeftWithDescription,
   );
 
   accessibilityTest(
     componentName: 'Toggle Right with description',
-    isLightMode: true,
+    themeMode: ThemeMode.light,
     child: toggleRightWithDescription,
   );
 
   accessibilityTest(
     componentName: 'Toggle Right with description',
-    isLightMode: false,
+    themeMode: ThemeMode.dark,
     child: toggleRightWithDescription,
   );
 
   // FIXME: skip, contraste insuffisant
-  accessibilityTest(componentName: 'Toggle Disabled On', isLightMode: true, child: toggleDisabledOn, skip: true);
-  accessibilityTest(componentName: 'Toggle Disabled On', isLightMode: false, child: toggleDisabledOn, skip: true);
+  accessibilityTest(
+    componentName: 'Toggle Disabled On',
+    themeMode: ThemeMode.light,
+    child: toggleDisabledOn,
+    skip: true,
+  );
+  accessibilityTest(
+    componentName: 'Toggle Disabled On',
+    themeMode: ThemeMode.dark,
+    child: toggleDisabledOn,
+    skip: true,
+  );
 
   // FIXME: skip, contraste insuffisant
-  accessibilityTest(componentName: 'Toggle Disabled Off', isLightMode: true, child: toggleDisabledOff, skip: true);
-  accessibilityTest(componentName: 'Toggle Disabled Off', isLightMode: false, child: toggleDisabledOff, skip: true);
+  accessibilityTest(
+    componentName: 'Toggle Disabled Off',
+    themeMode: ThemeMode.light,
+    child: toggleDisabledOff,
+    skip: true,
+  );
+  accessibilityTest(
+    componentName: 'Toggle Disabled Off',
+    themeMode: ThemeMode.dark,
+    child: toggleDisabledOff,
+    skip: true,
+  );
 }

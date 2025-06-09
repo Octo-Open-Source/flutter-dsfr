@@ -32,29 +32,39 @@ void main() {
     );
     var dsfrSliderDisabled = DsfrSlider(label: 'label', value: 0.5, enabled: false, size: DsfrComponentSize.sm);
 
-    accessibilityTest(componentName: 'slider SM', isLightMode: true, child: dsfrSlider);
-    accessibilityTest(componentName: 'slider SM', isLightMode: false, child: dsfrSlider);
+    accessibilityTest(componentName: 'slider SM', themeMode: ThemeMode.light, child: dsfrSlider);
+    accessibilityTest(componentName: 'slider SM', themeMode: ThemeMode.dark, child: dsfrSlider);
 
     accessibilityTest(
       componentName: 'slider SM avec une description',
-      isLightMode: true,
+      themeMode: ThemeMode.light,
       child: dsfrSliderWithDescription,
     );
     accessibilityTest(
       componentName: 'slider SM avec une description',
-      isLightMode: false,
+      themeMode: ThemeMode.dark,
       child: dsfrSliderWithDescription,
     );
 
-    accessibilityTest(componentName: 'slider SM Error', isLightMode: true, child: dsfrSliderError);
-    accessibilityTest(componentName: 'slider SM Error', isLightMode: false, child: dsfrSliderError);
+    accessibilityTest(componentName: 'slider SM Error', themeMode: ThemeMode.light, child: dsfrSliderError);
+    accessibilityTest(componentName: 'slider SM Error', themeMode: ThemeMode.dark, child: dsfrSliderError);
 
-    accessibilityTest(componentName: 'slider SM Success', isLightMode: true, child: dsfrSliderSuccess);
-    accessibilityTest(componentName: 'slider SM Success', isLightMode: false, child: dsfrSliderSuccess);
+    accessibilityTest(componentName: 'slider SM Success', themeMode: ThemeMode.light, child: dsfrSliderSuccess);
+    accessibilityTest(componentName: 'slider SM Success', themeMode: ThemeMode.dark, child: dsfrSliderSuccess);
 
     // FIXME: skip, contraste trop faible
-    accessibilityTest(componentName: 'slider SM disabled', isLightMode: true, child: dsfrSliderDisabled, skip: true);
-    accessibilityTest(componentName: 'slider SM disabled', isLightMode: false, child: dsfrSliderDisabled, skip: true);
+    accessibilityTest(
+      componentName: 'slider SM disabled',
+      themeMode: ThemeMode.light,
+      child: dsfrSliderDisabled,
+      skip: true,
+    );
+    accessibilityTest(
+      componentName: 'slider SM disabled',
+      themeMode: ThemeMode.dark,
+      child: dsfrSliderDisabled,
+      skip: true,
+    );
   });
 
   group('Slider taille MD', () {
@@ -82,29 +92,39 @@ void main() {
     );
     var dsfrSliderDisabled = DsfrSlider(label: 'label', value: 0.5, enabled: false, size: DsfrComponentSize.md);
 
-    accessibilityTest(componentName: 'slider MD', isLightMode: true, child: dsfrSlider);
-    accessibilityTest(componentName: 'slider MD', isLightMode: false, child: dsfrSlider);
+    accessibilityTest(componentName: 'slider MD', themeMode: ThemeMode.light, child: dsfrSlider);
+    accessibilityTest(componentName: 'slider MD', themeMode: ThemeMode.dark, child: dsfrSlider);
 
     accessibilityTest(
       componentName: 'slider MD avec une description',
-      isLightMode: true,
+      themeMode: ThemeMode.light,
       child: dsfrSliderWithDescription,
     );
     accessibilityTest(
       componentName: 'slider MD avec une description',
-      isLightMode: false,
+      themeMode: ThemeMode.dark,
       child: dsfrSliderWithDescription,
     );
 
-    accessibilityTest(componentName: 'slider MD Error', isLightMode: true, child: dsfrSliderError);
-    accessibilityTest(componentName: 'slider MD Error', isLightMode: false, child: dsfrSliderError);
+    accessibilityTest(componentName: 'slider MD Error', themeMode: ThemeMode.light, child: dsfrSliderError);
+    accessibilityTest(componentName: 'slider MD Error', themeMode: ThemeMode.dark, child: dsfrSliderError);
 
-    accessibilityTest(componentName: 'slider MD Success', isLightMode: true, child: dsfrSliderSuccess);
-    accessibilityTest(componentName: 'slider MD Success', isLightMode: false, child: dsfrSliderSuccess);
+    accessibilityTest(componentName: 'slider MD Success', themeMode: ThemeMode.light, child: dsfrSliderSuccess);
+    accessibilityTest(componentName: 'slider MD Success', themeMode: ThemeMode.dark, child: dsfrSliderSuccess);
 
     // FIXME: skip, contraste trop faible
-    accessibilityTest(componentName: 'slider MD disabled', isLightMode: true, child: dsfrSliderDisabled, skip: true);
-    accessibilityTest(componentName: 'slider MD disabled', isLightMode: false, child: dsfrSliderDisabled, skip: true);
+    accessibilityTest(
+      componentName: 'slider MD disabled',
+      themeMode: ThemeMode.light,
+      child: dsfrSliderDisabled,
+      skip: true,
+    );
+    accessibilityTest(
+      componentName: 'slider MD disabled',
+      themeMode: ThemeMode.dark,
+      child: dsfrSliderDisabled,
+      skip: true,
+    );
   });
 
   group('Slider piste piste crantée', () {
@@ -147,36 +167,44 @@ void main() {
       size: DsfrComponentSize.md,
     );
 
-    accessibilityTest(componentName: 'slider piste crantée', isLightMode: true, child: dsfrSlider);
-    accessibilityTest(componentName: 'slider piste crantée', isLightMode: false, child: dsfrSlider);
+    accessibilityTest(componentName: 'slider piste crantée', themeMode: ThemeMode.light, child: dsfrSlider);
+    accessibilityTest(componentName: 'slider piste crantée', themeMode: ThemeMode.dark, child: dsfrSlider);
 
     accessibilityTest(
       componentName: 'slider piste crantée avec une description',
-      isLightMode: true,
+      themeMode: ThemeMode.light,
       child: dsfrSliderWithDescription,
     );
     accessibilityTest(
       componentName: 'slider piste crantée avec une description',
-      isLightMode: false,
+      themeMode: ThemeMode.dark,
       child: dsfrSliderWithDescription,
     );
 
-    accessibilityTest(componentName: 'slider piste crantée Error', isLightMode: true, child: dsfrSliderError);
-    accessibilityTest(componentName: 'slider piste crantée Error', isLightMode: false, child: dsfrSliderError);
+    accessibilityTest(componentName: 'slider piste crantée Error', themeMode: ThemeMode.light, child: dsfrSliderError);
+    accessibilityTest(componentName: 'slider piste crantée Error', themeMode: ThemeMode.dark, child: dsfrSliderError);
 
-    accessibilityTest(componentName: 'slider piste crantée Success', isLightMode: true, child: dsfrSliderSuccess);
-    accessibilityTest(componentName: 'slider piste crantée Success', isLightMode: false, child: dsfrSliderSuccess);
+    accessibilityTest(
+      componentName: 'slider piste crantée Success',
+      themeMode: ThemeMode.light,
+      child: dsfrSliderSuccess,
+    );
+    accessibilityTest(
+      componentName: 'slider piste crantée Success',
+      themeMode: ThemeMode.dark,
+      child: dsfrSliderSuccess,
+    );
 
     // FIXME: skip, contraste trop faible
     accessibilityTest(
       componentName: 'slider piste crantée disabled',
-      isLightMode: true,
+      themeMode: ThemeMode.light,
       child: dsfrSliderDisabled,
       skip: true,
     );
     accessibilityTest(
       componentName: 'slider piste crantée disabled',
-      isLightMode: false,
+      themeMode: ThemeMode.dark,
       child: dsfrSliderDisabled,
       skip: true,
     );
@@ -217,36 +245,36 @@ void main() {
       size: DsfrComponentSize.sm,
     );
 
-    accessibilityTest(componentName: 'slider SM', isLightMode: true, child: dsfrRangeSlider);
-    accessibilityTest(componentName: 'slider SM', isLightMode: false, child: dsfrRangeSlider);
+    accessibilityTest(componentName: 'slider SM', themeMode: ThemeMode.light, child: dsfrRangeSlider);
+    accessibilityTest(componentName: 'slider SM', themeMode: ThemeMode.dark, child: dsfrRangeSlider);
 
     accessibilityTest(
       componentName: 'slider SM avec une description',
-      isLightMode: true,
+      themeMode: ThemeMode.light,
       child: dsfrRangeSliderWithDescription,
     );
     accessibilityTest(
       componentName: 'slider SM avec une description',
-      isLightMode: false,
+      themeMode: ThemeMode.dark,
       child: dsfrRangeSliderWithDescription,
     );
 
-    accessibilityTest(componentName: 'slider SM Error', isLightMode: true, child: dsfrRangeSliderError);
-    accessibilityTest(componentName: 'slider SM Error', isLightMode: false, child: dsfrRangeSliderError);
+    accessibilityTest(componentName: 'slider SM Error', themeMode: ThemeMode.light, child: dsfrRangeSliderError);
+    accessibilityTest(componentName: 'slider SM Error', themeMode: ThemeMode.dark, child: dsfrRangeSliderError);
 
-    accessibilityTest(componentName: 'slider SM Success', isLightMode: true, child: dsfrRangeSliderSuccess);
-    accessibilityTest(componentName: 'slider SM Success', isLightMode: false, child: dsfrRangeSliderSuccess);
+    accessibilityTest(componentName: 'slider SM Success', themeMode: ThemeMode.light, child: dsfrRangeSliderSuccess);
+    accessibilityTest(componentName: 'slider SM Success', themeMode: ThemeMode.dark, child: dsfrRangeSliderSuccess);
 
     // FIXME: skip, contraste trop faible
     accessibilityTest(
       componentName: 'slider SM disabled',
-      isLightMode: true,
+      themeMode: ThemeMode.light,
       child: dsfrRangeSliderDisabled,
       skip: true,
     );
     accessibilityTest(
       componentName: 'slider SM disabled',
-      isLightMode: false,
+      themeMode: ThemeMode.dark,
       child: dsfrRangeSliderDisabled,
       skip: true,
     );
@@ -287,36 +315,36 @@ void main() {
       size: DsfrComponentSize.md,
     );
 
-    accessibilityTest(componentName: 'slider MD', isLightMode: true, child: dsfrRangeSlider);
-    accessibilityTest(componentName: 'slider MD', isLightMode: false, child: dsfrRangeSlider);
+    accessibilityTest(componentName: 'slider MD', themeMode: ThemeMode.light, child: dsfrRangeSlider);
+    accessibilityTest(componentName: 'slider MD', themeMode: ThemeMode.dark, child: dsfrRangeSlider);
 
     accessibilityTest(
       componentName: 'slider MD avec une description',
-      isLightMode: true,
+      themeMode: ThemeMode.light,
       child: dsfrRangeSliderWithDescription,
     );
     accessibilityTest(
       componentName: 'slider MD avec une description',
-      isLightMode: false,
+      themeMode: ThemeMode.dark,
       child: dsfrRangeSliderWithDescription,
     );
 
-    accessibilityTest(componentName: 'slider MD Error', isLightMode: true, child: dsfrRangeSliderError);
-    accessibilityTest(componentName: 'slider MD Error', isLightMode: false, child: dsfrRangeSliderError);
+    accessibilityTest(componentName: 'slider MD Error', themeMode: ThemeMode.light, child: dsfrRangeSliderError);
+    accessibilityTest(componentName: 'slider MD Error', themeMode: ThemeMode.dark, child: dsfrRangeSliderError);
 
-    accessibilityTest(componentName: 'slider MD Success', isLightMode: true, child: dsfrRangeSliderSuccess);
-    accessibilityTest(componentName: 'slider MD Success', isLightMode: false, child: dsfrRangeSliderSuccess);
+    accessibilityTest(componentName: 'slider MD Success', themeMode: ThemeMode.light, child: dsfrRangeSliderSuccess);
+    accessibilityTest(componentName: 'slider MD Success', themeMode: ThemeMode.dark, child: dsfrRangeSliderSuccess);
 
     // FIXME: skip, contraste trop faible
     accessibilityTest(
       componentName: 'slider MD disabled',
-      isLightMode: true,
+      themeMode: ThemeMode.light,
       child: dsfrRangeSliderDisabled,
       skip: true,
     );
     accessibilityTest(
       componentName: 'slider MD disabled',
-      isLightMode: false,
+      themeMode: ThemeMode.dark,
       child: dsfrRangeSliderDisabled,
       skip: true,
     );

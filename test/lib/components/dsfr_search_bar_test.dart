@@ -5,6 +5,6 @@ import '../../helpers/a11y_test.skip.dart';
 void main() {
   final DsfrSearchBar searchBar = DsfrSearchBar(onSearch: () {}, controller: TextEditingController());
 
-  accessibilityTest(componentName: 'barre de recherche', isLightMode: true, child: searchBar);
-  accessibilityTest(componentName: 'barre de recherche', isLightMode: false, child: searchBar);
+  accessibilityTest(componentName: 'barre de recherche', themeMode: ThemeMode.light, child: searchBar);
+  accessibilityTest(componentName: 'barre de recherche', themeMode: ThemeMode.dark, child: searchBar);
 }

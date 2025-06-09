@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_dsfr/src/components/dsfr_alert.dart';
 import '../../helpers/a11y_test.skip.dart';
 
@@ -40,31 +41,35 @@ void main() {
     onClose: () {},
   );
 
-  accessibilityTest(componentName: 'Alerte info', isLightMode: true, child: alertInfo);
-  accessibilityTest(componentName: 'Alerte info', isLightMode: false, child: alertInfo);
-  accessibilityTest(componentName: 'Alerte success', isLightMode: true, child: alertSuccess);
-  accessibilityTest(componentName: 'Alerte success', isLightMode: false, child: alertSuccess);
-  accessibilityTest(componentName: 'Alerte warning', isLightMode: true, child: alertWarning);
-  accessibilityTest(componentName: 'Alerte warning', isLightMode: false, child: alertWarning);
-  accessibilityTest(componentName: 'Alerte error', isLightMode: true, child: alertError);
-  accessibilityTest(componentName: 'Alerte error', isLightMode: false, child: alertError);
+  accessibilityTest(componentName: 'Alerte info', themeMode: ThemeMode.light, child: alertInfo);
+  accessibilityTest(componentName: 'Alerte info', themeMode: ThemeMode.dark, child: alertInfo);
+  accessibilityTest(componentName: 'Alerte success', themeMode: ThemeMode.light, child: alertSuccess);
+  accessibilityTest(componentName: 'Alerte success', themeMode: ThemeMode.dark, child: alertSuccess);
+  accessibilityTest(componentName: 'Alerte warning', themeMode: ThemeMode.light, child: alertWarning);
+  accessibilityTest(componentName: 'Alerte warning', themeMode: ThemeMode.dark, child: alertWarning);
+  accessibilityTest(componentName: 'Alerte error', themeMode: ThemeMode.light, child: alertError);
+  accessibilityTest(componentName: 'Alerte error', themeMode: ThemeMode.dark, child: alertError);
 
-  accessibilityTest(componentName: 'Alerte sans titre', isLightMode: true, child: alertWithoutTitle);
-  accessibilityTest(componentName: 'Alerte sans description', isLightMode: true, child: alertWithoutDescription);
+  accessibilityTest(componentName: 'Alerte sans titre', themeMode: ThemeMode.light, child: alertWithoutTitle);
+  accessibilityTest(
+    componentName: 'Alerte sans description',
+    themeMode: ThemeMode.light,
+    child: alertWithoutDescription,
+  );
   accessibilityTest(
     componentName: 'Alerte avec une longue description',
-    isLightMode: true,
+    themeMode: ThemeMode.light,
     child: alertWithMultilineDescription,
   );
 
   accessibilityTest(
     componentName: 'Alerte avec une croix de fermeture',
-    isLightMode: true,
+    themeMode: ThemeMode.light,
     child: alertWithCloseButton,
   );
   accessibilityTest(
     componentName: 'Alerte avec une croix de fermeture',
-    isLightMode: false,
+    themeMode: ThemeMode.dark,
     child: alertWithCloseButton,
   );
 }

@@ -54,36 +54,27 @@ class _MyAppState extends State<MyApp> {
   Widget build(final context) {
     return DevicePreview(
       enabled: kIsWeb,
-      builder: (context) => DsfrThemeModeProvider.withBuilder(
-        isLightMode: themeMode == ThemeMode.light,
-        builder: (context) {
-          return MaterialApp(
-            theme: ThemeData.light().copyWith(
-              scaffoldBackgroundColor: DsfrColorDecisions.backgroundDefaultGrey(context),
-            ),
-            darkTheme: ThemeData.dark().copyWith(
-              scaffoldBackgroundColor: DsfrColorDecisions.backgroundDefaultGrey(context),
-            ),
-            themeMode: themeMode,
-            localizationsDelegates: [
-              GlobalMaterialLocalizations.delegate,
-              GlobalWidgetsLocalizations.delegate,
-              GlobalCupertinoLocalizations.delegate,
-            ],
-            supportedLocales: [Locale('fr'), Locale('en')],
-            home: MasterPage(
-              toggleTheme: () {
-                setState(() {
-                  final isDarkMode = themeMode == ThemeMode.dark;
-                  themeMode = isDarkMode ? ThemeMode.light : ThemeMode.dark;
-                });
-              },
-              pageItems: _getPageItems(),
-            ),
-            builder: (final context, final child) => AccessibilityTools(child: child),
-            debugShowCheckedModeBanner: false,
-          );
-        },
+      builder: (context) => MaterialApp(
+        useInheritedMediaQuery: true,
+        theme: DsfrThemeData.light(),
+        darkTheme: DsfrThemeData.dark(),
+        themeMode: themeMode,
+        localizationsDelegates: [
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        supportedLocales: [Locale('fr'), Locale('en')],
+        home: MasterPage(
+          toggleTheme: () {
+            setState(() {
+              themeMode = themeMode == ThemeMode.dark ? ThemeMode.light : ThemeMode.dark;
+            });
+          },
+          pageItems: _getPageItems(),
+        ),
+        builder: (final context, final child) => AccessibilityTools(child: child),
+        debugShowCheckedModeBanner: false,
       ),
     );
   }
