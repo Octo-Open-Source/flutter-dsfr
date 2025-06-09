@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_dsfr/src/components/dsfr_notice.dart';
 import '../../helpers/a11y_test.skip.dart';
 
@@ -53,38 +53,46 @@ void main() {
     onClose: () {},
   );
 
-  accessibilityTest(componentName: 'Notice Info generic', isLightMode: true, child: bandeauxGenericInfo);
-  accessibilityTest(componentName: 'Notice Info generic', isLightMode: false, child: bandeauxGenericInfo);
+  accessibilityTest(componentName: 'Notice Info generic', themeMode: ThemeMode.light, child: bandeauxGenericInfo);
+  accessibilityTest(componentName: 'Notice Info generic', themeMode: ThemeMode.dark, child: bandeauxGenericInfo);
 
-  accessibilityTest(componentName: 'Notice Warning generic', isLightMode: true, child: bandeauxGenericWarning);
-  accessibilityTest(componentName: 'Notice Warning generic', isLightMode: false, child: bandeauxGenericWarning);
+  accessibilityTest(componentName: 'Notice Warning generic', themeMode: ThemeMode.light, child: bandeauxGenericWarning);
+  accessibilityTest(componentName: 'Notice Warning generic', themeMode: ThemeMode.dark, child: bandeauxGenericWarning);
 
-  accessibilityTest(componentName: 'Notice Alert generic', isLightMode: true, child: bandeauxGenericAlert);
-  accessibilityTest(componentName: 'Notice Alert generic', isLightMode: false, child: bandeauxGenericAlert);
+  accessibilityTest(componentName: 'Notice Alert generic', themeMode: ThemeMode.light, child: bandeauxGenericAlert);
+  accessibilityTest(componentName: 'Notice Alert generic', themeMode: ThemeMode.dark, child: bandeauxGenericAlert);
 
-  accessibilityTest(componentName: 'Notice Weather Orange', isLightMode: true, child: bandeauxWeatherOrange);
-  accessibilityTest(componentName: 'Notice Weather Orange', isLightMode: false, child: bandeauxWeatherOrange);
+  accessibilityTest(componentName: 'Notice Weather Orange', themeMode: ThemeMode.light, child: bandeauxWeatherOrange);
+  accessibilityTest(componentName: 'Notice Weather Orange', themeMode: ThemeMode.dark, child: bandeauxWeatherOrange);
 
-  accessibilityTest(componentName: 'Notice Weather Red', isLightMode: true, child: bandeauxWeatherRed);
-  accessibilityTest(componentName: 'Notice Weather Red', isLightMode: false, child: bandeauxWeatherRed);
+  accessibilityTest(componentName: 'Notice Weather Red', themeMode: ThemeMode.light, child: bandeauxWeatherRed);
+  accessibilityTest(componentName: 'Notice Weather Red', themeMode: ThemeMode.dark, child: bandeauxWeatherRed);
 
-  accessibilityTest(componentName: 'Notice Weather Purple', isLightMode: true, child: bandeauxWeatherPurple);
-  accessibilityTest(componentName: 'Notice Weather Purple', isLightMode: false, child: bandeauxWeatherPurple);
+  accessibilityTest(componentName: 'Notice Weather Purple', themeMode: ThemeMode.light, child: bandeauxWeatherPurple);
+  accessibilityTest(componentName: 'Notice Weather Purple', themeMode: ThemeMode.dark, child: bandeauxWeatherPurple);
 
-  accessibilityTest(componentName: 'Notice Alert Attack', isLightMode: true, child: bandeauxAlertAttack);
-  accessibilityTest(componentName: 'Notice Alert Attack', isLightMode: false, child: bandeauxAlertAttack);
+  accessibilityTest(componentName: 'Notice Alert Attack', themeMode: ThemeMode.light, child: bandeauxAlertAttack);
+  accessibilityTest(componentName: 'Notice Alert Attack', themeMode: ThemeMode.dark, child: bandeauxAlertAttack);
 
   accessibilityTest(
     componentName: 'Notice Alert Call For Witnesses',
-    isLightMode: true,
+    themeMode: ThemeMode.light,
     child: bandeauxAlertCallForWitnesses,
   );
   accessibilityTest(
     componentName: 'Notice Alert Call For Witnesses',
-    isLightMode: false,
+    themeMode: ThemeMode.dark,
     child: bandeauxAlertCallForWitnesses,
   );
 
-  accessibilityTest(componentName: 'Notice Alert Technology', isLightMode: true, child: bandeauxAlertTechnology);
-  accessibilityTest(componentName: 'Notice Alert Technology', isLightMode: false, child: bandeauxAlertTechnology);
+  accessibilityTest(
+    componentName: 'Notice Alert Technology',
+    themeMode: ThemeMode.light,
+    child: bandeauxAlertTechnology,
+  );
+  accessibilityTest(
+    componentName: 'Notice Alert Technology',
+    themeMode: ThemeMode.dark,
+    child: bandeauxAlertTechnology,
+  );
 }

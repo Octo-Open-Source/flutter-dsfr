@@ -1,27 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_dsfr/src/fondamentaux/dsfr_color_decisions.g.dart';
-import 'package:flutter_dsfr/src/helpers/dsfr_theme_mode_provider.dart';
+import 'package:flutter_dsfr/src/fondamentaux/dsfr_theme.dart';
 
 class ScaffoldForTest extends StatelessWidget {
   final Widget child;
-  final bool isLightMode;
+  final ThemeMode themeMode;
 
-  const ScaffoldForTest({super.key, required this.child, required this.isLightMode});
+  const ScaffoldForTest({super.key, required this.child, required this.themeMode});
 
   @override
   Widget build(BuildContext context) {
-    return DsfrThemeModeProvider.withBuilder(
-      isLightMode: isLightMode,
-      builder: (context) {
-        return MaterialApp(
-          theme: ThemeData.light().copyWith(scaffoldBackgroundColor: DsfrColorDecisions.backgroundDefaultGrey(context)),
-          darkTheme: ThemeData.dark().copyWith(
-            scaffoldBackgroundColor: DsfrColorDecisions.backgroundDefaultGrey(context),
-          ),
-          themeMode: isLightMode ? ThemeMode.light : ThemeMode.dark,
-          home: Scaffold(body: child),
-        );
-      },
+    return MaterialApp(
+      theme: DsfrThemeData.light(),
+      darkTheme: DsfrThemeData.dark(),
+      themeMode: themeMode,
+      home: Scaffold(body: child),
     );
   }
 }

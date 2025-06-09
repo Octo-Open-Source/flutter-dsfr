@@ -11,6 +11,6 @@ void main() {
     child: Icon(Icons.info_outline),
   );
 
-  accessibilityTest(componentName: 'Top tooltip', isLightMode: true, child: tooltipTop, skip: true);
-  accessibilityTest(componentName: 'Bottom tooltip', isLightMode: true, child: tooltipBottom, skip: true);
+  accessibilityTest(componentName: 'Top tooltip', themeMode: ThemeMode.light, child: tooltipTop, skip: true);
+  accessibilityTest(componentName: 'Bottom tooltip', themeMode: ThemeMode.light, child: tooltipBottom, skip: true);
 }

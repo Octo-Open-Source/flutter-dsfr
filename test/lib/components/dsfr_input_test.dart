@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_dsfr/src/components/dsfr_input.dart';
 import '../../helpers/a11y_test.skip.dart';
 
@@ -19,20 +19,20 @@ void main() {
     maxLines: 10,
   );
 
-  accessibilityTest(componentName: 'input', isLightMode: true, child: input);
-  accessibilityTest(componentName: 'input', isLightMode: false, child: input);
+  accessibilityTest(componentName: 'input', themeMode: ThemeMode.light, child: input);
+  accessibilityTest(componentName: 'input', themeMode: ThemeMode.dark, child: input);
 
   //FIXME: en attente de la MR de fix
-  accessibilityTest(componentName: 'input password', isLightMode: true, child: passwordInput, skip: true);
-  accessibilityTest(componentName: 'input password', isLightMode: false, child: passwordInput, skip: true);
+  accessibilityTest(componentName: 'input password', themeMode: ThemeMode.light, child: passwordInput, skip: true);
+  accessibilityTest(componentName: 'input password', themeMode: ThemeMode.dark, child: passwordInput, skip: true);
 
   //FIXME: Ces tests ne passe pas car le contraste est pas assez élevé
-  accessibilityTest(componentName: 'input disable', isLightMode: true, child: disabledInput, skip: true);
-  accessibilityTest(componentName: 'input disable', isLightMode: false, child: disabledInput, skip: true);
+  accessibilityTest(componentName: 'input disable', themeMode: ThemeMode.light, child: disabledInput, skip: true);
+  accessibilityTest(componentName: 'input disable', themeMode: ThemeMode.dark, child: disabledInput, skip: true);
 
-  accessibilityTest(componentName: 'input textArea', isLightMode: true, child: textAreaInput);
-  accessibilityTest(componentName: 'input textArea', isLightMode: false, child: textAreaInput);
+  accessibilityTest(componentName: 'input textArea', themeMode: ThemeMode.light, child: textAreaInput);
+  accessibilityTest(componentName: 'input textArea', themeMode: ThemeMode.dark, child: textAreaInput);
 
-  accessibilityTest(componentName: 'input longTextArea', isLightMode: true, child: longTextAreaInput);
-  accessibilityTest(componentName: 'input longTextArea', isLightMode: false, child: longTextAreaInput);
+  accessibilityTest(componentName: 'input longTextArea', themeMode: ThemeMode.light, child: longTextAreaInput);
+  accessibilityTest(componentName: 'input longTextArea', themeMode: ThemeMode.dark, child: longTextAreaInput);
 }
