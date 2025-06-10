@@ -55,6 +55,8 @@ class _MyAppState extends State<MyApp> {
     return DevicePreview(
       enabled: kIsWeb,
       builder: (context) => MaterialApp(
+        // Nécessaire pour [DevicePreview](https://github.com/aloisdeniel/flutter_device_preview?tab=readme-ov-file#add-devicepreview)
+        // ignore: deprecated_member_use
         useInheritedMediaQuery: true,
         theme: DsfrThemeData.light(),
         darkTheme: DsfrThemeData.dark(),
