@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_dsfr/flutter_dsfr.dart';
 import 'package:flutter_test/flutter_test.dart';
 import '../../../helpers/a11y_test.skip.dart';
@@ -39,28 +40,28 @@ void main() {
       size: DsfrComponentSize.sm,
     );
 
-    accessibilityTest(componentName: 'checkbox SM', isLightMode: true, child: dsfrCheckbox);
-    accessibilityTest(componentName: 'checkbox SM', isLightMode: false, child: dsfrCheckbox);
+    accessibilityTest(componentName: 'checkbox SM', themeMode: ThemeMode.light, child: dsfrCheckbox);
+    accessibilityTest(componentName: 'checkbox SM', themeMode: ThemeMode.dark, child: dsfrCheckbox);
 
     accessibilityTest(
       componentName: 'checkbox SM avec une description',
-      isLightMode: true,
+      themeMode: ThemeMode.light,
       child: dsfrCheckboxWithDescription,
     );
     accessibilityTest(
       componentName: 'checkbox SM avec une description',
-      isLightMode: false,
+      themeMode: ThemeMode.dark,
       child: dsfrCheckboxWithDescription,
     );
 
-    accessibilityTest(componentName: 'checkbox SM Error', isLightMode: true, child: dsfrCheckboxError);
-    accessibilityTest(componentName: 'checkbox SM Error', isLightMode: false, child: dsfrCheckboxError);
+    accessibilityTest(componentName: 'checkbox SM Error', themeMode: ThemeMode.light, child: dsfrCheckboxError);
+    accessibilityTest(componentName: 'checkbox SM Error', themeMode: ThemeMode.dark, child: dsfrCheckboxError);
 
-    accessibilityTest(componentName: 'checkbox SM Success', isLightMode: true, child: dsfrCheckboxSuccess);
-    accessibilityTest(componentName: 'checkbox SM Success', isLightMode: false, child: dsfrCheckboxSuccess);
+    accessibilityTest(componentName: 'checkbox SM Success', themeMode: ThemeMode.light, child: dsfrCheckboxSuccess);
+    accessibilityTest(componentName: 'checkbox SM Success', themeMode: ThemeMode.dark, child: dsfrCheckboxSuccess);
 
-    accessibilityTest(componentName: 'checkbox SM disabled', isLightMode: true, child: dsfrCheckboxDisabled);
-    accessibilityTest(componentName: 'checkbox SM disabled', isLightMode: false, child: dsfrCheckboxDisabled);
+    accessibilityTest(componentName: 'checkbox SM disabled', themeMode: ThemeMode.light, child: dsfrCheckboxDisabled);
+    accessibilityTest(componentName: 'checkbox SM disabled', themeMode: ThemeMode.dark, child: dsfrCheckboxDisabled);
   });
 
   group('Checkbox taille MD', () {
@@ -94,27 +95,27 @@ void main() {
       onChanged: (value) {},
     );
 
-    accessibilityTest(componentName: 'checkbox MD', isLightMode: true, child: dsfrCheckboxMd);
-    accessibilityTest(componentName: 'checkbox MD', isLightMode: false, child: dsfrCheckboxMd);
+    accessibilityTest(componentName: 'checkbox MD', themeMode: ThemeMode.light, child: dsfrCheckboxMd);
+    accessibilityTest(componentName: 'checkbox MD', themeMode: ThemeMode.dark, child: dsfrCheckboxMd);
 
     accessibilityTest(
       componentName: 'checkbox MD with description',
-      isLightMode: true,
+      themeMode: ThemeMode.light,
       child: dsfrCheckboxMdWithDescription,
     );
     accessibilityTest(
       componentName: 'checkbox MD with description',
-      isLightMode: false,
+      themeMode: ThemeMode.dark,
       child: dsfrCheckboxMdWithDescription,
     );
 
-    accessibilityTest(componentName: 'checkbox MD Error', isLightMode: true, child: dsfrCheckboxMdError);
-    accessibilityTest(componentName: 'checkbox MD Error', isLightMode: false, child: dsfrCheckboxMdError);
+    accessibilityTest(componentName: 'checkbox MD Error', themeMode: ThemeMode.light, child: dsfrCheckboxMdError);
+    accessibilityTest(componentName: 'checkbox MD Error', themeMode: ThemeMode.dark, child: dsfrCheckboxMdError);
 
-    accessibilityTest(componentName: 'checkbox MD Success', isLightMode: true, child: dsfrCheckboxMdSuccess);
-    accessibilityTest(componentName: 'checkbox MD Success', isLightMode: false, child: dsfrCheckboxMdSuccess);
+    accessibilityTest(componentName: 'checkbox MD Success', themeMode: ThemeMode.light, child: dsfrCheckboxMdSuccess);
+    accessibilityTest(componentName: 'checkbox MD Success', themeMode: ThemeMode.dark, child: dsfrCheckboxMdSuccess);
 
-    accessibilityTest(componentName: 'checkbox MD Disabled', isLightMode: true, child: dsfrCheckboxMdDisabled);
-    accessibilityTest(componentName: 'checkbox MD Disabled', isLightMode: false, child: dsfrCheckboxMdDisabled);
+    accessibilityTest(componentName: 'checkbox MD Disabled', themeMode: ThemeMode.light, child: dsfrCheckboxMdDisabled);
+    accessibilityTest(componentName: 'checkbox MD Disabled', themeMode: ThemeMode.dark, child: dsfrCheckboxMdDisabled);
   });
 }

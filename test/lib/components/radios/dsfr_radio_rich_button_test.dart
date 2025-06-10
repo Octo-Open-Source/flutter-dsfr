@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dsfr/src/components/radios/dsfr_radio_rich_button.dart';
 import 'package:flutter_dsfr/src/helpers/dsfr_component_size.dart';
@@ -38,16 +37,16 @@ void main() {
     state: DsfrComponentStateEnum.error,
   );
 
-  accessibilityTest(componentName: 'Radio rich', isLightMode: true, child: radio);
-  accessibilityTest(componentName: 'Radio rich', isLightMode: false, child: radio);
+  accessibilityTest(componentName: 'Radio rich', themeMode: ThemeMode.light, child: radio);
+  accessibilityTest(componentName: 'Radio rich', themeMode: ThemeMode.dark, child: radio);
 
-  accessibilityTest(componentName: 'Radio rich success', isLightMode: true, child: radioSuccess);
-  accessibilityTest(componentName: 'Radio rich success', isLightMode: false, child: radioSuccess);
+  accessibilityTest(componentName: 'Radio rich success', themeMode: ThemeMode.light, child: radioSuccess);
+  accessibilityTest(componentName: 'Radio rich success', themeMode: ThemeMode.dark, child: radioSuccess);
 
-  accessibilityTest(componentName: 'Radio rich error', isLightMode: true, child: radioError);
-  accessibilityTest(componentName: 'Radio rich error', isLightMode: false, child: radioError);
+  accessibilityTest(componentName: 'Radio rich error', themeMode: ThemeMode.light, child: radioError);
+  accessibilityTest(componentName: 'Radio rich error', themeMode: ThemeMode.dark, child: radioError);
 
   //FIXME: skip, contraste trop faible
-  accessibilityTest(componentName: 'Radio rich disabled', isLightMode: true, child: radioDisabled, skip: true);
-  accessibilityTest(componentName: 'Radio rich disabled', isLightMode: false, child: radioDisabled, skip: true);
+  accessibilityTest(componentName: 'Radio rich disabled', themeMode: ThemeMode.light, child: radioDisabled, skip: true);
+  accessibilityTest(componentName: 'Radio rich disabled', themeMode: ThemeMode.dark, child: radioDisabled, skip: true);
 }
