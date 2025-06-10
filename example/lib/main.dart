@@ -55,6 +55,7 @@ class _MyAppState extends State<MyApp> {
     return DevicePreview(
       enabled: kIsWeb,
       builder: (context) => MaterialApp(
+        // ignore: deprecated_member_use
         useInheritedMediaQuery: true,
         theme: DsfrThemeData.light(),
         darkTheme: DsfrThemeData.dark(),
