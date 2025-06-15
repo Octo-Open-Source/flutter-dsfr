@@ -2,15 +2,12 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_dsfr/src/fondamentaux/dsfr_colors.g.dart';
-import 'package:flutter_dsfr/src/helpers/dsfr_theme_mode_provider.dart';
 
 class DsfrColorDecisions {
   const DsfrColorDecisions._();
 
   static bool isLightMode(BuildContext context) {
-    final provider = DsfrThemeModeProvider.of(context);
-    assert(provider != null, "Make sure you have a ThemeModeProvider at the top of your widget tree.");
-    return provider?.isLightMode ?? true;
+    return Theme.brightnessOf(context) == Brightness.light;
   }
 
   static Color artworkMajorBlueFrance(BuildContext context) {

@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_dsfr/src/components/dsfr_highlight.dart';
 import 'package:flutter_dsfr/src/helpers/dsfr_component_size.dart';
 import '../../helpers/a11y_test.skip.dart';
@@ -19,10 +20,10 @@ void main() {
     size: DsfrComponentSize.lg,
   );
 
-  accessibilityTest(componentName: 'Mise en exergue SM', isLightMode: true, child: highlightSM);
-  accessibilityTest(componentName: 'Mise en exergue SM', isLightMode: false, child: highlightSM);
-  accessibilityTest(componentName: 'Mise en exergue MD', isLightMode: true, child: highlightMD);
-  accessibilityTest(componentName: 'Mise en exergue MD', isLightMode: false, child: highlightMD);
-  accessibilityTest(componentName: 'Mise en exergue LG', isLightMode: true, child: highlightLG);
-  accessibilityTest(componentName: 'Mise en exergue LG', isLightMode: false, child: highlightLG);
+  accessibilityTest(componentName: 'Mise en exergue SM', themeMode: ThemeMode.light, child: highlightSM);
+  accessibilityTest(componentName: 'Mise en exergue SM', themeMode: ThemeMode.dark, child: highlightSM);
+  accessibilityTest(componentName: 'Mise en exergue MD', themeMode: ThemeMode.light, child: highlightMD);
+  accessibilityTest(componentName: 'Mise en exergue MD', themeMode: ThemeMode.dark, child: highlightMD);
+  accessibilityTest(componentName: 'Mise en exergue LG', themeMode: ThemeMode.light, child: highlightLG);
+  accessibilityTest(componentName: 'Mise en exergue LG', themeMode: ThemeMode.dark, child: highlightLG);
 }

@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dsfr/src/components/dsfr_card.dart';
 import 'package:flutter_dsfr/src/helpers/dsfr_component_size.dart';
@@ -21,12 +20,12 @@ void main() {
     size: DsfrComponentSize.lg,
   );
 
-  accessibilityTest(componentName: 'Card SM', isLightMode: true, child: cardSm);
-  accessibilityTest(componentName: 'Card SM', isLightMode: false, child: cardSm);
+  accessibilityTest(componentName: 'Card SM', themeMode: ThemeMode.light, child: cardSm);
+  accessibilityTest(componentName: 'Card SM', themeMode: ThemeMode.dark, child: cardSm);
 
-  accessibilityTest(componentName: 'Card MD', isLightMode: true, child: cardMd);
-  accessibilityTest(componentName: 'Card MD', isLightMode: false, child: cardMd);
+  accessibilityTest(componentName: 'Card MD', themeMode: ThemeMode.light, child: cardMd);
+  accessibilityTest(componentName: 'Card MD', themeMode: ThemeMode.dark, child: cardMd);
 
-  accessibilityTest(componentName: 'Card LG', isLightMode: true, child: cardLg);
-  accessibilityTest(componentName: 'Card LG', isLightMode: false, child: cardLg);
+  accessibilityTest(componentName: 'Card LG', themeMode: ThemeMode.light, child: cardLg);
+  accessibilityTest(componentName: 'Card LG', themeMode: ThemeMode.dark, child: cardLg);
 }

@@ -40,23 +40,19 @@ dependencies:
 
 Le Design Système gère deux thèmes : un thème clair et un sombre. Il faut cependant indiquer à la librairie dans quel thème elle doit dessiner ses widgets.
 
-Pour cela, vous devez ajouter le widget `ThemeModeProvider` en parent de votre widget `MaterialApp` et indiquer dans la propriété `isLightMode` si le thème actuel est le thème clair.
-
-Vous avez donc la flexibilité de gérer le changement de thème comme vous le souhaitez (seulement basé sur le choix du système ou basé sur une personnalisation dans l'app).
+Il suffit d'utiliser le `ThemeMode` présent dans `MaterialApp` et de remplacer `theme` et `darkTheme` par ceux du DSFR `DsfrThemeData.light()` et `DsfrThemeData.dark()`.
 
 Voici un exemple qui est basé sur le thème du système :
 
 ```dart
 @override
 Widget build(final context) {
-    return ThemeModeProvider.withBuilder(
-        isLightMode: MediaQuery.platformBrightnessOf(context) == Brightness.light,
-        builder: (context) {
-            return MaterialApp(
-                // ...
-            );
-        }
-    );
+  return MaterialApp(
+    theme: DsfrThemeData.light(),
+    darkTheme: DsfrThemeData.dark(),
+    themeMode: ThemeMode.light,
+    home: Scaffold(),
+  );
 }
 ```
 
