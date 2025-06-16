@@ -3,7 +3,7 @@ from extract_figma import extract
 from generate import generate_dart_colors, generate_dart_decisions, generate_dart_example
 
 DESIGN_TOKENS_FILE = "./tools/design-tokens/design-tokens.json"
-OUTPUT_LIB_PATH = "./lib/fondamentaux/"
+OUTPUT_LIB_PATH = "./lib/src/fondamentaux/"
 OUTPUT_EXAMPLE_PATH = "./example/lib/colors/"
 
 

@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_dsfr/src/components/dsfr_badge.dart';
 import 'package:flutter_dsfr/src/helpers/dsfr_component_size.dart';
 import '../../helpers/a11y_test.skip.dart';
@@ -85,63 +86,123 @@ void main() {
     size: DsfrComponentSize.md,
   );
 
-  accessibilityTest(componentName: 'Badge info SM', isLightMode: true, child: smallInfoLabel);
-  accessibilityTest(componentName: 'Badge info SM', isLightMode: false, child: smallInfoLabel);
-  accessibilityTest(componentName: 'Badge succès SM', isLightMode: true, child: smallSuccessLabel);
-  accessibilityTest(componentName: 'Badge succès SM', isLightMode: false, child: smallSuccessLabel);
-  accessibilityTest(componentName: 'Badge erreur SM', isLightMode: true, child: smallErrorLabel);
-  accessibilityTest(componentName: 'Badge erreur SM', isLightMode: false, child: smallErrorLabel);
-  accessibilityTest(componentName: 'Badge avertissement SM', isLightMode: true, child: smallWarningLabel);
-  accessibilityTest(componentName: 'Badge avertissement SM', isLightMode: false, child: smallWarningLabel);
-  accessibilityTest(componentName: 'Badge nouveau SM', isLightMode: true, child: smallNewLabel);
-  accessibilityTest(componentName: 'Badge nouveau SM', isLightMode: false, child: smallNewLabel);
+  accessibilityTest(componentName: 'Badge info SM', themeMode: ThemeMode.light, child: smallInfoLabel);
+  accessibilityTest(componentName: 'Badge info SM', themeMode: ThemeMode.dark, child: smallInfoLabel);
+  accessibilityTest(componentName: 'Badge succès SM', themeMode: ThemeMode.light, child: smallSuccessLabel);
+  accessibilityTest(componentName: 'Badge succès SM', themeMode: ThemeMode.dark, child: smallSuccessLabel);
+  accessibilityTest(componentName: 'Badge erreur SM', themeMode: ThemeMode.light, child: smallErrorLabel);
+  accessibilityTest(componentName: 'Badge erreur SM', themeMode: ThemeMode.dark, child: smallErrorLabel);
+  accessibilityTest(componentName: 'Badge avertissement SM', themeMode: ThemeMode.light, child: smallWarningLabel);
+  accessibilityTest(componentName: 'Badge avertissement SM', themeMode: ThemeMode.dark, child: smallWarningLabel);
+  accessibilityTest(componentName: 'Badge nouveau SM', themeMode: ThemeMode.light, child: smallNewLabel);
+  accessibilityTest(componentName: 'Badge nouveau SM', themeMode: ThemeMode.dark, child: smallNewLabel);
 
-  accessibilityTest(componentName: 'Badge info MD', isLightMode: true, child: mediumInfoLabel);
-  accessibilityTest(componentName: 'Badge info MD', isLightMode: false, child: mediumInfoLabel);
-  accessibilityTest(componentName: 'Badge succès MD', isLightMode: true, child: mediumSuccessLabel);
-  accessibilityTest(componentName: 'Badge succès MD', isLightMode: false, child: mediumSuccessLabel);
-  accessibilityTest(componentName: 'Badge erreur MD', isLightMode: true, child: mediumErrorLabel);
-  accessibilityTest(componentName: 'Badge erreur MD', isLightMode: false, child: mediumErrorLabel);
-  accessibilityTest(componentName: 'Badge avertissement MD', isLightMode: true, child: mediumWarningLabel);
-  accessibilityTest(componentName: 'Badge avertissement MD', isLightMode: false, child: mediumWarningLabel);
-  accessibilityTest(componentName: 'Badge nouveau MD', isLightMode: true, child: mediumNewLabel);
-  accessibilityTest(componentName: 'Badge nouveau MD', isLightMode: false, child: mediumNewLabel);
+  accessibilityTest(componentName: 'Badge info MD', themeMode: ThemeMode.light, child: mediumInfoLabel);
+  accessibilityTest(componentName: 'Badge info MD', themeMode: ThemeMode.dark, child: mediumInfoLabel);
+  accessibilityTest(componentName: 'Badge succès MD', themeMode: ThemeMode.light, child: mediumSuccessLabel);
+  accessibilityTest(componentName: 'Badge succès MD', themeMode: ThemeMode.dark, child: mediumSuccessLabel);
+  accessibilityTest(componentName: 'Badge erreur MD', themeMode: ThemeMode.light, child: mediumErrorLabel);
+  accessibilityTest(componentName: 'Badge erreur MD', themeMode: ThemeMode.dark, child: mediumErrorLabel);
+  accessibilityTest(componentName: 'Badge avertissement MD', themeMode: ThemeMode.light, child: mediumWarningLabel);
+  accessibilityTest(componentName: 'Badge avertissement MD', themeMode: ThemeMode.dark, child: mediumWarningLabel);
+  accessibilityTest(componentName: 'Badge nouveau MD', themeMode: ThemeMode.light, child: mediumNewLabel);
+  accessibilityTest(componentName: 'Badge nouveau MD', themeMode: ThemeMode.dark, child: mediumNewLabel);
 
-  accessibilityTest(componentName: 'Badge info SM with icon', isLightMode: true, child: smallInfoLabelWithIcon);
-  accessibilityTest(componentName: 'Badge info SM with icon', isLightMode: false, child: smallInfoLabelWithIcon);
-  accessibilityTest(componentName: 'Badge succès SM with icon', isLightMode: true, child: smallSuccessLabelWithIcon);
-  accessibilityTest(componentName: 'Badge succès SM with icon', isLightMode: false, child: smallSuccessLabelWithIcon);
-  accessibilityTest(componentName: 'Badge erreur SM with icon', isLightMode: true, child: smallErrorLabelWithIcon);
-  accessibilityTest(componentName: 'Badge erreur SM with icon', isLightMode: false, child: smallErrorLabelWithIcon);
+  accessibilityTest(
+    componentName: 'Badge info SM with icon',
+    themeMode: ThemeMode.light,
+    child: smallInfoLabelWithIcon,
+  );
+  accessibilityTest(componentName: 'Badge info SM with icon', themeMode: ThemeMode.dark, child: smallInfoLabelWithIcon);
+  accessibilityTest(
+    componentName: 'Badge succès SM with icon',
+    themeMode: ThemeMode.light,
+    child: smallSuccessLabelWithIcon,
+  );
+  accessibilityTest(
+    componentName: 'Badge succès SM with icon',
+    themeMode: ThemeMode.dark,
+    child: smallSuccessLabelWithIcon,
+  );
+  accessibilityTest(
+    componentName: 'Badge erreur SM with icon',
+    themeMode: ThemeMode.light,
+    child: smallErrorLabelWithIcon,
+  );
+  accessibilityTest(
+    componentName: 'Badge erreur SM with icon',
+    themeMode: ThemeMode.dark,
+    child: smallErrorLabelWithIcon,
+  );
   accessibilityTest(
     componentName: 'Badge avertissement SM with icon',
-    isLightMode: true,
+    themeMode: ThemeMode.light,
     child: smallWarningLabelWithIcon,
   );
   accessibilityTest(
     componentName: 'Badge avertissement SM with icon',
-    isLightMode: false,
+    themeMode: ThemeMode.dark,
     child: smallWarningLabelWithIcon,
   );
-  accessibilityTest(componentName: 'Badge nouveau SM with icon', isLightMode: true, child: smallNewLabelWithIcon);
-  accessibilityTest(componentName: 'Badge nouveau SM with icon', isLightMode: false, child: smallNewLabelWithIcon);
+  accessibilityTest(
+    componentName: 'Badge nouveau SM with icon',
+    themeMode: ThemeMode.light,
+    child: smallNewLabelWithIcon,
+  );
+  accessibilityTest(
+    componentName: 'Badge nouveau SM with icon',
+    themeMode: ThemeMode.dark,
+    child: smallNewLabelWithIcon,
+  );
 
-  accessibilityTest(componentName: 'Badge info MD with icon', isLightMode: true, child: mediumInfoLabelWithIcon);
-  accessibilityTest(componentName: 'Badge info MD with icon', isLightMode: false, child: mediumInfoLabelWithIcon);
-  accessibilityTest(componentName: 'Badge succès MD with icon', isLightMode: true, child: mediumSuccessLabelWithIcon);
-  accessibilityTest(componentName: 'Badge succès MD with icon', isLightMode: false, child: mediumSuccessLabelWithIcon);
-  accessibilityTest(componentName: 'Badge erreur MD with icon', isLightMode: true, child: mediumErrorLabelWithIcon);
-  accessibilityTest(componentName: 'Badge erreur MD with icon', isLightMode: false, child: mediumErrorLabelWithIcon);
+  accessibilityTest(
+    componentName: 'Badge info MD with icon',
+    themeMode: ThemeMode.light,
+    child: mediumInfoLabelWithIcon,
+  );
+  accessibilityTest(
+    componentName: 'Badge info MD with icon',
+    themeMode: ThemeMode.dark,
+    child: mediumInfoLabelWithIcon,
+  );
+  accessibilityTest(
+    componentName: 'Badge succès MD with icon',
+    themeMode: ThemeMode.light,
+    child: mediumSuccessLabelWithIcon,
+  );
+  accessibilityTest(
+    componentName: 'Badge succès MD with icon',
+    themeMode: ThemeMode.dark,
+    child: mediumSuccessLabelWithIcon,
+  );
+  accessibilityTest(
+    componentName: 'Badge erreur MD with icon',
+    themeMode: ThemeMode.light,
+    child: mediumErrorLabelWithIcon,
+  );
+  accessibilityTest(
+    componentName: 'Badge erreur MD with icon',
+    themeMode: ThemeMode.dark,
+    child: mediumErrorLabelWithIcon,
+  );
   accessibilityTest(
     componentName: 'Badge avertissement MD with icon',
-    isLightMode: true,
+    themeMode: ThemeMode.light,
     child: mediumWarningLabelWithIcon,
   );
   accessibilityTest(
     componentName: 'Badge avertissement MD with icon',
-    isLightMode: false,
+    themeMode: ThemeMode.dark,
     child: mediumWarningLabelWithIcon,
   );
-  accessibilityTest(componentName: 'Badge nouveau MD with icon', isLightMode: true, child: mediumNewLabelWithIcon);
-  accessibilityTest(componentName: 'Badge nouveau MD with icon', isLightMode: false, child: mediumNewLabelWithIcon);
+  accessibilityTest(
+    componentName: 'Badge nouveau MD with icon',
+    themeMode: ThemeMode.light,
+    child: mediumNewLabelWithIcon,
+  );
+  accessibilityTest(
+    componentName: 'Badge nouveau MD with icon',
+    themeMode: ThemeMode.dark,
+    child: mediumNewLabelWithIcon,
+  );
 }

@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dsfr/flutter_dsfr.dart';
 import '../../helpers/a11y_test.skip.dart';
@@ -120,28 +119,28 @@ void main() {
     ],
   );
 
-  accessibilityTest(componentName: 'Tile SM', isLightMode: true, child: tileVerticalSm);
-  accessibilityTest(componentName: 'Tile SM', isLightMode: false, child: tileVerticalSm);
-  accessibilityTest(componentName: 'Tile SM with image', isLightMode: true, child: tileVerticalSmWithImage);
-  accessibilityTest(componentName: 'Tile SM with image', isLightMode: false, child: tileVerticalSmWithImage);
-  accessibilityTest(componentName: 'Tile SM with tags', isLightMode: true, child: tileVerticalSmWithTags);
-  accessibilityTest(componentName: 'Tile SM with tags', isLightMode: false, child: tileVerticalSmWithTags);
-  accessibilityTest(componentName: 'Tile MD', isLightMode: true, child: tileVerticalMd);
-  accessibilityTest(componentName: 'Tile MD', isLightMode: false, child: tileVerticalMd);
-  accessibilityTest(componentName: 'Tile MD with image', isLightMode: true, child: tileVerticalMdWithImage);
-  accessibilityTest(componentName: 'Tile MD with image', isLightMode: false, child: tileVerticalMdWithImage);
-  accessibilityTest(componentName: 'Tile MD with tags', isLightMode: true, child: tileVerticalMdWithTags);
-  accessibilityTest(componentName: 'Tile MD with tags', isLightMode: false, child: tileVerticalMdWithTags);
-  accessibilityTest(componentName: 'Tile SM', isLightMode: true, child: tileHorizontalSm);
-  accessibilityTest(componentName: 'Tile SM', isLightMode: false, child: tileHorizontalSm);
-  accessibilityTest(componentName: 'Tile SM with image', isLightMode: true, child: tileHorizontalSmWithImage);
-  accessibilityTest(componentName: 'Tile SM with image', isLightMode: false, child: tileHorizontalSmWithImage);
-  accessibilityTest(componentName: 'Tile SM with tags', isLightMode: true, child: tileHorizontalSmWithTags);
-  accessibilityTest(componentName: 'Tile SM with tags', isLightMode: false, child: tileHorizontalSmWithTags);
-  accessibilityTest(componentName: 'Tile MD', isLightMode: true, child: tileHorizontalMd);
-  accessibilityTest(componentName: 'Tile MD', isLightMode: false, child: tileHorizontalMd);
-  accessibilityTest(componentName: 'Tile MD with image', isLightMode: true, child: tileHorizontalMdWithImage);
-  accessibilityTest(componentName: 'Tile MD with image', isLightMode: false, child: tileHorizontalMdWithImage);
-  accessibilityTest(componentName: 'Tile MD with tags', isLightMode: true, child: tileHorizontalMdWithTags);
-  accessibilityTest(componentName: 'Tile MD with tags', isLightMode: false, child: tileHorizontalMdWithTags);
+  accessibilityTest(componentName: 'Tile SM', themeMode: ThemeMode.light, child: tileVerticalSm);
+  accessibilityTest(componentName: 'Tile SM', themeMode: ThemeMode.dark, child: tileVerticalSm);
+  accessibilityTest(componentName: 'Tile SM with image', themeMode: ThemeMode.light, child: tileVerticalSmWithImage);
+  accessibilityTest(componentName: 'Tile SM with image', themeMode: ThemeMode.dark, child: tileVerticalSmWithImage);
+  accessibilityTest(componentName: 'Tile SM with tags', themeMode: ThemeMode.light, child: tileVerticalSmWithTags);
+  accessibilityTest(componentName: 'Tile SM with tags', themeMode: ThemeMode.dark, child: tileVerticalSmWithTags);
+  accessibilityTest(componentName: 'Tile MD', themeMode: ThemeMode.light, child: tileVerticalMd);
+  accessibilityTest(componentName: 'Tile MD', themeMode: ThemeMode.dark, child: tileVerticalMd);
+  accessibilityTest(componentName: 'Tile MD with image', themeMode: ThemeMode.light, child: tileVerticalMdWithImage);
+  accessibilityTest(componentName: 'Tile MD with image', themeMode: ThemeMode.dark, child: tileVerticalMdWithImage);
+  accessibilityTest(componentName: 'Tile MD with tags', themeMode: ThemeMode.light, child: tileVerticalMdWithTags);
+  accessibilityTest(componentName: 'Tile MD with tags', themeMode: ThemeMode.dark, child: tileVerticalMdWithTags);
+  accessibilityTest(componentName: 'Tile SM', themeMode: ThemeMode.light, child: tileHorizontalSm);
+  accessibilityTest(componentName: 'Tile SM', themeMode: ThemeMode.dark, child: tileHorizontalSm);
+  accessibilityTest(componentName: 'Tile SM with image', themeMode: ThemeMode.light, child: tileHorizontalSmWithImage);
+  accessibilityTest(componentName: 'Tile SM with image', themeMode: ThemeMode.dark, child: tileHorizontalSmWithImage);
+  accessibilityTest(componentName: 'Tile SM with tags', themeMode: ThemeMode.light, child: tileHorizontalSmWithTags);
+  accessibilityTest(componentName: 'Tile SM with tags', themeMode: ThemeMode.dark, child: tileHorizontalSmWithTags);
+  accessibilityTest(componentName: 'Tile MD', themeMode: ThemeMode.light, child: tileHorizontalMd);
+  accessibilityTest(componentName: 'Tile MD', themeMode: ThemeMode.dark, child: tileHorizontalMd);
+  accessibilityTest(componentName: 'Tile MD with image', themeMode: ThemeMode.light, child: tileHorizontalMdWithImage);
+  accessibilityTest(componentName: 'Tile MD with image', themeMode: ThemeMode.dark, child: tileHorizontalMdWithImage);
+  accessibilityTest(componentName: 'Tile MD with tags', themeMode: ThemeMode.light, child: tileHorizontalMdWithTags);
+  accessibilityTest(componentName: 'Tile MD with tags', themeMode: ThemeMode.dark, child: tileHorizontalMdWithTags);
 }

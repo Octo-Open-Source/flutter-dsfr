@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_dsfr/src/components/dsfr_date_input.dart';
 import '../../helpers/a11y_test.skip.dart';
 
@@ -12,6 +12,6 @@ void main() {
     initialDate: DateTime(2021),
   );
 
-  accessibilityTest(componentName: 'input datePicker', isLightMode: true, child: datePickerInput);
-  accessibilityTest(componentName: 'input datePicker', isLightMode: false, child: datePickerInput);
+  accessibilityTest(componentName: 'input datePicker', themeMode: ThemeMode.light, child: datePickerInput);
+  accessibilityTest(componentName: 'input datePicker', themeMode: ThemeMode.dark, child: datePickerInput);
 }

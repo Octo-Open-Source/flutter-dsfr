@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dsfr/src/components/buttons/dsfr_button.dart';
 import 'package:flutter_dsfr/src/fondamentaux/dsfr_icons.g.dart';
@@ -29,23 +28,47 @@ void main() {
       onPressed: null,
     );
 
-    accessibilityTest(componentName: 'Button Primary SM', isLightMode: true, child: buttonPrimarySm);
-    accessibilityTest(componentName: 'Button Primary SM', isLightMode: false, child: buttonPrimarySm);
+    accessibilityTest(componentName: 'Button Primary SM', themeMode: ThemeMode.light, child: buttonPrimarySm);
+    accessibilityTest(componentName: 'Button Primary SM', themeMode: ThemeMode.dark, child: buttonPrimarySm);
 
-    accessibilityTest(componentName: 'Button Primary MD', isLightMode: true, child: buttonPrimaryMd);
-    accessibilityTest(componentName: 'Button Primary MD', isLightMode: false, child: buttonPrimaryMd);
+    accessibilityTest(componentName: 'Button Primary MD', themeMode: ThemeMode.light, child: buttonPrimaryMd);
+    accessibilityTest(componentName: 'Button Primary MD', themeMode: ThemeMode.dark, child: buttonPrimaryMd);
 
-    accessibilityTest(componentName: 'Button Primary LG', isLightMode: true, child: buttonPrimaryLg);
-    accessibilityTest(componentName: 'Button Primary LG', isLightMode: false, child: buttonPrimaryLg);
+    accessibilityTest(componentName: 'Button Primary LG', themeMode: ThemeMode.light, child: buttonPrimaryLg);
+    accessibilityTest(componentName: 'Button Primary LG', themeMode: ThemeMode.dark, child: buttonPrimaryLg);
 
-    accessibilityTest(componentName: 'Button Primary with icon', isLightMode: true, child: buttonPrimaryWithIcon);
-    accessibilityTest(componentName: 'Button Primary with icon', isLightMode: false, child: buttonPrimaryWithIcon);
+    accessibilityTest(
+      componentName: 'Button Primary with icon',
+      themeMode: ThemeMode.light,
+      child: buttonPrimaryWithIcon,
+    );
+    accessibilityTest(
+      componentName: 'Button Primary with icon',
+      themeMode: ThemeMode.dark,
+      child: buttonPrimaryWithIcon,
+    );
 
-    accessibilityTest(componentName: 'Button Primary icon only', isLightMode: true, child: buttonPrimarIconOnly);
-    accessibilityTest(componentName: 'Button Primary icon only', isLightMode: false, child: buttonPrimarIconOnly);
+    accessibilityTest(
+      componentName: 'Button Primary icon only',
+      themeMode: ThemeMode.light,
+      child: buttonPrimarIconOnly,
+    );
+    accessibilityTest(
+      componentName: 'Button Primary icon only',
+      themeMode: ThemeMode.dark,
+      child: buttonPrimarIconOnly,
+    );
 
-    accessibilityTest(componentName: 'Button Primary Disabled', isLightMode: true, child: buttonPrimaryDisabled);
-    accessibilityTest(componentName: 'Button Primary Disabled', isLightMode: false, child: buttonPrimaryDisabled);
+    accessibilityTest(
+      componentName: 'Button Primary Disabled',
+      themeMode: ThemeMode.light,
+      child: buttonPrimaryDisabled,
+    );
+    accessibilityTest(
+      componentName: 'Button Primary Disabled',
+      themeMode: ThemeMode.dark,
+      child: buttonPrimaryDisabled,
+    );
   });
 
   group('Secondary', () {
@@ -82,23 +105,47 @@ void main() {
       onPressed: null,
     );
 
-    accessibilityTest(componentName: 'Button Secondary SM', isLightMode: true, child: buttonSecondarySm);
-    accessibilityTest(componentName: 'Button Secondary SM', isLightMode: false, child: buttonSecondarySm);
+    accessibilityTest(componentName: 'Button Secondary SM', themeMode: ThemeMode.light, child: buttonSecondarySm);
+    accessibilityTest(componentName: 'Button Secondary SM', themeMode: ThemeMode.dark, child: buttonSecondarySm);
 
-    accessibilityTest(componentName: 'Button Secondary MD', isLightMode: true, child: buttonSecondaryMd);
-    accessibilityTest(componentName: 'Button Secondary MD', isLightMode: false, child: buttonSecondaryMd);
+    accessibilityTest(componentName: 'Button Secondary MD', themeMode: ThemeMode.light, child: buttonSecondaryMd);
+    accessibilityTest(componentName: 'Button Secondary MD', themeMode: ThemeMode.dark, child: buttonSecondaryMd);
 
-    accessibilityTest(componentName: 'Button Secondary LG', isLightMode: true, child: buttonSecondaryLg);
-    accessibilityTest(componentName: 'Button Secondary LG', isLightMode: false, child: buttonSecondaryLg);
+    accessibilityTest(componentName: 'Button Secondary LG', themeMode: ThemeMode.light, child: buttonSecondaryLg);
+    accessibilityTest(componentName: 'Button Secondary LG', themeMode: ThemeMode.dark, child: buttonSecondaryLg);
 
-    accessibilityTest(componentName: 'Button Secondary with icon', isLightMode: true, child: buttonSecondaryWithIcon);
-    accessibilityTest(componentName: 'Button Secondary with icon', isLightMode: false, child: buttonSecondaryWithIcon);
+    accessibilityTest(
+      componentName: 'Button Secondary with icon',
+      themeMode: ThemeMode.light,
+      child: buttonSecondaryWithIcon,
+    );
+    accessibilityTest(
+      componentName: 'Button Secondary with icon',
+      themeMode: ThemeMode.dark,
+      child: buttonSecondaryWithIcon,
+    );
 
-    accessibilityTest(componentName: 'Button Secondary icon only', isLightMode: true, child: buttonSecondaryIconOnly);
-    accessibilityTest(componentName: 'Button Secondary icon only', isLightMode: false, child: buttonSecondaryIconOnly);
+    accessibilityTest(
+      componentName: 'Button Secondary icon only',
+      themeMode: ThemeMode.light,
+      child: buttonSecondaryIconOnly,
+    );
+    accessibilityTest(
+      componentName: 'Button Secondary icon only',
+      themeMode: ThemeMode.dark,
+      child: buttonSecondaryIconOnly,
+    );
 
-    accessibilityTest(componentName: 'Button Secondary Disabled', isLightMode: true, child: buttonSecondaryDisabled);
-    accessibilityTest(componentName: 'Button Secondary Disabled', isLightMode: false, child: buttonSecondaryDisabled);
+    accessibilityTest(
+      componentName: 'Button Secondary Disabled',
+      themeMode: ThemeMode.light,
+      child: buttonSecondaryDisabled,
+    );
+    accessibilityTest(
+      componentName: 'Button Secondary Disabled',
+      themeMode: ThemeMode.dark,
+      child: buttonSecondaryDisabled,
+    );
   });
 
   group('Tertiary', () {
@@ -135,22 +182,46 @@ void main() {
       onPressed: null,
     );
 
-    accessibilityTest(componentName: 'Button Tertiary SM', isLightMode: true, child: buttonTertiarySm);
-    accessibilityTest(componentName: 'Button Tertiary SM', isLightMode: false, child: buttonTertiarySm);
+    accessibilityTest(componentName: 'Button Tertiary SM', themeMode: ThemeMode.light, child: buttonTertiarySm);
+    accessibilityTest(componentName: 'Button Tertiary SM', themeMode: ThemeMode.dark, child: buttonTertiarySm);
 
-    accessibilityTest(componentName: 'Button Tertiary MD', isLightMode: true, child: buttonTertiaryMd);
-    accessibilityTest(componentName: 'Button Tertiary MD', isLightMode: false, child: buttonTertiaryMd);
+    accessibilityTest(componentName: 'Button Tertiary MD', themeMode: ThemeMode.light, child: buttonTertiaryMd);
+    accessibilityTest(componentName: 'Button Tertiary MD', themeMode: ThemeMode.dark, child: buttonTertiaryMd);
 
-    accessibilityTest(componentName: 'Button Tertiary LG', isLightMode: true, child: buttonTertiaryLg);
-    accessibilityTest(componentName: 'Button Tertiary LG', isLightMode: false, child: buttonTertiaryLg);
+    accessibilityTest(componentName: 'Button Tertiary LG', themeMode: ThemeMode.light, child: buttonTertiaryLg);
+    accessibilityTest(componentName: 'Button Tertiary LG', themeMode: ThemeMode.dark, child: buttonTertiaryLg);
 
-    accessibilityTest(componentName: 'Button Tertiary with icon', isLightMode: true, child: buttonTertiaryWithIcon);
-    accessibilityTest(componentName: 'Button Tertiary with icon', isLightMode: false, child: buttonTertiaryWithIcon);
+    accessibilityTest(
+      componentName: 'Button Tertiary with icon',
+      themeMode: ThemeMode.light,
+      child: buttonTertiaryWithIcon,
+    );
+    accessibilityTest(
+      componentName: 'Button Tertiary with icon',
+      themeMode: ThemeMode.dark,
+      child: buttonTertiaryWithIcon,
+    );
 
-    accessibilityTest(componentName: 'Button Tertiary icon only', isLightMode: true, child: buttonTertiaryIconOnly);
-    accessibilityTest(componentName: 'Button Tertiary icon only', isLightMode: false, child: buttonTertiaryIconOnly);
+    accessibilityTest(
+      componentName: 'Button Tertiary icon only',
+      themeMode: ThemeMode.light,
+      child: buttonTertiaryIconOnly,
+    );
+    accessibilityTest(
+      componentName: 'Button Tertiary icon only',
+      themeMode: ThemeMode.dark,
+      child: buttonTertiaryIconOnly,
+    );
 
-    accessibilityTest(componentName: 'Button Tertiary Disabled', isLightMode: true, child: buttonTertiaryDisabled);
-    accessibilityTest(componentName: 'Button Tertiary Disabled', isLightMode: false, child: buttonTertiaryDisabled);
+    accessibilityTest(
+      componentName: 'Button Tertiary Disabled',
+      themeMode: ThemeMode.light,
+      child: buttonTertiaryDisabled,
+    );
+    accessibilityTest(
+      componentName: 'Button Tertiary Disabled',
+      themeMode: ThemeMode.dark,
+      child: buttonTertiaryDisabled,
+    );
   });
 }

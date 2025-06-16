@@ -41,7 +41,7 @@ export 'src/fondamentaux/dsfr_color_decisions_extension.dart';
 export 'src/fondamentaux/dsfr_text_style.dart';
 export 'src/fondamentaux/dsfr_icons.g.dart';
 export 'src/fondamentaux/dsfr_spacings.g.dart';
+export 'src/fondamentaux/dsfr_theme.dart';
 export 'src/helpers/iterable_extension.dart';
 export 'src/helpers/dsfr_component_size.dart';
 export 'src/helpers/dsfr_component_state.dart';
-export 'src/helpers/dsfr_theme_mode_provider.dart';

@@ -16,15 +16,8 @@ void main() {
     details: 'PDF - 61,55 Ko',
     imageAsset: 'assets/images/city_hall.svg',
     badgesAndTags: [
-      DsfrBadge(
-          size: DsfrComponentSize.sm,
-          label: 'badge 1',
-          type: DsfrBadgeType.information
-      ),
-      DsfrTag(
-        size: DsfrComponentSize.sm,
-        label: 'tag pour tuile',
-      ),
+      DsfrBadge(size: DsfrComponentSize.sm, label: 'badge 1', type: DsfrBadgeType.information),
+      DsfrTag(size: DsfrComponentSize.sm, label: 'tag pour tuile'),
     ],
   );
 
@@ -35,22 +28,15 @@ void main() {
     details: 'PDF - 61,55 Ko',
     imageAsset: 'assets/images/city_hall.svg',
     badgesAndTags: [
-      DsfrBadge(
-          size: DsfrComponentSize.md,
-          label: 'badge 1',
-          type: DsfrBadgeType.information
-      ),
-      DsfrTag(
-        size: DsfrComponentSize.md,
-        label: 'tag pour tuile',
-      ),
+      DsfrBadge(size: DsfrComponentSize.md, label: 'badge 1', type: DsfrBadgeType.information),
+      DsfrTag(size: DsfrComponentSize.md, label: 'tag pour tuile'),
     ],
   );
 
-  accessibilityTest(componentName: 'Download - Link', isLightMode: true, child: downloadFileLink);
-  accessibilityTest(componentName: 'Download - Link', isLightMode: true, child: downloadFileLink);
-  accessibilityTest(componentName: 'Download - Tile', isLightMode: true, child: downloadFileTileSm);
-  accessibilityTest(componentName: 'Download - Tile', isLightMode: true, child: downloadFileTileSm);
-  accessibilityTest(componentName: 'Download - Tile', isLightMode: true, child: downloadFileTileMd);
-  accessibilityTest(componentName: 'Download - Tile', isLightMode: true, child: downloadFileTileMd);
+  accessibilityTest(componentName: 'Download - Link', themeMode: ThemeMode.light, child: downloadFileLink);
+  accessibilityTest(componentName: 'Download - Link', themeMode: ThemeMode.dark, child: downloadFileLink);
+  accessibilityTest(componentName: 'Download - Tile', themeMode: ThemeMode.light, child: downloadFileTileSm);
+  accessibilityTest(componentName: 'Download - Tile', themeMode: ThemeMode.dark, child: downloadFileTileSm);
+  accessibilityTest(componentName: 'Download - Tile', themeMode: ThemeMode.light, child: downloadFileTileMd);
+  accessibilityTest(componentName: 'Download - Tile', themeMode: ThemeMode.dark, child: downloadFileTileMd);
 }
