@@ -1,12 +1,7 @@
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_dsfr/src/atoms/dsfr_focus_widget.dart';
-import 'package:flutter_dsfr/src/components/checkboxes/dsfr_checkbox_icon.dart';
-import 'package:flutter_dsfr/src/fondamentaux/dsfr_color_decisions.g.dart';
-import 'package:flutter_dsfr/src/fondamentaux/dsfr_text_style.dart';
-import 'package:flutter_dsfr/src/fondamentaux/dsfr_spacings.g.dart';
+import 'package:flutter_dsfr/flutter_dsfr.dart';
 import 'package:flutter_dsfr/src/helpers/color_utils.dart';
-import 'package:flutter_dsfr/src/helpers/dsfr_component_state.dart';
 
 class DsfrCheckboxChild extends StatelessWidget {
   final String label;
@@ -15,7 +10,7 @@ class DsfrCheckboxChild extends StatelessWidget {
   final Function(bool)? onChanged;
   final bool enabled;
   final DsfrComponentStateEnum state;
-  final EdgeInsets padding;
+  final DsfrComponentSize size;
   final FocusNode? focusNode;
 
   const DsfrCheckboxChild({
@@ -26,7 +21,7 @@ class DsfrCheckboxChild extends StatelessWidget {
     this.enabled = true,
     this.description,
     this.state = DsfrComponentStateEnum.none,
-    this.padding = const EdgeInsets.all(DsfrSpacings.s1v),
+    required this.size,
     this.focusNode,
   });
 
@@ -60,7 +55,7 @@ class DsfrCheckboxChild extends StatelessWidget {
                     return DsfrFocusWidget(
                       isFocused: isFocused,
                       borderRadius: const BorderRadius.all(Radius.circular(4)),
-                      child: DsfrCheckboxIcon(value: value, padding: padding, enabled: enabled, state: state),
+                      child: DsfrCheckboxIcon(value: value, size: size, enabled: enabled, state: state),
                     );
                   },
                 ),
@@ -70,7 +65,6 @@ class DsfrCheckboxChild extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    if (description != null) SizedBox(height: 16),
                     Text(label, style: DsfrTextStyle.bodyMdCenter(color: _getLabelColor(context))),
                     if (description != null) ...[
                       Text(
