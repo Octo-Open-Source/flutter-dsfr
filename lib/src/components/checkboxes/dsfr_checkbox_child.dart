@@ -37,27 +37,31 @@ class DsfrCheckboxChild extends StatelessWidget {
           onTap: (!enabled || onChanged == null) ? null : () => onChanged?.call(!value),
           behavior: HitTestBehavior.opaque,
           child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Focus(
-                focusNode: focusNode,
-                onKeyEvent: (final node, final event) {
-                  if (event is KeyDownEvent && event.logicalKey == LogicalKeyboardKey.space) {
-                    onChanged?.call(!value);
-                    return KeyEventResult.handled;
-                  }
-                  return KeyEventResult.ignored;
-                },
-                canRequestFocus: enabled,
-                child: Builder(
-                  builder: (final context) {
-                    final isFocused = Focus.of(context).hasFocus;
-                    return DsfrFocusWidget(
-                      isFocused: isFocused,
-                      borderRadius: const BorderRadius.all(Radius.circular(4)),
-                      child: DsfrCheckboxIcon(value: value, size: size, enabled: enabled, state: state),
-                    );
+              Baseline(
+                baseline: 20, // HACK(lsaudon): Pour aligner la case à cocher avec la première ligne de texte
+                baselineType: TextBaseline.alphabetic,
+                child: Focus(
+                  focusNode: focusNode,
+                  onKeyEvent: (final node, final event) {
+                    if (event is KeyDownEvent && event.logicalKey == LogicalKeyboardKey.space) {
+                      onChanged?.call(!value);
+                      return KeyEventResult.handled;
+                    }
+                    return KeyEventResult.ignored;
                   },
+                  canRequestFocus: enabled,
+                  child: Builder(
+                    builder: (final context) {
+                      final isFocused = Focus.of(context).hasFocus;
+                      return DsfrFocusWidget(
+                        isFocused: isFocused,
+                        borderRadius: const BorderRadius.all(Radius.circular(4)),
+                        child: DsfrCheckboxIcon(value: value, size: size, enabled: enabled, state: state),
+                      );
+                    },
+                  ),
                 ),
               ),
               const SizedBox(width: DsfrSpacings.s1w),
@@ -65,7 +69,7 @@ class DsfrCheckboxChild extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(label, style: DsfrTextStyle.bodyMdCenter(color: _getLabelColor(context))),
+                    Text(label, style: DsfrTextStyle.bodyMd(color: _getLabelColor(context))),
                     if (description != null) ...[
                       Text(
                         description!,
