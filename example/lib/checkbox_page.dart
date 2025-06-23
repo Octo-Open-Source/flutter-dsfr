@@ -108,6 +108,8 @@ class _CheckboxPageState extends State<CheckboxPage> {
               ),
             ],
           ),
+          DsfrCheckbox(label: 'Multi\nline', value: false, onChanged: (final value) {}, size: DsfrComponentSize.sm),
+          DsfrCheckbox(label: 'Multi\nline', value: false, onChanged: (final value) {}, size: DsfrComponentSize.md),
           Align(
             alignment: Alignment.topLeft,
             child: Text(

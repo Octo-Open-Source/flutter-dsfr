@@ -1,7 +1,6 @@
 import 'package:flutter_dsfr/src/atoms/dsfr_form_state.dart';
 import 'package:flutter_dsfr/src/atoms/dsfr_group.dart';
 import 'package:flutter_dsfr/src/components/checkboxes/dsfr_checkbox_child.dart';
-import 'package:flutter_dsfr/src/fondamentaux/dsfr_spacings.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dsfr/src/helpers/dsfr_component_size.dart';
 import 'package:flutter_dsfr/src/helpers/dsfr_component_state.dart';
@@ -28,17 +27,6 @@ class DsfrCheckbox extends StatelessWidget {
   final bool enabled;
   final DsfrComponentState componentState;
 
-  EdgeInsets _getPadding(final DsfrComponentSize size) {
-    switch (size) {
-      case DsfrComponentSize.md:
-        return const EdgeInsets.all(DsfrSpacings.s1v);
-      case DsfrComponentSize.sm:
-        return EdgeInsets.zero;
-      default:
-        throw UnimplementedError('Size $size is not implemented');
-    }
-  }
-
   @override
   Widget build(final context) {
     return DsfrFormState(
@@ -50,7 +38,7 @@ class DsfrCheckbox extends StatelessWidget {
         enabled: enabled,
         description: description,
         state: GroupProvider.of(context)?.componentState.state ?? componentState.state,
-        padding: _getPadding(size),
+        size: size,
         focusNode: focusNode,
       ),
     );
