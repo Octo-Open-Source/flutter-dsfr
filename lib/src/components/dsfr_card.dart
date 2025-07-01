@@ -5,9 +5,11 @@ import 'package:flutter_dsfr/src/fondamentaux/dsfr_color_decisions.g.dart';
 import 'package:flutter_dsfr/src/fondamentaux/dsfr_text_style.dart';
 import 'package:flutter_dsfr/src/fondamentaux/dsfr_icons.g.dart';
 import 'package:flutter_dsfr/src/helpers/dsfr_component_size.dart';
+import 'package:flutter_svg/svg.dart';
 
 class DsfrCard extends StatelessWidget {
   final DsfrComponentSize size;
+  final String? imageAsset;
   final String title;
   final String? details;
   final IconData? detailsIcon;
@@ -18,6 +20,7 @@ class DsfrCard extends StatelessWidget {
   const DsfrCard({
     super.key,
     required this.size,
+    this.imageAsset,
     required this.title,
     this.details,
     this.detailsIcon,
@@ -34,28 +37,35 @@ class DsfrCard extends StatelessWidget {
     return Material(
       color: DsfrColorDecisions.backgroundDefaultGrey(context),
       shape: RoundedRectangleBorder(side: BorderSide(color: DsfrColorDecisions.borderDefaultGrey(context), width: 1.0)),
-      child: Padding(
-        padding: const EdgeInsets.all(24.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            if ((badgesAndTagsToAdd != null && badgesAndTagsToAdd.isNotEmpty) || details != null) ...[
-              _PrecisionZone(size: size, badgesAndTags: badgesAndTagsToAdd, details: details, detailsIcon: detailsIcon, showDetailsIcon: showDetailsIcon),
-              SizedBox(height: paddingBetweenSections),
-            ],
-            _Title(text: title, size: size),
-            if (description != null)
-              Padding(
-                padding: const EdgeInsets.only(top: 8.0),
-                child: _Description(text: description!, size: size),
-              ),
-            Padding(
-              padding: const EdgeInsets.only(top: 16.0),
-              child: _CardIcon(size: size),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          if (imageAsset != null)
+            _CardImage(imageAsset: imageAsset!),
+          Padding(
+            padding: const EdgeInsets.all(24.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                if ((badgesAndTagsToAdd != null && badgesAndTagsToAdd.isNotEmpty) || details != null) ...[
+                  _PrecisionZone(size: size, badgesAndTags: badgesAndTagsToAdd, details: details, detailsIcon: detailsIcon, showDetailsIcon: showDetailsIcon),
+                  SizedBox(height: paddingBetweenSections),
+                ],
+                _Title(text: title, size: size),
+                if (description != null)
+                  Padding(
+                    padding: const EdgeInsets.only(top: 8.0),
+                    child: _Description(text: description!, size: size),
+                  ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 16.0),
+                  child: _CardIcon(size: size),
+                ),
+              ],
             ),
-          ],
-        ),
-      ),
+          ),
+        ]
+      )
     );
   }
 }
@@ -219,3 +229,18 @@ class _CardIcon extends StatelessWidget {
     );
   }
 }
+
+class _CardImage extends StatelessWidget {
+  final String imageAsset;
+
+  const _CardImage({required this.imageAsset});
+
+  @override
+  Widget build(BuildContext context) {
+    return AspectRatio(
+      aspectRatio: 16 / 9,
+      child: imageAsset.endsWith('svg') ? SvgPicture.asset(imageAsset, fit: BoxFit.fitHeight, excludeFromSemantics: true) : Image.asset(imageAsset, fit: BoxFit.fitHeight)
+    );
+  }
+}
+
