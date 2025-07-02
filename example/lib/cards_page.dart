@@ -18,13 +18,14 @@ class CardsPage extends StatelessWidget {
           spacing: 16,
           children: [
             PageSection(
-              title: 'Cartes sans média',
+              title: 'Cartes',
               children: [
                 PageSubSection(
                   title: 'Taille SM',
                   children: [
                     DsfrCard(
                       size: DsfrComponentSize.sm,
+                      imageAsset: 'assets/images/image_16_9.jpeg',
                       title: "Une carte",
                       details: "Détails",
                       detailsIcon: DsfrIcons.systemArrowRightLine,
@@ -44,6 +45,7 @@ class CardsPage extends StatelessWidget {
                   children: [
                     DsfrCard(
                       size: DsfrComponentSize.md,
+                      imageAsset: 'assets/images/city_hall.svg',
                       title: "Une carte",
                       details: "Détails",
                       detailsIcon: DsfrIcons.systemArrowRightLine,
