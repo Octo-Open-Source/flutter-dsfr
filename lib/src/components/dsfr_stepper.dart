@@ -19,13 +19,19 @@ class DsfrStepper extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      spacing: 12,
+      spacing: DsfrSpacings.s3v,
       children: [
-        Text(
-          "Étape $currentStep sur $stepsCount",
-          style: DsfrTextStyle.bodySm(color: DsfrColorDecisions.textDefaultGrey(context)),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          spacing: DsfrSpacings.s1v,
+          children: [
+            Text(
+              "Étape $currentStep sur $stepsCount",
+              style: DsfrTextStyle.bodySm(color: DsfrColorDecisions.textDefaultGrey(context)),
+            ),
+            Text(stepTitle, style: DsfrTextStyle.bodyXlBold(color: DsfrColorDecisions.textTitleGrey(context))),
+          ],
         ),
-        Text(stepTitle, style: DsfrTextStyle.bodyXlBold(color: DsfrColorDecisions.textTitleGrey(context))),
         Row(
           spacing: 8,
           children: [
