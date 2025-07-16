@@ -144,73 +144,60 @@ class _DsfrInputHeadlessState extends State<DsfrInputHeadless> {
           )
         : InputBorder.none;
 
-    return DecoratedBox(
-      decoration: BoxDecoration(
-        border: Border.fromBorderSide(
-          BorderSide(
-            color: _isFocused
-                ? DsfrColorDecisionsExtension.focus525(context)
-                : DsfrColorDecisions.backgroundTransparent(context),
-            width: widget.focusThickness,
-            strokeAlign: BorderSide.strokeAlignOutside,
-          ),
-        ),
-        borderRadius: BorderRadius.vertical(top: Radius.circular(widget.radius + 2)),
-      ),
-      child: Padding(
-        padding: widget.focusPadding.add(EdgeInsets.only(bottom: DsfrSpacings.s0v5)),
-        child: SizedBox(
-          width: widget.width,
-          child: TextFormField(
-            maxLength: widget.maxLength,
-            controller: widget.controller,
-            initialValue: widget.initialValue,
-            focusNode: _focusNode,
-            decoration: InputDecoration(
-              suffixIcon: widget.isDatePicker ? Icon(DsfrIcons.businessCalendarLine, size: 16) : widget.suffixIcon,
-              suffixText: widget.suffixText,
-              suffix: widget.suffix,
-              suffixStyle: widget.enabled
-                  ? DsfrTextStyle.bodyMd(color: widget.inputColor ?? DsfrColorDecisions.textDefaultGrey(context))
-                  : DsfrTextStyle.bodyMd(color: DsfrColorDecisions.textDisabledGrey(context)),
-              contentPadding: widget.isDatePicker ? EdgeInsets.symmetric(vertical: 15, horizontal: 10) : null,
-              filled: true,
-              fillColor: widget.enabled
-                  ? widget.fillColor ?? DsfrColorDecisions.backgroundContrastGrey(context)
-                  : DsfrColorDecisions.backgroundDisabledGrey(context),
-              focusedBorder: underlineInputBorder,
-              enabledBorder: underlineInputBorder,
-              border: underlineInputBorder,
-              constraints: widget.maxLines > 1 ? null : widget.inputConstraints,
-            ),
-            keyboardType: widget.keyboardType,
-            textCapitalization: widget.textCapitalization,
-            textInputAction: widget.textInputAction,
-            style: widget.enabled
+    return DsfrFocusWidget(
+      isFocused: _isFocused,
+      borderRadius: BorderRadius.vertical(top: Radius.circular(widget.radius)),
+      child: SizedBox(
+        width: widget.width,
+        child: TextFormField(
+          maxLength: widget.maxLength,
+          controller: widget.controller,
+          initialValue: widget.initialValue,
+          focusNode: _focusNode,
+          decoration: InputDecoration(
+            suffixIcon: widget.isDatePicker ? Icon(DsfrIcons.businessCalendarLine, size: 16) : widget.suffixIcon,
+            suffixText: widget.suffixText,
+            suffix: widget.suffix,
+            suffixStyle: widget.enabled
                 ? DsfrTextStyle.bodyMd(color: widget.inputColor ?? DsfrColorDecisions.textDefaultGrey(context))
                 : DsfrTextStyle.bodyMd(color: DsfrColorDecisions.textDisabledGrey(context)),
-            textAlign: widget.textAlign,
-            autofocus: widget.autofocus,
-            obscureText: widget.isPasswordMode && !widget.passwordVisibility,
-            autocorrect: widget.autocorrect ?? !widget.isPasswordMode,
-            enableSuggestions: !widget.isPasswordMode,
-            maxLines: widget.maxLines,
-            minLines: widget.minLines,
-            onChanged: widget.onChanged,
-            readOnly: widget.isDatePicker ? true : false,
-            onTapOutside: (final event) => FocusManager.instance.primaryFocus?.unfocus(),
-            onFieldSubmitted: widget.onFieldSubmitted,
-            validator: widget.validator,
-            inputFormatters: widget.inputFormatters,
-            enabled: widget.enabled,
-            scrollPadding: widget.scrollPadding,
-            autofillHints: widget.autofillHints,
-            onTap: widget.isDatePicker
-                ? () {
-                    _selectDate(context);
-                  }
-                : null,
+            contentPadding: widget.isDatePicker ? EdgeInsets.symmetric(vertical: 15, horizontal: 10) : null,
+            filled: true,
+            fillColor: widget.enabled
+                ? widget.fillColor ?? DsfrColorDecisions.backgroundContrastGrey(context)
+                : DsfrColorDecisions.backgroundDisabledGrey(context),
+            focusedBorder: underlineInputBorder,
+            enabledBorder: underlineInputBorder,
+            border: underlineInputBorder,
+            constraints: widget.maxLines > 1 ? null : widget.inputConstraints,
           ),
+          keyboardType: widget.keyboardType,
+          textCapitalization: widget.textCapitalization,
+          textInputAction: widget.textInputAction,
+          style: widget.enabled
+              ? DsfrTextStyle.bodyMd(color: widget.inputColor ?? DsfrColorDecisions.textDefaultGrey(context))
+              : DsfrTextStyle.bodyMd(color: DsfrColorDecisions.textDisabledGrey(context)),
+          textAlign: widget.textAlign,
+          autofocus: widget.autofocus,
+          obscureText: widget.isPasswordMode && !widget.passwordVisibility,
+          autocorrect: widget.autocorrect ?? !widget.isPasswordMode,
+          enableSuggestions: !widget.isPasswordMode,
+          maxLines: widget.maxLines,
+          minLines: widget.minLines,
+          onChanged: widget.onChanged,
+          readOnly: widget.isDatePicker ? true : false,
+          onTapOutside: (final event) => FocusManager.instance.primaryFocus?.unfocus(),
+          onFieldSubmitted: widget.onFieldSubmitted,
+          validator: widget.validator,
+          inputFormatters: widget.inputFormatters,
+          enabled: widget.enabled,
+          scrollPadding: widget.scrollPadding,
+          autofillHints: widget.autofillHints,
+          onTap: widget.isDatePicker
+              ? () {
+                  _selectDate(context);
+                }
+              : null,
         ),
       ),
     );
