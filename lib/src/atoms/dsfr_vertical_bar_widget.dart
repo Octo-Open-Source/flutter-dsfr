@@ -16,7 +16,7 @@ class DsfrVerticalBarWidget extends StatelessWidget {
       return Row(
         children: [
           VerticalDivider(color: getColor(context), width: 0, thickness: 2),
-          const SizedBox(width: DsfrSpacings.s2w),
+          const SizedBox(width: DsfrSpacings.s3v),
         ],
       );
     }
