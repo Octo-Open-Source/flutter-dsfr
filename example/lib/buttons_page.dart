@@ -1,7 +1,7 @@
 import 'package:example/mise_en_page/page_sub_section.dart';
-import 'package:flutter_dsfr/flutter_dsfr.dart';
 import 'package:example/page_item.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dsfr/flutter_dsfr.dart';
 
 class ButtonsPage extends StatelessWidget {
   const ButtonsPage({super.key});
@@ -19,7 +19,7 @@ class ButtonsPage extends StatelessWidget {
     for (final variant in DsfrButtonVariant.values) {
       for (final size in DsfrComponentSize.values) {
         children.addAll([
-          Text('variant: ${variant.name}, size: ${size.name}'),
+          Text('Variant: ${variant.name}, Taille : ${size.name}'),
           DsfrButton(label: label, variant: variant, size: size),
           DsfrButton(label: label, variant: variant, size: size, onPressed: _handleTap),
           DsfrButton(
