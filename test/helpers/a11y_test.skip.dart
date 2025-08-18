@@ -16,7 +16,12 @@ void accessibilityTest({
     final SemanticsHandle handle = tester.ensureSemantics();
 
     // When
-    await tester.pumpWidget(ScaffoldForTest(themeMode: themeMode, child: child));
+    await tester.pumpWidget(
+      ScaffoldForTest(
+        themeMode: themeMode,
+        child: SingleChildScrollView(child: child),
+      ),
+    );
 
     // Then
     await expectLater(tester, meetsGuideline(androidTapTargetGuideline));

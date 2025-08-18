@@ -43,7 +43,6 @@ __pycache__/
 
 # Distribution / packaging
 .Python
-build/
 develop-eggs/
 dist/
 downloads/
@@ -110,3 +109,6 @@ venv.bak/
 
 # PyPI configuration file
 .pypirc
+
+# Dart
+devtools_options.yaml

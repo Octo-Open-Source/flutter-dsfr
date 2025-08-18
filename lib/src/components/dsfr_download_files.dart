@@ -1,23 +1,9 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_dsfr/flutter_dsfr.dart';
 
 enum DsfrDownloadFilesType { link, card, tile }
 
 class DsfrDownloadFiles extends StatelessWidget {
-
-  const DsfrDownloadFiles._({
-    super.key,
-    required this.type,
-    this.size,
-    required this.label,
-    this.description,
-    required this.details,
-    this.imageAsset,
-    this.badgesAndTags,
-    this.onTap,
-    this.enabled = true,
-  });
-
   final DsfrDownloadFilesType type;
   final DsfrComponentSize? size;
   final String label;
@@ -25,8 +11,23 @@ class DsfrDownloadFiles extends StatelessWidget {
   final String details;
   final String? imageAsset;
   final List<Widget>? badgesAndTags;
+  final String? actionDetails;
   final VoidCallback? onTap;
   final bool enabled;
+
+  const DsfrDownloadFiles._({
+    super.key,
+    required this.type,
+    required this.size,
+    required this.label,
+    this.description,
+    required this.details,
+    this.imageAsset,
+    this.badgesAndTags,
+    this.actionDetails,
+    this.onTap,
+    this.enabled = true,
+  });
 
   const DsfrDownloadFiles.link({
     final Key? key,
@@ -35,17 +36,17 @@ class DsfrDownloadFiles extends StatelessWidget {
     final onTap,
     final enabled = true,
   }) : this._(
-    key: key,
-    type: DsfrDownloadFilesType.link,
-    size: null,
-    label: label,
-    description: null,
-    details: details,
-    imageAsset: null,
-    badgesAndTags: null,
-    onTap: onTap,
-    enabled: enabled,
-  );
+         key: key,
+         type: DsfrDownloadFilesType.link,
+         size: null,
+         label: label,
+         description: null,
+         details: details,
+         imageAsset: null,
+         badgesAndTags: null,
+         onTap: onTap,
+         enabled: enabled,
+       );
 
   const DsfrDownloadFiles.tile({
     final Key? key,
@@ -58,17 +59,40 @@ class DsfrDownloadFiles extends StatelessWidget {
     final onTap,
     final enabled = true,
   }) : this._(
-    key: key,
-    type: DsfrDownloadFilesType.tile,
-    size: size,
-    label: label,
-    description: description,
-    details: details,
-    imageAsset: imageAsset,
-    badgesAndTags: badgesAndTags,
-    onTap: onTap,
-    enabled: enabled
-  );
+         key: key,
+         type: DsfrDownloadFilesType.tile,
+         size: size,
+         label: label,
+         description: description,
+         details: details,
+         imageAsset: imageAsset,
+         badgesAndTags: badgesAndTags,
+         onTap: onTap,
+         enabled: enabled,
+       );
+
+  const DsfrDownloadFiles.card({
+    final Key? key,
+    required final size,
+    required final label,
+    final description,
+    final details,
+    final badgesAndTags,
+    final actionDetails,
+    final imageAsset,
+    final onTap,
+  }) : this._(
+         key: key,
+         type: DsfrDownloadFilesType.card,
+         size: size,
+         label: label,
+         description: description,
+         details: details,
+         imageAsset: imageAsset,
+         badgesAndTags: badgesAndTags,
+         actionDetails: actionDetails,
+         onTap: onTap,
+       );
 
   @override
   Widget build(BuildContext context) {
@@ -77,22 +101,34 @@ class DsfrDownloadFiles extends StatelessWidget {
         label: label,
         details: details,
         onTap: onTap,
-        enabled: enabled
+        enabled: enabled,
       ),
-      DsfrDownloadFilesType.card => throw ('Card type is not implemented yet.'),
-      DsfrDownloadFilesType.tile => (size == null) ? throw ('Size is mandatory for tile type.') : DsfrTile(
-        size: size!,
-        direction: Axis.horizontal,
-        title: label,
+      DsfrDownloadFilesType.card => DsfrDowloadFilesCard(
+        size: size ?? DsfrComponentSize.md,
+        label: label,
         description: description,
         details: details,
         imageAsset: imageAsset,
-        enabled: enabled,
         badgesAndTags: badgesAndTags,
+        actionDetails: actionDetails,
         onTap: onTap,
-        showActionIcon: true,
-        actionIcon: DsfrIcons.systemDownloadLine,
       ),
+      DsfrDownloadFilesType.tile =>
+        (size == null)
+            ? throw ('Size is mandatory for tile type.')
+            : DsfrTile(
+                size: size!,
+                direction: Axis.horizontal,
+                title: label,
+                description: description,
+                details: details,
+                imageAsset: imageAsset,
+                enabled: enabled,
+                badgesAndTags: badgesAndTags,
+                onTap: onTap,
+                showActionIcon: true,
+                actionIcon: DsfrIcons.systemDownloadLine,
+              ),
     };
   }
 }
@@ -103,13 +139,7 @@ class DsfrDownloadFilesLink extends StatelessWidget {
   final VoidCallback? onTap;
   final bool enabled;
 
-  const DsfrDownloadFilesLink({
-    super.key,
-    required this.label,
-    required this.details,
-    this.onTap,
-    this.enabled = true,
-  });
+  const DsfrDownloadFilesLink({super.key, required this.label, required this.details, this.onTap, this.enabled = true});
 
   @override
   Widget build(BuildContext context) {
@@ -126,6 +156,45 @@ class DsfrDownloadFilesLink extends StatelessWidget {
         ),
         Text(details, style: DsfrTextStyle.bodyXs(color: DsfrColorDecisions.textMentionGrey(context))),
       ],
+    );
+  }
+}
+
+class DsfrDowloadFilesCard extends StatelessWidget {
+  final DsfrComponentSize size;
+  final String label;
+  final String? description;
+  final String? details;
+  final String? imageAsset;
+  final List<Widget>? badgesAndTags;
+  final String? actionDetails;
+  final VoidCallback? onTap;
+
+  const DsfrDowloadFilesCard({
+    super.key,
+    required this.size,
+    required this.label,
+    this.description,
+    this.details,
+    this.imageAsset,
+    this.badgesAndTags,
+    this.actionDetails,
+    this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return DsfrCard(
+      size: size,
+      imageAsset: imageAsset,
+      title: label,
+      description: description,
+      actionIcon: DsfrIcons.systemDownloadLine,
+      actionDetails: actionDetails,
+      badgesAndTags: badgesAndTags,
+      details: details,
+      detailsIcon: DsfrIcons.systemArrowRightLine,
+      onPressed: onTap,
     );
   }
 }
