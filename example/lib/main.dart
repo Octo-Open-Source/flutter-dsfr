@@ -76,6 +76,7 @@ class _MyAppState extends State<MyApp> {
           },
           pageItems: _getPageItems(),
         ),
+        // FIXME: Breaks VoiceOver on iOS
         builder: (final context, final child) => AccessibilityTools(child: child),
         debugShowCheckedModeBanner: false,
       ),
