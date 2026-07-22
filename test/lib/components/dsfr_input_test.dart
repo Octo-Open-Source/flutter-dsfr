@@ -22,9 +22,8 @@ void main() {
   accessibilityTest(componentName: 'input', themeMode: ThemeMode.light, child: input);
   accessibilityTest(componentName: 'input', themeMode: ThemeMode.dark, child: input);
 
-  //FIXME: en attente de la MR de fix
-  accessibilityTest(componentName: 'input password', themeMode: ThemeMode.light, child: passwordInput, skip: true);
-  accessibilityTest(componentName: 'input password', themeMode: ThemeMode.dark, child: passwordInput, skip: true);
+  accessibilityTest(componentName: 'input password', themeMode: ThemeMode.light, child: passwordInput);
+  accessibilityTest(componentName: 'input password', themeMode: ThemeMode.dark, child: passwordInput);
 
   //FIXME: Ces tests ne passe pas car le contraste est pas assez élevé
   accessibilityTest(componentName: 'input disable', themeMode: ThemeMode.light, child: disabledInput, skip: true);
