@@ -3,11 +3,11 @@ import 'package:flutter_dsfr/src/atoms/dsfr_form_state.dart';
 import 'package:flutter_dsfr/src/atoms/dsfr_group.dart';
 import 'package:flutter_dsfr/src/components/radios/dsfr_radio_icon.dart';
 import 'package:flutter_dsfr/src/fondamentaux/dsfr_color_decisions.g.dart';
-import 'package:flutter_dsfr/src/fondamentaux/dsfr_text_style.dart';
 import 'package:flutter_dsfr/src/fondamentaux/dsfr_spacings.g.dart';
+import 'package:flutter_dsfr/src/fondamentaux/dsfr_text_style.dart';
 import 'package:flutter_dsfr/src/helpers/color_utils.dart';
-import 'package:flutter_dsfr/src/helpers/dsfr_component_state.dart';
 import 'package:flutter_dsfr/src/helpers/dsfr_component_size.dart';
+import 'package:flutter_dsfr/src/helpers/dsfr_component_state.dart';
 
 class DsfrRadioButton<T> extends StatelessWidget {
   const DsfrRadioButton({
@@ -33,7 +33,7 @@ class DsfrRadioButton<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final state = GroupProvider.of(context)?.componentState.state ?? this.componentState.state;
+    final state = GroupProvider.of(context)?.componentState.state ?? componentState.state;
     return Semantics(
       enabled: enabled,
       child: DsfrFormState(

@@ -79,10 +79,7 @@ class _DsfrInputState extends State<DsfrInput> {
       componentState: widget.componentState,
       child: FocusTraversalGroup(
         policy: OrderedTraversalPolicy(),
-        child: Semantics(
-          textField: true,
-          label: widget.label,
-          hint: widget.hintText,
+        child: MergeSemantics(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -104,14 +101,12 @@ class _DsfrInputState extends State<DsfrInput> {
               ],
               if (widget.hintText != null) ...[
                 const SizedBox(height: DsfrSpacings.s1v),
-                ExcludeSemantics(
-                  child: Text(
-                    widget.hintText!,
-                    style: DsfrTextStyle.bodyXs(
-                      color: widget.enabled
-                          ? DsfrColorDecisions.textMentionGrey(context)
-                          : DsfrColorDecisions.textDisabledGrey(context),
-                    ),
+                Text(
+                  widget.hintText!,
+                  style: DsfrTextStyle.bodyXs(
+                    color: widget.enabled
+                        ? DsfrColorDecisions.textMentionGrey(context)
+                        : DsfrColorDecisions.textDisabledGrey(context),
                   ),
                 ),
               ],
@@ -166,9 +161,7 @@ class _DsfrInputLabel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ExcludeSemantics(
-      child: Text(labelText, style: DsfrTextStyle.bodyMd(color: _getLabelColor(context))),
-    );
+    return Text(labelText, style: DsfrTextStyle.bodyMd(color: _getLabelColor(context)));
   }
 
   Color _getLabelColor(BuildContext context) {
@@ -209,12 +202,15 @@ class _DsfrInputPasswordLabel extends StatelessWidget {
         FocusTraversalOrder(
           order: const NumericFocusOrder(2),
           child: Flexible(
-            child: DsfrCheckbox(
-              label: displayPasswordLabel,
-              value: passwordVisibility,
-              onChanged: handlePasswordVisibility,
-              enabled: enabled,
-              size: DsfrComponentSize.sm,
+            child: Semantics(
+              container: true,
+              child: DsfrCheckbox(
+                label: displayPasswordLabel,
+                value: passwordVisibility,
+                onChanged: handlePasswordVisibility,
+                enabled: enabled,
+                size: DsfrComponentSize.sm,
+              ),
             ),
           ),
         ),
