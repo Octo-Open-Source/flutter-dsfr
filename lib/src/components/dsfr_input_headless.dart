@@ -1,14 +1,15 @@
 // ignore_for_file: prefer-correct-callback-field-name
 
-import 'package:flutter_dsfr/flutter_dsfr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_dsfr/flutter_dsfr.dart';
 import 'package:intl/intl.dart';
 
 class DsfrInputHeadless extends StatefulWidget {
   const DsfrInputHeadless({
     super.key,
     this.initialValue,
+    this.placeholder,
     this.controller,
     this.suffixIcon,
     this.suffixText,
@@ -49,6 +50,7 @@ class DsfrInputHeadless extends StatefulWidget {
   });
 
   final String? initialValue;
+  final String? placeholder;
   final TextEditingController? controller;
   final Widget? suffixIcon;
   final String? suffixText;
@@ -155,6 +157,13 @@ class _DsfrInputHeadlessState extends State<DsfrInputHeadless> {
           initialValue: widget.initialValue,
           focusNode: _focusNode,
           decoration: InputDecoration(
+            hintText: widget.placeholder,
+            hintStyle: DsfrTextStyle.bodyMd(
+              color: widget.enabled
+                  ? DsfrColorDecisions.textMentionGrey(context)
+                  : DsfrColorDecisions.textDisabledGrey(context),
+            ).copyWith(fontStyle: FontStyle.italic),
+            floatingLabelBehavior: FloatingLabelBehavior.never,
             suffixIcon: widget.isDatePicker ? Icon(DsfrIcons.businessCalendarLine, size: 16) : widget.suffixIcon,
             suffixText: widget.suffixText,
             suffix: widget.suffix,
