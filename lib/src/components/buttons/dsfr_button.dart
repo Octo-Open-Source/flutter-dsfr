@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dsfr/src/components/buttons/dsfr_button_icon_location.dart';
+import 'package:flutter_dsfr/src/components/buttons/dsfr_button_variant.dart';
 import 'package:flutter_dsfr/src/components/buttons/dsfr_raw_button.dart';
 import 'package:flutter_dsfr/src/fondamentaux/dsfr_spacings.g.dart';
 import 'package:flutter_dsfr/src/helpers/dsfr_component_size.dart';
-import 'package:flutter_dsfr/src/components/buttons/dsfr_button_icon_location.dart';
-import 'package:flutter_dsfr/src/components/buttons/dsfr_button_variant.dart';
 
 export 'dsfr_button_icon_location.dart';
 export 'dsfr_button_variant.dart';
@@ -62,10 +62,7 @@ class DsfrButton extends StatelessWidget {
       );
     }
 
-    List<Widget> buttonWidget = <Widget>[
-      if (iconWidget != null) iconWidget,
-      if (label != null) Flexible(child: Text(label!)),
-    ];
+    List<Widget> buttonWidget = <Widget>[?iconWidget, if (label != null) Flexible(child: Text(label!))];
 
     if (iconLocation == DsfrButtonIconLocation.right) {
       buttonWidget = buttonWidget.reversed.toList();
