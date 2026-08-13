@@ -30,6 +30,13 @@ class InputsPage extends StatelessWidget {
             ],
           ),
           DsfrInput(label: 'Input avec description', hintText: 'Description', onChanged: (final value) {}),
+          DsfrInput(label: 'Input avec placeholder', placeholder: 'Placeholder', onChanged: (final value) {}),
+          DsfrInput(
+            label: 'Input avec description et placeholder',
+            hintText: 'Description',
+            placeholder: 'Placeholder',
+            onChanged: (final value) {},
+          ),
           DsfrInput(
             label: 'Input avec description - désactivé',
             hintText: 'Description',
@@ -91,7 +98,7 @@ class InputsPage extends StatelessWidget {
             onChanged: (final value) {},
           ),
           Text("Input sans label :"),
-          DsfrInputHeadless(onChanged: print),
+          DsfrInputHeadless(placeholder: 'Placeholder', onChanged: print),
           Text("Input sans label, avec suffix : "),
           DsfrInputHeadless(suffixText: '€', onChanged: print),
           SizedBox(height: 26),

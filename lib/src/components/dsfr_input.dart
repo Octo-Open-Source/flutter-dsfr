@@ -11,6 +11,7 @@ class DsfrInput extends StatefulWidget {
     super.key,
     required this.label,
     this.hintText,
+    this.placeholder,
     this.suffixText,
     this.controller,
     this.initialValue,
@@ -38,7 +39,12 @@ class DsfrInput extends StatefulWidget {
   });
 
   final String label;
+
+  /// Texte d'aide DSFR (fr-hint-text), affiché entre le label et le champ.
   final String? hintText;
+
+  /// Texte affiché à l'intérieur du champ lorsqu'il est vide (placeholder HTML).
+  final String? placeholder;
   final String? suffixText;
   final TextEditingController? controller;
   final String? initialValue;
@@ -118,6 +124,7 @@ class _DsfrInputState extends State<DsfrInput> {
                   child: DsfrInputHeadless(
                     key: ValueKey(widget.label),
                     initialValue: widget.initialValue,
+                    placeholder: widget.placeholder,
                     controller: widget.controller,
                     suffixText: widget.suffixText,
                     onChanged: widget.onChanged,
