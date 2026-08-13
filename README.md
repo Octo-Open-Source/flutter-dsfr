@@ -33,7 +33,7 @@ dependencies:
   flutter_dsfr:
     git:
       url: https://github.com/Octo-Open-Source/flutter-dsfr.git
-      ref: 0.4.0
+      ref: 0.4.1
 ```
 
 ### Gestion du thème
