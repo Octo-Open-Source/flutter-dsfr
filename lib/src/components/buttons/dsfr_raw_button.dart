@@ -1,14 +1,14 @@
 import 'dart:async';
 
+import 'package:flutter/material.dart';
 import 'package:flutter_dsfr/src/atoms/dsfr_focus_widget.dart';
 import 'package:flutter_dsfr/src/components/buttons/dsfr_button.dart';
-import 'package:flutter_dsfr/src/components/buttons/dsfr_button_border.dart';
 import 'package:flutter_dsfr/src/components/buttons/dsfr_button_background_color.dart';
+import 'package:flutter_dsfr/src/components/buttons/dsfr_button_border.dart';
 import 'package:flutter_dsfr/src/components/buttons/dsfr_button_foreground_color.dart';
 import 'package:flutter_dsfr/src/fondamentaux/dsfr_color_decisions.g.dart';
-import 'package:flutter_dsfr/src/fondamentaux/dsfr_text_style.dart';
 import 'package:flutter_dsfr/src/fondamentaux/dsfr_spacings.g.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter_dsfr/src/fondamentaux/dsfr_text_style.dart';
 import 'package:flutter_dsfr/src/helpers/dsfr_component_size.dart';
 
 class DsfrRawButton extends StatefulWidget {

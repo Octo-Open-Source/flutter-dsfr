@@ -2,6 +2,7 @@ import 'package:example/mise_en_page/page_sub_section.dart';
 import 'package:example/page_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dsfr/flutter_dsfr.dart';
+
 import 'mise_en_page/page_section.dart';
 
 class DownloadFilesPage extends StatelessWidget {
@@ -32,20 +33,70 @@ class DownloadFilesPage extends StatelessWidget {
                 details: 'PDF - 61,55 Ko',
                 onTap: () {},
               ),
-              DsfrDownloadFiles.link(
-                label: 'Intitulé du fichier à télécharger désactivé',
-                details: 'PDF - 61,55 Ko',
+              DsfrDownloadFiles.link(label: 'Intitulé du fichier à télécharger désactivé', details: 'PDF - 61,55 Ko'),
+            ],
+          ),
+          PageSubSection(
+            title: 'Carte',
+            children: [
+              Text('Taille SM', style: DsfrTextStyle.headline2(color: DsfrColorDecisions.textTitleGrey(context))),
+              DsfrDownloadFiles.card(
+                size: DsfrComponentSize.sm,
+                label: 'Intitulé du fichier à télécharger',
+                description: 'Description texte SM',
+                details: 'Détails',
+                imageAsset: 'assets/images/city_hall.svg',
+                badgesAndTags: [
+                  DsfrBadge(size: DsfrComponentSize.sm, label: 'badge 1', type: DsfrBadgeType.information),
+                  DsfrTag(size: DsfrComponentSize.sm, label: 'tag pour tuile'),
+                ],
+                actionDetails: 'PDF - 61,55 Ko',
+                onTap: () {},
+              ),
+              DsfrDownloadFiles.card(
+                size: DsfrComponentSize.sm,
+                label: 'Intitulé du fichier à télécharger',
+                description: 'Description texte SM',
+                details: 'Détails',
+                imageAsset: 'assets/images/city_hall.svg',
+                badgesAndTags: [
+                  DsfrBadge(size: DsfrComponentSize.sm, label: 'badge 1', type: DsfrBadgeType.information),
+                  DsfrTag(size: DsfrComponentSize.sm, label: 'tag pour tuile'),
+                ],
+                actionDetails: 'PDF - 61,55 Ko',
+              ),
+              Text('Taille MD', style: DsfrTextStyle.headline2(color: DsfrColorDecisions.textTitleGrey(context))),
+              DsfrDownloadFiles.card(
+                size: DsfrComponentSize.md,
+                label: 'Intitulé du fichier à télécharger',
+                description: 'Description texte SM',
+                details: 'Détails',
+                imageAsset: 'assets/images/city_hall.svg',
+                badgesAndTags: [
+                  DsfrBadge(size: DsfrComponentSize.sm, label: 'badge 1', type: DsfrBadgeType.information),
+                  DsfrTag(size: DsfrComponentSize.sm, label: 'tag pour tuile'),
+                ],
+                actionDetails: 'PDF - 61,55 Ko',
+                onTap: () {},
+              ),
+              DsfrDownloadFiles.card(
+                size: DsfrComponentSize.md,
+                label: 'Intitulé du fichier à télécharger',
+                description: 'Description texte SM',
+                details: 'Détails',
+                imageAsset: 'assets/images/city_hall.svg',
+                badgesAndTags: [
+                  DsfrBadge(size: DsfrComponentSize.sm, label: 'badge 1', type: DsfrBadgeType.information),
+                  DsfrTag(size: DsfrComponentSize.sm, label: 'tag pour tuile'),
+                ],
+                actionDetails: 'PDF - 61,55 Ko',
               ),
             ],
           ),
-          PageSubSection(title: 'Carte', children: [Text('TODO')]),
           PageSubSection(
             title: 'Tuile',
             children: [
-              Text(
-                'Taille SM',
-                style: DsfrTextStyle.headline2(color: DsfrColorDecisions.textTitleGrey(context)),
-              ),
+              Text('Taille SM', style: DsfrTextStyle.headline2(color: DsfrColorDecisions.textTitleGrey(context))),
               DsfrDownloadFiles.tile(
                 size: DsfrComponentSize.sm,
                 label: 'Intitulé du fichier à télécharger',
@@ -54,10 +105,7 @@ class DownloadFilesPage extends StatelessWidget {
                 imageAsset: 'assets/images/city_hall.svg',
                 badgesAndTags: [
                   DsfrBadge(size: DsfrComponentSize.sm, label: 'badge 1', type: DsfrBadgeType.information),
-                  DsfrTag(
-                    size: DsfrComponentSize.sm,
-                    label: 'tag pour tuile',
-                  ),
+                  DsfrTag(size: DsfrComponentSize.sm, label: 'tag pour tuile'),
                 ],
                 onTap: () {},
               ),
@@ -69,18 +117,12 @@ class DownloadFilesPage extends StatelessWidget {
                 imageAsset: 'assets/images/city_hall.svg',
                 badgesAndTags: [
                   DsfrBadge(size: DsfrComponentSize.sm, label: 'badge 1', type: DsfrBadgeType.information),
-                  DsfrTag(
-                    size: DsfrComponentSize.sm,
-                    label: 'tag pour tuile',
-                  ),
+                  DsfrTag(size: DsfrComponentSize.sm, label: 'tag pour tuile'),
                 ],
                 onTap: () {},
                 enabled: false,
               ),
-              Text(
-                'Taille MD',
-                style: DsfrTextStyle.headline2(color: DsfrColorDecisions.textTitleGrey(context)),
-              ),
+              Text('Taille MD', style: DsfrTextStyle.headline2(color: DsfrColorDecisions.textTitleGrey(context))),
               DsfrDownloadFiles.tile(
                 size: DsfrComponentSize.md,
                 label: 'Intitulé du fichier à télécharger',
@@ -100,16 +142,13 @@ class DownloadFilesPage extends StatelessWidget {
                 imageAsset: 'assets/images/city_hall.svg',
                 badgesAndTags: [
                   DsfrBadge(size: DsfrComponentSize.md, label: 'badge 1', type: DsfrBadgeType.information),
-                  DsfrTag(
-                    size: DsfrComponentSize.md,
-                    label: 'tag pour tuile',
-                  ),
+                  DsfrTag(size: DsfrComponentSize.md, label: 'tag pour tuile'),
                 ],
                 onTap: () {},
                 enabled: false,
-              )
+              ),
             ],
-          )
+          ),
         ],
       ),
     ),
