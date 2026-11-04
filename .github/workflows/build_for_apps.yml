@@ -16,7 +16,7 @@ jobs:
       - uses: subosito/flutter-action@v2
         with:
           cache: true
-          flutter-version: 3.32.1
+          flutter-version: 3.47.9
 
       - name: Install Flutter dependencies
         shell: bash
@@ -33,14 +33,14 @@ jobs:
 
 
   build-ios:
-    runs-on: macos-13
+    runs-on: macos-26
     steps:
       - uses: actions/checkout@v5
 
       - uses: subosito/flutter-action@v2
         with:
           cache: true
-          flutter-version: 3.32.1
+          flutter-version: 3.47.9
 
       - name: Install Flutter dependencies
         shell: bash
