@@ -1,10 +1,11 @@
 name: flutter_dsfr
 description: "Système de Design de l'État français en flutter"
-version: 0.4.1
+version: 0.5.0
 homepage: https://github.com/Octo-Open-Source/flutter-dsfr
 
 environment:
-  sdk: ^3.8.1
+  sdk: ^3.10.0
+  flutter: ">=3.38.0" # SemanticsService.sendAnnouncement, OverlayChildLocation
 
 dependencies:
   flutter:

@@ -9,8 +9,13 @@ linter:
     always_use_package_imports: true
 
 analyzer:
+  exclude:
+    - build/**
   plugins:
     - custom_lint
+  errors:
+    # custom_lint (used by dsfr_lints) still relies on the legacy analyzer plugin system
+    analysis_options_deprecated_plugins: ignore
 
 custom_lint:
   rules:

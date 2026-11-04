@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_dsfr/src/fondamentaux/dsfr_color_decisions.g.dart';
 
 import 'dart:async';
@@ -64,8 +63,7 @@ class DsfrTooltipState extends State<DsfrTooltip> with SingleTickerProviderState
       _updatePosition();
       _overlayController.show();
       _animationController.forward();
-      final event = AnnounceSemanticsEvent(widget.message, TextDirection.ltr);
-      SystemChannels.accessibility.send(event.toMap());
+      SemanticsService.sendAnnouncement(View.of(context), widget.message, TextDirection.ltr);
     }
   }
 
@@ -121,8 +119,9 @@ class DsfrTooltipState extends State<DsfrTooltip> with SingleTickerProviderState
 
   @override
   Widget build(BuildContext context) {
-    return OverlayPortal.targetsRootOverlay(
+    return OverlayPortal(
       controller: _overlayController,
+      overlayLocation: OverlayChildLocation.rootOverlay,
       child: Semantics(
         label: "${widget.semanticsLabel ?? ''}, appuyez deux fois pour afficher le message informatif",
         child: ExcludeSemantics(

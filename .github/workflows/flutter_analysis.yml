@@ -13,7 +13,7 @@ jobs:
       - uses: subosito/flutter-action@v2
         with:
           cache: true
-          flutter-version: 3.32.1
+          flutter-version: 3.47.9
 
       - name: Analyze project source
         run: flutter analyze
