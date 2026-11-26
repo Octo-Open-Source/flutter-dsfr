@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dsfr/src/components/dsfr_input.dart';
+import 'package:flutter_dsfr/src/helpers/dsfr_component_state.dart';
 import 'package:flutter_test/flutter_test.dart';
 import '../../helpers/a11y_test.skip.dart';
 import '../../helpers/scaffold_for_test.skip.dart';
@@ -62,4 +63,62 @@ void main() {
     final textField = tester.widget<TextField>(find.byType(TextField));
     expect(textField.decoration?.hintText, 'placeholder');
   });
+
+  testWidgets('keeps focus and keyboard when the error state is cleared while typing', (tester) async {
+    await tester.pumpWidget(ScaffoldForTest(themeMode: ThemeMode.light, child: const _InputClearingErrorOnChange()));
+
+    await tester.tap(find.byType(TextField));
+    await tester.pump();
+    final editableTextState = tester.state<EditableTextState>(find.byType(EditableText));
+    expect(find.text('error'), findsOneWidget);
+    expect(tester.testTextInput.isVisible, isTrue);
+
+    await tester.enterText(find.byType(TextField), 'a');
+    await tester.pump();
+
+    expect(find.text('error'), findsNothing);
+    expect(tester.state<EditableTextState>(find.byType(EditableText)), same(editableTextState));
+    expect(editableTextState.widget.focusNode.hasFocus, isTrue);
+    expect(tester.testTextInput.isVisible, isTrue);
+  });
+
+  testWidgets('keeps focus and keyboard when the error state is set while typing', (tester) async {
+    await tester.pumpWidget(
+      ScaffoldForTest(themeMode: ThemeMode.light, child: const _InputClearingErrorOnChange(errorWhenEmpty: true)),
+    );
+    await tester.enterText(find.byType(TextField), 'a');
+    await tester.pump();
+    final editableTextState = tester.state<EditableTextState>(find.byType(EditableText));
+    expect(find.text('error'), findsNothing);
+
+    await tester.enterText(find.byType(TextField), '');
+    await tester.pump();
+
+    expect(find.text('error'), findsOneWidget);
+    expect(tester.state<EditableTextState>(find.byType(EditableText)), same(editableTextState));
+    expect(editableTextState.widget.focusNode.hasFocus, isTrue);
+    expect(tester.testTextInput.isVisible, isTrue);
+  });
+}
+
+class _InputClearingErrorOnChange extends StatefulWidget {
+  const _InputClearingErrorOnChange({this.errorWhenEmpty = false});
+
+  final bool errorWhenEmpty;
+
+  @override
+  State<_InputClearingErrorOnChange> createState() => _InputClearingErrorOnChangeState();
+}
+
+class _InputClearingErrorOnChangeState extends State<_InputClearingErrorOnChange> {
+  late bool _hasError = !widget.errorWhenEmpty;
+
+  @override
+  Widget build(BuildContext context) {
+    return DsfrInput(
+      label: 'label',
+      componentState: _hasError ? const DsfrComponentState.error(errorMessage: 'error') : const DsfrComponentState.none(),
+      onChanged: (value) => setState(() => _hasError = widget.errorWhenEmpty && value.isEmpty),
+    );
+  }
 }
